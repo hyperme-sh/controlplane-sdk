@@ -1,0 +1,15 @@
+.openapi-generator-ignore
+README.md
+build.gradle
+docs/GatewayApi.md
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+gradlew.bat
+settings.gradle
+src/main/kotlin/org/openapitools/client/apis/GatewayApi.kt
+src/main/kotlin/org/openapitools/client/infrastructure/ApiClient.kt
+src/main/kotlin/org/openapitools/client/infrastructure/CollectionFormats.kt
+src/main/kotlin/org/openapitools/client/infrastructure/ResponseExt.kt
+src/main/kotlin/org/openapitools/client/infrastructure/Serializer.kt
+src/test/kotlin/org/openapitools/client/apis/GatewayApiTest.kt
