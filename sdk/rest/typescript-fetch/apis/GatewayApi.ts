@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Panopticon Aggregated API (v1)
- * Aggregated from gateway and microservice OpenAPI specs.
+ * Aggregated from the control-plane edge and microservice OpenAPI specs.
  *
  * The version of the OpenAPI document: v1.0.0
  * 

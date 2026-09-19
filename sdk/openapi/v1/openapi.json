@@ -11741,7 +11741,7 @@
   "x-sdk-meta": {
     "merge_strategy": "canonical_per_service",
     "sources": [
-      "gateway",
+      "controlplane-edge",
       "auth",
       "user",
       "payment",

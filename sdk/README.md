@@ -6,7 +6,7 @@ This directory is populated by `scripts/sdk-gen/run_all.sh`, `make sdk-gen`, or 
 
 | Path | Contents |
 |------|----------|
-| `openapi/v1/openapi.json` | Control plane OpenAPI (refresh from repo root: `uv run --directory gateway python ../scripts/dump_openapi_v1.py`; or fetch merged spec from a running gateway `GET /v1/openapi.json` when aggregation is enabled) |
+| `openapi/v1/openapi.json` | Control plane OpenAPI (refresh from repo root: `uv run --directory controlplane-edge python ../scripts/dump_openapi_v1.py`; or fetch merged spec from a running gateway `GET /v1/openapi.json` when aggregation is enabled) |
 | `rest/` | Clients from openapi-generator: `typescript-fetch`, `python`, `kotlin`, `swift5` |
 
 The **Next.js** app (`frontend/`) uses [openapi-typescript](https://github.com/openapi-ts/openapi-typescript) + [openapi-fetch](https://github.com/openapi-ts/openapi-fetch) and checks in `frontend/src/lib/schema/panopticon-api.d.ts`. Regenerate types after updating the spec:
