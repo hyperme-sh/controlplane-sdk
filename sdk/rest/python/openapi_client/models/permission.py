@@ -44,6 +44,12 @@ class Permission(str, Enum):
     MANAGE_COLON_PRODUCTS_AND_PRICING = 'manage:products_and_pricing'
     AUDIT_LOGS_COLON_VIEW_ONLY = 'audit_logs:view_only'
     AUDIT_LOGS_COLON_DOWNLOAD = 'audit_logs:download'
+    OPERATOR_COLON_CONSOLE = 'operator:console'
+    OPERATOR_COLON_SUPPORT = 'operator:support'
+    OPERATOR_COLON_PROGRAM = 'operator:program'
+    OPERATOR_COLON_RESOLVE = 'operator:resolve'
+    ORG_COLON_MANAGE = 'org:manage'
+    ORG_COLON_OWN = 'org:own'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

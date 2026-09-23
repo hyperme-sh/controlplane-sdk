@@ -7729,7 +7729,13 @@
           "manage:payments_settings",
           "manage:products_and_pricing",
           "audit_logs:view_only",
-          "audit_logs:download"
+          "audit_logs:download",
+          "operator:console",
+          "operator:support",
+          "operator:program",
+          "operator:resolve",
+          "org:manage",
+          "org:own"
         ],
         "title": "Permission"
       },
