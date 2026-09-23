@@ -29,4 +29,10 @@ public enum Permission: String, Codable, CaseIterable {
     case manageProductsAndPricing = "manage:products_and_pricing"
     case auditLogsViewOnly = "audit_logs:view_only"
     case auditLogsDownload = "audit_logs:download"
+    case operatorConsole = "operator:console"
+    case operatorSupport = "operator:support"
+    case operatorProgram = "operator:program"
+    case operatorResolve = "operator:resolve"
+    case orgManage = "org:manage"
+    case orgOwn = "org:own"
 }

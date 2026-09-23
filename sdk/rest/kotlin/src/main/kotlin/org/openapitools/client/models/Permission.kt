@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 /**
  * 
  *
- * Values: fullColonAccess,userColonRead_and_write_only,userColonDelete_only,userColonSelf_read_and_write_only,roleColonAssign_or_remove_only,userColonView_only,roleColonView_only,roleColonRead_and_write_only,roleColonDelete_only,roleColonPermission_read_and_write_only,hostColonManage_tenants,manageColonStorage_settings,manageColonTenant_settings,manageColonBilling,manageColonPayments_settings,manageColonProducts_and_pricing,audit_logsColonView_only,audit_logsColonDownload
+ * Values: fullColonAccess,userColonRead_and_write_only,userColonDelete_only,userColonSelf_read_and_write_only,roleColonAssign_or_remove_only,userColonView_only,roleColonView_only,roleColonRead_and_write_only,roleColonDelete_only,roleColonPermission_read_and_write_only,hostColonManage_tenants,manageColonStorage_settings,manageColonTenant_settings,manageColonBilling,manageColonPayments_settings,manageColonProducts_and_pricing,audit_logsColonView_only,audit_logsColonDownload,operatorColonConsole,operatorColonSupport,operatorColonProgram,operatorColonResolve,orgColonManage,orgColonOwn
  */
 
 enum class Permission(val value: kotlin.String) {
@@ -78,7 +78,25 @@ enum class Permission(val value: kotlin.String) {
     audit_logsColonView_only("audit_logs:view_only"),
 
     @JsonProperty(value = "audit_logs:download")
-    audit_logsColonDownload("audit_logs:download");
+    audit_logsColonDownload("audit_logs:download"),
+
+    @JsonProperty(value = "operator:console")
+    operatorColonConsole("operator:console"),
+
+    @JsonProperty(value = "operator:support")
+    operatorColonSupport("operator:support"),
+
+    @JsonProperty(value = "operator:program")
+    operatorColonProgram("operator:program"),
+
+    @JsonProperty(value = "operator:resolve")
+    operatorColonResolve("operator:resolve"),
+
+    @JsonProperty(value = "org:manage")
+    orgColonManage("org:manage"),
+
+    @JsonProperty(value = "org:own")
+    orgColonOwn("org:own");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

@@ -35,7 +35,13 @@ export const Permission = {
     ManagepaymentsSettings: 'manage:payments_settings',
     ManageproductsAndPricing: 'manage:products_and_pricing',
     AuditLogsviewOnly: 'audit_logs:view_only',
-    AuditLogsdownload: 'audit_logs:download'
+    AuditLogsdownload: 'audit_logs:download',
+    Operatorconsole: 'operator:console',
+    Operatorsupport: 'operator:support',
+    Operatorprogram: 'operator:program',
+    Operatorresolve: 'operator:resolve',
+    Orgmanage: 'org:manage',
+    Orgown: 'org:own'
 } as const;
 export type Permission = typeof Permission[keyof typeof Permission];
 

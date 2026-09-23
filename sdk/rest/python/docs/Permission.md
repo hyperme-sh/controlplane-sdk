@@ -39,6 +39,18 @@
 
 * `AUDIT_LOGS_COLON_DOWNLOAD` (value: `'audit_logs:download'`)
 
+* `OPERATOR_COLON_CONSOLE` (value: `'operator:console'`)
+
+* `OPERATOR_COLON_SUPPORT` (value: `'operator:support'`)
+
+* `OPERATOR_COLON_PROGRAM` (value: `'operator:program'`)
+
+* `OPERATOR_COLON_RESOLVE` (value: `'operator:resolve'`)
+
+* `ORG_COLON_MANAGE` (value: `'org:manage'`)
+
+* `ORG_COLON_OWN` (value: `'org:own'`)
+
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

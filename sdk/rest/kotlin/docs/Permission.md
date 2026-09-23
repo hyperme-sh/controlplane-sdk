@@ -40,5 +40,17 @@
 
     * `audit_logsColonDownload` (value: `"audit_logs:download"`)
 
+    * `operatorColonConsole` (value: `"operator:console"`)
+
+    * `operatorColonSupport` (value: `"operator:support"`)
+
+    * `operatorColonProgram` (value: `"operator:program"`)
+
+    * `operatorColonResolve` (value: `"operator:resolve"`)
+
+    * `orgColonManage` (value: `"org:manage"`)
+
+    * `orgColonOwn` (value: `"org:own"`)
+
 
 
