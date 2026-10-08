@@ -97,7 +97,6 @@ All URIs are relative to *http://localhost*
 | *NotificationsApi* | [**updateNotificationBannerApiV1NotificationsBannerIdPut**](docs/NotificationsApi.md#updatenotificationbannerapiv1notificationsbanneridput) | **PUT** api/v1/notifications/banner/{id} | Update Notification Banner |
 | *PaymentsApi* | [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](docs/PaymentsApi.md#allocatebudgetapiv1budgetsbudgetidallocatepost) | **POST** api/v1/budgets/{budget_id}/allocate | Allocate Budget |
 | *PaymentsApi* | [**apiV1BudgetsGet**](docs/PaymentsApi.md#apiv1budgetsget) | **GET** api/v1/budgets | List crypto budgets |
-| *PaymentsApi* | [**createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost**](docs/PaymentsApi.md#createcheckoutsessionapiv1paymentsstripecheckoutsessionspost) | **POST** api/v1/payments/stripe/checkout-sessions | Create Checkout Session |
 | *PaymentsApi* | [**createCryptoBudgetApiV1BudgetsPost**](docs/PaymentsApi.md#createcryptobudgetapiv1budgetspost) | **POST** api/v1/budgets | Create Crypto Budget |
 | *PaymentsApi* | [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](docs/PaymentsApi.md#getcryptobudgetapiv1budgetsbudgetidget) | **GET** api/v1/budgets/{budget_id} | Get Crypto Budget |
 | *PaymentsApi* | [**stripeWebhookApiV1PaymentsStripeWebhookPost**](docs/PaymentsApi.md#stripewebhookapiv1paymentsstripewebhookpost) | **POST** api/v1/payments/stripe/webhook | Stripe Webhook |
@@ -131,13 +130,6 @@ All URIs are relative to *http://localhost*
 | *StripeBillingApi* | [**getPlanApiV1BillingPlansPlanIdGet**](docs/StripeBillingApi.md#getplanapiv1billingplansplanidget) | **GET** api/v1/billing/plans/{plan_id} | Retrieve a plan details |
 | *StripeBillingApi* | [**listPlansApiV1BillingPlansGet**](docs/StripeBillingApi.md#listplansapiv1billingplansget) | **GET** api/v1/billing/plans | List available plans |
 | *StripeBillingApi* | [**updatePlanApiV1BillingPlansPlanIdPatch**](docs/StripeBillingApi.md#updateplanapiv1billingplansplanidpatch) | **PATCH** api/v1/billing/plans/{plan_id} | Update a existing plan |
-| *StripeCheckoutApi* | [**createHostCheckoutSessionApiV1CheckoutsHostTenantIdTenantPost**](docs/StripeCheckoutApi.md#createhostcheckoutsessionapiv1checkoutshosttenantidtenantpost) | **POST** api/v1/checkouts/host/{tenant_id}/tenant | Create Host Checkout Session |
-| *StripeCheckoutApi* | [**createTenantCheckoutSessionApiV1CheckoutsTenantSubscriptionPost**](docs/StripeCheckoutApi.md#createtenantcheckoutsessionapiv1checkoutstenantsubscriptionpost) | **POST** api/v1/checkouts/tenant/subscription | Create Tenant Checkout Session |
-| *StripeCheckoutApi* | [**hostCheckoutSuccessApiV1CheckoutsHostPaymentCancelPost**](docs/StripeCheckoutApi.md#hostcheckoutsuccessapiv1checkoutshostpaymentcancelpost) | **POST** api/v1/checkouts/host/payment/cancel | Host Checkout Success |
-| *StripeCheckoutApi* | [**hostCheckoutSuccessApiV1CheckoutsHostPaymentSuccessPost**](docs/StripeCheckoutApi.md#hostcheckoutsuccessapiv1checkoutshostpaymentsuccesspost) | **POST** api/v1/checkouts/host/payment/success | Host Checkout Success |
-| *StripeCheckoutApi* | [**listCheckoutRecordsApiV1CheckoutsAllGet**](docs/StripeCheckoutApi.md#listcheckoutrecordsapiv1checkoutsallget) | **GET** api/v1/checkouts/all | List Checkout Records |
-| *StripeCheckoutApi* | [**tenantCheckoutCanceledApiV1CheckoutsTenantPaymentCancelPost**](docs/StripeCheckoutApi.md#tenantcheckoutcanceledapiv1checkoutstenantpaymentcancelpost) | **POST** api/v1/checkouts/tenant/payment/cancel | Tenant Checkout Canceled |
-| *StripeCheckoutApi* | [**tenantCheckoutSuccessApiV1CheckoutsTenantPaymentSuccessPost**](docs/StripeCheckoutApi.md#tenantcheckoutsuccessapiv1checkoutstenantpaymentsuccesspost) | **POST** api/v1/checkouts/tenant/payment/success | Tenant Checkout Success |
 | *StripeInvoicesApi* | [**listInvoicesApiV1InvoicesGet**](docs/StripeInvoicesApi.md#listinvoicesapiv1invoicesget) | **GET** api/v1/invoices/ | List invoices |
 | *StripePricingApi* | [**createPricingApiV1PricesPost**](docs/StripePricingApi.md#createpricingapiv1pricespost) | **POST** api/v1/prices/ | Create Pricing |
 | *StripePricingApi* | [**getPricingListApiV1PricesGet**](docs/StripePricingApi.md#getpricinglistapiv1pricesget) | **GET** api/v1/prices/ | Get Pricing List |
@@ -195,15 +187,11 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.AuthMeResponse](docs/AuthMeResponse.md)
  - [org.openapitools.client.models.AuthenticatorTransport](docs/AuthenticatorTransport.md)
  - [org.openapitools.client.models.AvailableStorageProviderDto](docs/AvailableStorageProviderDto.md)
- - [org.openapitools.client.models.BillingRecordDto](docs/BillingRecordDto.md)
- - [org.openapitools.client.models.BillingRecordListDto](docs/BillingRecordListDto.md)
  - [org.openapitools.client.models.BrandingDto](docs/BrandingDto.md)
  - [org.openapitools.client.models.BudgetAllocateRequest](docs/BudgetAllocateRequest.md)
  - [org.openapitools.client.models.ChangeEmailConfirmRequestDto](docs/ChangeEmailConfirmRequestDto.md)
  - [org.openapitools.client.models.ChangeEmailRequestDto](docs/ChangeEmailRequestDto.md)
  - [org.openapitools.client.models.ChangeEmailResponseDto](docs/ChangeEmailResponseDto.md)
- - [org.openapitools.client.models.CheckoutRequestDto](docs/CheckoutRequestDto.md)
- - [org.openapitools.client.models.CheckoutResponseDto](docs/CheckoutResponseDto.md)
  - [org.openapitools.client.models.ContactInfo](docs/ContactInfo.md)
  - [org.openapitools.client.models.CreateNotificationBannerSettingDto](docs/CreateNotificationBannerSettingDto.md)
  - [org.openapitools.client.models.CreatePlanDto](docs/CreatePlanDto.md)
@@ -290,8 +278,6 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.SociACLShareMode](docs/SociACLShareMode.md)
  - [org.openapitools.client.models.SociaclShareCreatedResponse](docs/SociaclShareCreatedResponse.md)
  - [org.openapitools.client.models.StorageSettingsDto](docs/StorageSettingsDto.md)
- - [org.openapitools.client.models.StripeCheckoutSessionCreate](docs/StripeCheckoutSessionCreate.md)
- - [org.openapitools.client.models.StripeCheckoutSessionResponse](docs/StripeCheckoutSessionResponse.md)
  - [org.openapitools.client.models.StripeSettingDto](docs/StripeSettingDto.md)
  - [org.openapitools.client.models.SubdomainAvailabilityDto](docs/SubdomainAvailabilityDto.md)
  - [org.openapitools.client.models.SubscriptionPlanDto](docs/SubscriptionPlanDto.md)

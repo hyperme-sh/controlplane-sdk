@@ -21,7 +21,6 @@ apis/SociACLApi.ts
 apis/StorageSettingsApi.ts
 apis/StripeApi.ts
 apis/StripeBillingApi.ts
-apis/StripeCheckoutApi.ts
 apis/StripeInvoicesApi.ts
 apis/StripePricingApi.ts
 apis/StripeProductsApi.ts
@@ -44,15 +43,11 @@ models/AuditLogListDto.ts
 models/AuthMeResponse.ts
 models/AuthenticatorTransport.ts
 models/AvailableStorageProviderDto.ts
-models/BillingRecordDto.ts
-models/BillingRecordListDto.ts
 models/BrandingDto.ts
 models/BudgetAllocateRequest.ts
 models/ChangeEmailConfirmRequestDto.ts
 models/ChangeEmailRequestDto.ts
 models/ChangeEmailResponseDto.ts
-models/CheckoutRequestDto.ts
-models/CheckoutResponseDto.ts
 models/ContactInfo.ts
 models/CreateNotificationBannerSettingDto.ts
 models/CreatePlanDto.ts
@@ -139,8 +134,6 @@ models/SociACLShareLinkPublic.ts
 models/SociACLShareMode.ts
 models/SociaclShareCreatedResponse.ts
 models/StorageSettingsDto.ts
-models/StripeCheckoutSessionCreate.ts
-models/StripeCheckoutSessionResponse.ts
 models/StripeSettingDto.ts
 models/SubdomainAvailabilityDto.ts
 models/SubscriptionPlanDto.ts

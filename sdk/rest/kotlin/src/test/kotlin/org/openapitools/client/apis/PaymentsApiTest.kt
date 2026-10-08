@@ -24,8 +24,6 @@ import org.openapitools.client.models.CryptoBudgetCreateRequest
 import org.openapitools.client.models.CryptoBudgetListPage
 import org.openapitools.client.models.CryptoBudgetResponse
 import org.openapitools.client.models.HTTPValidationError
-import org.openapitools.client.models.StripeCheckoutSessionCreate
-import org.openapitools.client.models.StripeCheckoutSessionResponse
 
 class PaymentsApiTest : ShouldSpec() {
     init {
@@ -47,14 +45,6 @@ class PaymentsApiTest : ShouldSpec() {
             //val limit : kotlin.Int = 56 // kotlin.Int | 
             //val offset : kotlin.Int = 56 // kotlin.Int | 
             //val result : CryptoBudgetListPage = apiInstance.apiV1BudgetsGet(limit, offset)
-            //result shouldBe ("TODO")
-        }
-
-        // to test createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost
-        should("test createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost") {
-            // uncomment below to test createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost
-            //val stripeCheckoutSessionCreate : StripeCheckoutSessionCreate =  // StripeCheckoutSessionCreate | 
-            //val result : StripeCheckoutSessionResponse = apiInstance.createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(stripeCheckoutSessionCreate)
             //result shouldBe ("TODO")
         }
 

@@ -6,7 +6,6 @@ All URIs are relative to *http://localhost*
 | ------------- | ------------- | ------------- |
 | [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](PaymentsApi.md#allocateBudgetApiV1BudgetsBudgetIdAllocatePost) | **POST** api/v1/budgets/{budget_id}/allocate | Allocate Budget |
 | [**apiV1BudgetsGet**](PaymentsApi.md#apiV1BudgetsGet) | **GET** api/v1/budgets | List crypto budgets |
-| [**createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost**](PaymentsApi.md#createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost) | **POST** api/v1/payments/stripe/checkout-sessions | Create Checkout Session |
 | [**createCryptoBudgetApiV1BudgetsPost**](PaymentsApi.md#createCryptoBudgetApiV1BudgetsPost) | **POST** api/v1/budgets | Create Crypto Budget |
 | [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](PaymentsApi.md#getCryptoBudgetApiV1BudgetsBudgetIdGet) | **GET** api/v1/budgets/{budget_id} | Get Crypto Budget |
 | [**stripeWebhookApiV1PaymentsStripeWebhookPost**](PaymentsApi.md#stripeWebhookApiV1PaymentsStripeWebhookPost) | **POST** api/v1/payments/stripe/webhook | Stripe Webhook |
@@ -94,49 +93,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-Create Checkout Session
-
-### Example
-```kotlin
-// Import classes:
-//import org.openapitools.client.*
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
-
-val apiClient = ApiClient()
-apiClient.setBearerToken("TOKEN")
-apiClient.setBearerToken("TOKEN")
-val webService = apiClient.createWebservice(PaymentsApi::class.java)
-val stripeCheckoutSessionCreate : StripeCheckoutSessionCreate =  // StripeCheckoutSessionCreate | 
-
-launch(Dispatchers.IO) {
-    val result : StripeCheckoutSessionResponse = webService.createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(stripeCheckoutSessionCreate)
-}
-```
-
-### Parameters
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **stripeCheckoutSessionCreate** | [**StripeCheckoutSessionCreate**](StripeCheckoutSessionCreate.md)|  | |
-
-### Return type
-
-[**StripeCheckoutSessionResponse**](StripeCheckoutSessionResponse.md)
-
-### Authorization
-
-
-Configure HTTPBearer:
-    ApiClient().setBearerToken("TOKEN")
-Configure BearerAuth:
-    ApiClient().setBearerToken("TOKEN")
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

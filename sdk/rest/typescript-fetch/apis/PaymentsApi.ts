@@ -20,8 +20,6 @@ import type {
   CryptoBudgetListPage,
   CryptoBudgetResponse,
   HTTPValidationError,
-  StripeCheckoutSessionCreate,
-  StripeCheckoutSessionResponse,
 } from '../models/index';
 import {
     BudgetAllocateRequestFromJSON,
@@ -34,10 +32,6 @@ import {
     CryptoBudgetResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    StripeCheckoutSessionCreateFromJSON,
-    StripeCheckoutSessionCreateToJSON,
-    StripeCheckoutSessionResponseFromJSON,
-    StripeCheckoutSessionResponseToJSON,
 } from '../models/index';
 
 export interface AllocateBudgetApiV1BudgetsBudgetIdAllocatePostRequest {
@@ -48,10 +42,6 @@ export interface AllocateBudgetApiV1BudgetsBudgetIdAllocatePostRequest {
 export interface ApiV1BudgetsGetRequest {
     limit?: number;
     offset?: number;
-}
-
-export interface CreateCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRequest {
-    stripeCheckoutSessionCreate: StripeCheckoutSessionCreate;
 }
 
 export interface CreateCryptoBudgetApiV1BudgetsPostRequest {
@@ -100,21 +90,6 @@ export interface PaymentsApiInterface {
      * List crypto budgets
      */
     apiV1BudgetsGet(requestParameters: ApiV1BudgetsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoBudgetListPage>;
-
-    /**
-     * 
-     * @summary Create Checkout Session
-     * @param {StripeCheckoutSessionCreate} stripeCheckoutSessionCreate 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentsApiInterface
-     */
-    createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRaw(requestParameters: CreateCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StripeCheckoutSessionResponse>>;
-
-    /**
-     * Create Checkout Session
-     */
-    createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(requestParameters: CreateCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StripeCheckoutSessionResponse>;
 
     /**
      * 
@@ -257,58 +232,6 @@ export class PaymentsApi extends runtime.BaseAPI implements PaymentsApiInterface
      */
     async apiV1BudgetsGet(requestParameters: ApiV1BudgetsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoBudgetListPage> {
         const response = await this.apiV1BudgetsGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Create Checkout Session
-     */
-    async createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRaw(requestParameters: CreateCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<StripeCheckoutSessionResponse>> {
-        if (requestParameters['stripeCheckoutSessionCreate'] == null) {
-            throw new runtime.RequiredError(
-                'stripeCheckoutSessionCreate',
-                'Required parameter "stripeCheckoutSessionCreate" was null or undefined when calling createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("HTTPBearer", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BearerAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/api/v1/payments/stripe/checkout-sessions`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: StripeCheckoutSessionCreateToJSON(requestParameters['stripeCheckoutSessionCreate']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => StripeCheckoutSessionResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Create Checkout Session
-     */
-    async createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(requestParameters: CreateCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<StripeCheckoutSessionResponse> {
-        const response = await this.createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

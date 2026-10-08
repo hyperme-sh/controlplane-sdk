@@ -21,7 +21,6 @@ from openapi_client.api.soci_acl_api import SociACLApi
 from openapi_client.api.storage_settings_api import StorageSettingsApi
 from openapi_client.api.stripe_api import StripeApi
 from openapi_client.api.stripe_billing_api import StripeBillingApi
-from openapi_client.api.stripe_checkout_api import StripeCheckoutApi
 from openapi_client.api.stripe_invoices_api import StripeInvoicesApi
 from openapi_client.api.stripe_pricing_api import StripePricingApi
 from openapi_client.api.stripe_products_api import StripeProductsApi

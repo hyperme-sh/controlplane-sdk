@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](PaymentsAPI.md#allocatebudgetapiv1budgetsbudgetidallocatepost) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 [**apiV1BudgetsGet**](PaymentsAPI.md#apiv1budgetsget) | **GET** /api/v1/budgets | List crypto budgets
-[**createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost**](PaymentsAPI.md#createcheckoutsessionapiv1paymentsstripecheckoutsessionspost) | **POST** /api/v1/payments/stripe/checkout-sessions | Create Checkout Session
 [**createCryptoBudgetApiV1BudgetsPost**](PaymentsAPI.md#createcryptobudgetapiv1budgetspost) | **POST** /api/v1/budgets | Create Crypto Budget
 [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](PaymentsAPI.md#getcryptobudgetapiv1budgetsbudgetidget) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
 [**stripeWebhookApiV1PaymentsStripeWebhookPost**](PaymentsAPI.md#stripewebhookapiv1paymentsstripewebhookpost) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
@@ -108,54 +107,6 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost**
-```swift
-    open class func createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(stripeCheckoutSessionCreate: StripeCheckoutSessionCreate, completion: @escaping (_ data: StripeCheckoutSessionResponse?, _ error: Error?) -> Void)
-```
-
-Create Checkout Session
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let stripeCheckoutSessionCreate = StripeCheckoutSessionCreate(mode: "mode_example", priceId: "priceId_example", successUrl: "successUrl_example", cancelUrl: "cancelUrl_example") // StripeCheckoutSessionCreate | 
-
-// Create Checkout Session
-PaymentsAPI.createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(stripeCheckoutSessionCreate: stripeCheckoutSessionCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **stripeCheckoutSessionCreate** | [**StripeCheckoutSessionCreate**](StripeCheckoutSessionCreate.md) |  | 
-
-### Return type
-
-[**StripeCheckoutSessionResponse**](StripeCheckoutSessionResponse.md)
-
-### Authorization
-
-[HTTPBearer](../README.md#HTTPBearer), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

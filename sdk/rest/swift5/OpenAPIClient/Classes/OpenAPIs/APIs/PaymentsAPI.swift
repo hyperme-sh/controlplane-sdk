@@ -100,47 +100,6 @@ open class PaymentsAPI {
     }
 
     /**
-     Create Checkout Session
-     
-     - parameter stripeCheckoutSessionCreate: (body)  
-     - returns: StripeCheckoutSessionResponse
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(stripeCheckoutSessionCreate: StripeCheckoutSessionCreate) async throws -> StripeCheckoutSessionResponse {
-        return try await createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostWithRequestBuilder(stripeCheckoutSessionCreate: stripeCheckoutSessionCreate).execute().body
-    }
-
-    /**
-     Create Checkout Session
-     - POST /api/v1/payments/stripe/checkout-sessions
-     - Bearer Token:
-       - type: http
-       - name: HTTPBearer
-     - Bearer Token:
-       - type: http
-       - name: BearerAuth
-     - parameter stripeCheckoutSessionCreate: (body)  
-     - returns: RequestBuilder<StripeCheckoutSessionResponse> 
-     */
-    open class func createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPostWithRequestBuilder(stripeCheckoutSessionCreate: StripeCheckoutSessionCreate) -> RequestBuilder<StripeCheckoutSessionResponse> {
-        let localVariablePath = "/api/v1/payments/stripe/checkout-sessions"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: stripeCheckoutSessionCreate)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<StripeCheckoutSessionResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
      Create Crypto Budget
      
      - parameter cryptoBudgetCreateRequest: (body)  

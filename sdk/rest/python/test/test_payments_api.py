@@ -40,13 +40,6 @@ class TestPaymentsApi(unittest.TestCase):
         """
         pass
 
-    def test_create_checkout_session_api_v1_payments_stripe_checkout_sessions_post(self) -> None:
-        """Test case for create_checkout_session_api_v1_payments_stripe_checkout_sessions_post
-
-        Create Checkout Session
-        """
-        pass
-
     def test_create_crypto_budget_api_v1_budgets_post(self) -> None:
         """Test case for create_crypto_budget_api_v1_budgets_post
 

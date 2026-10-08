@@ -11,8 +11,6 @@ import org.openapitools.client.models.CryptoBudgetCreateRequest
 import org.openapitools.client.models.CryptoBudgetListPage
 import org.openapitools.client.models.CryptoBudgetResponse
 import org.openapitools.client.models.HTTPValidationError
-import org.openapitools.client.models.StripeCheckoutSessionCreate
-import org.openapitools.client.models.StripeCheckoutSessionResponse
 
 interface PaymentsApi {
     /**
@@ -41,19 +39,6 @@ interface PaymentsApi {
      */
     @GET("api/v1/budgets")
     suspend fun apiV1BudgetsGet(@Query("limit") limit: kotlin.Int? = 50, @Query("offset") offset: kotlin.Int? = 0): Response<CryptoBudgetListPage>
-
-    /**
-     * Create Checkout Session
-     * 
-     * Responses:
-     *  - 201: Successful Response
-     *  - 422: Validation Error
-     *
-     * @param stripeCheckoutSessionCreate 
-     * @return [StripeCheckoutSessionResponse]
-     */
-    @POST("api/v1/payments/stripe/checkout-sessions")
-    suspend fun createCheckoutSessionApiV1PaymentsStripeCheckoutSessionsPost(@Body stripeCheckoutSessionCreate: StripeCheckoutSessionCreate): Response<StripeCheckoutSessionResponse>
 
     /**
      * Create Crypto Budget

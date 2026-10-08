@@ -140,7 +140,6 @@ Class | Method | HTTP request | Description
 *NotificationsApi* | [**update_notification_banner_api_v1_notifications_banner_id_put**](docs/NotificationsApi.md#update_notification_banner_api_v1_notifications_banner_id_put) | **PUT** /api/v1/notifications/banner/{id} | Update Notification Banner
 *PaymentsApi* | [**allocate_budget_api_v1_budgets_budget_id_allocate_post**](docs/PaymentsApi.md#allocate_budget_api_v1_budgets_budget_id_allocate_post) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 *PaymentsApi* | [**api_v1_budgets_get**](docs/PaymentsApi.md#api_v1_budgets_get) | **GET** /api/v1/budgets | List crypto budgets
-*PaymentsApi* | [**create_checkout_session_api_v1_payments_stripe_checkout_sessions_post**](docs/PaymentsApi.md#create_checkout_session_api_v1_payments_stripe_checkout_sessions_post) | **POST** /api/v1/payments/stripe/checkout-sessions | Create Checkout Session
 *PaymentsApi* | [**create_crypto_budget_api_v1_budgets_post**](docs/PaymentsApi.md#create_crypto_budget_api_v1_budgets_post) | **POST** /api/v1/budgets | Create Crypto Budget
 *PaymentsApi* | [**get_crypto_budget_api_v1_budgets_budget_id_get**](docs/PaymentsApi.md#get_crypto_budget_api_v1_budgets_budget_id_get) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
 *PaymentsApi* | [**stripe_webhook_api_v1_payments_stripe_webhook_post**](docs/PaymentsApi.md#stripe_webhook_api_v1_payments_stripe_webhook_post) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
@@ -174,13 +173,6 @@ Class | Method | HTTP request | Description
 *StripeBillingApi* | [**get_plan_api_v1_billing_plans_plan_id_get**](docs/StripeBillingApi.md#get_plan_api_v1_billing_plans_plan_id_get) | **GET** /api/v1/billing/plans/{plan_id} | Retrieve a plan details
 *StripeBillingApi* | [**list_plans_api_v1_billing_plans_get**](docs/StripeBillingApi.md#list_plans_api_v1_billing_plans_get) | **GET** /api/v1/billing/plans | List available plans
 *StripeBillingApi* | [**update_plan_api_v1_billing_plans_plan_id_patch**](docs/StripeBillingApi.md#update_plan_api_v1_billing_plans_plan_id_patch) | **PATCH** /api/v1/billing/plans/{plan_id} | Update a existing plan
-*StripeCheckoutApi* | [**create_host_checkout_session_api_v1_checkouts_host_tenant_id_tenant_post**](docs/StripeCheckoutApi.md#create_host_checkout_session_api_v1_checkouts_host_tenant_id_tenant_post) | **POST** /api/v1/checkouts/host/{tenant_id}/tenant | Create Host Checkout Session
-*StripeCheckoutApi* | [**create_tenant_checkout_session_api_v1_checkouts_tenant_subscription_post**](docs/StripeCheckoutApi.md#create_tenant_checkout_session_api_v1_checkouts_tenant_subscription_post) | **POST** /api/v1/checkouts/tenant/subscription | Create Tenant Checkout Session
-*StripeCheckoutApi* | [**host_checkout_success_api_v1_checkouts_host_payment_cancel_post**](docs/StripeCheckoutApi.md#host_checkout_success_api_v1_checkouts_host_payment_cancel_post) | **POST** /api/v1/checkouts/host/payment/cancel | Host Checkout Success
-*StripeCheckoutApi* | [**host_checkout_success_api_v1_checkouts_host_payment_success_post**](docs/StripeCheckoutApi.md#host_checkout_success_api_v1_checkouts_host_payment_success_post) | **POST** /api/v1/checkouts/host/payment/success | Host Checkout Success
-*StripeCheckoutApi* | [**list_checkout_records_api_v1_checkouts_all_get**](docs/StripeCheckoutApi.md#list_checkout_records_api_v1_checkouts_all_get) | **GET** /api/v1/checkouts/all | List Checkout Records
-*StripeCheckoutApi* | [**tenant_checkout_canceled_api_v1_checkouts_tenant_payment_cancel_post**](docs/StripeCheckoutApi.md#tenant_checkout_canceled_api_v1_checkouts_tenant_payment_cancel_post) | **POST** /api/v1/checkouts/tenant/payment/cancel | Tenant Checkout Canceled
-*StripeCheckoutApi* | [**tenant_checkout_success_api_v1_checkouts_tenant_payment_success_post**](docs/StripeCheckoutApi.md#tenant_checkout_success_api_v1_checkouts_tenant_payment_success_post) | **POST** /api/v1/checkouts/tenant/payment/success | Tenant Checkout Success
 *StripeInvoicesApi* | [**list_invoices_api_v1_invoices_get**](docs/StripeInvoicesApi.md#list_invoices_api_v1_invoices_get) | **GET** /api/v1/invoices/ | List invoices
 *StripePricingApi* | [**create_pricing_api_v1_prices_post**](docs/StripePricingApi.md#create_pricing_api_v1_prices_post) | **POST** /api/v1/prices/ | Create Pricing
 *StripePricingApi* | [**get_pricing_list_api_v1_prices_get**](docs/StripePricingApi.md#get_pricing_list_api_v1_prices_get) | **GET** /api/v1/prices/ | Get Pricing List
@@ -248,15 +240,11 @@ Class | Method | HTTP request | Description
  - [AuthMeResponse](docs/AuthMeResponse.md)
  - [AuthenticatorTransport](docs/AuthenticatorTransport.md)
  - [AvailableStorageProviderDto](docs/AvailableStorageProviderDto.md)
- - [BillingRecordDto](docs/BillingRecordDto.md)
- - [BillingRecordListDto](docs/BillingRecordListDto.md)
  - [BrandingDto](docs/BrandingDto.md)
  - [BudgetAllocateRequest](docs/BudgetAllocateRequest.md)
  - [ChangeEmailConfirmRequestDto](docs/ChangeEmailConfirmRequestDto.md)
  - [ChangeEmailRequestDto](docs/ChangeEmailRequestDto.md)
  - [ChangeEmailResponseDto](docs/ChangeEmailResponseDto.md)
- - [CheckoutRequestDto](docs/CheckoutRequestDto.md)
- - [CheckoutResponseDto](docs/CheckoutResponseDto.md)
  - [ContactInfo](docs/ContactInfo.md)
  - [CreateNotificationBannerSettingDto](docs/CreateNotificationBannerSettingDto.md)
  - [CreatePlanDto](docs/CreatePlanDto.md)
@@ -343,8 +331,6 @@ Class | Method | HTTP request | Description
  - [SociACLShareMode](docs/SociACLShareMode.md)
  - [SociaclShareCreatedResponse](docs/SociaclShareCreatedResponse.md)
  - [StorageSettingsDto](docs/StorageSettingsDto.md)
- - [StripeCheckoutSessionCreate](docs/StripeCheckoutSessionCreate.md)
- - [StripeCheckoutSessionResponse](docs/StripeCheckoutSessionResponse.md)
  - [StripeSettingDto](docs/StripeSettingDto.md)
  - [SubdomainAvailabilityDto](docs/SubdomainAvailabilityDto.md)
  - [SubscriptionPlanDto](docs/SubscriptionPlanDto.md)

@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**allocate_budget_api_v1_budgets_budget_id_allocate_post**](PaymentsApi.md#allocate_budget_api_v1_budgets_budget_id_allocate_post) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 [**api_v1_budgets_get**](PaymentsApi.md#api_v1_budgets_get) | **GET** /api/v1/budgets | List crypto budgets
-[**create_checkout_session_api_v1_payments_stripe_checkout_sessions_post**](PaymentsApi.md#create_checkout_session_api_v1_payments_stripe_checkout_sessions_post) | **POST** /api/v1/payments/stripe/checkout-sessions | Create Checkout Session
 [**create_crypto_budget_api_v1_budgets_post**](PaymentsApi.md#create_crypto_budget_api_v1_budgets_post) | **POST** /api/v1/budgets | Create Crypto Budget
 [**get_crypto_budget_api_v1_budgets_budget_id_get**](PaymentsApi.md#get_crypto_budget_api_v1_budgets_budget_id_get) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
 [**stripe_webhook_api_v1_payments_stripe_webhook_post**](PaymentsApi.md#stripe_webhook_api_v1_payments_stripe_webhook_post) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
@@ -163,90 +162,6 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_checkout_session_api_v1_payments_stripe_checkout_sessions_post**
-> StripeCheckoutSessionResponse create_checkout_session_api_v1_payments_stripe_checkout_sessions_post(stripe_checkout_session_create)
-
-Create Checkout Session
-
-### Example
-
-* Bearer Authentication (HTTPBearer):
-* Bearer (JWT) Authentication (BearerAuth):
-
-```python
-import openapi_client
-from openapi_client.models.stripe_checkout_session_create import StripeCheckoutSessionCreate
-from openapi_client.models.stripe_checkout_session_response import StripeCheckoutSessionResponse
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: HTTPBearer
-configuration = openapi_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Configure Bearer authorization (JWT): BearerAuth
-configuration = openapi_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = openapi_client.PaymentsApi(api_client)
-    stripe_checkout_session_create = openapi_client.StripeCheckoutSessionCreate() # StripeCheckoutSessionCreate | 
-
-    try:
-        # Create Checkout Session
-        api_response = api_instance.create_checkout_session_api_v1_payments_stripe_checkout_sessions_post(stripe_checkout_session_create)
-        print("The response of PaymentsApi->create_checkout_session_api_v1_payments_stripe_checkout_sessions_post:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling PaymentsApi->create_checkout_session_api_v1_payments_stripe_checkout_sessions_post: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **stripe_checkout_session_create** | [**StripeCheckoutSessionCreate**](StripeCheckoutSessionCreate.md)|  | 
-
-### Return type
-
-[**StripeCheckoutSessionResponse**](StripeCheckoutSessionResponse.md)
-
-### Authorization
-
-[HTTPBearer](../README.md#HTTPBearer), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Validation Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

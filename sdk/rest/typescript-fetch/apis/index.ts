@@ -23,7 +23,6 @@ export * from './SociACLApi';
 export * from './StorageSettingsApi';
 export * from './StripeApi';
 export * from './StripeBillingApi';
-export * from './StripeCheckoutApi';
 export * from './StripeInvoicesApi';
 export * from './StripePricingApi';
 export * from './StripeProductsApi';
