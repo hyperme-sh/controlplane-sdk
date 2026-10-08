@@ -340,4 +340,3 @@ src/main/kotlin/org/openapitools/client/models/UserRoleUpdateRequestDto.kt
 src/main/kotlin/org/openapitools/client/models/UserUpdateBody.kt
 src/main/kotlin/org/openapitools/client/models/ValidationError.kt
 src/main/kotlin/org/openapitools/client/models/ValidationErrorLocInner.kt
-src/test/kotlin/org/openapitools/client/apis/PaymentsApiTest.kt

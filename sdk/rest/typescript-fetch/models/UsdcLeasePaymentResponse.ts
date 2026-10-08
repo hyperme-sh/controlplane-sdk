@@ -51,7 +51,7 @@ export interface UsdcLeasePaymentResponse {
      */
     chainId?: number;
     /**
-     * True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit.
+     * True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit.
      * @type {boolean}
      * @memberof UsdcLeasePaymentResponse
      */

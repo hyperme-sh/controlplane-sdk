@@ -425,7 +425,7 @@ Name | Type | Description  | Notes
 
 Settle a lease payment from the test-network credit
 
-Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
+Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
 
 ### Example
 

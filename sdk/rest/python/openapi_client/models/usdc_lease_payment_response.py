@@ -32,7 +32,7 @@ class UsdcLeasePaymentResponse(BaseModel):
     amount_cents: Annotated[int, Field(strict=True, ge=0)]
     amount_atoms: Annotated[int, Field(strict=True, ge=0)]
     chain_id: Optional[StrictInt] = Field(default=None, description="Base chain id from deployment config, when set.")
-    test_credit_available: Optional[StrictBool] = Field(default=False, description="True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit.")
+    test_credit_available: Optional[StrictBool] = Field(default=False, description="True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit.")
     additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["billing_record_id", "status", "amount_cents", "amount_atoms", "chain_id", "test_credit_available"]
 

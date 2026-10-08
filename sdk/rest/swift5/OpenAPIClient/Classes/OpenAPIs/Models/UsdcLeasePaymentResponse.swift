@@ -22,7 +22,7 @@ public struct UsdcLeasePaymentResponse: Codable, JSONEncodable, Hashable {
     public private(set) var amountAtoms: Int
     /** Base chain id from deployment config, when set. */
     public private(set) var chainId: Int?
-    /** True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit. */
+    /** True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit. */
     public private(set) var testCreditAvailable: Bool? = false
 
     public init(billingRecordId: UUID, status: String, amountCents: Int, amountAtoms: Int, chainId: Int? = nil, testCreditAvailable: Bool? = false) {

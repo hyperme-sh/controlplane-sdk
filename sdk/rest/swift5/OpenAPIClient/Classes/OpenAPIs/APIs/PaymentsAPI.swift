@@ -240,7 +240,7 @@ open class PaymentsAPI {
     /**
      Settle a lease payment from the test-network credit
      - POST /api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit
-     - Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
+     - Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
      - Bearer Token:
        - type: http
        - name: HTTPBearer

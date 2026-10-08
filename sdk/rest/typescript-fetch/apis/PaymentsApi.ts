@@ -152,7 +152,7 @@ export interface PaymentsApiInterface {
     getCryptoBudgetApiV1BudgetsBudgetIdGet(requestParameters: GetCryptoBudgetApiV1BudgetsBudgetIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoBudgetResponse>;
 
     /**
-     * Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
+     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
      * @summary Settle a lease payment from the test-network credit
      * @param {string} billingRecordId 
      * @param {*} [options] Override http request option.
@@ -162,7 +162,7 @@ export interface PaymentsApiInterface {
     settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRaw(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsdcLeasePaymentResponse>>;
 
     /**
-     * Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
+     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
      * Settle a lease payment from the test-network credit
      */
     settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsdcLeasePaymentResponse>;
@@ -437,7 +437,7 @@ export class PaymentsApi extends runtime.BaseAPI implements PaymentsApiInterface
     }
 
     /**
-     * Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
+     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
      * Settle a lease payment from the test-network credit
      */
     async settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRaw(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsdcLeasePaymentResponse>> {
@@ -479,7 +479,7 @@ export class PaymentsApi extends runtime.BaseAPI implements PaymentsApiInterface
     }
 
     /**
-     * Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
+     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
      * Settle a lease payment from the test-network credit
      */
     async settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsdcLeasePaymentResponse> {

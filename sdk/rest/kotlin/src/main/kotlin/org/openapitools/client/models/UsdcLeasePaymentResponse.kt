@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  * @param amountCents 
  * @param amountAtoms 
  * @param chainId Base chain id from deployment config, when set.
- * @param testCreditAvailable True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit.
+ * @param testCreditAvailable True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit.
  */
 
 
@@ -48,7 +48,7 @@ data class UsdcLeasePaymentResponse (
     @get:JsonProperty("chain_id")
     val chainId: kotlin.Int? = null,
 
-    /* True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit. */
+    /* True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit. */
     @get:JsonProperty("test_credit_available")
     val testCreditAvailable: kotlin.Boolean? = false
 

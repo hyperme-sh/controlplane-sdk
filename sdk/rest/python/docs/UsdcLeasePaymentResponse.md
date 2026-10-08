@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **amount_cents** | **int** |  | 
 **amount_atoms** | **int** |  | 
 **chain_id** | **int** | Base chain id from deployment config, when set. | [optional] 
-**test_credit_available** | **bool** | True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit. | [optional] [default to False]
+**test_credit_available** | **bool** | True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit. | [optional] [default to False]
 
 ## Example
 
