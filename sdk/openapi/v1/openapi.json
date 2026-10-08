@@ -11182,7 +11182,9 @@
           "amount_atoms": {
             "type": "integer",
             "minimum": 0.0,
-            "title": "Amount Atoms"
+            "format": "int64",
+            "title": "Amount Atoms",
+            "description": "USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits."
           },
           "chain_id": {
             "anyOf": [
