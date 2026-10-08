@@ -5402,6 +5402,108 @@
           }
         ]
       }
+    },
+    "/api/v1/payments/usdc/lease-payments": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Open a USDC payment for a lease",
+        "description": "Accepts a tenant-session JWT (human after switch-tenant) or a gateway exchange JWT from a purpose=service key or a renter key minted via the org-admin API. Not a portal paste. Not a KV-stashed portal JWT. Raw Keycloak without tenant_id is 403. No card is charged. The renter pays the amount in USDC on Base.",
+        "operationId": "create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsdcLeasePaymentCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsdcLeasePaymentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit": {
+      "post": {
+        "tags": [
+          "Payments"
+        ],
+        "summary": "Settle a lease payment from the test-network credit",
+        "description": "Available only where the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.",
+        "operationId": "settle_usdc_test_credit_api_v1_payments_usdc_lease_payments__billing_record_id__test_credit_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "billing_record_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Billing Record Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsdcLeasePaymentResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -11014,6 +11116,103 @@
             "minimum": 0
           }
         }
+      },
+      "UsdcLeasePaymentCreate": {
+        "properties": {
+          "amount_cents": {
+            "type": "integer",
+            "maximum": 99999999.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Amount Cents"
+          },
+          "listing_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Listing Id",
+            "description": "Marketplace listing this payment buys. The server writes it to billing extra_metadata.listing_id, which marketplace purchase checks. A listing_id key in metadata is ignored."
+          },
+          "metadata": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metadata",
+            "description": "Optional string map copied onto billing extra_metadata. Platform keys tenant_id and payment_rail win. lease_id and listing_id from a browser client are ignored. Do not send secrets."
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "amount_cents"
+        ],
+        "title": "UsdcLeasePaymentCreate",
+        "description": "POST /payments/usdc/lease-payments\n\nOpens a pending USDC payment for one lease. The price clears 1:1 from\nUSD cents into USDC atoms. No card is involved."
+      },
+      "UsdcLeasePaymentResponse": {
+        "properties": {
+          "billing_record_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Billing Record Id"
+          },
+          "status": {
+            "type": "string",
+            "maxLength": 64,
+            "title": "Status"
+          },
+          "amount_cents": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Amount Cents"
+          },
+          "amount_atoms": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Amount Atoms"
+          },
+          "chain_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chain Id",
+            "description": "Base chain id from deployment config, when set."
+          },
+          "test_credit_available": {
+            "type": "boolean",
+            "title": "Test Credit Available",
+            "description": "True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit.",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "billing_record_id",
+          "status",
+          "amount_cents",
+          "amount_atoms"
+        ],
+        "title": "UsdcLeasePaymentResponse",
+        "description": "A USDC lease payment. ``amount_atoms`` has 6 decimals."
       }
     },
     "securitySchemes": {

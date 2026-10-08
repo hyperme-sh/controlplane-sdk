@@ -152,6 +152,8 @@ models/UpdateSSOSettingsDto.ts
 models/UpdateTenantDto.ts
 models/UpdateTenantResponseDto.ts
 models/UpdateUserDto.ts
+models/UsdcLeasePaymentCreate.ts
+models/UsdcLeasePaymentResponse.ts
 models/UserCreateBody.ts
 models/UserDto.ts
 models/UserListDto.ts

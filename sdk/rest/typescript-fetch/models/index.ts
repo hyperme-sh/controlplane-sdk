@@ -123,6 +123,8 @@ export * from './UpdateSSOSettingsDto';
 export * from './UpdateTenantDto';
 export * from './UpdateTenantResponseDto';
 export * from './UpdateUserDto';
+export * from './UsdcLeasePaymentCreate';
+export * from './UsdcLeasePaymentResponse';
 export * from './UserCreateBody';
 export * from './UserDto';
 export * from './UserListDto';

@@ -141,7 +141,9 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**allocate_budget_api_v1_budgets_budget_id_allocate_post**](docs/PaymentsApi.md#allocate_budget_api_v1_budgets_budget_id_allocate_post) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 *PaymentsApi* | [**api_v1_budgets_get**](docs/PaymentsApi.md#api_v1_budgets_get) | **GET** /api/v1/budgets | List crypto budgets
 *PaymentsApi* | [**create_crypto_budget_api_v1_budgets_post**](docs/PaymentsApi.md#create_crypto_budget_api_v1_budgets_post) | **POST** /api/v1/budgets | Create Crypto Budget
+*PaymentsApi* | [**create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post**](docs/PaymentsApi.md#create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post) | **POST** /api/v1/payments/usdc/lease-payments | Open a USDC payment for a lease
 *PaymentsApi* | [**get_crypto_budget_api_v1_budgets_budget_id_get**](docs/PaymentsApi.md#get_crypto_budget_api_v1_budgets_budget_id_get) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
+*PaymentsApi* | [**settle_usdc_test_credit_api_v1_payments_usdc_lease_payments_billing_record_id_test_credit_post**](docs/PaymentsApi.md#settle_usdc_test_credit_api_v1_payments_usdc_lease_payments_billing_record_id_test_credit_post) | **POST** /api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit | Settle a lease payment from the test-network credit
 *PaymentsApi* | [**stripe_webhook_api_v1_payments_stripe_webhook_post**](docs/PaymentsApi.md#stripe_webhook_api_v1_payments_stripe_webhook_post) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
 *PermissionsApi* | [**get_permissions_api_v1_permissions_get**](docs/PermissionsApi.md#get_permissions_api_v1_permissions_get) | **GET** /api/v1/permissions/ | Get Permissions
 *RolesApi* | [**create_role_api_v1_roles_post**](docs/RolesApi.md#create_role_api_v1_roles_post) | **POST** /api/v1/roles/ | Create Role
@@ -349,6 +351,8 @@ Class | Method | HTTP request | Description
  - [UpdateTenantDto](docs/UpdateTenantDto.md)
  - [UpdateTenantResponseDto](docs/UpdateTenantResponseDto.md)
  - [UpdateUserDto](docs/UpdateUserDto.md)
+ - [UsdcLeasePaymentCreate](docs/UsdcLeasePaymentCreate.md)
+ - [UsdcLeasePaymentResponse](docs/UsdcLeasePaymentResponse.md)
  - [UserCreateBody](docs/UserCreateBody.md)
  - [UserDto](docs/UserDto.md)
  - [UserListDto](docs/UserListDto.md)

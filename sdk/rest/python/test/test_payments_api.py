@@ -47,10 +47,24 @@ class TestPaymentsApi(unittest.TestCase):
         """
         pass
 
+    def test_create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post(self) -> None:
+        """Test case for create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post
+
+        Open a USDC payment for a lease
+        """
+        pass
+
     def test_get_crypto_budget_api_v1_budgets_budget_id_get(self) -> None:
         """Test case for get_crypto_budget_api_v1_budgets_budget_id_get
 
         Get Crypto Budget
+        """
+        pass
+
+    def test_settle_usdc_test_credit_api_v1_payments_usdc_lease_payments_billing_record_id_test_credit_post(self) -> None:
+        """Test case for settle_usdc_test_credit_api_v1_payments_usdc_lease_payments_billing_record_id_test_credit_post
+
+        Settle a lease payment from the test-network credit
         """
         pass
 

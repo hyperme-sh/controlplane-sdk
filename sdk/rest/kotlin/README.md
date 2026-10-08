@@ -98,7 +98,9 @@ All URIs are relative to *http://localhost*
 | *PaymentsApi* | [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](docs/PaymentsApi.md#allocatebudgetapiv1budgetsbudgetidallocatepost) | **POST** api/v1/budgets/{budget_id}/allocate | Allocate Budget |
 | *PaymentsApi* | [**apiV1BudgetsGet**](docs/PaymentsApi.md#apiv1budgetsget) | **GET** api/v1/budgets | List crypto budgets |
 | *PaymentsApi* | [**createCryptoBudgetApiV1BudgetsPost**](docs/PaymentsApi.md#createcryptobudgetapiv1budgetspost) | **POST** api/v1/budgets | Create Crypto Budget |
+| *PaymentsApi* | [**createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost**](docs/PaymentsApi.md#createusdcleasepaymentrouteapiv1paymentsusdcleasepaymentspost) | **POST** api/v1/payments/usdc/lease-payments | Open a USDC payment for a lease |
 | *PaymentsApi* | [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](docs/PaymentsApi.md#getcryptobudgetapiv1budgetsbudgetidget) | **GET** api/v1/budgets/{budget_id} | Get Crypto Budget |
+| *PaymentsApi* | [**settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost**](docs/PaymentsApi.md#settleusdctestcreditapiv1paymentsusdcleasepaymentsbillingrecordidtestcreditpost) | **POST** api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit | Settle a lease payment from the test-network credit |
 | *PaymentsApi* | [**stripeWebhookApiV1PaymentsStripeWebhookPost**](docs/PaymentsApi.md#stripewebhookapiv1paymentsstripewebhookpost) | **POST** api/v1/payments/stripe/webhook | Stripe Webhook |
 | *PermissionsApi* | [**getPermissionsApiV1PermissionsGet**](docs/PermissionsApi.md#getpermissionsapiv1permissionsget) | **GET** api/v1/permissions/ | Get Permissions |
 | *RolesApi* | [**createRoleApiV1RolesPost**](docs/RolesApi.md#createroleapiv1rolespost) | **POST** api/v1/roles/ | Create Role |
@@ -296,6 +298,8 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.UpdateTenantDto](docs/UpdateTenantDto.md)
  - [org.openapitools.client.models.UpdateTenantResponseDto](docs/UpdateTenantResponseDto.md)
  - [org.openapitools.client.models.UpdateUserDto](docs/UpdateUserDto.md)
+ - [org.openapitools.client.models.UsdcLeasePaymentCreate](docs/UsdcLeasePaymentCreate.md)
+ - [org.openapitools.client.models.UsdcLeasePaymentResponse](docs/UsdcLeasePaymentResponse.md)
  - [org.openapitools.client.models.UserCreateBody](docs/UserCreateBody.md)
  - [org.openapitools.client.models.UserDto](docs/UserDto.md)
  - [org.openapitools.client.models.UserListDto](docs/UserListDto.md)

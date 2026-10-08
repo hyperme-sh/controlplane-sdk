@@ -79,7 +79,9 @@ Class | Method | HTTP request | Description
 *PaymentsAPI* | [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](docs/PaymentsAPI.md#allocatebudgetapiv1budgetsbudgetidallocatepost) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 *PaymentsAPI* | [**apiV1BudgetsGet**](docs/PaymentsAPI.md#apiv1budgetsget) | **GET** /api/v1/budgets | List crypto budgets
 *PaymentsAPI* | [**createCryptoBudgetApiV1BudgetsPost**](docs/PaymentsAPI.md#createcryptobudgetapiv1budgetspost) | **POST** /api/v1/budgets | Create Crypto Budget
+*PaymentsAPI* | [**createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost**](docs/PaymentsAPI.md#createusdcleasepaymentrouteapiv1paymentsusdcleasepaymentspost) | **POST** /api/v1/payments/usdc/lease-payments | Open a USDC payment for a lease
 *PaymentsAPI* | [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](docs/PaymentsAPI.md#getcryptobudgetapiv1budgetsbudgetidget) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
+*PaymentsAPI* | [**settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost**](docs/PaymentsAPI.md#settleusdctestcreditapiv1paymentsusdcleasepaymentsbillingrecordidtestcreditpost) | **POST** /api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit | Settle a lease payment from the test-network credit
 *PaymentsAPI* | [**stripeWebhookApiV1PaymentsStripeWebhookPost**](docs/PaymentsAPI.md#stripewebhookapiv1paymentsstripewebhookpost) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
 *PermissionsAPI* | [**getPermissionsApiV1PermissionsGet**](docs/PermissionsAPI.md#getpermissionsapiv1permissionsget) | **GET** /api/v1/permissions/ | Get Permissions
 *RolesAPI* | [**createRoleApiV1RolesPost**](docs/RolesAPI.md#createroleapiv1rolespost) | **POST** /api/v1/roles/ | Create Role
@@ -276,6 +278,8 @@ Class | Method | HTTP request | Description
  - [UpdateTenantDto](docs/UpdateTenantDto.md)
  - [UpdateTenantResponseDto](docs/UpdateTenantResponseDto.md)
  - [UpdateUserDto](docs/UpdateUserDto.md)
+ - [UsdcLeasePaymentCreate](docs/UsdcLeasePaymentCreate.md)
+ - [UsdcLeasePaymentResponse](docs/UsdcLeasePaymentResponse.md)
  - [UserCreateBody](docs/UserCreateBody.md)
  - [UserDto](docs/UserDto.md)
  - [UserListDto](docs/UserListDto.md)

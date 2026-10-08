@@ -162,6 +162,8 @@ OpenAPIClient/Classes/OpenAPIs/Models/UpdateSSOSettingsDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UpdateTenantDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UpdateTenantResponseDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UpdateUserDto.swift
+OpenAPIClient/Classes/OpenAPIs/Models/UsdcLeasePaymentCreate.swift
+OpenAPIClient/Classes/OpenAPIs/Models/UsdcLeasePaymentResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserCreateBody.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserListDto.swift
@@ -329,6 +331,8 @@ docs/UpdateSSOSettingsDto.md
 docs/UpdateTenantDto.md
 docs/UpdateTenantResponseDto.md
 docs/UpdateUserDto.md
+docs/UsdcLeasePaymentCreate.md
+docs/UsdcLeasePaymentResponse.md
 docs/UserCreateBody.md
 docs/UserDto.md
 docs/UserListDto.md

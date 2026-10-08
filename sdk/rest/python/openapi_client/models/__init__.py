@@ -137,6 +137,8 @@ from openapi_client.models.update_sso_settings_dto import UpdateSSOSettingsDto
 from openapi_client.models.update_tenant_dto import UpdateTenantDto
 from openapi_client.models.update_tenant_response_dto import UpdateTenantResponseDto
 from openapi_client.models.update_user_dto import UpdateUserDto
+from openapi_client.models.usdc_lease_payment_create import UsdcLeasePaymentCreate
+from openapi_client.models.usdc_lease_payment_response import UsdcLeasePaymentResponse
 from openapi_client.models.user_create_body import UserCreateBody
 from openapi_client.models.user_dto import UserDto
 from openapi_client.models.user_list_dto import UserListDto

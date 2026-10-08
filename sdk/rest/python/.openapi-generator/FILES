@@ -153,6 +153,8 @@ docs/UpdateSSOSettingsDto.md
 docs/UpdateTenantDto.md
 docs/UpdateTenantResponseDto.md
 docs/UpdateUserDto.md
+docs/UsdcLeasePaymentCreate.md
+docs/UsdcLeasePaymentResponse.md
 docs/UserCreateBody.md
 docs/UserDto.md
 docs/UserListDto.md
@@ -326,6 +328,8 @@ openapi_client/models/update_sso_settings_dto.py
 openapi_client/models/update_tenant_dto.py
 openapi_client/models/update_tenant_response_dto.py
 openapi_client/models/update_user_dto.py
+openapi_client/models/usdc_lease_payment_create.py
+openapi_client/models/usdc_lease_payment_response.py
 openapi_client/models/user_create_body.py
 openapi_client/models/user_dto.py
 openapi_client/models/user_list_dto.py
@@ -345,4 +349,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_payments_api.py
 tox.ini
