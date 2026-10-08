@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  * @param billingRecordId 
  * @param status 
  * @param amountCents 
- * @param amountAtoms 
+ * @param amountAtoms USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits.
  * @param chainId Base chain id from deployment config, when set.
  * @param testCreditAvailable True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit.
  */
@@ -41,8 +41,9 @@ data class UsdcLeasePaymentResponse (
     @get:JsonProperty("amount_cents")
     val amountCents: kotlin.Int,
 
+    /* USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits. */
     @get:JsonProperty("amount_atoms")
-    val amountAtoms: kotlin.Int,
+    val amountAtoms: kotlin.Long,
 
     /* Base chain id from deployment config, when set. */
     @get:JsonProperty("chain_id")

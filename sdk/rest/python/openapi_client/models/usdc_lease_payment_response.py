@@ -30,7 +30,7 @@ class UsdcLeasePaymentResponse(BaseModel):
     billing_record_id: StrictStr
     status: Annotated[str, Field(strict=True, max_length=64)]
     amount_cents: Annotated[int, Field(strict=True, ge=0)]
-    amount_atoms: Annotated[int, Field(strict=True, ge=0)]
+    amount_atoms: Annotated[int, Field(strict=True, ge=0)] = Field(description="USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits.")
     chain_id: Optional[StrictInt] = Field(default=None, description="Base chain id from deployment config, when set.")
     test_credit_available: Optional[StrictBool] = Field(default=False, description="True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit.")
     additional_properties: Dict[str, Any] = {}

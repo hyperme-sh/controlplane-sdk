@@ -39,7 +39,7 @@ export interface UsdcLeasePaymentResponse {
      */
     amountCents: number;
     /**
-     * 
+     * USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits.
      * @type {number}
      * @memberof UsdcLeasePaymentResponse
      */

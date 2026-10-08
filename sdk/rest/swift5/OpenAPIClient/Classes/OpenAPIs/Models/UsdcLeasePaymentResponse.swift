@@ -15,17 +15,18 @@ public struct UsdcLeasePaymentResponse: Codable, JSONEncodable, Hashable {
 
     static let statusRule = StringRule(minLength: nil, maxLength: 64, pattern: nil)
     static let amountCentsRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
-    static let amountAtomsRule = NumericRule<Int>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
+    static let amountAtomsRule = NumericRule<Int64>(minimum: 0, exclusiveMinimum: false, maximum: nil, exclusiveMaximum: false, multipleOf: nil)
     public private(set) var billingRecordId: UUID
     public private(set) var status: String
     public private(set) var amountCents: Int
-    public private(set) var amountAtoms: Int
+    /** USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits. */
+    public private(set) var amountAtoms: Int64
     /** Base chain id from deployment config, when set. */
     public private(set) var chainId: Int?
     /** True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit. */
     public private(set) var testCreditAvailable: Bool? = false
 
-    public init(billingRecordId: UUID, status: String, amountCents: Int, amountAtoms: Int, chainId: Int? = nil, testCreditAvailable: Bool? = false) {
+    public init(billingRecordId: UUID, status: String, amountCents: Int, amountAtoms: Int64, chainId: Int? = nil, testCreditAvailable: Bool? = false) {
         self.billingRecordId = billingRecordId
         self.status = status
         self.amountCents = amountCents
@@ -80,7 +81,7 @@ public struct UsdcLeasePaymentResponse: Codable, JSONEncodable, Hashable {
         billingRecordId = try container.decode(UUID.self, forKey: .billingRecordId)
         status = try container.decode(String.self, forKey: .status)
         amountCents = try container.decode(Int.self, forKey: .amountCents)
-        amountAtoms = try container.decode(Int.self, forKey: .amountAtoms)
+        amountAtoms = try container.decode(Int64.self, forKey: .amountAtoms)
         chainId = try container.decodeIfPresent(Int.self, forKey: .chainId)
         testCreditAvailable = try container.decodeIfPresent(Bool.self, forKey: .testCreditAvailable)
         var nonAdditionalPropertyKeys = Set<String>()

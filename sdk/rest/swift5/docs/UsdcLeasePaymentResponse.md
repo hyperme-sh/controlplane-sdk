@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **billingRecordId** | **UUID** |  | 
 **status** | **String** |  | 
 **amountCents** | **Int** |  | 
-**amountAtoms** | **Int** |  | 
+**amountAtoms** | **Int64** | USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits. | 
 **chainId** | **Int** | Base chain id from deployment config, when set. | [optional] 
 **testCreditAvailable** | **Bool** | True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit. | [optional] [default to false]
 
