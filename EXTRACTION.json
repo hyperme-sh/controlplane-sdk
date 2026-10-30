@@ -1,0 +1,16 @@
+{
+  "repository": "FyberLabs/controlplane-sdk",
+  "source_repository": "FyberLabs/panopticon",
+  "source_revision": "2d92d13f38d491c298631b9b9296979c1fbadd19",
+  "selected_paths": [
+    "sdk"
+  ],
+  "filtered_history_head": "05dbb31499fb86c0add8740c77e29dc25f83d121",
+  "retained_files": 1577,
+  "inventory_sha256": "8d87cc126f91f824bfd65d35614429f467753b4059b5caf23493f597e6de4c41",
+  "blob_and_mode_equality_verified": true,
+  "rename_predecessors_followed": false,
+  "standalone_release_verified": false,
+  "cutover_verified": false,
+  "actions_enabled": false
+}
