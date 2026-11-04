@@ -207,3 +207,25 @@ def test_sanitize_openapi_rewrites_null_anyof():
     assert nested["nullable"] is True
     assert nested["allOf"] == [{"$ref": "#/components/schemas/Bar"}]
     assert "anyOf" not in nested
+
+
+@pytest.mark.parametrize("bootstrap,expected", [(False, 2), (True, 0)])
+def test_missing_git_baseline_requires_explicit_bootstrap(tmp_path, bootstrap, expected):
+    candidate = tmp_path / "candidate.json"
+    candidate.write_text(json.dumps(_minimal_openapi({"/health": {}})))
+    command = [sys.executable, str(REPO / "scripts/sdk-gen/check_breaking.py"),
+               "--new", str(candidate), "--git-path", "missing-baseline-for-regression.json"]
+    if bootstrap:
+        command.append("--allow-missing-baseline")
+    result = subprocess.run(command, cwd=tmp_path, capture_output=True, text=True)
+    assert result.returncode == expected, result.stderr
+    assert "compatibility" in result.stdout + result.stderr
+
+
+def test_explicit_missing_baseline_cannot_be_bootstrapped(tmp_path):
+    candidate = tmp_path / "candidate.json"
+    candidate.write_text(json.dumps(_minimal_openapi({})))
+    result = subprocess.run([sys.executable, str(REPO / "scripts/sdk-gen/check_breaking.py"),
+        "--new", str(candidate), "--baseline-file", str(tmp_path / "missing.json"),
+        "--allow-missing-baseline"], capture_output=True, text=True)
+    assert result.returncode == 2
