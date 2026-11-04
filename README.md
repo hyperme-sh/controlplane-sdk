@@ -27,12 +27,12 @@ Multilanguage compilation, actual regeneration, gRPC/proto synchronization,
 auth examples and consumer acceptance remain separate qualification gates.
 
 CI uses pinned actions, read-only permissions and main/manual triggers. Actions
-remains disabled until hosted-worker policy and an exact-head run are qualified.
+remains disabled until shared-runner qualification and an exact-head run are qualified.
 No source service, release publication or deployment is changed by this package.
 
 The snapshot contained broken imports for a nonexistent AiApi class. Those
 exports are removed; AIApi remains available. Tag collision and complete
-operation coverage qualification remain tracked in #4. Hosted CI acceptance
+operation coverage qualification remain tracked in #4. Shared-runner CI acceptance
 is #2; regeneration, language toolchains and consumer acceptance are #3.
 
 See [the organization naming migration](docs/spanopticon-migration.md) for linked PRs, rollout order, validation and the repeatable audit.
