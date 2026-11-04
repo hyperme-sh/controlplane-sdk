@@ -326,6 +326,12 @@
       "path": "integration/core/tests/tests/unit/test_phase_b_evidence.py",
       "line_sha256": "85c2bce94fb7d98b651170a86c94de7513b8552aeed4529cda7004f78c662bcc",
       "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "payment-service",
+      "path": "integration/tests/test_payment_smoke_preflight.py",
+      "line_sha256": "ff3ea10f32ed2048484a9bbba75ba0da6f733b5faa93eef5fb71ee437737530a",
+      "reason": "existing external repository or document target"
     }
   ]
 }
