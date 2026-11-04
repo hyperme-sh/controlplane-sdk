@@ -1,2 +1,2 @@
 # controlplane-sdk
-Private component extraction from Panopticon: sdk
+Private component extraction from (s)panopticon: sdk
