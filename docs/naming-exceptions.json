@@ -287,6 +287,12 @@
       "path": "src/controlplane_db/alembic/legacy_models.py",
       "line_sha256": "ab5821a9ef239f30b90e731893dcb07ac6ceda80917e7b58442b36cc730f2df5",
       "reason": "Frozen historical migration registry; preserve original bytes."
+    },
+    {
+      "repo": "controlplane-edge",
+      "path": "src/controlplane_edge/middleware/policy.py",
+      "line_sha256": "b059e376113979b71376fa8c517864a6cd925722a3b98de32f9cd51eb504eab6",
+      "reason": "Security compatibility for validated legacy tenant claims; conflicting aliases fail closed"
     }
   ]
 }

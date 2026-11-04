@@ -32,7 +32,11 @@ The external smoke OIDC caller keeps its existing repository identity.
 
 Cut over all identity issuers and consumers together and require reauthentication
 or API-key token re-exchange. This is not a rolling mixed-namespace protocol:
-existing short-lived tokens are not translated or silently accepted. Move gRPC
+old internal session issuers are not translated or silently accepted. The edge
+retains the legacy tenant-claim URI for tokens accepted by its existing bearer
+validator (including Keycloak); all supplied tenant aliases must be valid and
+agree. Forwarded tenant headers are reconstructed from policy state, and a
+validated JWT without a tenant cannot forward a caller-supplied tenant header. Move gRPC
 clients and servers together. Rollback must restore the whole reviewed dependency
 and configuration set, not one consumer package.
 
@@ -57,9 +61,9 @@ Run the organization audit against sibling checkouts of these PR heads:
 python3 controlplane-sdk/scripts/audit-naming.py /path/to/hyperme-sh-checkouts
 ```
 
-`naming-exceptions.json` records 41 distinct reviewed source-line fingerprints.
+`naming-exceptions.json` records 42 distinct reviewed source-line fingerprints.
 They are existing external repository/OIDC/document targets, external owner test
-harness references, signed historical interoperability evidence, and the frozen migration registry. Renaming them
+harness references, signed historical interoperability evidence, the frozen migration registry, and the edge tenant-claim compatibility constant. Renaming them
 without migrating their owners or regenerating the evidence would break links,
 authority checks, imports or signature verification. The audit rejects new legacy
 references, legacy owned paths, missing repositories and stale exceptions.
