@@ -70,8 +70,11 @@ def main() -> int:
         old_doc = _git_show(args.git_path)
 
     if old_doc is None:
-        print("No baseline OpenAPI; skip breaking check (--allow-missing-baseline or commit sdk/openapi first).")
-        return 0 if args.allow_missing_baseline else 0
+        if args.allow_missing_baseline:
+            print("No baseline OpenAPI; explicit bootstrap only, compatibility was not checked.")
+            return 0
+        print("No baseline OpenAPI; compatibility cannot be established. Supply --baseline-file or explicitly bootstrap with --allow-missing-baseline.", file=sys.stderr)
+        return 2
 
     breaking, detail = is_breaking_change(
         old_doc, new_doc, load_allowed_removals(args.allowed_removals)
