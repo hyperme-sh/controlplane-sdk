@@ -22,12 +22,14 @@
     "controlplane-tests",
     "hypermesh-gateway",
     "hypermesh-orchestrator",
+    "hypermesh-plane",
     "hypermesh-ticket",
     "marketplace-service",
     "oracles",
     "payment-service",
     "payments-access",
     "product-template",
+    "spanopticon",
     "turn",
     "user-service",
     "verification"
@@ -325,6 +327,36 @@
       "repo": "payment-service",
       "path": "integration/tests/test_payment_smoke_preflight.py",
       "line_sha256": "ff3ea10f32ed2048484a9bbba75ba0da6f733b5faa93eef5fb71ee437737530a",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "hypermesh-plane",
+      "path": ".github/workflows/contract.yml",
+      "line_sha256": "7b9dabbe36d99e0992ab075ab372c1b396040cf3338eafd2265a13b82b65ff7b",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "hypermesh-plane",
+      "path": "README.md",
+      "line_sha256": "44e52eab606d656bac9a211c9795332348c0678c46a9ebc80dcbae18bb993480",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "hypermesh-plane",
+      "path": "products/hypermesh/docs/multi-plane-spine.md",
+      "line_sha256": "6532d947d74d83f38ecd18c75306c46544c1bb33f6e623e50c887140b58f8415",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "hypermesh-plane",
+      "path": "products/hypermesh/tests/test_gateway_smoke.py",
+      "line_sha256": "f02bef8245b6ca3b2623959994ee69c7638bd0f77045e414611c1d64792b4ab9",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "hypermesh-plane",
+      "path": "products/hypermesh/tests/test_mismatch_sequence.py",
+      "line_sha256": "2530dbbe66b771e129d26717d2ff52065808046e354c1851a7ce6c4e9bb2536c",
       "reason": "existing external repository or document target"
     }
   ]
