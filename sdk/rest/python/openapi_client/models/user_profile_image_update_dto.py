@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    (s)panopticon Control Plane API
+    spanopticon Control Plane API
 
     Canonical merge for frontend SDK (gateway + microservices).
 

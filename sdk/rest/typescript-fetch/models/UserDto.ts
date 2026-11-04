@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * (s)panopticon Control Plane API
+ * spanopticon Control Plane API
  * Canonical merge for frontend SDK (gateway + microservices).
  *
  * The version of the OpenAPI document: 1.0.0
