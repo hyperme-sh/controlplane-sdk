@@ -1,4 +1,4 @@
-# org.openapitools.client - Kotlin client library for (s)panopticon Control Plane API
+# org.openapitools.client - Kotlin client library for spanopticon Control Plane API
 
 Canonical merge for frontend SDK (gateway + microservices).
 

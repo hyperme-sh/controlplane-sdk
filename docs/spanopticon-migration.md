@@ -1,6 +1,6 @@
 # (s)panopticon naming migration
 
-Audit scope: all 28 repositories in hyperme-sh. Product prose uses `(s)panopticon`;
+Audit scope: all 33 repositories in hyperme-sh. Product prose uses `(s)panopticon`;
 owned package, namespace, claim, environment-variable and path identifiers use
 `spanopticon`. Twenty-six repositories have source/tooling/documentation changes.
 The organization profile already used Hypermesh naming; verification only contains
@@ -33,9 +33,9 @@ The external smoke OIDC caller keeps its existing repository identity.
 Cut over all identity issuers and consumers together and require reauthentication
 or API-key token re-exchange. This is not a rolling mixed-namespace protocol:
 old internal session issuers are not translated or silently accepted. The edge
-retains the legacy tenant-claim URI for tokens accepted by its existing bearer
-validator (including Keycloak); all supplied tenant aliases must be valid and
-agree. Forwarded tenant headers are reconstructed from policy state, and a
+rejects the retired tenant-claim URI, including mixed old/new tokens, with
+controlplane-edge #10. Deploy that change only after issuers use the current URI
+and require fresh tokens. Current namespaced and plain aliases must agree. Forwarded tenant headers are reconstructed from policy state, and a
 validated JWT without a tenant cannot forward a caller-supplied tenant header. Move gRPC
 clients and servers together. Rollback must restore the whole reviewed dependency
 and configuration set, not one consumer package.
@@ -61,9 +61,9 @@ Run the organization audit against sibling checkouts of these PR heads:
 python3 controlplane-sdk/scripts/audit-naming.py /path/to/hyperme-sh-checkouts
 ```
 
-`naming-exceptions.json` records 52 distinct reviewed source-line fingerprints.
+`naming-exceptions.json` records 36 distinct reviewed source-line fingerprints.
 They are existing external repository/OIDC/document targets, external owner test
-harness references, signed historical interoperability evidence, the frozen migration registry, and the edge tenant-claim compatibility constant. Renaming them
+harness references, signed historical interoperability evidence, the frozen migration registry, and the edge retired-claim rejection constant and regression test. Renaming them
 without migrating their owners or regenerating the evidence would break links,
 authority checks, imports or signature verification. The audit rejects new legacy
 references, legacy owned paths, missing repositories and stale exceptions.
@@ -126,3 +126,12 @@ actual external smoke caller repository remains unchanged.
 The final inventory also includes hypermesh-plane and spanopticon. Their owned
 content uses canonical naming; hypermesh-plane retains its exact external owner
 fixture repository and corresponding integration-test identities.
+
+## Rebase verification
+
+The current audit covers the 33 default branches with the coordinated edge #10,
+portal #9, and plane #8 heads. Obsolete owner-harness exceptions were removed;
+exact external fixture and provenance references remain recorded. This audit
+does not establish deployment acceptance. The merged AI usage clients and their
+compatibility shims are preserved. Both `spanopticon` and `(s)panopticon` remain
+valid branding forms.

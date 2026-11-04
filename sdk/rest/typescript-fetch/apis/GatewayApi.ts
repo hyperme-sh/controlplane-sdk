@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * (s)panopticon Aggregated API (v1)
+ * spanopticon Aggregated API (v1)
  * Aggregated from the control-plane edge and microservice OpenAPI specs.
  *
  * The version of the OpenAPI document: v1.0.0
