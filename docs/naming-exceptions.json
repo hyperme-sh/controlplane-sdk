@@ -15,14 +15,17 @@
     "controlplane-identity",
     "controlplane-keycloak",
     "controlplane-models",
+    "controlplane-portal",
     "controlplane-proto",
     "controlplane-sdk",
     "controlplane-tenancy",
+    "controlplane-tests",
     "hypermesh-gateway",
     "hypermesh-orchestrator",
     "hypermesh-ticket",
     "marketplace-service",
     "oracles",
+    "payment-service",
     "payments-access",
     "product-template",
     "turn",
@@ -293,6 +296,42 @@
       "path": "src/controlplane_edge/middleware/policy.py",
       "line_sha256": "b059e376113979b71376fa8c517864a6cd925722a3b98de32f9cd51eb504eab6",
       "reason": "Security compatibility for validated legacy tenant claims; conflicting aliases fail closed"
+    },
+    {
+      "repo": "controlplane-portal",
+      "path": "src/app/login/route.test.ts",
+      "line_sha256": "ca552c1607ececfcf03ac119560603bc25382111df3eb9a53de680a0d062eee8",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-portal",
+      "path": "src/lib/auth-guard.test.ts",
+      "line_sha256": "8f4b0f9fcbb0f6c68289ecc7dcc35cfa5d5e86f57ac911ccf9b7fe2a133975fb",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-portal",
+      "path": "src/lib/auth-transport-context.tsx",
+      "line_sha256": "93463242e3372c8ae01bb83738bde670836cbf4e48da89228f574f9f5893c3f4",
+      "reason": "Erase pre-rename browser credentials; never read them for authentication"
+    },
+    {
+      "repo": "controlplane-tests",
+      "path": "integration/core/tests/tests/unit/test_phase_b_assembly.py",
+      "line_sha256": "4d2c59df3bd57545737b036becb177b83daf36a65cf5fd22c8ce5baa936c58f1",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-tests",
+      "path": "integration/core/tests/tests/unit/test_phase_b_evidence.py",
+      "line_sha256": "85c2bce94fb7d98b651170a86c94de7513b8552aeed4529cda7004f78c662bcc",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "payment-service",
+      "path": "integration/tests/test_payment_smoke_preflight.py",
+      "line_sha256": "ff3ea10f32ed2048484a9bbba75ba0da6f733b5faa93eef5fb71ee437737530a",
+      "reason": "existing external repository or document target"
     }
   ]
 }
