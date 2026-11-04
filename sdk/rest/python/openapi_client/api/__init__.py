@@ -3,6 +3,7 @@
 # import apis into api package
 from openapi_client.api.acl_api import ACLApi
 from openapi_client.api.ai_api import AIApi
+from openapi_client.api.ai_usage_api import AIUsageApi
 from openapi_client.api.account_api import AccountApi
 from openapi_client.api.app_configuration_api import AppConfigurationApi
 from openapi_client.api.audit_logs_api import AuditLogsApi
@@ -30,3 +31,6 @@ from openapi_client.api.users_groups_api import UsersGroupsApi
 from openapi_client.api.api_keys_api import ApiKeysApi
 from openapi_client.api.auth_api import AuthApi
 
+
+# Legacy usage API name; the canonical implementation has its own module.
+from openapi_client.api.ai_usage_api import AIUsageApi as AiApi

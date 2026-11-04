@@ -1,11 +1,11 @@
-# openapi_client.AiApi
+# openapi_client.AIUsageApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_v1_ai_usage_history_get**](AiApi.md#api_v1_ai_usage_history_get) | **GET** /api/v1/ai/usage/history | List inference usage history
-[**api_v1_ai_usage_summary_get**](AiApi.md#api_v1_ai_usage_summary_get) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
+[**api_v1_ai_usage_history_get**](AIUsageApi.md#api_v1_ai_usage_history_get) | **GET** /api/v1/ai/usage/history | List inference usage history
+[**api_v1_ai_usage_summary_get**](AIUsageApi.md#api_v1_ai_usage_summary_get) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
 
 
 # **api_v1_ai_usage_history_get**
@@ -32,7 +32,7 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AiApi(api_client)
+    api_instance = openapi_client.AIUsageApi(api_client)
     limit = 50 # int |  (optional) (default to 50)
     offset = 0 # int |  (optional) (default to 0)
     user_id = 'user_id_example' # str |  (optional)
@@ -40,10 +40,10 @@ with openapi_client.ApiClient(configuration) as api_client:
     try:
         # List inference usage history
         api_response = api_instance.api_v1_ai_usage_history_get(limit=limit, offset=offset, user_id=user_id)
-        print("The response of AiApi->api_v1_ai_usage_history_get:\n")
+        print("The response of AIUsageApi->api_v1_ai_usage_history_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AiApi->api_v1_ai_usage_history_get: %s\n" % e)
+        print("Exception when calling AIUsageApi->api_v1_ai_usage_history_get: %s\n" % e)
 ```
 
 
@@ -102,15 +102,15 @@ configuration = openapi_client.Configuration(
 # Enter a context with an instance of the API client
 with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = openapi_client.AiApi(api_client)
+    api_instance = openapi_client.AIUsageApi(api_client)
 
     try:
         # Tenant usage summary
         api_response = api_instance.api_v1_ai_usage_summary_get()
-        print("The response of AiApi->api_v1_ai_usage_summary_get:\n")
+        print("The response of AIUsageApi->api_v1_ai_usage_summary_get:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling AiApi->api_v1_ai_usage_summary_get: %s\n" % e)
+        print("Exception when calling AIUsageApi->api_v1_ai_usage_summary_get: %s\n" % e)
 ```
 
 

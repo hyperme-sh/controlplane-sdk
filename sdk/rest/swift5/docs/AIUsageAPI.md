@@ -1,11 +1,11 @@
-# AiAPI
+# AIUsageAPI
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**apiV1AiUsageHistoryGet**](AiAPI.md#apiv1aiusagehistoryget) | **GET** /api/v1/ai/usage/history | List inference usage history
-[**apiV1AiUsageSummaryGet**](AiAPI.md#apiv1aiusagesummaryget) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
+[**apiV1AiUsageHistoryGet**](AIUsageAPI.md#apiv1aiusagehistoryget) | **GET** /api/v1/ai/usage/history | List inference usage history
+[**apiV1AiUsageSummaryGet**](AIUsageAPI.md#apiv1aiusagesummaryget) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
 
 
 # **apiV1AiUsageHistoryGet**
@@ -25,7 +25,7 @@ let offset = 987 // Int |  (optional) (default to 0)
 let userId = 987 // UUID |  (optional)
 
 // List inference usage history
-AiAPI.apiV1AiUsageHistoryGet(limit: limit, offset: offset, userId: userId) { (response, error) in
+AIUsageAPI.apiV1AiUsageHistoryGet(limit: limit, offset: offset, userId: userId) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -74,7 +74,7 @@ import OpenAPIClient
 
 
 // Tenant usage summary
-AiAPI.apiV1AiUsageSummaryGet() { (response, error) in
+AIUsageAPI.apiV1AiUsageSummaryGet() { (response, error) in
     guard error == nil else {
         print(error)
         return

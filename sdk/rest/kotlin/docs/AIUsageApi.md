@@ -1,11 +1,11 @@
-# AiApi
+# AIUsageApi
 
 All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**apiV1AiUsageHistoryGet**](AiApi.md#apiV1AiUsageHistoryGet) | **GET** api/v1/ai/usage/history | List inference usage history |
-| [**apiV1AiUsageSummaryGet**](AiApi.md#apiV1AiUsageSummaryGet) | **GET** api/v1/ai/usage/summary | Tenant usage summary |
+| [**apiV1AiUsageHistoryGet**](AIUsageApi.md#apiV1AiUsageHistoryGet) | **GET** api/v1/ai/usage/history | List inference usage history |
+| [**apiV1AiUsageSummaryGet**](AIUsageApi.md#apiV1AiUsageSummaryGet) | **GET** api/v1/ai/usage/summary | Tenant usage summary |
 
 
 
@@ -19,7 +19,7 @@ List inference usage history
 //import org.openapitools.client.models.*
 
 val apiClient = ApiClient()
-val webService = apiClient.createWebservice(AiApi::class.java)
+val webService = apiClient.createWebservice(AIUsageApi::class.java)
 val limit : kotlin.Int = 56 // kotlin.Int | 
 val offset : kotlin.Int = 56 // kotlin.Int | 
 val userId : java.util.UUID = 38400000-8cf0-11bd-b23e-10b96e4ef00d // java.util.UUID | 
@@ -60,7 +60,7 @@ Tenant usage summary
 //import org.openapitools.client.models.*
 
 val apiClient = ApiClient()
-val webService = apiClient.createWebservice(AiApi::class.java)
+val webService = apiClient.createWebservice(AIUsageApi::class.java)
 
 launch(Dispatchers.IO) {
     val result : TenantUsageSummaryResponse = webService.apiV1AiUsageSummaryGet()
