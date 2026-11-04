@@ -42,12 +42,14 @@ realm, native-client redirect, live provider or complete monorepo integration.
 
 ## Audit and validation
 
-All 25 changed executable repositories passed their prescribed package/tooling
-checks, including source/fresh-wheel/rebuilt-source checks where supplied. The SDK
-change is documentation plus the audit tool. The explicit models gRPC-extra tests
+All 26 changed executable repositories passed their prescribed package/tooling
+checks, including source/fresh-wheel/rebuilt-source checks where supplied. The SDK now includes the merged client implementation and generation helpers;
+version 0.2.0 exports `spanopticon_sdk_gen`. Its 16 tests passed from source,
+a fresh wheel and a rebuilt source distribution. Its protocol source and flat
+generated bindings match the protocol package byte-for-byte; the namespaced
+gRPC import and wire-roundtrip check passed. The explicit models gRPC-extra tests
 also passed. A digest-pinned, disposable PostgreSQL 17 instance was used for the
-database/tenancy/operator-ban checks. All 975 previously tracked Python files
-parsed successfully.
+database/tenancy/operator-ban checks. Tracked Python source was syntax-checked across the coordinated repositories.
 
 Run the organization audit against sibling checkouts of these PR heads:
 
@@ -94,3 +96,11 @@ references, legacy owned paths, missing repositories and stale exceptions.
 | marketplace-service | [#4](https://github.com/hyperme-sh/marketplace-service/pull/4) | Passed |
 
 Coordination: https://github.com/hyperme-sh/controlplane-sdk/issues/9
+
+## Review follow-up
+
+The frozen database migration registry was restored byte-for-byte to its base
+version. Its two historical naming lines are explicit audit exceptions. All
+affected consumers were repinned and their package checks rerun. The SDK PR
+incorporates the newly merged client implementation and resolves its README
+conflict while retaining the implementation and applying the canonical rename.

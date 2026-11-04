@@ -1,0 +1,29 @@
+# PermissionDto
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **str** |  | 
+
+## Example
+
+```python
+from openapi_client.models.permission_dto import PermissionDto
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of PermissionDto from a JSON string
+permission_dto_instance = PermissionDto.from_json(json)
+# print the JSON string representation of the object
+print(PermissionDto.to_json())
+
+# convert the object into a dict
+permission_dto_dict = permission_dto_instance.to_dict()
+# create an instance of PermissionDto from a dict
+permission_dto_from_dict = PermissionDto.from_dict(permission_dto_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
