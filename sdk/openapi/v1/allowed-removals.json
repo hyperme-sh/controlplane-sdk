@@ -1,0 +1,20 @@
+{
+  "paths": [
+    "/api/v1/checkouts/all",
+    "/api/v1/checkouts/host/payment/cancel",
+    "/api/v1/checkouts/host/payment/success",
+    "/api/v1/checkouts/host/{tenant_id}/tenant",
+    "/api/v1/checkouts/tenant/payment/cancel",
+    "/api/v1/checkouts/tenant/payment/success",
+    "/api/v1/checkouts/tenant/subscription",
+    "/api/v1/payments/stripe/checkout-sessions"
+  ],
+  "schemas": [
+    "BillingRecordDto",
+    "BillingRecordListDto",
+    "CheckoutRequestDto",
+    "CheckoutResponseDto",
+    "StripeCheckoutSessionCreate",
+    "StripeCheckoutSessionResponse"
+  ]
+}
