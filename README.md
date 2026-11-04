@@ -27,7 +27,8 @@ Multilanguage compilation, actual regeneration, gRPC/proto synchronization,
 auth examples and consumer acceptance remain separate qualification gates.
 
 CI uses pinned actions, read-only permissions and main/manual triggers. Actions
-remains disabled until shared-runner qualification and an exact-head run are qualified.
+is enabled; exact-head hosted-runner qualification remains separate from the
+local package checks. No PR-triggered package workflow is configured.
 No source service, release publication or deployment is changed by this package.
 
 AI inference/session and usage clients have separate case-safe names. `AIApi`
