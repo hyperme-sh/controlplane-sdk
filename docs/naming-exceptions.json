@@ -275,6 +275,18 @@
       "path": "PLAN.md",
       "line_sha256": "4bb7985740be11132f46ba047e2dc62067d80e7118740774135c258d03c135a2",
       "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-db",
+      "path": "src/controlplane_db/alembic/legacy_models.py",
+      "line_sha256": "c1099eaa014269e251f81c5e465ac70a9ddb56212acea7ddbdbeb9c0e3081826",
+      "reason": "Frozen historical migration registry; preserve original bytes."
+    },
+    {
+      "repo": "controlplane-db",
+      "path": "src/controlplane_db/alembic/legacy_models.py",
+      "line_sha256": "ab5821a9ef239f30b90e731893dcb07ac6ceda80917e7b58442b36cc730f2df5",
+      "reason": "Frozen historical migration registry; preserve original bytes."
     }
   ]
 }

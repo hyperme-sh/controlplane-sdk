@@ -55,9 +55,9 @@ Run the organization audit against sibling checkouts of these PR heads:
 python3 controlplane-sdk/scripts/audit-naming.py /path/to/hyperme-sh-checkouts
 ```
 
-`naming-exceptions.json` records 39 distinct reviewed source-line fingerprints.
+`naming-exceptions.json` records 41 distinct reviewed source-line fingerprints.
 They are existing external repository/OIDC/document targets, external owner test
-harness references, and signed historical interoperability evidence. Renaming them
+harness references, signed historical interoperability evidence, and the frozen migration registry. Renaming them
 without migrating their owners or regenerating the evidence would break links,
 authority checks, imports or signature verification. The audit rejects new legacy
 references, legacy owned paths, missing repositories and stale exceptions.
