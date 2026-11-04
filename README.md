@@ -1,19 +1,36 @@
-# controlplane-sdk
+# Control plane SDK
 
-Private component extraction from `FyberLabs/panopticon`.
+Generated REST clients, protocol snapshots, auth examples and generation helpers.
+The root Python distribution `controlplane-sdk` installs `openapi_client` and
+`panopticon_sdk_gen`. It must not be installed alongside another distribution
+providing the same `openapi_client` namespace. No package has been published.
 
-Source commit: `2d92d13f38d491c298631b9b9296979c1fbadd19`.
+Use Python 3.13 and uv 0.11.26:
 
-Retained paths:
+    uv sync --frozen
+    bash scripts/check-package.sh
 
-- `sdk`
+Checks exercise generation helpers and the installed Python client from source,
+a fresh wheel, and a rebuilt source distribution. Generated test placeholders
+under sdk/rest/python/test are not counted as behavioral coverage.
 
-The import retains selected-path Git history and verifies every retained blob and
-file mode against that exact source. Rename predecessor paths are not followed.
-Source paths stay in their original layout for review. See `EXTRACTION.json`.
+The sdk/ tree retains TypeScript, Python, Kotlin and Swift REST sources, Python
+gRPC stubs, protocol inputs and auth examples. Only the Python REST client and
+helper modules are in the root wheel. Other languages and gRPC are retained
+artifacts, not independently qualified releases. Generated manifests retain
+upstream placeholder metadata; use the root Python build for validation.
 
-This is a history import, not a standalone release or runtime cutover. Dependency
-closure, workspace/lock configuration, compatibility packages, contract snapshots,
-CI/runner eligibility and destination-specific credentials must be reviewed before
-adoption. Actions remain disabled. No credential, deployment ref or runtime is
-copied or switched; the original monorepo remains intact.
+The committed OpenAPI is a snapshot, not a claim of current server compatibility.
+Refreshing it requires complete owner-service contract export and reconciliation.
+See scripts/sdk-gen/README.md for REST generation and structural removal checks.
+Multilanguage compilation, actual regeneration, gRPC/proto synchronization,
+auth examples and consumer acceptance remain separate qualification gates.
+
+CI uses pinned actions, read-only permissions and main/manual triggers. Actions
+remains disabled until hosted-worker policy and an exact-head run are qualified.
+No source service, release publication or deployment is changed by this package.
+
+The snapshot contained broken imports for a nonexistent AiApi class. Those
+exports are removed; AIApi remains available. Tag collision and complete
+operation coverage qualification remain tracked in #4. Hosted CI acceptance
+is #2; regeneration, language toolchains and consumer acceptance are #3.

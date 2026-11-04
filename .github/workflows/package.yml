@@ -1,0 +1,33 @@
+name: Standalone package
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        with:
+          version: '0.11.26'
+          python-version: '3.13'
+      - name: Validate SDK package
+        run: bash scripts/check-package.sh
+      - name: Check structural OpenAPI removals
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git cat-file -e HEAD^:sdk/openapi/v1/openapi.json 2>/dev/null; then
+            git show HEAD^:sdk/openapi/v1/openapi.json > /tmp/sdk-baseline.json
+            uv run --frozen python scripts/sdk-gen/check_breaking.py --new sdk/openapi/v1/openapi.json --baseline-file /tmp/sdk-baseline.json
+          else
+            echo 'No parent SDK snapshot; initial structural baseline not available.'
+          fi

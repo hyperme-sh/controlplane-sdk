@@ -43,7 +43,6 @@ from openapi_client.api.stripe_products_api import StripeProductsApi
 from openapi_client.api.tenants_api import TenantsApi
 from openapi_client.api.users_api import UsersApi
 from openapi_client.api.users_groups_api import UsersGroupsApi
-from openapi_client.api.ai_api import AiApi
 from openapi_client.api.api_keys_api import ApiKeysApi
 from openapi_client.api.auth_api import AuthApi
 
