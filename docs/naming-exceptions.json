@@ -1,0 +1,280 @@
+{
+  "repositories": [
+    ".github",
+    "acl-service",
+    "ai-service",
+    "aiuditor",
+    "api-keys-service",
+    "auth-service",
+    "controlplane-api",
+    "controlplane-billing",
+    "controlplane-core",
+    "controlplane-db",
+    "controlplane-edge",
+    "controlplane-events",
+    "controlplane-identity",
+    "controlplane-keycloak",
+    "controlplane-models",
+    "controlplane-proto",
+    "controlplane-sdk",
+    "controlplane-tenancy",
+    "hypermesh-gateway",
+    "hypermesh-orchestrator",
+    "hypermesh-ticket",
+    "marketplace-service",
+    "oracles",
+    "payments-access",
+    "product-template",
+    "turn",
+    "user-service",
+    "verification"
+  ],
+  "exceptions": [
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/pyproject.toml",
+      "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/pyproject.toml",
+      "line_sha256": "a953cc567762e562de71f49e8d85e28eaa099b1df0b6f8e29b9115cc12b3b1bd",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/conftest.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-checkpoint-issued.json",
+      "line_sha256": "cdcb8bf158718dc4b55581ab7eedc0b9ad1dc8e8ba252b00b6aee1c8552355b5",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-checkpoint-issued.json",
+      "line_sha256": "bc84dc5f9a7d05045c5f4a35fc3c43972f86c2c3646ce00576f56186eceadc29",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-checkpoint-issued.json",
+      "line_sha256": "bc84dc5f9a7d05045c5f4a35fc3c43972f86c2c3646ce00576f56186eceadc29",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-checkpoint-issued.json",
+      "line_sha256": "6a7d016fb2221a7eb0539c95c0ccc1fc9cb01adae13ac039676470e20a807c78",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-policy-snapshot.json",
+      "line_sha256": "bc84dc5f9a7d05045c5f4a35fc3c43972f86c2c3646ce00576f56186eceadc29",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-witness.json",
+      "line_sha256": "524c9fd7c5dfa5aa499d6bd5a3567ad32d2a084bd78958ceab9cf086063db850",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/fixtures/sociacl-witness.json",
+      "line_sha256": "4cd576eac22946f9d47c23e02a6deebaa550f9d8af2dfb53289debe4445e6fd4",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/test_keyring_state_repo.py",
+      "line_sha256": "08fc457cdc2d36a5738034e6ef435b11f9351ad7f1be4fd482c719dd1a3175f0",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "acl-service",
+      "path": "core/acl-service/tests/test_keyring_state_repo.py",
+      "line_sha256": "08fc457cdc2d36a5738034e6ef435b11f9351ad7f1be4fd482c719dd1a3175f0",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "acl-service",
+      "path": "tests/fixtures/sociacl-witness.json",
+      "line_sha256": "524c9fd7c5dfa5aa499d6bd5a3567ad32d2a084bd78958ceab9cf086063db850",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "acl-service",
+      "path": "tests/fixtures/sociacl-witness.json",
+      "line_sha256": "4cd576eac22946f9d47c23e02a6deebaa550f9d8af2dfb53289debe4445e6fd4",
+      "reason": "signed historical evidence"
+    },
+    {
+      "repo": "ai-service",
+      "path": "core/ai-service/pyproject.toml",
+      "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "ai-service",
+      "path": "core/ai-service/pyproject.toml",
+      "line_sha256": "a953cc567762e562de71f49e8d85e28eaa099b1df0b6f8e29b9115cc12b3b1bd",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "ai-service",
+      "path": "core/ai-service/tests/conftest.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "aiuditor",
+      "path": "integration/machine_postgres.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "api-keys-service",
+      "path": "core/api-keys-service/pyproject.toml",
+      "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "api-keys-service",
+      "path": "core/api-keys-service/pyproject.toml",
+      "line_sha256": "a953cc567762e562de71f49e8d85e28eaa099b1df0b6f8e29b9115cc12b3b1bd",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/Dockerfile",
+      "line_sha256": "56bd1800b8dc596759bf68dfe124cdb10dffefcf16f29f8edca124e6096342f2",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/pyproject.toml",
+      "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/pyproject.toml",
+      "line_sha256": "a953cc567762e562de71f49e8d85e28eaa099b1df0b6f8e29b9115cc12b3b1bd",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/tests/test_enrollment_db.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/tests/test_hypermesh_smoke_oidc.py",
+      "line_sha256": "8cdf70d72b1bb4e92fc092881eacf300f1568222d5f0e709de84cc1ab24ad6c5",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/tests/test_hypermesh_smoke_oidc.py",
+      "line_sha256": "286ccaaa0acabd2eaf4d271fe53c6d6c6a435278950ac8a5d404149178cd73fc",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/tests/test_hypermesh_smoke_oidc.py",
+      "line_sha256": "4494e5c10950dfeabbaab2978f541db1fb1d2d1c93ef913f5f78bab794f33eef",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "auth-service",
+      "path": "core/auth-service/tests/test_platform_role_seed_db.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "controlplane-api",
+      "path": "src/controlplane_api/config/__init__.py",
+      "line_sha256": "28f804b4faffd5ea229fa1947e584171ac23b7beffad148ca3d3b987b0d720d6",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-api",
+      "path": "src/controlplane_api/config/__init__.py",
+      "line_sha256": "fffd58a16b73b925d354278d0d3abb3882e41ed96c008bdd66d37ed62b4b5f7d",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-api",
+      "path": "src/controlplane_api/config/__init__.py",
+      "line_sha256": "02425eb98012550a6f034e8aefc022b16688ec0f4e719c81325cf187314b76ce",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-edge",
+      "path": "tests/test_edge_proxy.py",
+      "line_sha256": "81c4f4ad154d38bba73ff04348c7f91645d71ef73015fefaeb77bd75aa0b7b41",
+      "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "marketplace-service",
+      "path": "core/marketplace-service/Dockerfile",
+      "line_sha256": "2cd8a19342afb50ebbba5bc4263eb78e40f98c5cb7b74b954fc3d57fe8ccf306",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "marketplace-service",
+      "path": "core/marketplace-service/pyproject.toml",
+      "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "marketplace-service",
+      "path": "core/marketplace-service/pyproject.toml",
+      "line_sha256": "a953cc567762e562de71f49e8d85e28eaa099b1df0b6f8e29b9115cc12b3b1bd",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "marketplace-service",
+      "path": "core/marketplace-service/tests/conftest.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "user-service",
+      "path": "core/user-service/Dockerfile",
+      "line_sha256": "60aef0f2fee7f3bf0d0ffbc73bbcfcb40bc1d06fa5ff6c73b9d1d158baa07a99",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "user-service",
+      "path": "core/user-service/pyproject.toml",
+      "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "user-service",
+      "path": "core/user-service/pyproject.toml",
+      "line_sha256": "a953cc567762e562de71f49e8d85e28eaa099b1df0b6f8e29b9115cc12b3b1bd",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "user-service",
+      "path": "core/user-service/tests/conftest.py",
+      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
+      "reason": "external owner test harness"
+    },
+    {
+      "repo": "verification",
+      "path": "PLAN.md",
+      "line_sha256": "4bb7985740be11132f46ba047e2dc62067d80e7118740774135c258d03c135a2",
+      "reason": "existing external repository or document target"
+    }
+  ]
+}
