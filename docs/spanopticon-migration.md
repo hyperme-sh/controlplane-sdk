@@ -61,7 +61,7 @@ Run the organization audit against sibling checkouts of these PR heads:
 python3 controlplane-sdk/scripts/audit-naming.py /path/to/hyperme-sh-checkouts
 ```
 
-`naming-exceptions.json` records 48 distinct reviewed source-line fingerprints.
+`naming-exceptions.json` records 52 distinct reviewed source-line fingerprints.
 They are existing external repository/OIDC/document targets, external owner test
 harness references, signed historical interoperability evidence, the frozen migration registry, and the edge tenant-claim compatibility constant. Renaming them
 without migrating their owners or regenerating the evidence would break links,
@@ -112,7 +112,7 @@ conflict while retaining the implementation and applying the canonical rename.
 ## Additional extracted repositories
 
 The audit now covers payment-service, controlplane-portal, and controlplane-tests
-as well, bringing coverage to 31 repositories. Portal schema imports, SDK aliases,
+as well, bringing coverage to 33 repositories. Portal schema imports, SDK aliases,
 branding, and browser storage use the canonical name. Old browser credentials
 are deleted rather than migrated; tenant selection must be re-established.
 The test helper is spanopticon-tests 0.2.0 with spanopticon_tests imports and
@@ -122,3 +122,7 @@ The retained owner integration suites remain separately unqualified.
 The payment-service import landed during final review. Its package imports and
 private pins now use the canonical models and test-helper packages, while the
 actual external smoke caller repository remains unchanged.
+
+The final inventory also includes hypermesh-plane and spanopticon. Their owned
+content uses canonical naming; hypermesh-plane retains its exact external owner
+fixture repository and corresponding integration-test identities.
