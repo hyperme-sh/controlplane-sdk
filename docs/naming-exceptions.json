@@ -136,12 +136,6 @@
       "reason": "external owner test harness"
     },
     {
-      "repo": "aiuditor",
-      "path": "integration/machine_postgres.py",
-      "line_sha256": "090c3e094dc39862f1ab4c4429f185d9555c8564eb846c4f03ddaad08a52fcdb",
-      "reason": "external owner test harness"
-    },
-    {
       "repo": "api-keys-service",
       "path": "core/api-keys-service/pyproject.toml",
       "line_sha256": "2fccfcf29a65757193761cbc65e68ecf1e3697b13b1bafc2ae774b1f952ae2fe",
