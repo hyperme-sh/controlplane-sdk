@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "controlplane-sdk"
-version = "0.1.0"
+version = "0.2.0"
 description = "Control plane generated Python REST client and SDK generation helpers"
 requires-python = ">=3.13"
 dependencies = ["urllib3>=1.25.3,<3", "python-dateutil>=2.8.2", "pydantic>=2", "typing-extensions>=4.7.1", "httpx>=0.28"]
@@ -13,10 +13,10 @@ dependencies = ["urllib3>=1.25.3,<3", "python-dateutil>=2.8.2", "pydantic>=2", "
 dev = ["pytest>=8", "pytest-asyncio>=1", "respx>=0.22"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["sdk/rest/python/openapi_client", "src/panopticon_sdk_gen"]
+packages = ["sdk/rest/python/openapi_client", "src/spanopticon_sdk_gen"]
 
 [tool.hatch.build.targets.sdist]
-include = ["sdk", "src", "scripts", "tests", "pyproject.toml", "uv.lock", "README.md"]
+include = ["sdk", "src", "scripts", "tests", "docs", "pyproject.toml", "uv.lock", "README.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

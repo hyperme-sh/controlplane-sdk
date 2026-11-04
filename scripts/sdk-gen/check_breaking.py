@@ -13,12 +13,12 @@ _REPO = Path(__file__).resolve().parents[2]
 if str(_REPO / "scripts" / "sdk-gen") not in sys.path:
     sys.path.insert(0, str(_REPO / "scripts" / "sdk-gen"))
 
-from panopticon_sdk_gen.breaking import (  # noqa: E402
+from spanopticon_sdk_gen.breaking import (  # noqa: E402
     describe_breaking,
     is_breaking_change,
     load_allowed_removals,
 )
-from panopticon_sdk_gen.export import load_openapi_json  # noqa: E402
+from spanopticon_sdk_gen.export import load_openapi_json  # noqa: E402
 
 
 def _git_show(path_in_repo: str) -> dict | None:

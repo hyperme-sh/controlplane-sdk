@@ -31,7 +31,7 @@ async def build_merged_openapi_offline(
     from controlplane_edge.aggregation_settings import OpenAPIAggregationSettings
     from controlplane_edge.openapi_aggregate import build_merged_openapi_for_version
 
-    app = FastAPI(title="Panopticon Gateway (export)", version="1.0.0")
+    app = FastAPI(title="(s)panopticon Gateway (export)", version="1.0.0")
 
     @app.get("/export-health")
     def _health():

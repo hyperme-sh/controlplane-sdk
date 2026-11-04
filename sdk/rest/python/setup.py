@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Panopticon Control Plane API
+    (s)panopticon Control Plane API
 
     Canonical merge for frontend SDK (gateway + microservices).
 
@@ -33,11 +33,11 @@ REQUIRES = [
 setup(
     name=NAME,
     version=VERSION,
-    description="Panopticon Control Plane API",
+    description="(s)panopticon Control Plane API",
     author="OpenAPI Generator community",
     author_email="team@openapitools.org",
     url="",
-    keywords=["OpenAPI", "OpenAPI-Generator", "Panopticon Control Plane API"],
+    keywords=["OpenAPI", "OpenAPI-Generator", "(s)panopticon Control Plane API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,

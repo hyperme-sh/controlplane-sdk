@@ -5,7 +5,7 @@ import zipfile
 root = Path(__file__).resolve().parents[1]
 expected = {}
 for base in (root / 'sdk/rest/python', root / 'src'):
-    package = base / ('openapi_client' if base.name == 'python' else 'panopticon_sdk_gen')
+    package = base / ('openapi_client' if base.name == 'python' else 'spanopticon_sdk_gen')
     expected.update({p.relative_to(base).as_posix(): p.read_bytes() for p in package.rglob('*')
                      if p.is_file() and '__pycache__' not in p.parts})
 wheel, = Path(sys.argv[1]).glob('*.whl')

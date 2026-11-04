@@ -12,12 +12,12 @@ import httpx
 import pytest
 import respx
 
-from panopticon_sdk_gen.breaking import (
+from spanopticon_sdk_gen.breaking import (
     diff_openapi_structure,
     is_breaking_change,
     load_allowed_removals,
 )
-from panopticon_sdk_gen.export import (
+from spanopticon_sdk_gen.export import (
     build_merged_openapi_offline,
     fetch_openapi_with_retry,
     merge_offline_with_existing,
@@ -25,7 +25,7 @@ from panopticon_sdk_gen.export import (
     run_export_offline_sync,
     write_openapi_json,
 )
-from panopticon_sdk_gen.rest_codegen import (
+from spanopticon_sdk_gen.rest_codegen import (
     REST_PRESETS,
     run_openapi_generator_docker,
     sanitize_openapi_for_generator,
@@ -138,7 +138,7 @@ def test_rest_codegen_docker_invocation_smoke(tmp_path: Path):
 
     spec_rel = Path("sdk/openapi/v1/openapi.json")
     out_rel = Path("sdk/rest/python")
-    with patch("panopticon_sdk_gen.rest_codegen.subprocess.check_call", side_effect=fake_check_call):
+    with patch("spanopticon_sdk_gen.rest_codegen.subprocess.check_call", side_effect=fake_check_call):
         run_openapi_generator_docker(
             repo_root=REPO,
             spec_container_path="/local/" + spec_rel.as_posix(),

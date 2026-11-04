@@ -1,7 +1,7 @@
 # coding: utf-8
 
 """
-    Panopticon Aggregated API (v1)
+    (s)panopticon Aggregated API (v1)
 
     Aggregated from the control-plane edge and microservice OpenAPI specs.
 

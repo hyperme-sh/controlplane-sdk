@@ -12,7 +12,7 @@ _REPO = Path(__file__).resolve().parents[2]
 if str(_REPO / "scripts" / "sdk-gen") not in sys.path:
     sys.path.insert(0, str(_REPO / "scripts" / "sdk-gen"))
 
-from panopticon_sdk_gen.rest_codegen import (  # noqa: E402
+from spanopticon_sdk_gen.rest_codegen import (  # noqa: E402
     REST_PRESETS,
     generate_rest_language,
     write_codegen_openapi,

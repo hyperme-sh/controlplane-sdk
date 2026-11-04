@@ -2,7 +2,7 @@
 
 # flake8: noqa
 """
-    Panopticon Control Plane API
+    (s)panopticon Control Plane API
 
     Canonical merge for frontend SDK (gateway + microservices).
 

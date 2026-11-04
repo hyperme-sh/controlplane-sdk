@@ -2,7 +2,7 @@
 
 Generated REST clients, protocol snapshots, auth examples and generation helpers.
 The root Python distribution `controlplane-sdk` installs `openapi_client` and
-`panopticon_sdk_gen`. It must not be installed alongside another distribution
+`spanopticon_sdk_gen`. It must not be installed alongside another distribution
 providing the same `openapi_client` namespace. No package has been published.
 
 Use Python 3.13 and uv 0.11.26:

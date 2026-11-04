@@ -9,10 +9,10 @@ from pathlib import Path
 
 
 def copy_proto_tree(repo_root: Path, sdk_proto_root: Path) -> None:
-    """Copy ``proto/panopticon`` into ``sdk/proto/panopticon`` for consumers and nanopb."""
+    """Copy ``proto/spanopticon`` into ``sdk/proto/spanopticon`` for consumers and nanopb."""
 
-    src = repo_root / "proto" / "panopticon"
-    dst = sdk_proto_root / "panopticon"
+    src = repo_root / "proto" / "spanopticon"
+    dst = sdk_proto_root / "spanopticon"
     if not src.is_dir():
         raise FileNotFoundError(f"missing proto tree: {src}")
     if dst.exists():
@@ -31,7 +31,7 @@ def generate_python_grpc(
     repo_root: Path,
     out_sdk: Path,
     *,
-    proto_rel: str = "proto/panopticon/v1/contractecho.proto",
+    proto_rel: str = "proto/spanopticon/v1/contractecho.proto",
 ) -> None:
     """Run ``grpc_tools.protoc`` for Python into ``sdk/grpc/python``."""
 
@@ -67,7 +67,7 @@ def write_c_nanopb_readme(sdk_root: Path) -> None:
 
 Generate static C code from the same protos as Python:
 
-- Protobuf sources: ``sdk/proto/panopticon/v1/*.proto``
+- Protobuf sources: ``sdk/proto/spanopticon/v1/*.proto``
 - Follow the repository root ``docs/grpc-nanopb.md`` for ``protoc`` + nanopb plugin and options files.
 
 OpenAPI-based C clients are not generated here; protobuf is preferred for constrained devices.

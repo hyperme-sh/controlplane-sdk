@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from panopticon.v1 import contractecho_pb2 as panopticon_dot_v1_dot_contractecho__pb2
+from spanopticon.v1 import contractecho_pb2 as spanopticon_dot_v1_dot_contractecho__pb2
 
 GRPC_GENERATED_VERSION = '1.80.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in panopticon/v1/contractecho_pb2_grpc.py depends on'
+        + ' but the generated code in spanopticon/v1/contractecho_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,19 +36,19 @@ class ContractEchoStub(object):
             channel: A grpc.Channel.
         """
         self.EchoListing = channel.unary_unary(
-                '/panopticon.v1.ContractEcho/EchoListing',
-                request_serializer=panopticon_dot_v1_dot_contractecho__pb2.ListingWire.SerializeToString,
-                response_deserializer=panopticon_dot_v1_dot_contractecho__pb2.ListingWire.FromString,
+                '/spanopticon.v1.ContractEcho/EchoListing',
+                request_serializer=spanopticon_dot_v1_dot_contractecho__pb2.ListingWire.SerializeToString,
+                response_deserializer=spanopticon_dot_v1_dot_contractecho__pb2.ListingWire.FromString,
                 _registered_method=True)
         self.EchoTokenUsage = channel.unary_unary(
-                '/panopticon.v1.ContractEcho/EchoTokenUsage',
-                request_serializer=panopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.SerializeToString,
-                response_deserializer=panopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.FromString,
+                '/spanopticon.v1.ContractEcho/EchoTokenUsage',
+                request_serializer=spanopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.SerializeToString,
+                response_deserializer=spanopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.FromString,
                 _registered_method=True)
         self.EchoUser = channel.unary_unary(
-                '/panopticon.v1.ContractEcho/EchoUser',
-                request_serializer=panopticon_dot_v1_dot_contractecho__pb2.UserWire.SerializeToString,
-                response_deserializer=panopticon_dot_v1_dot_contractecho__pb2.UserWire.FromString,
+                '/spanopticon.v1.ContractEcho/EchoUser',
+                request_serializer=spanopticon_dot_v1_dot_contractecho__pb2.UserWire.SerializeToString,
+                response_deserializer=spanopticon_dot_v1_dot_contractecho__pb2.UserWire.FromString,
                 _registered_method=True)
 
 
@@ -79,24 +79,24 @@ def add_ContractEchoServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'EchoListing': grpc.unary_unary_rpc_method_handler(
                     servicer.EchoListing,
-                    request_deserializer=panopticon_dot_v1_dot_contractecho__pb2.ListingWire.FromString,
-                    response_serializer=panopticon_dot_v1_dot_contractecho__pb2.ListingWire.SerializeToString,
+                    request_deserializer=spanopticon_dot_v1_dot_contractecho__pb2.ListingWire.FromString,
+                    response_serializer=spanopticon_dot_v1_dot_contractecho__pb2.ListingWire.SerializeToString,
             ),
             'EchoTokenUsage': grpc.unary_unary_rpc_method_handler(
                     servicer.EchoTokenUsage,
-                    request_deserializer=panopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.FromString,
-                    response_serializer=panopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.SerializeToString,
+                    request_deserializer=spanopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.FromString,
+                    response_serializer=spanopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.SerializeToString,
             ),
             'EchoUser': grpc.unary_unary_rpc_method_handler(
                     servicer.EchoUser,
-                    request_deserializer=panopticon_dot_v1_dot_contractecho__pb2.UserWire.FromString,
-                    response_serializer=panopticon_dot_v1_dot_contractecho__pb2.UserWire.SerializeToString,
+                    request_deserializer=spanopticon_dot_v1_dot_contractecho__pb2.UserWire.FromString,
+                    response_serializer=spanopticon_dot_v1_dot_contractecho__pb2.UserWire.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'panopticon.v1.ContractEcho', rpc_method_handlers)
+            'spanopticon.v1.ContractEcho', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('panopticon.v1.ContractEcho', rpc_method_handlers)
+    server.add_registered_method_handlers('spanopticon.v1.ContractEcho', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -118,9 +118,9 @@ class ContractEcho(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/panopticon.v1.ContractEcho/EchoListing',
-            panopticon_dot_v1_dot_contractecho__pb2.ListingWire.SerializeToString,
-            panopticon_dot_v1_dot_contractecho__pb2.ListingWire.FromString,
+            '/spanopticon.v1.ContractEcho/EchoListing',
+            spanopticon_dot_v1_dot_contractecho__pb2.ListingWire.SerializeToString,
+            spanopticon_dot_v1_dot_contractecho__pb2.ListingWire.FromString,
             options,
             channel_credentials,
             insecure,
@@ -145,9 +145,9 @@ class ContractEcho(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/panopticon.v1.ContractEcho/EchoTokenUsage',
-            panopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.SerializeToString,
-            panopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.FromString,
+            '/spanopticon.v1.ContractEcho/EchoTokenUsage',
+            spanopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.SerializeToString,
+            spanopticon_dot_v1_dot_contractecho__pb2.TokenUsageWire.FromString,
             options,
             channel_credentials,
             insecure,
@@ -172,9 +172,9 @@ class ContractEcho(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/panopticon.v1.ContractEcho/EchoUser',
-            panopticon_dot_v1_dot_contractecho__pb2.UserWire.SerializeToString,
-            panopticon_dot_v1_dot_contractecho__pb2.UserWire.FromString,
+            '/spanopticon.v1.ContractEcho/EchoUser',
+            spanopticon_dot_v1_dot_contractecho__pb2.UserWire.SerializeToString,
+            spanopticon_dot_v1_dot_contractecho__pb2.UserWire.FromString,
             options,
             channel_credentials,
             insecure,
