@@ -1,5 +1,7 @@
+.openapi-generator-ignore
 apis/ACLApi.ts
 apis/AIApi.ts
+apis/AIUsageApi.ts
 apis/AccountApi.ts
 apis/Ai0Api.ts
 apis/ApiKeysApi.ts

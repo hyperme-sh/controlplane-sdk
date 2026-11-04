@@ -113,6 +113,8 @@ Class | Method | HTTP request | Description
 *AIApi* | [**get_single_session_api_v1_ai_sessions_session_id_get**](docs/AIApi.md#get_single_session_api_v1_ai_sessions_session_id_get) | **GET** /api/v1/ai/sessions/{session_id} | Get Single Session
 *AIApi* | [**inference_api_v1_ai_inference_post**](docs/AIApi.md#inference_api_v1_ai_inference_post) | **POST** /api/v1/ai/inference | Inference
 *AIApi* | [**set_preferred_model_api_v1_ai_set_model_preference_model_name_put**](docs/AIApi.md#set_preferred_model_api_v1_ai_set_model_preference_model_name_put) | **PUT** /api/v1/ai/set_model_preference/{model_name} | Set Preferred Model
+*AIUsageApi* | [**api_v1_ai_usage_history_get**](docs/AIUsageApi.md#api_v1_ai_usage_history_get) | **GET** /api/v1/ai/usage/history | List inference usage history
+*AIUsageApi* | [**api_v1_ai_usage_summary_get**](docs/AIUsageApi.md#api_v1_ai_usage_summary_get) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
 *AccountApi* | [**change_email_api_v1_account_change_email_request_patch**](docs/AccountApi.md#change_email_api_v1_account_change_email_request_patch) | **PATCH** /api/v1/account/change_email_request | Change Email
 *AccountApi* | [**change_email_confirmation_api_v1_account_change_email_confirmation_patch**](docs/AccountApi.md#change_email_confirmation_api_v1_account_change_email_confirmation_patch) | **PATCH** /api/v1/account/change_email_confirmation | Change Email Confirmation
 *AccountApi* | [**logout_api_v1_account_logout_get**](docs/AccountApi.md#logout_api_v1_account_logout_get) | **GET** /api/v1/account/logout | Logout
@@ -213,8 +215,6 @@ Class | Method | HTTP request | Description
 *UsersGroupsApi* | [**list_organizations_api_v1_organizations_get**](docs/UsersGroupsApi.md#list_organizations_api_v1_organizations_get) | **GET** /api/v1/organizations | List Organizations
 *UsersGroupsApi* | [**list_users_api_v1_users_get**](docs/UsersGroupsApi.md#list_users_api_v1_users_get) | **GET** /api/v1/users | List Users
 *UsersGroupsApi* | [**update_user_api_v1_users_user_id_patch**](docs/UsersGroupsApi.md#update_user_api_v1_users_user_id_patch) | **PATCH** /api/v1/users/{user_id} | Update User
-*AiApi* | [**api_v1_ai_usage_history_get**](docs/AiApi.md#api_v1_ai_usage_history_get) | **GET** /api/v1/ai/usage/history | List inference usage history
-*AiApi* | [**api_v1_ai_usage_summary_get**](docs/AiApi.md#api_v1_ai_usage_summary_get) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
 *ApiKeysApi* | [**create_api_key_api_v1_api_keys_post**](docs/ApiKeysApi.md#create_api_key_api_v1_api_keys_post) | **POST** /api/v1/api-keys | Create Api Key
 *ApiKeysApi* | [**internal_validate_api_v1_internal_validate_post**](docs/ApiKeysApi.md#internal_validate_api_v1_internal_validate_post) | **POST** /api/v1/internal/validate | Internal Validate
 *ApiKeysApi* | [**list_api_keys_api_v1_api_keys_get**](docs/ApiKeysApi.md#list_api_keys_api_v1_api_keys_get) | **GET** /api/v1/api-keys | List Api Keys

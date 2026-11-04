@@ -27,12 +27,15 @@ Multilanguage compilation, actual regeneration, gRPC/proto synchronization,
 auth examples and consumer acceptance remain separate qualification gates.
 
 CI uses pinned actions, read-only permissions and main/manual triggers. Actions
-remains disabled until shared-runner qualification and an exact-head run are qualified.
+is enabled; exact-head hosted-runner qualification remains separate from the
+local package checks. No PR-triggered package workflow is configured.
 No source service, release publication or deployment is changed by this package.
 
-The snapshot contained broken imports for a nonexistent AiApi class. Those
-exports are removed; AIApi remains available. Tag collision and complete
-operation coverage qualification remain tracked in #4. Shared-runner CI acceptance
-is #2; regeneration, language toolchains and consumer acceptance are #3.
+AI inference/session and usage clients have separate case-safe names. `AIApi`
+retains the original inference/session operations; `AIUsageApi` owns usage history
+and summary. `AiApi` and previous usage-module imports remain compatibility aliases.
+All four REST trees are regenerated with complete snapshot method/path checks.
+See [the adoption evidence](docs/ai-usage-adoption.md). Shared-runner CI acceptance
+is #2; native language compilation and deployed consumer qualification remain #3.
 
 See [the organization naming migration](docs/spanopticon-migration.md) for linked PRs, rollout order, validation and the repeatable audit.

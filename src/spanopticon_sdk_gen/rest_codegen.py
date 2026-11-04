@@ -4,13 +4,22 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import subprocess
 import sys
+import tempfile
+from collections.abc import Sequence
 from copy import deepcopy
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any
 
-DEFAULT_IMAGE = "openapitools/openapi-generator-cli:v7.10.0"
+from spanopticon_sdk_gen.rest_contract import (
+    install_usage_compatibility,
+    map_codegen_tags,
+    validate_generated_operations,
+)
+
+DEFAULT_IMAGE = "openapitools/openapi-generator-cli@sha256:f2054a5a7908ad81017d0f0839514ba5eab06ae628914ff71554d46fac1bcf7a"
 CODEGEN_SPEC_REL = Path(".cache/sdk-gen/openapi.codegen.json")
 
 
@@ -62,7 +71,7 @@ def sanitize_openapi_for_generator(doc: dict[str, Any]) -> dict[str, Any]:
             obj["nullable"] = True
         return obj
 
-    return rewrite(deepcopy(doc))
+    return map_codegen_tags(rewrite(deepcopy(doc)))
 
 
 def write_codegen_openapi(repo_root: Path, spec_rel: Path) -> Path:
@@ -71,7 +80,10 @@ def write_codegen_openapi(repo_root: Path, spec_rel: Path) -> Path:
     raw = json.loads(src.read_text(encoding="utf-8"))
     out = repo_root / CODEGEN_SPEC_REL
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(sanitize_openapi_for_generator(raw), indent=2) + "\n", encoding="utf-8")
+    out.write_text(
+        json.dumps(sanitize_openapi_for_generator(raw), indent=2) + "\n",
+        encoding="utf-8",
+    )
     return CODEGEN_SPEC_REL
 
 
@@ -100,6 +112,8 @@ def run_openapi_generator_docker(
         "--rm",
         # Use only local image; run_all.sh pulls explicitly (avoids duplicate registry hits).
         "--pull=never",
+        "--user",
+        f"{os.getuid()}:{os.getgid()}",
         *_repo_mount_args(repo_root),
         image,
         "generate",
@@ -163,19 +177,66 @@ def generate_rest_language(
     image: str = DEFAULT_IMAGE,
 ) -> None:
     if language_key not in REST_PRESETS:
-        raise ValueError(f"unknown language {language_key!r}; choose from {sorted(REST_PRESETS)}")
+        raise ValueError(
+            f"unknown language {language_key!r}; choose from {sorted(REST_PRESETS)}"
+        )
     gen, props = REST_PRESETS[language_key]
+    props = [*props, "hideGenerationTimestamp=true"]
     spec_in = "/local/" + spec_rel.as_posix()
-    out_in = "/local/" + out_rel.as_posix()
-    run_openapi_generator_docker(
-        repo_root=repo_root,
-        spec_container_path=spec_in,
-        generator=gen,
-        output_container_path=out_in,
-        additional_properties=props,
-        docker_bin=docker_bin,
-        image=image,
-    )
+    # Validate a clean generation before replacing any committed artifacts.
+    cache = repo_root / ".cache/sdk-gen"
+    cache.mkdir(parents=True, exist_ok=True)
+    document = json.loads((repo_root / spec_rel).read_text())
+    with tempfile.TemporaryDirectory(prefix="rest-", dir=cache) as directory:
+        stage = Path(directory)
+        run_openapi_generator_docker(
+            repo_root=repo_root,
+            spec_container_path=spec_in,
+            generator=gen,
+            output_container_path="/local/" + stage.relative_to(repo_root).as_posix(),
+            additional_properties=props,
+            docker_bin=docker_bin,
+            image=image,
+        )
+        validate_generated_operations(stage, language_key, document)
+        aliases = install_usage_compatibility(stage, language_key)
+        manifest = stage / ".openapi-generator/FILES"
+        generated = (
+            set(manifest.read_text().splitlines())
+            | set(aliases)
+            | {".openapi-generator/FILES", ".openapi-generator/VERSION"}
+        )
+        for name in generated:
+            if Path(name).is_absolute() or ".." in Path(name).parts:
+                raise ValueError("Generator manifest contains an unsafe path")
+        manifest.write_text(
+            "\n".join(
+                sorted(
+                    generated
+                    - {".openapi-generator/FILES", ".openapi-generator/VERSION"}
+                )
+            )
+            + "\n"
+        )
+        output = repo_root / out_rel
+        old_manifest = output / ".openapi-generator/FILES"
+        old = (
+            set(old_manifest.read_text().splitlines())
+            if old_manifest.exists()
+            else set()
+        )
+        for name in old - generated:
+            relative = Path(name)
+            if relative.is_absolute() or ".." in relative.parts:
+                raise ValueError("Existing generator manifest contains an unsafe path")
+            target = output / relative
+            if target.is_file():
+                target.unlink()
+        for source in stage.rglob("*"):
+            if source.is_file():
+                target = output / source.relative_to(stage)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(source, target)
 
 
 def main_preset_list() -> None:

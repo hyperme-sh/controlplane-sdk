@@ -40,13 +40,13 @@ Class | Method | HTTP request | Description
 *AIAPI* | [**getSingleSessionApiV1AiSessionsSessionIdGet**](docs/AIAPI.md#getsinglesessionapiv1aisessionssessionidget) | **GET** /api/v1/ai/sessions/{session_id} | Get Single Session
 *AIAPI* | [**inferenceApiV1AiInferencePost**](docs/AIAPI.md#inferenceapiv1aiinferencepost) | **POST** /api/v1/ai/inference | Inference
 *AIAPI* | [**setPreferredModelApiV1AiSetModelPreferenceModelNamePut**](docs/AIAPI.md#setpreferredmodelapiv1aisetmodelpreferencemodelnameput) | **PUT** /api/v1/ai/set_model_preference/{model_name} | Set Preferred Model
+*AIUsageAPI* | [**apiV1AiUsageHistoryGet**](docs/AIUsageAPI.md#apiv1aiusagehistoryget) | **GET** /api/v1/ai/usage/history | List inference usage history
+*AIUsageAPI* | [**apiV1AiUsageSummaryGet**](docs/AIUsageAPI.md#apiv1aiusagesummaryget) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
 *AccountAPI* | [**changeEmailApiV1AccountChangeEmailRequestPatch**](docs/AccountAPI.md#changeemailapiv1accountchangeemailrequestpatch) | **PATCH** /api/v1/account/change_email_request | Change Email
 *AccountAPI* | [**changeEmailConfirmationApiV1AccountChangeEmailConfirmationPatch**](docs/AccountAPI.md#changeemailconfirmationapiv1accountchangeemailconfirmationpatch) | **PATCH** /api/v1/account/change_email_confirmation | Change Email Confirmation
 *AccountAPI* | [**logoutApiV1AccountLogoutGet**](docs/AccountAPI.md#logoutapiv1accountlogoutget) | **GET** /api/v1/account/logout | Logout
 *AccountAPI* | [**readUsersMeApiV1AccountMeGet**](docs/AccountAPI.md#readusersmeapiv1accountmeget) | **GET** /api/v1/account/me | Read Users Me
 *AccountAPI* | [**resendActivationEmailApiV1AccountResendActivationEmailPost**](docs/AccountAPI.md#resendactivationemailapiv1accountresendactivationemailpost) | **POST** /api/v1/account/resend_activation_email | Resend Activation Email
-*AiAPI* | [**apiV1AiUsageHistoryGet**](docs/AiAPI.md#apiv1aiusagehistoryget) | **GET** /api/v1/ai/usage/history | List inference usage history
-*AiAPI* | [**apiV1AiUsageSummaryGet**](docs/AiAPI.md#apiv1aiusagesummaryget) | **GET** /api/v1/ai/usage/summary | Tenant usage summary
 *ApiKeysAPI* | [**createApiKeyApiV1ApiKeysPost**](docs/ApiKeysAPI.md#createapikeyapiv1apikeyspost) | **POST** /api/v1/api-keys | Create Api Key
 *ApiKeysAPI* | [**internalValidateApiV1InternalValidatePost**](docs/ApiKeysAPI.md#internalvalidateapiv1internalvalidatepost) | **POST** /api/v1/internal/validate | Internal Validate
 *ApiKeysAPI* | [**listApiKeysApiV1ApiKeysGet**](docs/ApiKeysAPI.md#listapikeysapiv1apikeysget) | **GET** /api/v1/api-keys | List Api Keys

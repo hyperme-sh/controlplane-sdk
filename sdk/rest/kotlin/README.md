@@ -59,13 +59,13 @@ All URIs are relative to *http://localhost*
 | *AIApi* | [**getSingleSessionApiV1AiSessionsSessionIdGet**](docs/AIApi.md#getsinglesessionapiv1aisessionssessionidget) | **GET** api/v1/ai/sessions/{session_id} | Get Single Session |
 | *AIApi* | [**inferenceApiV1AiInferencePost**](docs/AIApi.md#inferenceapiv1aiinferencepost) | **POST** api/v1/ai/inference | Inference |
 | *AIApi* | [**setPreferredModelApiV1AiSetModelPreferenceModelNamePut**](docs/AIApi.md#setpreferredmodelapiv1aisetmodelpreferencemodelnameput) | **PUT** api/v1/ai/set_model_preference/{model_name} | Set Preferred Model |
+| *AIUsageApi* | [**apiV1AiUsageHistoryGet**](docs/AIUsageApi.md#apiv1aiusagehistoryget) | **GET** api/v1/ai/usage/history | List inference usage history |
+| *AIUsageApi* | [**apiV1AiUsageSummaryGet**](docs/AIUsageApi.md#apiv1aiusagesummaryget) | **GET** api/v1/ai/usage/summary | Tenant usage summary |
 | *AccountApi* | [**changeEmailApiV1AccountChangeEmailRequestPatch**](docs/AccountApi.md#changeemailapiv1accountchangeemailrequestpatch) | **PATCH** api/v1/account/change_email_request | Change Email |
 | *AccountApi* | [**changeEmailConfirmationApiV1AccountChangeEmailConfirmationPatch**](docs/AccountApi.md#changeemailconfirmationapiv1accountchangeemailconfirmationpatch) | **PATCH** api/v1/account/change_email_confirmation | Change Email Confirmation |
 | *AccountApi* | [**logoutApiV1AccountLogoutGet**](docs/AccountApi.md#logoutapiv1accountlogoutget) | **GET** api/v1/account/logout | Logout |
 | *AccountApi* | [**readUsersMeApiV1AccountMeGet**](docs/AccountApi.md#readusersmeapiv1accountmeget) | **GET** api/v1/account/me | Read Users Me |
 | *AccountApi* | [**resendActivationEmailApiV1AccountResendActivationEmailPost**](docs/AccountApi.md#resendactivationemailapiv1accountresendactivationemailpost) | **POST** api/v1/account/resend_activation_email | Resend Activation Email |
-| *AiApi* | [**apiV1AiUsageHistoryGet**](docs/AiApi.md#apiv1aiusagehistoryget) | **GET** api/v1/ai/usage/history | List inference usage history |
-| *AiApi* | [**apiV1AiUsageSummaryGet**](docs/AiApi.md#apiv1aiusagesummaryget) | **GET** api/v1/ai/usage/summary | Tenant usage summary |
 | *ApiKeysApi* | [**createApiKeyApiV1ApiKeysPost**](docs/ApiKeysApi.md#createapikeyapiv1apikeyspost) | **POST** api/v1/api-keys | Create Api Key |
 | *ApiKeysApi* | [**internalValidateApiV1InternalValidatePost**](docs/ApiKeysApi.md#internalvalidateapiv1internalvalidatepost) | **POST** api/v1/internal/validate | Internal Validate |
 | *ApiKeysApi* | [**listApiKeysApiV1ApiKeysGet**](docs/ApiKeysApi.md#listapikeysapiv1apikeysget) | **GET** api/v1/api-keys | List Api Keys |

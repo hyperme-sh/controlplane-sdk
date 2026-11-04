@@ -358,6 +358,12 @@
       "path": "products/hypermesh/tests/test_mismatch_sequence.py",
       "line_sha256": "2530dbbe66b771e129d26717d2ff52065808046e354c1851a7ce6c4e9bb2536c",
       "reason": "existing external repository or document target"
+    },
+    {
+      "repo": "controlplane-sdk",
+      "path": "docs/ai-usage-adoption.md",
+      "line_sha256": "a80191b6b8cc7bb827993b226de4c3e9933e7b4fb63bb3b5328382b787b208d6",
+      "reason": "immutable external source PR provenance"
     }
   ]
 }

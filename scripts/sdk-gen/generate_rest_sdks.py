@@ -9,10 +9,11 @@ import sys
 from pathlib import Path
 
 _REPO = Path(__file__).resolve().parents[2]
-if str(_REPO / "scripts" / "sdk-gen") not in sys.path:
-    sys.path.insert(0, str(_REPO / "scripts" / "sdk-gen"))
+if str(_REPO / "src") not in sys.path:
+    sys.path.insert(0, str(_REPO / "src"))
 
 from spanopticon_sdk_gen.rest_codegen import (  # noqa: E402
+    DEFAULT_IMAGE,
     REST_PRESETS,
     generate_rest_language,
     write_codegen_openapi,
@@ -44,7 +45,7 @@ def main() -> int:
     p.add_argument(
         "--image",
         default=os.environ.get(
-            "OPENAPI_GENERATOR_IMAGE", "openapitools/openapi-generator-cli:v7.10.0"
+            "OPENAPI_GENERATOR_IMAGE", DEFAULT_IMAGE
         ),
         help="openapi-generator image (or set OPENAPI_GENERATOR_IMAGE)",
     )

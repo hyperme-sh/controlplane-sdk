@@ -43,7 +43,7 @@ class UsdcLeasePaymentResponseTest : ShouldSpec() {
             //modelInstance.amountCents shouldBe ("TODO")
         }
 
-        // to test the property `amountAtoms`
+        // to test the property `amountAtoms` - USDC atoms (6 decimals). 64-bit: large payments exceed 32 bits.
         should("test amountAtoms") {
             // uncomment below to test the property
             //modelInstance.amountAtoms shouldBe ("TODO")
@@ -55,7 +55,7 @@ class UsdcLeasePaymentResponseTest : ShouldSpec() {
             //modelInstance.chainId shouldBe ("TODO")
         }
 
-        // to test the property `testCreditAvailable` - True only on a Base Sepolia deployment with Stripe in test mode. The renter may then settle this payment from a test-network credit.
+        // to test the property `testCreditAvailable` - True only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is set and the deployment is Base Sepolia with Stripe in test mode. The renter may then settle this payment from a test-network credit.
         should("test testCreditAvailable") {
             // uncomment below to test the property
             //modelInstance.testCreditAvailable shouldBe ("TODO")

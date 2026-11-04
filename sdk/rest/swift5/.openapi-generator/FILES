@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 .swiftformat
 Cartfile
 OpenAPIClient.podspec
@@ -6,6 +7,7 @@ OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ACLAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AIAPI.swift
+OpenAPIClient/Classes/OpenAPIs/APIs/AIUsageAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/AccountAPI.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/Ai0API.swift
 OpenAPIClient/Classes/OpenAPIs/APIs/ApiKeysAPI.swift
@@ -188,8 +190,8 @@ docs/AIHistoriesDto.md
 docs/AIHistoryDto.md
 docs/AIModelInfoDto.md
 docs/AISessionByUserIdDto.md
+docs/AIUsageAPI.md
 docs/AccountAPI.md
-docs/Ai0API.md
 docs/ApiKeyCreateRequest.md
 docs/ApiKeyCreatedResponse.md
 docs/ApiKeyResponse.md
