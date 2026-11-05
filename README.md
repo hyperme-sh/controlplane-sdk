@@ -1,5 +1,14 @@
 # Control plane SDK
 
+## Current version authority
+
+Current development version: `0.2.0`. The services remain before the unreleased
+0.24.0 milestone. Earlier 0.24/1.0 preparation and publication notes below are
+historical and do not authorize those versions. Existing tags and historical
+artifacts remain untouched. Development uses exact source pins and rebuilt
+artifacts; no prior release is required. Version changes, tags and publication
+require the owner's explicit authorization to the agent.
+
 Generated REST clients, protocol snapshots, auth examples and generation helpers.
 The root Python distribution `controlplane-sdk` installs `openapi_client` and
 `spanopticon_sdk_gen`. It must not be installed alongside another distribution
