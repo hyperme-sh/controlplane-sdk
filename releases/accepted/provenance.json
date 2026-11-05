@@ -1,0 +1,21 @@
+{
+  "repository": "hyperme-sh/controlplane-sdk",
+  "revision": "aa831d24139a555968bb32b4ac78202d3c3c9cfb",
+  "release_id": 434633178,
+  "immutable": true,
+  "tag": "test-aa831d24139a555968bb32b4ac78202d3c3c9cfb",
+  "run_id": 41943830662,
+  "artifact_id": 13378420318,
+  "assets": {
+    "controlplane_sdk-0.2.0-py3-none-any.whl": "sha256:ac305e97728632bc712c9df61ed094eb7cea9991f14deb2b5d0d65a4b30d1f74",
+    "controlplane_sdk-0.2.0.tar.gz": "sha256:68e62169ac3994c7397efafa168b1f64cae5d86eb74be46c66ac9e9bdbd2299e"
+  },
+  "published_release_url": "https://github.com/hyperme-sh/controlplane-sdk/releases/tag/test-aa831d24139a555968bb32b4ac78202d3c3c9cfb",
+  "checks": [
+    "successful same-repository main-push package run",
+    "live Actions artifact digest",
+    "release bytes equal tested bytes",
+    "immutable release and tag revision",
+    "asset digests equal manifest"
+  ]
+}

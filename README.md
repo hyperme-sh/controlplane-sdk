@@ -3,7 +3,7 @@
 Generated REST clients, protocol snapshots, auth examples and generation helpers.
 The root Python distribution `controlplane-sdk` installs `openapi_client` and
 `spanopticon_sdk_gen`. It must not be installed alongside another distribution
-providing the same `openapi_client` namespace. No package has been published.
+providing the same `openapi_client` namespace. The root distribution uses the coordinated 0.24 line and immutable test releases.
 
 Use Python 3.13 and uv 0.11.26:
 
@@ -28,7 +28,7 @@ auth examples and consumer acceptance remain separate qualification gates.
 
 CI uses pinned actions, read-only permissions and main/manual triggers. Actions
 is enabled; exact-head hosted-runner qualification remains separate from the
-local package checks. No PR-triggered package workflow is configured.
+local package checks. A separate read-only hosted PR workflow qualifies the Python distribution.
 No source service, release publication or deployment is changed by this package.
 
 AI inference/session and usage clients have separate case-safe names. `AIApi`
@@ -54,3 +54,12 @@ organization policy may shorten it). Expired evidence fails closed: validate a
 new main revision. The publisher verifies the run, source, workflow and artifact
 digest independently of release metadata. Repository immutable releases must be
 enabled. See the [shared release contract](https://github.com/hyperme-sh/.github/blob/7749591fccd30d46ba9b0adabe82114001c9d0de/actions/release-channel/README.md).
+
+## Artifact contracts
+
+The root distribution is version 0.24.0. CI exports all packaged runtime/resource
+bytes from the actual wheel without importing candidate code, binds the candidate
+version and digest to that build, and compares rebuilt-sdist contracts. Conservative
+byte equality rejects implementation-only patch changes as well. Installer-metadata
+and semantic compatibility remain separate; archived owner/multilanguage artifacts
+are not counted as independently qualified by the root package tests.
