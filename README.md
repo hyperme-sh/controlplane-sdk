@@ -75,7 +75,9 @@ snapshot receipts are preserved there with an explicit non-stable classification
 `releases/accepted` and `SPANOPTICON_RELEASE_BASELINE_SHA` are reserved for an
 actual immutable stable GitHub release. The pinned shared guard verifies the live
 release channel, stable tag source and asset digests; a test snapshot cannot
-become accepted through a provenance label. No stable baseline is recorded until
-that release exists. Stable publication remains closed without a valid baseline;
-first stable bootstrap and coordinated release qualification remain separate.
-No stable version, approval prerequisite or deployment is introduced here.
+become accepted through a provenance label. The accepted record now binds the
+already published immutable `v0.24.0` release to its actual source and asset
+digests. The independently selected baseline is
+`fbeaf6601fe7f16bde4f43f85de400bdd9d80926`. Test qualification history remains
+separate. This records an existing distribution; runtime deployment and
+coordinated consumer acceptance remain separate.
