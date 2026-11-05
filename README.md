@@ -97,3 +97,11 @@ publisher independently verifies a real immutable stable baseline and refuses
 qualification snapshots, even if a caller job reports success. Existing valid
 stable records are retained; no release, version change, deployment or human
 approval prerequisite is introduced by this correction.
+
+## Public license and executed test inventory
+
+The repository and root Python distribution are Apache-2.0 licensed; dependencies
+retain their own licenses. Generated client placeholders are not separate supported
+release metadata. The OpenAPI snapshot smoke test is required in source, wheel
+and rebuilt-sdist qualification. CI rejects skips or unequal test inventories.
+Public jobs use hosted Ubuntu and private jobs use debrunners.
