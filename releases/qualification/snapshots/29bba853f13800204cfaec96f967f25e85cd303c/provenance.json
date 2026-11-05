@@ -1,0 +1,23 @@
+{
+  "repository": "hyperme-sh/controlplane-sdk",
+  "revision": "29bba853f13800204cfaec96f967f25e85cd303c",
+  "release_id": 434657229,
+  "immutable": true,
+  "tag": "test-29bba853f13800204cfaec96f967f25e85cd303c",
+  "run_id": 41948263974,
+  "artifact_id": 13379471955,
+  "assets": {
+    "controlplane_sdk-0.24.0-py3-none-any.whl": "sha256:7464a13468f17f577d970285e94f1c1cee6916687634e5afe480404e29469987",
+    "controlplane_sdk-0.24.0.tar.gz": "sha256:5bb70e986e5a30bdfa27f2f916d33e5ad002cf76948a6ed3ba7593384a3bd267"
+  },
+  "published_release_url": "https://github.com/hyperme-sh/controlplane-sdk/releases/tag/test-29bba853f13800204cfaec96f967f25e85cd303c",
+  "checks": [
+    "successful same-repository main-push package run",
+    "live Actions artifact digest",
+    "release bytes equal tested bytes",
+    "immutable release and tag revision",
+    "asset digests equal manifest"
+  ],
+  "consumer_qualification": "Hosted PR and main pass 34 Python client/transport/contract/helper consumers in each source/fresh-wheel/rebuilt-sdist context plus 13 tooling tests. Actual downloaded wheel passes all 34.",
+  "limitations": "Other languages, gRPC and current-server/deployed compatibility remain separate."
+}
