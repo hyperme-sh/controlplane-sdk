@@ -12,7 +12,7 @@ requires-python = ">=3.13"
 dependencies = ["urllib3>=1.25.3,<3", "python-dateutil>=2.8.2", "pydantic>=2", "typing-extensions>=4.7.1", "httpx>=0.28"]
 
 [dependency-groups]
-dev = ["pytest>=8", "pytest-asyncio>=1", "respx>=0.22"]
+dev = ["pytest>=8", "pytest-asyncio>=1", "respx>=0.22", "controlplane-edge @ git+https://github.com/hyperme-sh/controlplane-edge.git@ae3ec5c91cec7755e3553ab5fb24d292e30c2543"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["sdk/rest/python/openapi_client", "src/spanopticon_sdk_gen"]
