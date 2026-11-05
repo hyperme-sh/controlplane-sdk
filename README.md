@@ -105,3 +105,12 @@ retain their own licenses. Generated client placeholders are not separate suppor
 release metadata. The OpenAPI snapshot smoke test is required in source, wheel
 and rebuilt-sdist qualification. CI rejects skips or unequal test inventories.
 Public jobs use hosted Ubuntu and private jobs use debrunners.
+
+## Installed-edge offline export qualification
+
+The development graph pins the public edge owner at an immutable revision.
+Two previously excluded Panopticon tests now exercise real installed-edge OpenAPI
+export and byte-preserving synchronization in source, wheel and rebuilt-sdist
+contexts. Their environment has no upstream URLs or deployment configuration, and
+unexpected HTTP requests fail. This validates offline behavior, not a complete
+live-service contract snapshot. Client runtime dependencies remain unchanged.
