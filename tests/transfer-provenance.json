@@ -1,0 +1,7 @@
+{
+  "source_repository": "hyperme-sh/spanopticon",
+  "revision": "2cd00fd9a7ebb950999571a81be7cb0a24d9264e",
+  "path": "controlplane-edge/tests/test_sdk_smoke.py",
+  "sha256": "a5056b3e5a7c6e4af8d9aa18951a045eadc82ff1935a2f1fd146c0d6cdab0031",
+  "adaptation": "Use SDK owner-relative snapshot path and require the artifact instead of skipping when absent; retain all three document assertions."
+}
