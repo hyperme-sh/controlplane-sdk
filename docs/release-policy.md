@@ -57,3 +57,12 @@ digests. The independently selected baseline is
 `fbeaf6601fe7f16bde4f43f85de400bdd9d80926`. Test qualification history remains
 separate. This records an existing distribution; runtime deployment and
 coordinated consumer acceptance remain separate.
+
+### Actions qualification and stable publication
+
+Main merges and workflow completion do not publish GitHub test releases. Exact
+qualification files remain in Actions artifacts with finite retention. The pinned
+publisher independently verifies a real immutable stable baseline and refuses
+qualification snapshots, even if a caller job reports success. Existing valid
+stable records are retained; no release, version change, deployment or human
+approval prerequisite is introduced by this correction.
