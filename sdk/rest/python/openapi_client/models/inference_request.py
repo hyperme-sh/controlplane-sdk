@@ -32,9 +32,8 @@ class InferenceRequest(BaseModel):
     max_tokens: Optional[Annotated[int, Field(le=128000, strict=True, ge=1)]] = None
     billing_mode: Optional[StrictStr] = 'none'
     budget_id: Optional[StrictStr] = Field(default=None, description="Crypto agent budget (payment-service); required when billing_mode is crypto.")
-    stripe_customer_id: Optional[Annotated[str, Field(strict=True, max_length=255)]] = Field(default=None, description="Optional Stripe customer id for metered usage events.")
     additional_properties: Dict[str, Any] = {}
-    __properties: ClassVar[List[str]] = ["prompt", "model", "max_tokens", "billing_mode", "budget_id", "stripe_customer_id"]
+    __properties: ClassVar[List[str]] = ["prompt", "model", "max_tokens", "billing_mode", "budget_id"]
 
     @field_validator('billing_mode')
     def billing_mode_validate_enum(cls, value):
@@ -42,8 +41,8 @@ class InferenceRequest(BaseModel):
         if value is None:
             return value
 
-        if value not in set(['none', 'crypto', 'stripe']):
-            raise ValueError("must be one of enum values ('none', 'crypto', 'stripe')")
+        if value not in set(['none', 'crypto']):
+            raise ValueError("must be one of enum values ('none', 'crypto')")
         return value
 
     model_config = ConfigDict(
@@ -108,8 +107,7 @@ class InferenceRequest(BaseModel):
             "model": obj.get("model"),
             "max_tokens": obj.get("max_tokens"),
             "billing_mode": obj.get("billing_mode") if obj.get("billing_mode") is not None else 'none',
-            "budget_id": obj.get("budget_id"),
-            "stripe_customer_id": obj.get("stripe_customer_id")
+            "budget_id": obj.get("budget_id")
         })
         # store additional fields in additional_properties
         for _key in obj.keys():

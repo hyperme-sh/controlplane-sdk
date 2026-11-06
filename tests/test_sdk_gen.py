@@ -82,7 +82,7 @@ def test_allowed_removal_is_not_breaking(tmp_path: Path):
 
 def test_committed_spec_has_no_allowed_removal_paths():
     root = Path(__file__).resolve().parents[1]
-    allowed = load_allowed_removals(root / "sdk" / "openapi" / "v1" / "allowed-removals.json")
+    allowed = load_allowed_removals(root / "scripts" / "sdk-gen" / "allowed-removals.json")
     spec = json.loads((root / "sdk" / "openapi" / "v1" / "openapi.json").read_text(encoding="utf-8"))
     assert not allowed["paths"] & set(spec["paths"])
     assert not allowed["schemas"] & set(spec["components"]["schemas"])

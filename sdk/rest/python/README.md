@@ -143,10 +143,7 @@ Class | Method | HTTP request | Description
 *PaymentsApi* | [**allocate_budget_api_v1_budgets_budget_id_allocate_post**](docs/PaymentsApi.md#allocate_budget_api_v1_budgets_budget_id_allocate_post) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 *PaymentsApi* | [**api_v1_budgets_get**](docs/PaymentsApi.md#api_v1_budgets_get) | **GET** /api/v1/budgets | List crypto budgets
 *PaymentsApi* | [**create_crypto_budget_api_v1_budgets_post**](docs/PaymentsApi.md#create_crypto_budget_api_v1_budgets_post) | **POST** /api/v1/budgets | Create Crypto Budget
-*PaymentsApi* | [**create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post**](docs/PaymentsApi.md#create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post) | **POST** /api/v1/payments/usdc/lease-payments | Open a USDC payment for a lease
 *PaymentsApi* | [**get_crypto_budget_api_v1_budgets_budget_id_get**](docs/PaymentsApi.md#get_crypto_budget_api_v1_budgets_budget_id_get) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
-*PaymentsApi* | [**settle_usdc_test_credit_api_v1_payments_usdc_lease_payments_billing_record_id_test_credit_post**](docs/PaymentsApi.md#settle_usdc_test_credit_api_v1_payments_usdc_lease_payments_billing_record_id_test_credit_post) | **POST** /api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit | Settle a lease payment from the test-network credit
-*PaymentsApi* | [**stripe_webhook_api_v1_payments_stripe_webhook_post**](docs/PaymentsApi.md#stripe_webhook_api_v1_payments_stripe_webhook_post) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
 *PermissionsApi* | [**get_permissions_api_v1_permissions_get**](docs/PermissionsApi.md#get_permissions_api_v1_permissions_get) | **GET** /api/v1/permissions/ | Get Permissions
 *RolesApi* | [**create_role_api_v1_roles_post**](docs/RolesApi.md#create_role_api_v1_roles_post) | **POST** /api/v1/roles/ | Create Role
 *RolesApi* | [**delete_role_api_v1_roles_role_id_delete**](docs/RolesApi.md#delete_role_api_v1_roles_role_id_delete) | **DELETE** /api/v1/roles/{role_id} | Delete Role
@@ -169,24 +166,6 @@ Class | Method | HTTP request | Description
 *StorageSettingsApi* | [**get_available_providers_api_v1_storage_available_get**](docs/StorageSettingsApi.md#get_available_providers_api_v1_storage_available_get) | **GET** /api/v1/storage/available | Get Available Providers
 *StorageSettingsApi* | [**get_storage_settings_api_v1_storage_get**](docs/StorageSettingsApi.md#get_storage_settings_api_v1_storage_get) | **GET** /api/v1/storage/ | Get Storage Settings
 *StorageSettingsApi* | [**reset_storage_api_v1_storage_storage_id_reset_patch**](docs/StorageSettingsApi.md#reset_storage_api_v1_storage_storage_id_reset_patch) | **PATCH** /api/v1/storage/{storage_id}/reset | Reset Storage
-*StripeApi* | [**configure_stripe_setting_api_v1_configurations_stripe_post**](docs/StripeApi.md#configure_stripe_setting_api_v1_configurations_stripe_post) | **POST** /api/v1/configurations/stripe | Configure Stripe Setting
-*StripeApi* | [**get_stripe_settings_api_v1_configurations_stripe_get**](docs/StripeApi.md#get_stripe_settings_api_v1_configurations_stripe_get) | **GET** /api/v1/configurations/stripe | Get Stripe Settings
-*StripeApi* | [**stripe_webhook_api_v1_configurations_stripe_webhooks_post**](docs/StripeApi.md#stripe_webhook_api_v1_configurations_stripe_webhooks_post) | **POST** /api/v1/configurations/stripe/webhooks | Stripe Webhook
-*StripeBillingApi* | [**create_plan_api_v1_billing_plans_post**](docs/StripeBillingApi.md#create_plan_api_v1_billing_plans_post) | **POST** /api/v1/billing/plans | Create a new plan
-*StripeBillingApi* | [**delete_plan_api_v1_billing_plans_plan_id_delete**](docs/StripeBillingApi.md#delete_plan_api_v1_billing_plans_plan_id_delete) | **DELETE** /api/v1/billing/plans/{plan_id} | Delete existing plan
-*StripeBillingApi* | [**get_plan_api_v1_billing_plans_plan_id_get**](docs/StripeBillingApi.md#get_plan_api_v1_billing_plans_plan_id_get) | **GET** /api/v1/billing/plans/{plan_id} | Retrieve a plan details
-*StripeBillingApi* | [**list_plans_api_v1_billing_plans_get**](docs/StripeBillingApi.md#list_plans_api_v1_billing_plans_get) | **GET** /api/v1/billing/plans | List available plans
-*StripeBillingApi* | [**update_plan_api_v1_billing_plans_plan_id_patch**](docs/StripeBillingApi.md#update_plan_api_v1_billing_plans_plan_id_patch) | **PATCH** /api/v1/billing/plans/{plan_id} | Update a existing plan
-*StripeInvoicesApi* | [**list_invoices_api_v1_invoices_get**](docs/StripeInvoicesApi.md#list_invoices_api_v1_invoices_get) | **GET** /api/v1/invoices/ | List invoices
-*StripePricingApi* | [**create_pricing_api_v1_prices_post**](docs/StripePricingApi.md#create_pricing_api_v1_prices_post) | **POST** /api/v1/prices/ | Create Pricing
-*StripePricingApi* | [**get_pricing_list_api_v1_prices_get**](docs/StripePricingApi.md#get_pricing_list_api_v1_prices_get) | **GET** /api/v1/prices/ | Get Pricing List
-*StripePricingApi* | [**update_pricing_api_v1_prices_price_id_patch**](docs/StripePricingApi.md#update_pricing_api_v1_prices_price_id_patch) | **PATCH** /api/v1/prices/{price_id} | Update Pricing
-*StripeProductsApi* | [**create_product_api_v1_products_post**](docs/StripeProductsApi.md#create_product_api_v1_products_post) | **POST** /api/v1/products/ | Create a Product
-*StripeProductsApi* | [**delete_product_api_v1_products_product_id_delete**](docs/StripeProductsApi.md#delete_product_api_v1_products_product_id_delete) | **DELETE** /api/v1/products/{product_id} | Delete a Product
-*StripeProductsApi* | [**get_product_by_id_api_v1_products_product_id_get**](docs/StripeProductsApi.md#get_product_by_id_api_v1_products_product_id_get) | **GET** /api/v1/products/{product_id} | Get Product by ID
-*StripeProductsApi* | [**list_products_api_v1_products_get**](docs/StripeProductsApi.md#list_products_api_v1_products_get) | **GET** /api/v1/products/ | List Products
-*StripeProductsApi* | [**update_product_api_v1_products_product_id_patch**](docs/StripeProductsApi.md#update_product_api_v1_products_product_id_patch) | **PATCH** /api/v1/products/{product_id} | Update a Product
-*TenantsApi* | [**activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch**](docs/TenantsApi.md#activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch) | **PATCH** /api/v1/tenants/{tenant_id}/activate_trial_plan | Activate Trial Plan
 *TenantsApi* | [**check_dns_status_api_v1_tenants_tenant_id_check_dns_get**](docs/TenantsApi.md#check_dns_status_api_v1_tenants_tenant_id_check_dns_get) | **GET** /api/v1/tenants/{tenant_id}/check_dns | Check Dns Status
 *TenantsApi* | [**check_subdomain_availability_api_v1_tenants_check_subdomain_subdomain_get**](docs/TenantsApi.md#check_subdomain_availability_api_v1_tenants_check_subdomain_subdomain_get) | **GET** /api/v1/tenants/check_subdomain/{subdomain} | Check Subdomain Availability
 *TenantsApi* | [**create_tenant_api_v1_tenants_post**](docs/TenantsApi.md#create_tenant_api_v1_tenants_post) | **POST** /api/v1/tenants/ | Create Tenant
@@ -249,13 +228,9 @@ Class | Method | HTTP request | Description
  - [ChangeEmailResponseDto](docs/ChangeEmailResponseDto.md)
  - [ContactInfo](docs/ContactInfo.md)
  - [CreateNotificationBannerSettingDto](docs/CreateNotificationBannerSettingDto.md)
- - [CreatePlanDto](docs/CreatePlanDto.md)
- - [CreatePricingDto](docs/CreatePricingDto.md)
- - [CreateProductDto](docs/CreateProductDto.md)
  - [CreateRoleDto](docs/CreateRoleDto.md)
  - [CreateRoleResponseDto](docs/CreateRoleResponseDto.md)
  - [CreateSSOSettingsDto](docs/CreateSSOSettingsDto.md)
- - [CreateStripeSettingDto](docs/CreateStripeSettingDto.md)
  - [CreateTenantDto](docs/CreateTenantDto.md)
  - [CreateTenantResponseDto](docs/CreateTenantResponseDto.md)
  - [CreateUserDto](docs/CreateUserDto.md)
@@ -283,8 +258,6 @@ Class | Method | HTTP request | Description
  - [InferenceResponse](docs/InferenceResponse.md)
  - [InternalValidateRequest](docs/InternalValidateRequest.md)
  - [InternalValidateResponse](docs/InternalValidateResponse.md)
- - [InvoiceDto](docs/InvoiceDto.md)
- - [InvoiceListDto](docs/InvoiceListDto.md)
  - [ListingCreateBody](docs/ListingCreateBody.md)
  - [ListingResponse](docs/ListingResponse.md)
  - [ListingUpdateBody](docs/ListingUpdateBody.md)
@@ -298,23 +271,16 @@ Class | Method | HTTP request | Description
  - [OrganizationResponse](docs/OrganizationResponse.md)
  - [Permission](docs/Permission.md)
  - [PermissionDto](docs/PermissionDto.md)
- - [PlanDto](docs/PlanDto.md)
- - [PlanListDto](docs/PlanListDto.md)
  - [PolicyRowResponse](docs/PolicyRowResponse.md)
  - [PolicyRuleCreate](docs/PolicyRuleCreate.md)
  - [PolicyRuleDelete](docs/PolicyRuleDelete.md)
  - [PoliticalViewCategory](docs/PoliticalViewCategory.md)
- - [PricingDto](docs/PricingDto.md)
- - [PricingListDto](docs/PricingListDto.md)
- - [ProductDto](docs/ProductDto.md)
- - [ProductListDto](docs/ProductListDto.md)
  - [PurchaseListingBody](docs/PurchaseListingBody.md)
  - [PurchaseResponse](docs/PurchaseResponse.md)
  - [ReadSSOSettingsDto](docs/ReadSSOSettingsDto.md)
  - [RecoveryProofRequest](docs/RecoveryProofRequest.md)
  - [RecoverySessionCreate](docs/RecoverySessionCreate.md)
  - [RecoverySessionResponse](docs/RecoverySessionResponse.md)
- - [RecurringDto](docs/RecurringDto.md)
  - [RefreshTokenRequest](docs/RefreshTokenRequest.md)
  - [RegisteredPasskeyCredentialsDto](docs/RegisteredPasskeyCredentialsDto.md)
  - [RoleDto](docs/RoleDto.md)
@@ -333,7 +299,6 @@ Class | Method | HTTP request | Description
  - [SociACLShareMode](docs/SociACLShareMode.md)
  - [SociaclShareCreatedResponse](docs/SociaclShareCreatedResponse.md)
  - [StorageSettingsDto](docs/StorageSettingsDto.md)
- - [StripeSettingDto](docs/StripeSettingDto.md)
  - [SubdomainAvailabilityDto](docs/SubdomainAvailabilityDto.md)
  - [SubscriptionPlanDto](docs/SubscriptionPlanDto.md)
  - [TenantDto](docs/TenantDto.md)
@@ -344,15 +309,10 @@ Class | Method | HTTP request | Description
  - [TimeSeriesDto](docs/TimeSeriesDto.md)
  - [TokenBundleResponse](docs/TokenBundleResponse.md)
  - [UpdateBrandingDto](docs/UpdateBrandingDto.md)
- - [UpdatePlanDto](docs/UpdatePlanDto.md)
- - [UpdatePricingDto](docs/UpdatePricingDto.md)
  - [UpdateRoleDto](docs/UpdateRoleDto.md)
  - [UpdateSSOSettingsDto](docs/UpdateSSOSettingsDto.md)
  - [UpdateTenantDto](docs/UpdateTenantDto.md)
  - [UpdateTenantResponseDto](docs/UpdateTenantResponseDto.md)
- - [UpdateUserDto](docs/UpdateUserDto.md)
- - [UsdcLeasePaymentCreate](docs/UsdcLeasePaymentCreate.md)
- - [UsdcLeasePaymentResponse](docs/UsdcLeasePaymentResponse.md)
  - [UserCreateBody](docs/UserCreateBody.md)
  - [UserDto](docs/UserDto.md)
  - [UserListDto](docs/UserListDto.md)

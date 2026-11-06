@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **tenant_id** | **str** | The tenant who owns the subscription | 
 **actor** | **str** | who it is applied to, If end_user, then user_id must be set | 
 **user_id** | **str** | The end user who has this subscription, if applicable | 
-**plan_id** | **str** | Corresponding Stripe Price ID | 
+**plan_id** | **str** | Corresponding processor plan reference |
 
 ## Example
 

@@ -7,10 +7,7 @@ Method | HTTP request | Description
 [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](PaymentsAPI.md#allocatebudgetapiv1budgetsbudgetidallocatepost) | **POST** /api/v1/budgets/{budget_id}/allocate | Allocate Budget
 [**apiV1BudgetsGet**](PaymentsAPI.md#apiv1budgetsget) | **GET** /api/v1/budgets | List crypto budgets
 [**createCryptoBudgetApiV1BudgetsPost**](PaymentsAPI.md#createcryptobudgetapiv1budgetspost) | **POST** /api/v1/budgets | Create Crypto Budget
-[**createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost**](PaymentsAPI.md#createusdcleasepaymentrouteapiv1paymentsusdcleasepaymentspost) | **POST** /api/v1/payments/usdc/lease-payments | Open a USDC payment for a lease
 [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](PaymentsAPI.md#getcryptobudgetapiv1budgetsbudgetidget) | **GET** /api/v1/budgets/{budget_id} | Get Crypto Budget
-[**settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost**](PaymentsAPI.md#settleusdctestcreditapiv1paymentsusdcleasepaymentsbillingrecordidtestcreditpost) | **POST** /api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit | Settle a lease payment from the test-network credit
-[**stripeWebhookApiV1PaymentsStripeWebhookPost**](PaymentsAPI.md#stripewebhookapiv1paymentsstripewebhookpost) | **POST** /api/v1/payments/stripe/webhook | Stripe Webhook
 
 
 # **allocateBudgetApiV1BudgetsBudgetIdAllocatePost**
@@ -161,56 +158,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost**
-```swift
-    open class func createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost(usdcLeasePaymentCreate: UsdcLeasePaymentCreate, completion: @escaping (_ data: UsdcLeasePaymentResponse?, _ error: Error?) -> Void)
-```
-
-Open a USDC payment for a lease
-
-Accepts a tenant-session JWT (human after switch-tenant) or a gateway exchange JWT from a purpose=service key or a renter key minted via the org-admin API. Not a portal paste. Not a KV-stashed portal JWT. Raw Keycloak without tenant_id is 403. No card is charged. The renter pays the amount in USDC on Base.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let usdcLeasePaymentCreate = UsdcLeasePaymentCreate(amountCents: 123, listingId: 123, metadata: "TODO") // UsdcLeasePaymentCreate | 
-
-// Open a USDC payment for a lease
-PaymentsAPI.createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost(usdcLeasePaymentCreate: usdcLeasePaymentCreate) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **usdcLeasePaymentCreate** | [**UsdcLeasePaymentCreate**](UsdcLeasePaymentCreate.md) |  | 
-
-### Return type
-
-[**UsdcLeasePaymentResponse**](UsdcLeasePaymentResponse.md)
-
-### Authorization
-
-[HTTPBearer](../README.md#HTTPBearer), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **getCryptoBudgetApiV1BudgetsBudgetIdGet**
 ```swift
     open class func getCryptoBudgetApiV1BudgetsBudgetIdGet(budgetId: UUID, completion: @escaping (_ data: CryptoBudgetResponse?, _ error: Error?) -> Void)
@@ -251,100 +198,6 @@ Name | Type | Description  | Notes
 ### Authorization
 
 [HTTPBearer](../README.md#HTTPBearer), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost**
-```swift
-    open class func settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(billingRecordId: UUID, completion: @escaping (_ data: UsdcLeasePaymentResponse?, _ error: Error?) -> Void)
-```
-
-Settle a lease payment from the test-network credit
-
-Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let billingRecordId = 987 // UUID | 
-
-// Settle a lease payment from the test-network credit
-PaymentsAPI.settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(billingRecordId: billingRecordId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **billingRecordId** | **UUID** |  | 
-
-### Return type
-
-[**UsdcLeasePaymentResponse**](UsdcLeasePaymentResponse.md)
-
-### Authorization
-
-[HTTPBearer](../README.md#HTTPBearer), [BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **stripeWebhookApiV1PaymentsStripeWebhookPost**
-```swift
-    open class func stripeWebhookApiV1PaymentsStripeWebhookPost(completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
-```
-
-Stripe Webhook
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-
-// Stripe Webhook
-PaymentsAPI.stripeWebhookApiV1PaymentsStripeWebhookPost() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**AnyCodable**
-
-### Authorization
-
-No authorization required
 
 ### HTTP request headers
 

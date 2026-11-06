@@ -39,8 +39,7 @@ class TestInferenceRequest(unittest.TestCase):
                 model = '0',
                 max_tokens = 1.0,
                 billing_mode = 'none',
-                budget_id = '',
-                stripe_customer_id = ''
+                budget_id = ''
             )
         else:
             return InferenceRequest(

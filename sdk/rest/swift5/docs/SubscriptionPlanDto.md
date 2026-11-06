@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **tenantId** | **String** | The tenant who owns the subscription | 
 **actor** | **String** | who it is applied to, If end_user, then user_id must be set | 
 **userId** | **String** | The end user who has this subscription, if applicable | 
-**planId** | **String** | Corresponding Stripe Price ID | 
+**planId** | **String** | Corresponding processor plan reference |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

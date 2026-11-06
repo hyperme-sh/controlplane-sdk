@@ -56,7 +56,7 @@ export interface SubscriptionPlanDto {
      */
     userId: string;
     /**
-     * Corresponding Stripe Price ID
+     * Corresponding processor plan reference
      * @type {string}
      * @memberof SubscriptionPlanDto
      */

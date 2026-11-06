@@ -22,8 +22,7 @@ export const Feature = {
     Report: 'report',
     Analytics: 'analytics',
     Organization: 'organization',
-    Teams: 'teams',
-    Stripe: 'stripe'
+    Teams: 'teams'
 } as const;
 export type Feature = typeof Feature[keyof typeof Feature];
 

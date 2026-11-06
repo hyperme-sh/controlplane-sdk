@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 /**
  * 
  *
- * Values: chat,report,analytics,organization,teams,stripe
+ * Values: chat,report,analytics,organization,teams
  */
 
 enum class Feature(val value: kotlin.String) {
@@ -39,10 +39,7 @@ enum class Feature(val value: kotlin.String) {
     organization("organization"),
 
     @JsonProperty(value = "teams")
-    teams("teams"),
-
-    @JsonProperty(value = "stripe")
-    stripe("stripe");
+    teams("teams");
 
     /**
      * Override [toString()] to avoid using the enum variable name as the value, and instead use

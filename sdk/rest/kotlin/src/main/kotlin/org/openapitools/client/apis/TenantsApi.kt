@@ -18,19 +18,6 @@ import org.openapitools.client.models.UpdateTenantResponseDto
 
 interface TenantsApi {
     /**
-     * Activate Trial Plan
-     * 
-     * Responses:
-     *  - 200: Successful Response
-     *  - 422: Validation Error
-     *
-     * @param tenantId 
-     * @return [UpdateTenantResponseDto]
-     */
-    @PATCH("api/v1/tenants/{tenant_id}/activate_trial_plan")
-    suspend fun activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(@Path("tenant_id") tenantId: kotlin.String): Response<UpdateTenantResponseDto>
-
-    /**
      * Check Dns Status
      * 
      * Responses:

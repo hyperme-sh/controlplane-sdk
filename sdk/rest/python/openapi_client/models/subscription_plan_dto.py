@@ -32,7 +32,7 @@ class SubscriptionPlanDto(BaseModel):
     tenant_id: StrictStr = Field(description="The tenant who owns the subscription")
     actor: StrictStr = Field(description="who it is applied to, If end_user, then user_id must be set")
     user_id: StrictStr = Field(description="The end user who has this subscription, if applicable")
-    plan_id: StrictStr = Field(description="Corresponding Stripe Price ID")
+    plan_id: StrictStr = Field(description="Corresponding processor plan reference")
     __properties: ClassVar[List[str]] = ["id", "plan_level", "is_trial", "tenant_id", "actor", "user_id", "plan_id"]
 
     model_config = ConfigDict(

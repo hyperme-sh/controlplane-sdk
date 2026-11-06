@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch**](TenantsApi.md#activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch) | **PATCH** /api/v1/tenants/{tenant_id}/activate_trial_plan | Activate Trial Plan
 [**check_dns_status_api_v1_tenants_tenant_id_check_dns_get**](TenantsApi.md#check_dns_status_api_v1_tenants_tenant_id_check_dns_get) | **GET** /api/v1/tenants/{tenant_id}/check_dns | Check Dns Status
 [**check_subdomain_availability_api_v1_tenants_check_subdomain_subdomain_get**](TenantsApi.md#check_subdomain_availability_api_v1_tenants_check_subdomain_subdomain_get) | **GET** /api/v1/tenants/check_subdomain/{subdomain} | Check Subdomain Availability
 [**create_tenant_api_v1_tenants_post**](TenantsApi.md#create_tenant_api_v1_tenants_post) | **POST** /api/v1/tenants/ | Create Tenant
@@ -17,83 +16,6 @@ Method | HTTP request | Description
 [**update_tenant_dns_record_api_v1_tenants_tenant_id_update_dns_post**](TenantsApi.md#update_tenant_dns_record_api_v1_tenants_tenant_id_update_dns_post) | **POST** /api/v1/tenants/{tenant_id}/update_dns | Update Tenant Dns Record
 [**update_tenant_feature_api_v1_tenants_tenant_id_update_feature_patch**](TenantsApi.md#update_tenant_feature_api_v1_tenants_tenant_id_update_feature_patch) | **PATCH** /api/v1/tenants/{tenant_id}/update_feature | Update Tenant Feature
 
-
-# **activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch**
-> UpdateTenantResponseDto activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch(tenant_id)
-
-Activate Trial Plan
-
-### Example
-
-* Bearer Authentication (HTTPBearer):
-
-```python
-import openapi_client
-from openapi_client.models.update_tenant_response_dto import UpdateTenantResponseDto
-from openapi_client.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://localhost
-# See configuration.py for a list of all supported configuration parameters.
-configuration = openapi_client.Configuration(
-    host = "http://localhost"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure Bearer authorization: HTTPBearer
-configuration = openapi_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
-)
-
-# Enter a context with an instance of the API client
-with openapi_client.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = openapi_client.TenantsApi(api_client)
-    tenant_id = 'tenant_id_example' # str | 
-
-    try:
-        # Activate Trial Plan
-        api_response = api_instance.activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch(tenant_id)
-        print("The response of TenantsApi->activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling TenantsApi->activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenant_id** | **str**|  | 
-
-### Return type
-
-[**UpdateTenantResponseDto**](UpdateTenantResponseDto.md)
-
-### Authorization
-
-[HTTPBearer](../README.md#HTTPBearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Validation Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **check_dns_status_api_v1_tenants_tenant_id_check_dns_get**
 > UpdateTenantResponseDto check_dns_status_api_v1_tenants_tenant_id_check_dns_get(tenant_id)

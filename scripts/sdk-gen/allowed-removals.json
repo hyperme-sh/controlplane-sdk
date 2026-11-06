@@ -1,0 +1,38 @@
+{
+  "paths": [
+    "/api/v1/billing/plans",
+    "/api/v1/billing/plans/{plan_id}",
+    "/api/v1/configurations/stripe",
+    "/api/v1/configurations/stripe/webhooks",
+    "/api/v1/invoices/",
+    "/api/v1/payments/stripe/webhook",
+    "/api/v1/payments/usdc/lease-payments",
+    "/api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit",
+    "/api/v1/prices/",
+    "/api/v1/prices/{price_id}",
+    "/api/v1/products/",
+    "/api/v1/products/{product_id}",
+    "/api/v1/tenants/{tenant_id}/activate_trial_plan"
+  ],
+  "schemas": [
+    "CreatePlanDto",
+    "CreatePricingDto",
+    "CreateProductDto",
+    "CreateStripeSettingDto",
+    "InvoiceDto",
+    "InvoiceListDto",
+    "PlanDto",
+    "PlanListDto",
+    "PricingDto",
+    "PricingListDto",
+    "ProductDto",
+    "ProductListDto",
+    "RecurringDto",
+    "StripeSettingDto",
+    "UpdatePlanDto",
+    "UpdatePricingDto",
+    "UpdateUserDto",
+    "UsdcLeasePaymentCreate",
+    "UsdcLeasePaymentResponse"
+  ]
+}

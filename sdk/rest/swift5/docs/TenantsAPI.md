@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch**](TenantsAPI.md#activatetrialplanapiv1tenantstenantidactivatetrialplanpatch) | **PATCH** /api/v1/tenants/{tenant_id}/activate_trial_plan | Activate Trial Plan
 [**checkDnsStatusApiV1TenantsTenantIdCheckDnsGet**](TenantsAPI.md#checkdnsstatusapiv1tenantstenantidcheckdnsget) | **GET** /api/v1/tenants/{tenant_id}/check_dns | Check Dns Status
 [**checkSubdomainAvailabilityApiV1TenantsCheckSubdomainSubdomainGet**](TenantsAPI.md#checksubdomainavailabilityapiv1tenantschecksubdomainsubdomainget) | **GET** /api/v1/tenants/check_subdomain/{subdomain} | Check Subdomain Availability
 [**createTenantApiV1TenantsPost**](TenantsAPI.md#createtenantapiv1tenantspost) | **POST** /api/v1/tenants/ | Create Tenant
@@ -17,54 +16,6 @@ Method | HTTP request | Description
 [**updateTenantDnsRecordApiV1TenantsTenantIdUpdateDnsPost**](TenantsAPI.md#updatetenantdnsrecordapiv1tenantstenantidupdatednspost) | **POST** /api/v1/tenants/{tenant_id}/update_dns | Update Tenant Dns Record
 [**updateTenantFeatureApiV1TenantsTenantIdUpdateFeaturePatch**](TenantsAPI.md#updatetenantfeatureapiv1tenantstenantidupdatefeaturepatch) | **PATCH** /api/v1/tenants/{tenant_id}/update_feature | Update Tenant Feature
 
-
-# **activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch**
-```swift
-    open class func activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(tenantId: String, completion: @escaping (_ data: UpdateTenantResponseDto?, _ error: Error?) -> Void)
-```
-
-Activate Trial Plan
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
-
-let tenantId = "tenantId_example" // String | 
-
-// Activate Trial Plan
-TenantsAPI.activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(tenantId: tenantId) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **tenantId** | **String** |  | 
-
-### Return type
-
-[**UpdateTenantResponseDto**](UpdateTenantResponseDto.md)
-
-### Authorization
-
-[HTTPBearer](../README.md#HTTPBearer)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **checkDnsStatusApiV1TenantsTenantIdCheckDnsGet**
 ```swift

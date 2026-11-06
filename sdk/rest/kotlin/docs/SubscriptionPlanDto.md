@@ -10,7 +10,7 @@
 | **tenantId** | **kotlin.String** | The tenant who owns the subscription |  |
 | **actor** | **kotlin.String** | who it is applied to, If end_user, then user_id must be set |  |
 | **userId** | **kotlin.String** | The end user who has this subscription, if applicable |  |
-| **planId** | **kotlin.String** | Corresponding Stripe Price ID |  |
+| **planId** | **kotlin.String** | Corresponding processor plan reference |  |
 
 
 
