@@ -4,7 +4,7 @@ Generated REST clients, protocol snapshots, and auth examples for the [Hypermesh
 
 ## Why
 
-Hosts and renters reach Hypermesh through one HTTP control plane: identity, tenancy, marketplace listings, and the USDC lease payment. That contract is an OpenAPI document merged from the edge and the services behind it. This repository keeps the generated clients and the snapshot they were built from, so an integrator can call a known document instead of discovering routes from a running server. OpenAPI does not describe Keycloak or the gateway API-key headers, so those calls live here as small hand-written examples.
+Hosts and renters reach Hypermesh through one HTTP control plane: identity, tenancy, and marketplace listings. That contract is an OpenAPI document merged from the edge and the services behind it. This repository keeps the generated clients and the snapshot they were built from, so an integrator can call a known document instead of discovering routes from a running server. OpenAPI does not describe Keycloak or the gateway API-key headers, so those calls live here as small hand-written examples.
 
 ## How it works
 
@@ -52,8 +52,6 @@ from openapi_client import (
     Configuration,
     HealthApi,
     MarketplaceApi,
-    PaymentsApi,
-    UsdcLeasePaymentCreate,
 )
 
 configuration = Configuration(
@@ -66,12 +64,9 @@ with ApiClient(configuration) as api:
     listings = MarketplaceApi(api).list_listings_api_v1_marketplace_listings_get(
         public_only=True
     )
-    payment = PaymentsApi(api).create_usdc_lease_payment_route_api_v1_payments_usdc_lease_payments_post(
-        UsdcLeasePaymentCreate(amount_cents=2500, listing_id="lst_example")
-    )
 ```
 
-`GET /api/v1/health/` returns `HealthCheckResponseDto`. `GET /api/v1/marketplace/listings` takes optional `public_only`. `POST /api/v1/payments/usdc/lease-payments` takes `amount_cents` (integer USD cents, at most `99999999`) and an optional `listing_id`. The server converts cents 1:1 into USDC atoms (6 decimals).
+`GET /api/v1/health/` returns `HealthCheckResponseDto`. `GET /api/v1/marketplace/listings` takes optional `public_only`. These examples use retained public endpoints; provider-specific payment APIs are outside this SDK.
 
 Token and API-key helpers are the files in [`sdk/auth`](sdk/auth/README.md). From a checkout of this repo:
 

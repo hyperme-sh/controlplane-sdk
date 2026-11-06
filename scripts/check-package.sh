@@ -24,7 +24,7 @@ uv pip install --python "$scratch/venv/bin/python" --constraint "$scratch/requir
 cp -R tests "$scratch/"
 mkdir -p "$scratch/sdk" "$scratch/scripts/sdk-gen"
 cp -R sdk/openapi sdk/rest "$scratch/sdk/"
-cp scripts/sdk-gen/check_breaking.py "$scratch/scripts/sdk-gen/"
+cp scripts/sdk-gen/check_breaking.py scripts/sdk-gen/allowed-removals.json "$scratch/scripts/sdk-gen/"
 (cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests --junitxml="$scratch/wheel.xml")
 # Rebuild from the sdist; a checkout must not supply omitted package files.
 uv run --frozen python - "$scratch" <<'PY'

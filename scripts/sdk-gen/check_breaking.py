@@ -48,7 +48,7 @@ def main() -> int:
     p.add_argument(
         "--allowed-removals",
         type=Path,
-        default=_REPO / "sdk" / "openapi" / "v1" / "allowed-removals.json",
+        default=_REPO / "scripts" / "sdk-gen" / "allowed-removals.json",
         help="JSON file listing paths and schemas removed on purpose",
     )
     p.add_argument(
