@@ -26,7 +26,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
  * @param maxTokens 
  * @param billingMode 
  * @param budgetId Crypto agent budget (payment-service); required when billing_mode is crypto.
- * @param stripeCustomerId Optional Stripe customer id for metered usage events.
  */
 
 
@@ -46,23 +45,18 @@ data class InferenceRequest (
 
     /* Crypto agent budget (payment-service); required when billing_mode is crypto. */
     @get:JsonProperty("budget_id")
-    val budgetId: java.util.UUID? = null,
-
-    /* Optional Stripe customer id for metered usage events. */
-    @get:JsonProperty("stripe_customer_id")
-    val stripeCustomerId: kotlin.String? = null
+    val budgetId: java.util.UUID? = null
 
 ) : kotlin.collections.HashMap<String, kotlin.Any>() {
 
     /**
      * 
      *
-     * Values: none,crypto,stripe
+     * Values: none,crypto
      */
     enum class BillingMode(val value: kotlin.String) {
         @JsonProperty(value = "none") none("none"),
-        @JsonProperty(value = "crypto") crypto("crypto"),
-        @JsonProperty(value = "stripe") stripe("stripe");
+        @JsonProperty(value = "crypto") crypto("crypto");
     }
 
 }

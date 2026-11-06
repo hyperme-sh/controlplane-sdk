@@ -31,7 +31,6 @@ class Feature(str, Enum):
     ANALYTICS = 'analytics'
     ORGANIZATION = 'organization'
     TEAMS = 'teams'
-    STRIPE = 'stripe'
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:

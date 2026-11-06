@@ -46,10 +46,6 @@ import {
     UpdateTenantResponseDtoToJSON,
 } from '../models/index';
 
-export interface ActivateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRequest {
-    tenantId: string;
-}
-
 export interface CheckDnsStatusApiV1TenantsTenantIdCheckDnsGetRequest {
     tenantId: string;
 }
@@ -105,21 +101,6 @@ export interface UpdateTenantFeatureApiV1TenantsTenantIdUpdateFeaturePatchReques
  * @interface TenantsApiInterface
  */
 export interface TenantsApiInterface {
-    /**
-     * 
-     * @summary Activate Trial Plan
-     * @param {string} tenantId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TenantsApiInterface
-     */
-    activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRaw(requestParameters: ActivateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateTenantResponseDto>>;
-
-    /**
-     * Activate Trial Plan
-     */
-    activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(requestParameters: ActivateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateTenantResponseDto>;
-
     /**
      * 
      * @summary Check Dns Status
@@ -296,47 +277,6 @@ export interface TenantsApiInterface {
  * 
  */
 export class TenantsApi extends runtime.BaseAPI implements TenantsApiInterface {
-
-    /**
-     * Activate Trial Plan
-     */
-    async activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRaw(requestParameters: ActivateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UpdateTenantResponseDto>> {
-        if (requestParameters['tenantId'] == null) {
-            throw new runtime.RequiredError(
-                'tenantId',
-                'Required parameter "tenantId" was null or undefined when calling activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("HTTPBearer", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/api/v1/tenants/{tenant_id}/activate_trial_plan`.replace(`{${"tenant_id"}}`, encodeURIComponent(String(requestParameters['tenantId']))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UpdateTenantResponseDtoFromJSON(jsonValue));
-    }
-
-    /**
-     * Activate Trial Plan
-     */
-    async activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(requestParameters: ActivateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UpdateTenantResponseDto> {
-        const response = await this.activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 
     /**
      * Check Dns Status

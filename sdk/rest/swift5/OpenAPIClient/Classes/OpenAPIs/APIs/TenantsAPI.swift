@@ -13,47 +13,6 @@ import AnyCodable
 open class TenantsAPI {
 
     /**
-     Activate Trial Plan
-     
-     - parameter tenantId: (path)  
-     - returns: UpdateTenantResponseDto
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(tenantId: String) async throws -> UpdateTenantResponseDto {
-        return try await activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchWithRequestBuilder(tenantId: tenantId).execute().body
-    }
-
-    /**
-     Activate Trial Plan
-     - PATCH /api/v1/tenants/{tenant_id}/activate_trial_plan
-     - Bearer Token:
-       - type: http
-       - name: HTTPBearer
-     - parameter tenantId: (path)  
-     - returns: RequestBuilder<UpdateTenantResponseDto> 
-     */
-    open class func activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatchWithRequestBuilder(tenantId: String) -> RequestBuilder<UpdateTenantResponseDto> {
-        var localVariablePath = "/api/v1/tenants/{tenant_id}/activate_trial_plan"
-        let tenantIdPreEscape = "\(APIHelper.mapValueToPathItem(tenantId))"
-        let tenantIdPostEscape = tenantIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        localVariablePath = localVariablePath.replacingOccurrences(of: "{tenant_id}", with: tenantIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<UpdateTenantResponseDto>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
      Check Dns Status
      
      - parameter tenantId: (path)  

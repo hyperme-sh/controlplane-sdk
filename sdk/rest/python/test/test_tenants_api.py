@@ -26,13 +26,6 @@ class TestTenantsApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch(self) -> None:
-        """Test case for activate_trial_plan_api_v1_tenants_tenant_id_activate_trial_plan_patch
-
-        Activate Trial Plan
-        """
-        pass
-
     def test_check_dns_status_api_v1_tenants_tenant_id_check_dns_get(self) -> None:
         """Test case for check_dns_status_api_v1_tenants_tenant_id_check_dns_get
 

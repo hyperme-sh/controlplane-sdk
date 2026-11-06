@@ -50,12 +50,6 @@ export interface InferenceRequest {
      * @memberof InferenceRequest
      */
     budgetId?: string;
-    /**
-     * Optional Stripe customer id for metered usage events.
-     * @type {string}
-     * @memberof InferenceRequest
-     */
-    stripeCustomerId?: string;
 }
 
 
@@ -64,8 +58,7 @@ export interface InferenceRequest {
  */
 export const InferenceRequestBillingModeEnum = {
     None: 'none',
-    Crypto: 'crypto',
-    Stripe: 'stripe'
+    Crypto: 'crypto'
 } as const;
 export type InferenceRequestBillingModeEnum = typeof InferenceRequestBillingModeEnum[keyof typeof InferenceRequestBillingModeEnum];
 
@@ -95,7 +88,6 @@ export function InferenceRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
         'maxTokens': json['max_tokens'] == null ? undefined : json['max_tokens'],
         'billingMode': json['billing_mode'] == null ? undefined : json['billing_mode'],
         'budgetId': json['budget_id'] == null ? undefined : json['budget_id'],
-        'stripeCustomerId': json['stripe_customer_id'] == null ? undefined : json['stripe_customer_id'],
     };
 }
 
@@ -116,7 +108,6 @@ export function InferenceRequestToJSONTyped(value?: InferenceRequest | null, ign
         'max_tokens': value['maxTokens'],
         'billing_mode': value['billingMode'],
         'budget_id': value['budgetId'],
-        'stripe_customer_id': value['stripeCustomerId'],
     };
 }
 

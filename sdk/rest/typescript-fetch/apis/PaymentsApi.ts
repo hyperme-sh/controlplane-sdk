@@ -20,8 +20,6 @@ import type {
   CryptoBudgetListPage,
   CryptoBudgetResponse,
   HTTPValidationError,
-  UsdcLeasePaymentCreate,
-  UsdcLeasePaymentResponse,
 } from '../models/index';
 import {
     BudgetAllocateRequestFromJSON,
@@ -34,10 +32,6 @@ import {
     CryptoBudgetResponseToJSON,
     HTTPValidationErrorFromJSON,
     HTTPValidationErrorToJSON,
-    UsdcLeasePaymentCreateFromJSON,
-    UsdcLeasePaymentCreateToJSON,
-    UsdcLeasePaymentResponseFromJSON,
-    UsdcLeasePaymentResponseToJSON,
 } from '../models/index';
 
 export interface AllocateBudgetApiV1BudgetsBudgetIdAllocatePostRequest {
@@ -54,16 +48,8 @@ export interface CreateCryptoBudgetApiV1BudgetsPostRequest {
     cryptoBudgetCreateRequest: CryptoBudgetCreateRequest;
 }
 
-export interface CreateUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRequest {
-    usdcLeasePaymentCreate: UsdcLeasePaymentCreate;
-}
-
 export interface GetCryptoBudgetApiV1BudgetsBudgetIdGetRequest {
     budgetId: string;
-}
-
-export interface SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest {
-    billingRecordId: string;
 }
 
 /**
@@ -121,22 +107,6 @@ export interface PaymentsApiInterface {
     createCryptoBudgetApiV1BudgetsPost(requestParameters: CreateCryptoBudgetApiV1BudgetsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoBudgetResponse>;
 
     /**
-     * Accepts a tenant-session JWT (human after switch-tenant) or a gateway exchange JWT from a purpose=service key or a renter key minted via the org-admin API. Not a portal paste. Not a KV-stashed portal JWT. Raw Keycloak without tenant_id is 403. No card is charged. The renter pays the amount in USDC on Base.
-     * @summary Open a USDC payment for a lease
-     * @param {UsdcLeasePaymentCreate} usdcLeasePaymentCreate 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentsApiInterface
-     */
-    createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRaw(requestParameters: CreateUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsdcLeasePaymentResponse>>;
-
-    /**
-     * Accepts a tenant-session JWT (human after switch-tenant) or a gateway exchange JWT from a purpose=service key or a renter key minted via the org-admin API. Not a portal paste. Not a KV-stashed portal JWT. Raw Keycloak without tenant_id is 403. No card is charged. The renter pays the amount in USDC on Base.
-     * Open a USDC payment for a lease
-     */
-    createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost(requestParameters: CreateUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsdcLeasePaymentResponse>;
-
-    /**
      * 
      * @summary Get Crypto Budget
      * @param {string} budgetId 
@@ -150,36 +120,6 @@ export interface PaymentsApiInterface {
      * Get Crypto Budget
      */
     getCryptoBudgetApiV1BudgetsBudgetIdGet(requestParameters: GetCryptoBudgetApiV1BudgetsBudgetIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoBudgetResponse>;
-
-    /**
-     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
-     * @summary Settle a lease payment from the test-network credit
-     * @param {string} billingRecordId 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentsApiInterface
-     */
-    settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRaw(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsdcLeasePaymentResponse>>;
-
-    /**
-     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
-     * Settle a lease payment from the test-network credit
-     */
-    settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsdcLeasePaymentResponse>;
-
-    /**
-     * 
-     * @summary Stripe Webhook
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PaymentsApiInterface
-     */
-    stripeWebhookApiV1PaymentsStripeWebhookPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>>;
-
-    /**
-     * Stripe Webhook
-     */
-    stripeWebhookApiV1PaymentsStripeWebhookPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any>;
 
 }
 
@@ -334,60 +274,6 @@ export class PaymentsApi extends runtime.BaseAPI implements PaymentsApiInterface
     }
 
     /**
-     * Accepts a tenant-session JWT (human after switch-tenant) or a gateway exchange JWT from a purpose=service key or a renter key minted via the org-admin API. Not a portal paste. Not a KV-stashed portal JWT. Raw Keycloak without tenant_id is 403. No card is charged. The renter pays the amount in USDC on Base.
-     * Open a USDC payment for a lease
-     */
-    async createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRaw(requestParameters: CreateUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsdcLeasePaymentResponse>> {
-        if (requestParameters['usdcLeasePaymentCreate'] == null) {
-            throw new runtime.RequiredError(
-                'usdcLeasePaymentCreate',
-                'Required parameter "usdcLeasePaymentCreate" was null or undefined when calling createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("HTTPBearer", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BearerAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/api/v1/payments/usdc/lease-payments`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UsdcLeasePaymentCreateToJSON(requestParameters['usdcLeasePaymentCreate']),
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UsdcLeasePaymentResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Accepts a tenant-session JWT (human after switch-tenant) or a gateway exchange JWT from a purpose=service key or a renter key minted via the org-admin API. Not a portal paste. Not a KV-stashed portal JWT. Raw Keycloak without tenant_id is 403. No card is charged. The renter pays the amount in USDC on Base.
-     * Open a USDC payment for a lease
-     */
-    async createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost(requestParameters: CreateUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsdcLeasePaymentResponse> {
-        const response = await this.createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
      * Get Crypto Budget
      */
     async getCryptoBudgetApiV1BudgetsBudgetIdGetRaw(requestParameters: GetCryptoBudgetApiV1BudgetsBudgetIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CryptoBudgetResponse>> {
@@ -433,87 +319,6 @@ export class PaymentsApi extends runtime.BaseAPI implements PaymentsApiInterface
      */
     async getCryptoBudgetApiV1BudgetsBudgetIdGet(requestParameters: GetCryptoBudgetApiV1BudgetsBudgetIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CryptoBudgetResponse> {
         const response = await this.getCryptoBudgetApiV1BudgetsBudgetIdGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
-     * Settle a lease payment from the test-network credit
-     */
-    async settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRaw(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsdcLeasePaymentResponse>> {
-        if (requestParameters['billingRecordId'] == null) {
-            throw new runtime.RequiredError(
-                'billingRecordId',
-                'Required parameter "billingRecordId" was null or undefined when calling settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("HTTPBearer", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        if (this.configuration && this.configuration.accessToken) {
-            const token = this.configuration.accessToken;
-            const tokenString = await token("BearerAuth", []);
-
-            if (tokenString) {
-                headerParameters["Authorization"] = `Bearer ${tokenString}`;
-            }
-        }
-        const response = await this.request({
-            path: `/api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit`.replace(`{${"billing_record_id"}}`, encodeURIComponent(String(requestParameters['billingRecordId']))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => UsdcLeasePaymentResponseFromJSON(jsonValue));
-    }
-
-    /**
-     * Available only where PAYMENTS_USDC_TEST_CREDIT_ENABLED is true and the deployment is Base Sepolia with Stripe in test mode. Marks the pending USDC payment succeeded and publishes payment.succeeded.v1, the same event a confirmed chain transfer publishes. Not available on Base mainnet.
-     * Settle a lease payment from the test-network credit
-     */
-    async settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(requestParameters: SettleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsdcLeasePaymentResponse> {
-        const response = await this.settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     * Stripe Webhook
-     */
-    async stripeWebhookApiV1PaymentsStripeWebhookPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<any>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/api/v1/payments/stripe/webhook`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        if (this.isJsonMime(response.headers.get('content-type'))) {
-            return new runtime.JSONApiResponse<any>(response);
-        } else {
-            return new runtime.TextApiResponse(response) as any;
-        }
-    }
-
-    /**
-     * Stripe Webhook
-     */
-    async stripeWebhookApiV1PaymentsStripeWebhookPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<any> {
-        const response = await this.stripeWebhookApiV1PaymentsStripeWebhookPostRaw(initOverrides);
         return await response.value();
     }
 

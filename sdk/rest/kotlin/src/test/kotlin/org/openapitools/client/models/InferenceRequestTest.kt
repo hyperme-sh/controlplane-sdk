@@ -55,11 +55,5 @@ class InferenceRequestTest : ShouldSpec() {
             //modelInstance.budgetId shouldBe ("TODO")
         }
 
-        // to test the property `stripeCustomerId` - Optional Stripe customer id for metered usage events.
-        should("test stripeCustomerId") {
-            // uncomment below to test the property
-            //modelInstance.stripeCustomerId shouldBe ("TODO")
-        }
-
     }
 }

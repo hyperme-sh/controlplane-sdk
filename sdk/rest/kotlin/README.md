@@ -98,10 +98,7 @@ All URIs are relative to *http://localhost*
 | *PaymentsApi* | [**allocateBudgetApiV1BudgetsBudgetIdAllocatePost**](docs/PaymentsApi.md#allocatebudgetapiv1budgetsbudgetidallocatepost) | **POST** api/v1/budgets/{budget_id}/allocate | Allocate Budget |
 | *PaymentsApi* | [**apiV1BudgetsGet**](docs/PaymentsApi.md#apiv1budgetsget) | **GET** api/v1/budgets | List crypto budgets |
 | *PaymentsApi* | [**createCryptoBudgetApiV1BudgetsPost**](docs/PaymentsApi.md#createcryptobudgetapiv1budgetspost) | **POST** api/v1/budgets | Create Crypto Budget |
-| *PaymentsApi* | [**createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost**](docs/PaymentsApi.md#createusdcleasepaymentrouteapiv1paymentsusdcleasepaymentspost) | **POST** api/v1/payments/usdc/lease-payments | Open a USDC payment for a lease |
 | *PaymentsApi* | [**getCryptoBudgetApiV1BudgetsBudgetIdGet**](docs/PaymentsApi.md#getcryptobudgetapiv1budgetsbudgetidget) | **GET** api/v1/budgets/{budget_id} | Get Crypto Budget |
-| *PaymentsApi* | [**settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost**](docs/PaymentsApi.md#settleusdctestcreditapiv1paymentsusdcleasepaymentsbillingrecordidtestcreditpost) | **POST** api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit | Settle a lease payment from the test-network credit |
-| *PaymentsApi* | [**stripeWebhookApiV1PaymentsStripeWebhookPost**](docs/PaymentsApi.md#stripewebhookapiv1paymentsstripewebhookpost) | **POST** api/v1/payments/stripe/webhook | Stripe Webhook |
 | *PermissionsApi* | [**getPermissionsApiV1PermissionsGet**](docs/PermissionsApi.md#getpermissionsapiv1permissionsget) | **GET** api/v1/permissions/ | Get Permissions |
 | *RolesApi* | [**createRoleApiV1RolesPost**](docs/RolesApi.md#createroleapiv1rolespost) | **POST** api/v1/roles/ | Create Role |
 | *RolesApi* | [**deleteRoleApiV1RolesRoleIdDelete**](docs/RolesApi.md#deleteroleapiv1rolesroleiddelete) | **DELETE** api/v1/roles/{role_id} | Delete Role |
@@ -124,24 +121,6 @@ All URIs are relative to *http://localhost*
 | *StorageSettingsApi* | [**getAvailableProvidersApiV1StorageAvailableGet**](docs/StorageSettingsApi.md#getavailableprovidersapiv1storageavailableget) | **GET** api/v1/storage/available | Get Available Providers |
 | *StorageSettingsApi* | [**getStorageSettingsApiV1StorageGet**](docs/StorageSettingsApi.md#getstoragesettingsapiv1storageget) | **GET** api/v1/storage/ | Get Storage Settings |
 | *StorageSettingsApi* | [**resetStorageApiV1StorageStorageIdResetPatch**](docs/StorageSettingsApi.md#resetstorageapiv1storagestorageidresetpatch) | **PATCH** api/v1/storage/{storage_id}/reset | Reset Storage |
-| *StripeApi* | [**configureStripeSettingApiV1ConfigurationsStripePost**](docs/StripeApi.md#configurestripesettingapiv1configurationsstripepost) | **POST** api/v1/configurations/stripe | Configure Stripe Setting |
-| *StripeApi* | [**getStripeSettingsApiV1ConfigurationsStripeGet**](docs/StripeApi.md#getstripesettingsapiv1configurationsstripeget) | **GET** api/v1/configurations/stripe | Get Stripe Settings |
-| *StripeApi* | [**stripeWebhookApiV1ConfigurationsStripeWebhooksPost**](docs/StripeApi.md#stripewebhookapiv1configurationsstripewebhookspost) | **POST** api/v1/configurations/stripe/webhooks | Stripe Webhook |
-| *StripeBillingApi* | [**createPlanApiV1BillingPlansPost**](docs/StripeBillingApi.md#createplanapiv1billingplanspost) | **POST** api/v1/billing/plans | Create a new plan |
-| *StripeBillingApi* | [**deletePlanApiV1BillingPlansPlanIdDelete**](docs/StripeBillingApi.md#deleteplanapiv1billingplansplaniddelete) | **DELETE** api/v1/billing/plans/{plan_id} | Delete existing plan |
-| *StripeBillingApi* | [**getPlanApiV1BillingPlansPlanIdGet**](docs/StripeBillingApi.md#getplanapiv1billingplansplanidget) | **GET** api/v1/billing/plans/{plan_id} | Retrieve a plan details |
-| *StripeBillingApi* | [**listPlansApiV1BillingPlansGet**](docs/StripeBillingApi.md#listplansapiv1billingplansget) | **GET** api/v1/billing/plans | List available plans |
-| *StripeBillingApi* | [**updatePlanApiV1BillingPlansPlanIdPatch**](docs/StripeBillingApi.md#updateplanapiv1billingplansplanidpatch) | **PATCH** api/v1/billing/plans/{plan_id} | Update a existing plan |
-| *StripeInvoicesApi* | [**listInvoicesApiV1InvoicesGet**](docs/StripeInvoicesApi.md#listinvoicesapiv1invoicesget) | **GET** api/v1/invoices/ | List invoices |
-| *StripePricingApi* | [**createPricingApiV1PricesPost**](docs/StripePricingApi.md#createpricingapiv1pricespost) | **POST** api/v1/prices/ | Create Pricing |
-| *StripePricingApi* | [**getPricingListApiV1PricesGet**](docs/StripePricingApi.md#getpricinglistapiv1pricesget) | **GET** api/v1/prices/ | Get Pricing List |
-| *StripePricingApi* | [**updatePricingApiV1PricesPriceIdPatch**](docs/StripePricingApi.md#updatepricingapiv1pricespriceidpatch) | **PATCH** api/v1/prices/{price_id} | Update Pricing |
-| *StripeProductsApi* | [**createProductApiV1ProductsPost**](docs/StripeProductsApi.md#createproductapiv1productspost) | **POST** api/v1/products/ | Create a Product |
-| *StripeProductsApi* | [**deleteProductApiV1ProductsProductIdDelete**](docs/StripeProductsApi.md#deleteproductapiv1productsproductiddelete) | **DELETE** api/v1/products/{product_id} | Delete a Product |
-| *StripeProductsApi* | [**getProductByIdApiV1ProductsProductIdGet**](docs/StripeProductsApi.md#getproductbyidapiv1productsproductidget) | **GET** api/v1/products/{product_id} | Get Product by ID |
-| *StripeProductsApi* | [**listProductsApiV1ProductsGet**](docs/StripeProductsApi.md#listproductsapiv1productsget) | **GET** api/v1/products/ | List Products |
-| *StripeProductsApi* | [**updateProductApiV1ProductsProductIdPatch**](docs/StripeProductsApi.md#updateproductapiv1productsproductidpatch) | **PATCH** api/v1/products/{product_id} | Update a Product |
-| *TenantsApi* | [**activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch**](docs/TenantsApi.md#activatetrialplanapiv1tenantstenantidactivatetrialplanpatch) | **PATCH** api/v1/tenants/{tenant_id}/activate_trial_plan | Activate Trial Plan |
 | *TenantsApi* | [**checkDnsStatusApiV1TenantsTenantIdCheckDnsGet**](docs/TenantsApi.md#checkdnsstatusapiv1tenantstenantidcheckdnsget) | **GET** api/v1/tenants/{tenant_id}/check_dns | Check Dns Status |
 | *TenantsApi* | [**checkSubdomainAvailabilityApiV1TenantsCheckSubdomainSubdomainGet**](docs/TenantsApi.md#checksubdomainavailabilityapiv1tenantschecksubdomainsubdomainget) | **GET** api/v1/tenants/check_subdomain/{subdomain} | Check Subdomain Availability |
 | *TenantsApi* | [**createTenantApiV1TenantsPost**](docs/TenantsApi.md#createtenantapiv1tenantspost) | **POST** api/v1/tenants/ | Create Tenant |
@@ -196,13 +175,9 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.ChangeEmailResponseDto](docs/ChangeEmailResponseDto.md)
  - [org.openapitools.client.models.ContactInfo](docs/ContactInfo.md)
  - [org.openapitools.client.models.CreateNotificationBannerSettingDto](docs/CreateNotificationBannerSettingDto.md)
- - [org.openapitools.client.models.CreatePlanDto](docs/CreatePlanDto.md)
- - [org.openapitools.client.models.CreatePricingDto](docs/CreatePricingDto.md)
- - [org.openapitools.client.models.CreateProductDto](docs/CreateProductDto.md)
  - [org.openapitools.client.models.CreateRoleDto](docs/CreateRoleDto.md)
  - [org.openapitools.client.models.CreateRoleResponseDto](docs/CreateRoleResponseDto.md)
  - [org.openapitools.client.models.CreateSSOSettingsDto](docs/CreateSSOSettingsDto.md)
- - [org.openapitools.client.models.CreateStripeSettingDto](docs/CreateStripeSettingDto.md)
  - [org.openapitools.client.models.CreateTenantDto](docs/CreateTenantDto.md)
  - [org.openapitools.client.models.CreateTenantResponseDto](docs/CreateTenantResponseDto.md)
  - [org.openapitools.client.models.CreateUserDto](docs/CreateUserDto.md)
@@ -230,8 +205,6 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.InferenceResponse](docs/InferenceResponse.md)
  - [org.openapitools.client.models.InternalValidateRequest](docs/InternalValidateRequest.md)
  - [org.openapitools.client.models.InternalValidateResponse](docs/InternalValidateResponse.md)
- - [org.openapitools.client.models.InvoiceDto](docs/InvoiceDto.md)
- - [org.openapitools.client.models.InvoiceListDto](docs/InvoiceListDto.md)
  - [org.openapitools.client.models.ListingCreateBody](docs/ListingCreateBody.md)
  - [org.openapitools.client.models.ListingResponse](docs/ListingResponse.md)
  - [org.openapitools.client.models.ListingUpdateBody](docs/ListingUpdateBody.md)
@@ -245,23 +218,16 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.OrganizationResponse](docs/OrganizationResponse.md)
  - [org.openapitools.client.models.Permission](docs/Permission.md)
  - [org.openapitools.client.models.PermissionDto](docs/PermissionDto.md)
- - [org.openapitools.client.models.PlanDto](docs/PlanDto.md)
- - [org.openapitools.client.models.PlanListDto](docs/PlanListDto.md)
  - [org.openapitools.client.models.PolicyRowResponse](docs/PolicyRowResponse.md)
  - [org.openapitools.client.models.PolicyRuleCreate](docs/PolicyRuleCreate.md)
  - [org.openapitools.client.models.PolicyRuleDelete](docs/PolicyRuleDelete.md)
  - [org.openapitools.client.models.PoliticalViewCategory](docs/PoliticalViewCategory.md)
- - [org.openapitools.client.models.PricingDto](docs/PricingDto.md)
- - [org.openapitools.client.models.PricingListDto](docs/PricingListDto.md)
- - [org.openapitools.client.models.ProductDto](docs/ProductDto.md)
- - [org.openapitools.client.models.ProductListDto](docs/ProductListDto.md)
  - [org.openapitools.client.models.PurchaseListingBody](docs/PurchaseListingBody.md)
  - [org.openapitools.client.models.PurchaseResponse](docs/PurchaseResponse.md)
  - [org.openapitools.client.models.ReadSSOSettingsDto](docs/ReadSSOSettingsDto.md)
  - [org.openapitools.client.models.RecoveryProofRequest](docs/RecoveryProofRequest.md)
  - [org.openapitools.client.models.RecoverySessionCreate](docs/RecoverySessionCreate.md)
  - [org.openapitools.client.models.RecoverySessionResponse](docs/RecoverySessionResponse.md)
- - [org.openapitools.client.models.RecurringDto](docs/RecurringDto.md)
  - [org.openapitools.client.models.RefreshTokenRequest](docs/RefreshTokenRequest.md)
  - [org.openapitools.client.models.RegisteredPasskeyCredentialsDto](docs/RegisteredPasskeyCredentialsDto.md)
  - [org.openapitools.client.models.RoleDto](docs/RoleDto.md)
@@ -280,7 +246,6 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.SociACLShareMode](docs/SociACLShareMode.md)
  - [org.openapitools.client.models.SociaclShareCreatedResponse](docs/SociaclShareCreatedResponse.md)
  - [org.openapitools.client.models.StorageSettingsDto](docs/StorageSettingsDto.md)
- - [org.openapitools.client.models.StripeSettingDto](docs/StripeSettingDto.md)
  - [org.openapitools.client.models.SubdomainAvailabilityDto](docs/SubdomainAvailabilityDto.md)
  - [org.openapitools.client.models.SubscriptionPlanDto](docs/SubscriptionPlanDto.md)
  - [org.openapitools.client.models.TenantDto](docs/TenantDto.md)
@@ -291,15 +256,10 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.TimeSeriesDto](docs/TimeSeriesDto.md)
  - [org.openapitools.client.models.TokenBundleResponse](docs/TokenBundleResponse.md)
  - [org.openapitools.client.models.UpdateBrandingDto](docs/UpdateBrandingDto.md)
- - [org.openapitools.client.models.UpdatePlanDto](docs/UpdatePlanDto.md)
- - [org.openapitools.client.models.UpdatePricingDto](docs/UpdatePricingDto.md)
  - [org.openapitools.client.models.UpdateRoleDto](docs/UpdateRoleDto.md)
  - [org.openapitools.client.models.UpdateSSOSettingsDto](docs/UpdateSSOSettingsDto.md)
  - [org.openapitools.client.models.UpdateTenantDto](docs/UpdateTenantDto.md)
  - [org.openapitools.client.models.UpdateTenantResponseDto](docs/UpdateTenantResponseDto.md)
- - [org.openapitools.client.models.UpdateUserDto](docs/UpdateUserDto.md)
- - [org.openapitools.client.models.UsdcLeasePaymentCreate](docs/UsdcLeasePaymentCreate.md)
- - [org.openapitools.client.models.UsdcLeasePaymentResponse](docs/UsdcLeasePaymentResponse.md)
  - [org.openapitools.client.models.UserCreateBody](docs/UserCreateBody.md)
  - [org.openapitools.client.models.UserDto](docs/UserDto.md)
  - [org.openapitools.client.models.UserListDto](docs/UserListDto.md)

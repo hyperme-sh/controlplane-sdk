@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  * @param tenantId The tenant who owns the subscription
  * @param actor who it is applied to, If end_user, then user_id must be set
  * @param userId The end user who has this subscription, if applicable
- * @param planId Corresponding Stripe Price ID
+ * @param planId Corresponding processor plan reference
  */
 
 
@@ -56,7 +56,7 @@ data class SubscriptionPlanDto (
     @get:JsonProperty("user_id")
     val userId: kotlin.String,
 
-    /* Corresponding Stripe Price ID */
+    /* Corresponding processor plan reference */
     @get:JsonProperty("plan_id")
     val planId: kotlin.String
 

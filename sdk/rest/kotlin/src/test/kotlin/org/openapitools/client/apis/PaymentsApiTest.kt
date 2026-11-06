@@ -24,8 +24,6 @@ import org.openapitools.client.models.CryptoBudgetCreateRequest
 import org.openapitools.client.models.CryptoBudgetListPage
 import org.openapitools.client.models.CryptoBudgetResponse
 import org.openapitools.client.models.HTTPValidationError
-import org.openapitools.client.models.UsdcLeasePaymentCreate
-import org.openapitools.client.models.UsdcLeasePaymentResponse
 
 class PaymentsApiTest : ShouldSpec() {
     init {
@@ -58,34 +56,11 @@ class PaymentsApiTest : ShouldSpec() {
             //result shouldBe ("TODO")
         }
 
-        // to test createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost
-        should("test createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost") {
-            // uncomment below to test createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost
-            //val usdcLeasePaymentCreate : UsdcLeasePaymentCreate =  // UsdcLeasePaymentCreate | 
-            //val result : UsdcLeasePaymentResponse = apiInstance.createUsdcLeasePaymentRouteApiV1PaymentsUsdcLeasePaymentsPost(usdcLeasePaymentCreate)
-            //result shouldBe ("TODO")
-        }
-
         // to test getCryptoBudgetApiV1BudgetsBudgetIdGet
         should("test getCryptoBudgetApiV1BudgetsBudgetIdGet") {
             // uncomment below to test getCryptoBudgetApiV1BudgetsBudgetIdGet
             //val budgetId : java.util.UUID = 38400000-8cf0-11bd-b23e-10b96e4ef00d // java.util.UUID | 
             //val result : CryptoBudgetResponse = apiInstance.getCryptoBudgetApiV1BudgetsBudgetIdGet(budgetId)
-            //result shouldBe ("TODO")
-        }
-
-        // to test settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost
-        should("test settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost") {
-            // uncomment below to test settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost
-            //val billingRecordId : java.util.UUID = 38400000-8cf0-11bd-b23e-10b96e4ef00d // java.util.UUID | 
-            //val result : UsdcLeasePaymentResponse = apiInstance.settleUsdcTestCreditApiV1PaymentsUsdcLeasePaymentsBillingRecordIdTestCreditPost(billingRecordId)
-            //result shouldBe ("TODO")
-        }
-
-        // to test stripeWebhookApiV1PaymentsStripeWebhookPost
-        should("test stripeWebhookApiV1PaymentsStripeWebhookPost") {
-            // uncomment below to test stripeWebhookApiV1PaymentsStripeWebhookPost
-            //val result : kotlin.Any = apiInstance.stripeWebhookApiV1PaymentsStripeWebhookPost()
             //result shouldBe ("TODO")
         }
 

@@ -16,5 +16,4 @@ public enum Feature: String, Codable, CaseIterable {
     case analytics = "analytics"
     case organization = "organization"
     case teams = "teams"
-    case stripe = "stripe"
 }

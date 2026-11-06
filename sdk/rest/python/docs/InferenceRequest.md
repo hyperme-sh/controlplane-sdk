@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **max_tokens** | **int** |  | [optional] 
 **billing_mode** | **str** |  | [optional] [default to 'none']
 **budget_id** | **str** | Crypto agent budget (payment-service); required when billing_mode is crypto. | [optional] 
-**stripe_customer_id** | **str** | Optional Stripe customer id for metered usage events. | [optional] 
 
 ## Example
 

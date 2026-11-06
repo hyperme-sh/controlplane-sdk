@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch**](TenantsApi.md#activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch) | **PATCH** api/v1/tenants/{tenant_id}/activate_trial_plan | Activate Trial Plan |
 | [**checkDnsStatusApiV1TenantsTenantIdCheckDnsGet**](TenantsApi.md#checkDnsStatusApiV1TenantsTenantIdCheckDnsGet) | **GET** api/v1/tenants/{tenant_id}/check_dns | Check Dns Status |
 | [**checkSubdomainAvailabilityApiV1TenantsCheckSubdomainSubdomainGet**](TenantsApi.md#checkSubdomainAvailabilityApiV1TenantsCheckSubdomainSubdomainGet) | **GET** api/v1/tenants/check_subdomain/{subdomain} | Check Subdomain Availability |
 | [**createTenantApiV1TenantsPost**](TenantsApi.md#createTenantApiV1TenantsPost) | **POST** api/v1/tenants/ | Create Tenant |
@@ -17,46 +16,6 @@ All URIs are relative to *http://localhost*
 | [**updateTenantDnsRecordApiV1TenantsTenantIdUpdateDnsPost**](TenantsApi.md#updateTenantDnsRecordApiV1TenantsTenantIdUpdateDnsPost) | **POST** api/v1/tenants/{tenant_id}/update_dns | Update Tenant Dns Record |
 | [**updateTenantFeatureApiV1TenantsTenantIdUpdateFeaturePatch**](TenantsApi.md#updateTenantFeatureApiV1TenantsTenantIdUpdateFeaturePatch) | **PATCH** api/v1/tenants/{tenant_id}/update_feature | Update Tenant Feature |
 
-
-
-Activate Trial Plan
-
-### Example
-```kotlin
-// Import classes:
-//import org.openapitools.client.*
-//import org.openapitools.client.infrastructure.*
-//import org.openapitools.client.models.*
-
-val apiClient = ApiClient()
-apiClient.setBearerToken("TOKEN")
-val webService = apiClient.createWebservice(TenantsApi::class.java)
-val tenantId : kotlin.String = tenantId_example // kotlin.String | 
-
-launch(Dispatchers.IO) {
-    val result : UpdateTenantResponseDto = webService.activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(tenantId)
-}
-```
-
-### Parameters
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **tenantId** | **kotlin.String**|  | |
-
-### Return type
-
-[**UpdateTenantResponseDto**](UpdateTenantResponseDto.md)
-
-### Authorization
-
-
-Configure HTTPBearer:
-    ApiClient().setBearerToken("TOKEN")
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 
 Check Dns Status

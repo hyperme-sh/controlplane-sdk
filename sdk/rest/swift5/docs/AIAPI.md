@@ -75,7 +75,7 @@ Complete
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let inferenceRequest = InferenceRequest(prompt: "prompt_example", model: "model_example", maxTokens: 123, billingMode: "billingMode_example", budgetId: 123, stripeCustomerId: "stripeCustomerId_example") // InferenceRequest | 
+let inferenceRequest = InferenceRequest(prompt: "prompt_example", model: "model_example", maxTokens: 123, billingMode: "billingMode_example", budgetId: 123) // InferenceRequest |
 
 // Complete
 AIAPI.completeApiV1AiCompletePost(inferenceRequest: inferenceRequest) { (response, error) in
@@ -351,7 +351,7 @@ Inference
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let inferenceRequest = InferenceRequest(prompt: "prompt_example", model: "model_example", maxTokens: 123, billingMode: "billingMode_example", budgetId: 123, stripeCustomerId: "stripeCustomerId_example") // InferenceRequest | 
+let inferenceRequest = InferenceRequest(prompt: "prompt_example", model: "model_example", maxTokens: 123, billingMode: "billingMode_example", budgetId: 123) // InferenceRequest |
 
 // Inference
 AIAPI.inferenceApiV1AiInferencePost(inferenceRequest: inferenceRequest) { (response, error) in

@@ -14,7 +14,5 @@
 
     * `teams` (value: `"teams"`)
 
-    * `stripe` (value: `"stripe"`)
-
 
 

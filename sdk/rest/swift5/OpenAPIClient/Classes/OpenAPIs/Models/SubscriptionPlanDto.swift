@@ -23,7 +23,7 @@ public struct SubscriptionPlanDto: Codable, JSONEncodable, Hashable {
     public private(set) var actor: String
     /** The end user who has this subscription, if applicable */
     public private(set) var userId: String
-    /** Corresponding Stripe Price ID */
+    /** Corresponding processor plan reference */
     public private(set) var planId: String
 
     public init(id: String, planLevel: [String: Int], isTrial: Bool, tenantId: String, actor: String, userId: String, planId: String) {

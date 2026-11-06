@@ -34,14 +34,6 @@ class TenantsApiTest : ShouldSpec() {
         // uncomment below to create an instance of TenantsApi
         //val apiInstance = TenantsApi()
 
-        // to test activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch
-        should("test activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch") {
-            // uncomment below to test activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch
-            //val tenantId : kotlin.String = tenantId_example // kotlin.String | 
-            //val result : UpdateTenantResponseDto = apiInstance.activateTrialPlanApiV1TenantsTenantIdActivateTrialPlanPatch(tenantId)
-            //result shouldBe ("TODO")
-        }
-
         // to test checkDnsStatusApiV1TenantsTenantIdCheckDnsGet
         should("test checkDnsStatusApiV1TenantsTenantIdCheckDnsGet") {
             // uncomment below to test checkDnsStatusApiV1TenantsTenantIdCheckDnsGet

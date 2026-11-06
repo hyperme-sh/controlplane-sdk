@@ -61,7 +61,7 @@ class SubscriptionPlanDtoTest : ShouldSpec() {
             //modelInstance.userId shouldBe ("TODO")
         }
 
-        // to test the property `planId` - Corresponding Stripe Price ID
+        // to test the property `planId` - Corresponding processor plan reference
         should("test planId") {
             // uncomment below to test the property
             //modelInstance.planId shouldBe ("TODO")

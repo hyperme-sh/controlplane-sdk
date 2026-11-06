@@ -2,6 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 unset PYTHONPATH UV_NO_SYNC
+python3 scripts/check_open_boundary.py src sdk pyproject.toml
 uv lock --check
 uv sync --frozen
 scratch=$(mktemp -d)
@@ -36,7 +37,8 @@ uv build --wheel "$scratch"/sdist/* --out-dir "$scratch/rebuilt"
 uv run --frozen python scripts/verify_wheel.py "$scratch/rebuilt"
 uv run --frozen python scripts/export_release_contract.py "$scratch"/rebuilt/*.whl --output "$scratch/rebuilt-contract"
 cmp "$scratch/contract/contract.json" "$scratch/rebuilt-contract/contract.json"
-uv pip install --python "$scratch/venv/bin/python" --no-deps --reinstall "$scratch"/rebuilt/*.whl
+uv pip install --python "$scratch/venv/bin/python" --constraint "$scratch/requirements.txt" --reinstall "$scratch"/rebuilt/*.whl
+uv pip check --python "$scratch/venv/bin/python"
 (cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests --junitxml="$scratch/sdist.xml")
 
 # Retain the exact validated bytes for the release channel; never rebuild them.
