@@ -1,42 +1,20 @@
 # SDK generation tools
 
-REST generation consumes sdk/openapi/v1/openapi.json using generate_rest_sdks.py.
-It requires a locally available OpenAPI Generator Docker image. check_breaking.py
-compares paths and schema names against an explicit --baseline-file. This is a
-structural check, not full semantic compatibility validation.
+REST generation reads [`sdk/openapi/v1/openapi.json`](../../sdk/openapi/v1/openapi.json) through `generate_rest_sdks.py`. The script expects the OpenAPI Generator Docker image to be present locally. `check_breaking.py` compares paths and schema names with an explicit `--baseline-file`. The comparison is structural: paths and schema names.
 
-Owner OpenAPI export, gRPC regeneration and language toolchain qualification
-remain separate integration work. The codegen helpers retain their original
-owner API; offline export requires the owner edge package and configuration.
-Do not use an offline stub as evidence of a complete consumer contract.
+Exporting a fresh OpenAPI document from the control plane, regenerating gRPC stubs, and compiling Kotlin or Swift are separate from this script. Offline export uses the `controlplane-edge` package and its configuration. A complete consumer contract is the exported control plane document plus these generated clients.
 
-Missing baselines fail unless the caller explicitly uses `--allow-missing-baseline`
-for initial bootstrap. That opt-in does not establish compatibility. A missing
-explicit `--baseline-file` always fails. Structural removal checks do not qualify
-patch releases: release promotion also needs the coordinated Spanopticon bundle
-gate, exported protocol/library contracts and owner consumer tests.
-
+A missing baseline fails the check. `--allow-missing-baseline` is the bootstrap opt-in for a first snapshot. An omitted `--baseline-file` fails. A structural removal check is one input to a patch release. A Spanopticon release also carries the exported protocol and library contracts and the control plane consumer tests. See [Releasing](../../docs/releasing.md).
 
 ## Case-safe AI generation
 
-The generator-only copy maps the `ai` tag to `AIUsage`, preserving canonical
-HTTP paths and the snapshot. Python, TypeScript, Kotlin and Swift retain both
-inference/session and usage operations with legacy usage-client aliases.
-Generation validates every snapshot method/path in a clean staging directory
-before replacing manifest-managed artifacts. Custom files are preserved, and
-obsolete managed files are pruned. TypeScript barrel request types that collide
-are additionally available with their API prefix; module-local names remain.
+The generator maps the `ai` tag to `AIUsage` and keeps the canonical HTTP paths and the snapshot. Python, TypeScript, Kotlin, and Swift keep both inference/session operations and usage operations, plus the legacy usage-client aliases. Generation checks every snapshot method and path in a clean staging directory before it replaces manifest-managed files. Custom files stay. Obsolete managed files are removed. TypeScript barrel request types that would collide are also exported with their API prefix. Module-local names stay as they are.
 
-The default generator is digest-pinned OpenAPI Generator 7.10.0. Pull that image
-explicitly before running; the generator uses `--pull=never`. From the repo root:
+The default generator is digest-pinned OpenAPI Generator 7.10.0. Pull that image before running. The generator uses `--pull=never`. From the repository root:
 
 ```sh
 uv run --frozen python scripts/sdk-gen/generate_rest_sdks.py
 bash scripts/check-package.sh
 ```
 
-The package checks run operation coverage, all Python imports, compatibility
-aliases and real loopback HTTP transport from source, wheel and rebuilt sdist.
-The loopback server is a contract fixture, not a deployed owner. Native Kotlin
-and Swift builds, current owner contract refresh and deployed acceptance remain
-release gates; this command does not publish or commit generated output.
+The package check covers operation coverage, every Python import, the compatibility aliases, and loopback HTTP from the source tree, the wheel, and the rebuilt sdist. The loopback server is a local contract fixture. Kotlin and Swift native builds, a refresh of `sdk/openapi/v1/openapi.json` from a live control plane, and a deployed consumer are covered with a release. The generator writes the REST trees under `sdk/rest` and leaves release tags and the package registry unchanged.

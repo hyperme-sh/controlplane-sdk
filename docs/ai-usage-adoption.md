@@ -1,42 +1,19 @@
-# AI client adoption from source PR #724
+# AI client names
 
-This ports the reviewed generator and SDK changes from
-[FyberLabs/panopticon#724](https://github.com/FyberLabs/panopticon/pull/724).
-The source is merged as `aa552c8b5b2912283064ce15364b919e0f740e66`;
-implementation provenance is reviewed source head
-`7356887667b0f142bac7504223ebf9446e0f5411`, which includes that merge.
-The destination base is `7a851c5` from this repository's main branch.
+Inference and session calls live on `AIApi`. Usage history and summary live on `AIUsageApi`. `AiApi` is an alias of `AIUsageApi`, so older imports keep working. HTTP paths are unchanged.
 
-The implementation retains this repository's `spanopticon_sdk_gen` package,
-existing installed-client packaging, canonical namespace and separate protocol
-artifacts. It does not import monorepo workspace dependencies or refresh the
-OpenAPI snapshot. The script imports from this repository's `src` tree.
+The generator change landed in this repository from control-plane commits `aa552c8b5b2912283064ce15364b919e0f740e66` and `7356887667b0f142bac7504223ebf9446e0f5411`. The public client is [hyperme-sh/controlplane-sdk](https://github.com/hyperme-sh/controlplane-sdk). Those commits were merged on top of `7a851c5` in this repository.
 
-The generator maps usage to `AIUsage`, retains inference/session `AI`, and checks
-all 131 canonical method/path operations, including all 11 AI operations, in each
-of Python, TypeScript, Kotlin and Swift before installing output. Existing usage
-entrypoints remain aliases without case-only filenames. Only obsolete
-manifest-managed files are removed; custom Gateway files remain outside the
-canonical operation inventory. The TypeScript barrel also disambiguates duplicate
-request interfaces while retaining module-local names.
+`spanopticon_sdk_gen` stays the helper package. The script imports this repository's `src` tree. The OpenAPI snapshot in `sdk/openapi/v1/openapi.json` was left as committed.
 
-## Validation
+The generator maps usage operations to `AIUsage` and inference/session operations to `AI`. It checks all 131 canonical method/path operations, including all 11 AI operations, in Python, TypeScript, Kotlin, and Swift before writing output. Usage entrypoints stay as aliases, with distinct filenames. Obsolete manifest-managed files are removed. Custom gateway files stay outside that operation inventory. The TypeScript barrel exports colliding request interfaces under an API prefix and keeps the module-local names.
 
-- Pinned generator: `openapitools/openapi-generator-cli@sha256:f2054a5a7908ad81017d0f0839514ba5eab06ae628914ff71554d46fac1bcf7a` (7.10.0).
-- All four languages regenerated from the destination snapshot; a second run is
-  byte-identical. The canonical snapshot is unchanged.
-- `scripts/check-package.sh`: 34 tests from source, an installed wheel and a
-  rebuilt sdist. Wheel contents match source bytes. This includes imports of
-  every Python module, method/path inventory and loopback inference/usage calls
-  with typed responses, captured headers and legacy usage aliases.
-- The TypeScript public entrypoint compiles with TypeScript using ES2020/DOM.
-- The installed component wheel is also qualified against the reviewed source
-  AI-service owner harness using its real loopback HTTP and migrated PostgreSQL
-  inference/history/summary test. Authorization and upstream inference are
-  fixtures; this does not qualify the extracted AI service's installed runtime.
+## What was run
 
-Native Kotlin/Swift compilation, owner-service/proto refresh, hosted CI and
-actual deployed consumers remain separately qualified gates under issues #2/#3.
-No package is published, client deployed, action enabled or workflow policy changed.
-The source adoption addresses #14 and the case-collision source requirements in
-#4; it is not a claim that every language is a qualified release.
+- Generator image: `openapitools/openapi-generator-cli@sha256:f2054a5a7908ad81017d0f0839514ba5eab06ae628914ff71554d46fac1bcf7a` (7.10.0).
+- All four languages were regenerated from this snapshot. A second run matched the first byte for byte. The snapshot file was unchanged.
+- `scripts/check-package.sh`: 34 tests from source, from an installed wheel, and from a rebuilt sdist. Wheel bytes matched the source tree. The run imports every Python module, checks the method/path inventory, and calls inference and usage on a loopback server with typed responses, captured headers, and the legacy usage aliases.
+- The TypeScript public entrypoint compiled with TypeScript, target ES2020, lib DOM.
+- The wheel was also run against the AI service's loopback HTTP and PostgreSQL inference, history, and summary test. Authorization and upstream inference in that test are fixtures.
+
+Kotlin and Swift native compilation, a new protobuf export, and a deployed AI service are separate from this package check. Regenerate with the commands in [SDK generation tools](../scripts/sdk-gen/README.md).
