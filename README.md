@@ -121,6 +121,8 @@ asyncio.run(main())
 
 Set `CONTROL_PLANE_TOKEN` to a tenant-session access token, or to the JWT the gateway minted from a service key or a renter key. A Keycloak token that has no `tenant_id` is rejected on the lease-payment route.
 
+For tenant identity, native host enrollment and tunnel calls, lease events, and a separate settlement adapter, see [Build a compatible operator](docs/operator-protocol.md).
+
 ## How Hypermesh uses it
 
 Hypermesh leases run through this control-plane HTTP API. The callers are host and renter clients, the control plane portal, and services that present a gateway-exchanged JWT.
