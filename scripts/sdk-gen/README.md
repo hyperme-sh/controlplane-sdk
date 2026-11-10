@@ -18,3 +18,14 @@ bash scripts/check-package.sh
 ```
 
 The package check covers operation coverage, every Python import, the compatibility aliases, and loopback HTTP from the source tree, the wheel, and the rebuilt sdist. The loopback server is a local contract fixture. Kotlin and Swift native builds, a refresh of `sdk/openapi/v1/openapi.json` from a live control plane, and a deployed consumer are covered with a release. The generator writes the REST trees under `sdk/rest` and leaves release tags and the package registry unchanged.
+
+
+## JSON dates
+
+Python generation installs a shared date encoder for model `to_json` helpers.
+It uses ISO 8601, matching the existing request encoder, and covers nested date
+and datetime values. Each model still uses its existing `to_dict`, so aliases,
+explicit null handling and omitted fields retain their previous behavior.
+Unsupported objects still raise TypeError. The helper is included in the
+managed generator manifest and installed wheel. This does not change the
+separate nullable-update behavior tracked in issue #6.

@@ -13,6 +13,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from spanopticon_sdk_gen.json_dates import install_json_dates
 from spanopticon_sdk_gen.rest_contract import (
     install_usage_compatibility,
     map_codegen_tags,
@@ -200,6 +201,8 @@ def generate_rest_language(
         )
         validate_generated_operations(stage, language_key, document)
         aliases = install_usage_compatibility(stage, language_key)
+        if language_key == "python":
+            aliases += install_json_dates(stage)
         manifest = stage / ".openapi-generator/FILES"
         generated = (
             set(manifest.read_text().splitlines())

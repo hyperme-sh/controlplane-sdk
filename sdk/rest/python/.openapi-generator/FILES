@@ -147,6 +147,7 @@ docs/ValidationError.md
 docs/ValidationErrorLocInner.md
 git_push.sh
 openapi_client/__init__.py
+openapi_client/_json_dates.py
 openapi_client/api/__init__.py
 openapi_client/api/account_api.py
 openapi_client/api/acl_api.py
