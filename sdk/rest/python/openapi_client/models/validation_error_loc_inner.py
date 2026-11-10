@@ -15,6 +15,7 @@
 from __future__ import annotations
 from inspect import getfullargspec
 import json
+from openapi_client._json_dates import model_json
 import pprint
 import re  # noqa: F401
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, ValidationError, field_validator
@@ -119,7 +120,7 @@ class ValidationErrorLocInner(BaseModel):
         if hasattr(self.actual_instance, "to_json") and callable(self.actual_instance.to_json):
             return self.actual_instance.to_json()
         else:
-            return json.dumps(self.actual_instance)
+            return model_json(self.actual_instance)
 
     def to_dict(self) -> Optional[Union[Dict[str, Any], int, str]]:
         """Returns the dict representation of the actual instance"""
