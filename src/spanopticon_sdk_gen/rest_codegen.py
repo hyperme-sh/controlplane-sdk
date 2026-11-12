@@ -73,7 +73,34 @@ def sanitize_openapi_for_generator(doc: dict[str, Any]) -> dict[str, Any]:
             obj["nullable"] = True
         return obj
 
-    return map_codegen_tags(rewrite(deepcopy(doc)))
+    result = rewrite(deepcopy(doc))
+    # FastAPI uses OAS 3.1 contentMediaType for UploadFile. Generator 7.10
+    # needs the OAS 3.0 binary format to put it in the multipart files map.
+    # Inline a private copy so a shared JSON schema retains its semantics.
+    def multipart_schema(schema: dict[str, Any]) -> dict[str, Any]:
+        if "$ref" in schema:
+            ref = schema["$ref"]
+            if not ref.startswith("#/components/schemas/"):
+                raise ValueError(f"Unsupported multipart schema reference: {ref}")
+            name = ref.rsplit("/", 1)[1].replace("~1", "/").replace("~0", "~")
+            schema = deepcopy(result["components"]["schemas"][name])
+        else:
+            schema = deepcopy(schema)
+        for field in schema.get("properties", {}).values():
+            if (field.get("type") == "string"
+                    and field.get("contentMediaType") == "application/octet-stream"
+                    and not field.get("contentEncoding")):
+                field["format"] = "binary"
+        return schema
+
+    for path in result.get("paths", {}).values():
+        for operation in path.values():
+            if not isinstance(operation, dict):
+                continue
+            multipart = operation.get("requestBody", {}).get("content", {}).get("multipart/form-data")
+            if multipart and "schema" in multipart:
+                multipart["schema"] = multipart_schema(multipart["schema"])
+    return map_codegen_tags(result)
 
 
 def write_codegen_openapi(repo_root: Path, spec_rel: Path) -> Path:

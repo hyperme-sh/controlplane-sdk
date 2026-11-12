@@ -166,3 +166,9 @@ For example, `ListingUpdateBody()` omits `description`, while
 applies to `from_dict`, `from_json`, and assignment after construction. The
 generator installs the same schema-derived handling for every nullable update
 model, including branding, users, roles, SSO settings and tenants.
+
+Multipart logo and profile-picture uploads accept a file path string, raw bytes,
+or a `(filename, bytes)` tuple. Paths are read as binary files; named uploads
+infer the part's media type from the filename, and raw bytes use
+`application/octet-stream`. The generator normalizes multipart binary schemas
+without altering the published OpenAPI snapshot.

@@ -26,6 +26,8 @@ docs/AuthApi.md
 docs/AuthMeResponse.md
 docs/AuthenticatorTransport.md
 docs/AvailableStorageProviderDto.md
+docs/BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut.md
+docs/BodyUploadLogoApiV1BrandingsLogoPut.md
 docs/BrandingApi.md
 docs/BrandingDto.md
 docs/BudgetAllocateRequest.md
@@ -194,6 +196,8 @@ openapi_client/models/audit_log_list_dto.py
 openapi_client/models/auth_me_response.py
 openapi_client/models/authenticator_transport.py
 openapi_client/models/available_storage_provider_dto.py
+openapi_client/models/body_update_profile_picture_api_v1_users_user_id_update_profile_picture_put.py
+openapi_client/models/body_upload_logo_api_v1_brandings_logo_put.py
 openapi_client/models/branding_dto.py
 openapi_client/models/budget_allocate_request.py
 openapi_client/models/change_email_confirm_request_dto.py
@@ -327,6 +331,8 @@ test/test_auth_api.py
 test/test_auth_me_response.py
 test/test_authenticator_transport.py
 test/test_available_storage_provider_dto.py
+test/test_body_update_profile_picture_api_v1_users_user_id_update_profile_picture_put.py
+test/test_body_upload_logo_api_v1_brandings_logo_put.py
 test/test_branding_api.py
 test/test_branding_dto.py
 test/test_budget_allocate_request.py
