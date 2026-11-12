@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -76,7 +77,7 @@ class UserUpdateBody(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sociacl_attributes
         if self.sociacl_attributes:
             _dict['sociacl_attributes'] = self.sociacl_attributes.to_dict()
-        return _dict
+        return with_explicit_nulls(self, _dict, ('first_name', 'last_name', 'sociacl_attributes'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -92,6 +93,6 @@ class UserUpdateBody(BaseModel):
             "last_name": obj.get("last_name"),
             "sociacl_attributes": SociACLAttributes.from_dict(obj["sociacl_attributes"]) if obj.get("sociacl_attributes") is not None else None
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

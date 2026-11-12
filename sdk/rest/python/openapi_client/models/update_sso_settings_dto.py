@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
@@ -83,7 +84,7 @@ class UpdateSSOSettingsDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        return with_explicit_nulls(self, _dict, ('enabled', 'provider', 'client_id', 'client_secret', 'scopes'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -101,6 +102,6 @@ class UpdateSSOSettingsDto(BaseModel):
             "client_secret": obj.get("client_secret"),
             "scopes": obj.get("scopes")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

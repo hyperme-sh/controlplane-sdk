@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool
@@ -73,7 +74,7 @@ class ListingUpdateBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        return with_explicit_nulls(self, _dict, ('title', 'description', 'metadata', 'is_public'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -90,6 +91,6 @@ class ListingUpdateBody(BaseModel):
             "metadata": obj.get("metadata"),
             "is_public": obj.get("is_public")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
@@ -96,7 +97,7 @@ class UpdateBrandingDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of theme_config
         if self.theme_config:
             _dict['theme_config'] = self.theme_config.to_dict()
-        return _dict
+        return with_explicit_nulls(self, _dict, ('identity', 'contact_info', 'theme_config', 'tenant_id', 'logo_url', 'logo_type'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -115,6 +116,6 @@ class UpdateBrandingDto(BaseModel):
             "logo_url": obj.get("logo_url"),
             "logo_type": obj.get("logo_type")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 
