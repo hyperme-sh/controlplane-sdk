@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
@@ -73,7 +74,7 @@ class UpdateRoleDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        return with_explicit_nulls(self, _dict, ('description', 'tenant_id'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -90,6 +91,6 @@ class UpdateRoleDto(BaseModel):
             "tenant_id": obj.get("tenant_id"),
             "permissions": obj.get("permissions")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

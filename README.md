@@ -159,3 +159,10 @@ The Python package in this checkout is `controlplane-sdk` **0.2.0** (`pyproject.
 ## License
 
 The repository and the `controlplane-sdk` distribution are [Apache License 2.0](LICENSE). Dependencies keep their own licenses.
+
+Nullable Python update fields distinguish omission from an explicit `None`.
+For example, `ListingUpdateBody()` omits `description`, while
+`ListingUpdateBody(description=None)` sends `"description": null`. This also
+applies to `from_dict`, `from_json`, and assignment after construction. The
+generator installs the same schema-derived handling for every nullable update
+model, including branding, users, roles, SSO settings and tenants.
