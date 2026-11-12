@@ -12,7 +12,9 @@ uv run --frozen pytest -q tests_tools
 uv build --out-dir "$scratch/dist"
 uv run --frozen python scripts/verify_wheel.py "$scratch/dist"
 uv run --frozen python scripts/export_release_contract.py "$scratch"/dist/*.whl --output "$scratch/contract"
-for qualified_manifest in releases/qualification/current/release.json releases/candidate/release.json; do
+# A historical qualified wheel is a baseline, not the bytes of every new build.
+# Only an explicitly prepared candidate is required to match the fresh artifact.
+for qualified_manifest in releases/candidate/release.json; do
 if [[ -f "$qualified_manifest" ]]; then
   uv run --frozen python scripts/verify_release_candidate.py "$qualified_manifest" "$scratch/contract/contract.json" "$scratch/contract/evidence.json" controlplane-sdk
 fi
