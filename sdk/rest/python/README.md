@@ -221,6 +221,8 @@ Class | Method | HTTP request | Description
  - [AuthMeResponse](docs/AuthMeResponse.md)
  - [AuthenticatorTransport](docs/AuthenticatorTransport.md)
  - [AvailableStorageProviderDto](docs/AvailableStorageProviderDto.md)
+ - [BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut](docs/BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut.md)
+ - [BodyUploadLogoApiV1BrandingsLogoPut](docs/BodyUploadLogoApiV1BrandingsLogoPut.md)
  - [BrandingDto](docs/BrandingDto.md)
  - [BudgetAllocateRequest](docs/BudgetAllocateRequest.md)
  - [ChangeEmailConfirmRequestDto](docs/ChangeEmailConfirmRequestDto.md)

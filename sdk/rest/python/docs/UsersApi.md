@@ -454,7 +454,7 @@ with openapi_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = openapi_client.UsersApi(api_client)
     user_id = 'user_id_example' # str | 
-    file = 'file_example' # str | 
+    file = None # bytearray |
 
     try:
         # Update profile picture (deprecated)
@@ -473,7 +473,7 @@ with openapi_client.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **str**|  | 
- **file** | **str**|  | 
+ **file** | **bytearray**|  |
 
 ### Return type
 

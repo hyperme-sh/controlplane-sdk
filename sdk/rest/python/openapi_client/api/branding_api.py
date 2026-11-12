@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictStr
-from typing import Any
+from pydantic import StrictBytes, StrictStr
+from typing import Any, Tuple, Union
 from openapi_client.models.update_branding_dto import UpdateBrandingDto
 
 from openapi_client.api_client import ApiClient, RequestSerialized
@@ -604,7 +604,7 @@ class BrandingApi:
     @validate_call
     def upload_logo_api_v1_brandings_logo_put(
         self,
-        file: StrictStr,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -622,7 +622,7 @@ class BrandingApi:
 
 
         :param file: (required)
-        :type file: str
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -671,7 +671,7 @@ class BrandingApi:
     @validate_call
     def upload_logo_api_v1_brandings_logo_put_with_http_info(
         self,
-        file: StrictStr,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -689,7 +689,7 @@ class BrandingApi:
 
 
         :param file: (required)
-        :type file: str
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -738,7 +738,7 @@ class BrandingApi:
     @validate_call
     def upload_logo_api_v1_brandings_logo_put_without_preload_content(
         self,
-        file: StrictStr,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -756,7 +756,7 @@ class BrandingApi:
 
 
         :param file: (required)
-        :type file: str
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -826,7 +826,7 @@ class BrandingApi:
         # process the header parameters
         # process the form parameters
         if file is not None:
-            _form_params.append(('file', file))
+            _files['file'] = file
         # process the body parameter
 
 

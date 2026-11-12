@@ -16,8 +16,8 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import StrictInt, StrictStr
-from typing import Optional
+from pydantic import StrictBytes, StrictInt, StrictStr
+from typing import Optional, Tuple, Union
 from openapi_client.models.create_user_dto import CreateUserDto
 from openapi_client.models.create_user_response_dto import CreateUserResponseDto
 from openapi_client.models.user_dto import UserDto
@@ -1470,7 +1470,7 @@ class UsersApi:
     def update_profile_picture_api_v1_users_user_id_update_profile_picture_put(
         self,
         user_id: StrictStr,
-        file: StrictStr,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1491,7 +1491,7 @@ class UsersApi:
         :param user_id: (required)
         :type user_id: str
         :param file: (required)
-        :type file: str
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1543,7 +1543,7 @@ class UsersApi:
     def update_profile_picture_api_v1_users_user_id_update_profile_picture_put_with_http_info(
         self,
         user_id: StrictStr,
-        file: StrictStr,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1564,7 +1564,7 @@ class UsersApi:
         :param user_id: (required)
         :type user_id: str
         :param file: (required)
-        :type file: str
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1616,7 +1616,7 @@ class UsersApi:
     def update_profile_picture_api_v1_users_user_id_update_profile_picture_put_without_preload_content(
         self,
         user_id: StrictStr,
-        file: StrictStr,
+        file: Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1637,7 +1637,7 @@ class UsersApi:
         :param user_id: (required)
         :type user_id: str
         :param file: (required)
-        :type file: str
+        :type file: bytearray
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1712,7 +1712,7 @@ class UsersApi:
         # process the header parameters
         # process the form parameters
         if file is not None:
-            _form_params.append(('file', file))
+            _files['file'] = file
         # process the body parameter
 
 
