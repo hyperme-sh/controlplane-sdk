@@ -148,7 +148,10 @@ bash scripts/check-package.sh
 
 Regenerate the REST trees with the pinned OpenAPI Generator image, then rerun the package check. Commands and the structural path/schema diff are in [`scripts/sdk-gen/README.md`](scripts/sdk-gen/README.md). Auth files under `sdk/auth` stay as written; regeneration does not replace them.
 
-`tests/test_edge_export_integration.py` runs offline OpenAPI export through the installed `controlplane-edge` package. The test process has no upstream base URLs, and an unexpected HTTP call fails the test. That covers offline export of the committed snapshot.
+`tests/test_edge_export_integration.py` runs only in the central scheduled
+`sdk-consumers` nightly adapter, across source, wheel and rebuilt sdist. Ordinary
+PR and main package checks exclude this case and retain the unit and contract
+suite. The nightly adapter exercises offline OpenAPI export through the installed `controlplane-edge` package. The test process has no upstream base URLs, and an unexpected HTTP call fails the test. That covers offline export of the committed snapshot.
 
 [`.github/workflows/package.yml`](.github/workflows/package.yml) runs on pushes to `main` and on manual dispatch, on `ubuntu-24.04`, with read-only `contents` permission. It uploads the tested distribution as the `tested-dist` artifact and the JUnit files as `test-results` (90-day retention).
 
