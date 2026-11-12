@@ -2,12 +2,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 unset PYTHONPATH UV_NO_SYNC
+source scripts/test-scope.sh
 python3 scripts/check_open_boundary.py src sdk pyproject.toml
 uv lock --check
 uv sync --frozen
 scratch=$(mktemp -d)
 trap 'rm -rf "$scratch"' EXIT
-uv run --frozen pytest --junitxml="$scratch/source.xml"
+uv run --frozen pytest "${sdk_test_selection[@]}" --junitxml="$scratch/source.xml"
 uv run --frozen pytest -q tests_tools
 uv build --out-dir "$scratch/dist"
 uv run --frozen python scripts/verify_wheel.py "$scratch/dist"
@@ -27,7 +28,7 @@ cp -R tests "$scratch/"
 mkdir -p "$scratch/sdk" "$scratch/scripts/sdk-gen"
 cp -R sdk/openapi sdk/rest "$scratch/sdk/"
 cp scripts/sdk-gen/check_breaking.py scripts/sdk-gen/allowed-removals.json "$scratch/scripts/sdk-gen/"
-(cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests --junitxml="$scratch/wheel.xml")
+(cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests "${sdk_test_selection[@]}" --junitxml="$scratch/wheel.xml")
 # Rebuild from the sdist; a checkout must not supply omitted package files.
 uv run --frozen python - "$scratch" <<'PY'
 import pathlib, sys, tarfile
@@ -41,7 +42,7 @@ uv run --frozen python scripts/export_release_contract.py "$scratch"/rebuilt/*.w
 cmp "$scratch/contract/contract.json" "$scratch/rebuilt-contract/contract.json"
 uv pip install --python "$scratch/venv/bin/python" --constraint "$scratch/requirements.txt" --reinstall "$scratch"/rebuilt/*.whl
 uv pip check --python "$scratch/venv/bin/python"
-(cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests --junitxml="$scratch/sdist.xml")
+(cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests "${sdk_test_selection[@]}" --junitxml="$scratch/sdist.xml")
 
 # Retain the exact validated bytes for the release channel; never rebuild them.
 if [[ -n "${RELEASE_ARTIFACT_DIR:-}" ]]; then
