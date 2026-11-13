@@ -1,6 +1,6 @@
 # Release compatibility
 
-`controlplane-sdk` is version **0.2.0**. [`release-policy.json`](../release-policy.json) and [`.github/workflows/release.yml`](../.github/workflows/release.yml) declare release line **0.2**. Components that share a Spanopticon release line share major and minor versions. Patch numbers advance on their own and keep the accepted API contract for that version.
+`controlplane-sdk` is version **0.2.0**. [`release-policy.json`](../release-policy.json) and [`.github/workflows/release-admission.yml`](../.github/workflows/release-admission.yml) declare release line **0.2**. Components that share a Spanopticon release line share major and minor versions. Patch numbers advance on their own and keep the accepted API contract for that version.
 
 `release-policy.json` names this repository and the version file `pyproject.toml`. The Spanopticon workflow checks that file on pull requests. A version change, or a `releases/candidate/release.json` submission, also goes through release admission. Tag pushes and manual release requests go through admission. A configuration-only result is a configuration check.
 
