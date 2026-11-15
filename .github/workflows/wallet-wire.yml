@@ -23,3 +23,12 @@ jobs:
       - run: npm ci --ignore-scripts --no-audit --no-fund
         working-directory: packages/sea-device-link
       - run: bash scripts/check-wallet-wire.sh
+  swift-wallet-wire:
+    runs-on: ${{ github.event.repository.private && fromJSON('["self-hosted", "linux", "x64", "debrunner"]') || 'ubuntu-24.04' }}
+    container: swift:6.0.3-jammy
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: swift test --package-path tests/wallet-swift --jobs 2

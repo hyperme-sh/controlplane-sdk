@@ -57,3 +57,12 @@ paths and schemas must match the merged snapshot. Generation uses the repository
 pinned generator. Unit contracts exercise wire headers, unchanged message/signature
 serialization, disabled capabilities and typed owner failures; scheduled composition
 remains in Infra's existing owner and SDK suites.
+
+## Native client qualification
+
+The wallet CI job compiles the complete generated TypeScript and Kotlin REST
+source trees, then runs wallet wire contract tests. A separate Swift 6.0.3 job
+builds the generated package and runs consumer tests for proof keys, pending
+nullable deposits, and rejection of incomplete observations. Test harnesses live
+outside generated directories. These checks do not claim mobile application,
+gRPC, or complete SDK consumer qualification; those remain SDK #3.
