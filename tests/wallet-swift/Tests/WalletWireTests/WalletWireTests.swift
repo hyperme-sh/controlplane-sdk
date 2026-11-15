@@ -26,6 +26,12 @@ final class WalletWireTests: XCTestCase {
         XCTAssertNil(body["amountCents"])
     }
 
+    func testServerValidationErrorRemainsDecodable() throws {
+        let data = Data(#"{"detail":[{"loc":["body"],"msg":"invalid input","type":"value_error"}]}"#.utf8)
+        let value = try JSONDecoder().decode(HTTPValidationError.self, from: data)
+        XCTAssertEqual(value.detail?.first?.msg, "invalid input")
+    }
+
     func testIncompleteDepositCannotBecomeConfirmed() {
         let data = Data(#"{"status":"confirmed","settled":true}"#.utf8)
         XCTAssertThrowsError(try JSONDecoder().decode(WalletPaymentWalletDepositStatus.self, from: data))

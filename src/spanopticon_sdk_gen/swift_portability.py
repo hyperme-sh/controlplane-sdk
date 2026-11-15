@@ -1,5 +1,6 @@
 """Keep the generated URLSession transport buildable with Linux Foundation."""
 from pathlib import Path
+import re
 
 
 def install_swift_portability(root: Path) -> list[str]:
@@ -22,4 +23,10 @@ def install_swift_portability(root: Path) -> list[str]:
         '                return mimetype as String\n            }\n            #endif',
     )
     path.write_text(text)
-    return [name]
+    validation_name = 'OpenAPIClient/Classes/OpenAPIs/Validation.swift'
+    validation = root / validation_name
+    # Keep the server's ValidationError wire model name. The generated generic
+    # validation helper otherwise redeclares it in the same Swift module.
+    validation.write_text(re.sub(r'\bValidationError\b', 'SchemaValidationError',
+                                 validation.read_text()))
+    return [name, validation_name]
