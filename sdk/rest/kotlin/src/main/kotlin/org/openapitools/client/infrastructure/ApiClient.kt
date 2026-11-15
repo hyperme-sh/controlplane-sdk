@@ -1,8 +1,6 @@
 package org.openapitools.client.infrastructure
 
 import org.openapitools.client.auth.HttpBearerAuth
-import org.openapitools.client.auth.HttpBearerAuth
-import org.openapitools.client.auth.HttpBearerAuth
 
 import okhttp3.Call
 import okhttp3.Interceptor
@@ -94,25 +92,7 @@ class ApiClient(
         setBearerToken(bearerToken)
     }
 
-    constructor(
-        baseUrl: String = defaultBasePath,
-        okHttpClientBuilder: OkHttpClient.Builder? = null,
-        serializerBuilder: ObjectMapper = Serializer.jacksonObjectMapper,
-        authName: String,
-        bearerToken: String
-    ) : this(baseUrl, okHttpClientBuilder, serializerBuilder, arrayOf(authName)) {
-        setBearerToken(bearerToken)
-    }
 
-    constructor(
-        baseUrl: String = defaultBasePath,
-        okHttpClientBuilder: OkHttpClient.Builder? = null,
-        serializerBuilder: ObjectMapper = Serializer.jacksonObjectMapper,
-        authName: String,
-        bearerToken: String
-    ) : this(baseUrl, okHttpClientBuilder, serializerBuilder, arrayOf(authName)) {
-        setBearerToken(bearerToken)
-    }
 
     fun setBearerToken(bearerToken: String): ApiClient {
         apiAuthorizations.values.runOnFirst<Interceptor, HttpBearerAuth> {
@@ -121,19 +101,7 @@ class ApiClient(
         return this
     }
 
-    fun setBearerToken(bearerToken: String): ApiClient {
-        apiAuthorizations.values.runOnFirst<Interceptor, HttpBearerAuth> {
-            this.bearerToken = bearerToken
-        }
-        return this
-    }
 
-    fun setBearerToken(bearerToken: String): ApiClient {
-        apiAuthorizations.values.runOnFirst<Interceptor, HttpBearerAuth> {
-            this.bearerToken = bearerToken
-        }
-        return this
-    }
 
     /**
      * Adds an authorization to be used by the client
