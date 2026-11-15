@@ -36,9 +36,13 @@ class TestCryptoBudgetListPage(unittest.TestCase):
         if include_optional:
             return CryptoBudgetListPage(
                 items = [
-                    {
-                        'key' : null
-                        }
+                    openapi_client.models.crypto_budget_response.CryptoBudgetResponse(
+                        id = '', 
+                        owner_pubkey = '', 
+                        mint_pubkey = '', 
+                        ceiling_lamports = 56, 
+                        allocated_lamports = 56, 
+                        label = '', )
                     ],
                 total = 0,
                 limit = 1,
@@ -47,9 +51,13 @@ class TestCryptoBudgetListPage(unittest.TestCase):
         else:
             return CryptoBudgetListPage(
                 items = [
-                    {
-                        'key' : null
-                        }
+                    openapi_client.models.crypto_budget_response.CryptoBudgetResponse(
+                        id = '', 
+                        owner_pubkey = '', 
+                        mint_pubkey = '', 
+                        ceiling_lamports = 56, 
+                        allocated_lamports = 56, 
+                        label = '', )
                     ],
                 total = 0,
                 limit = 1,

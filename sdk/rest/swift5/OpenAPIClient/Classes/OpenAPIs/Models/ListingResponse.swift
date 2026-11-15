@@ -19,11 +19,11 @@ public struct ListingResponse: Codable, JSONEncodable, Hashable {
     public private(set) var description: String
     public private(set) var listingType: String
     public private(set) var priceType: String
-    public private(set) var priceAmount: Int
+    public private(set) var priceAmount: Int?
     public private(set) var metadata: [String: AnyCodable]
     public private(set) var isPublic: Bool
 
-    public init(id: UUID, tenantId: UUID, sellerId: UUID, title: String, description: String, listingType: String, priceType: String, priceAmount: Int, metadata: [String: AnyCodable], isPublic: Bool) {
+    public init(id: UUID, tenantId: UUID, sellerId: UUID, title: String, description: String, listingType: String, priceType: String, priceAmount: Int?, metadata: [String: AnyCodable], isPublic: Bool) {
         self.id = id
         self.tenantId = tenantId
         self.sellerId = sellerId

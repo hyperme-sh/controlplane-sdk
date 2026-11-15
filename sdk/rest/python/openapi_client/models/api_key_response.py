@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
@@ -30,7 +31,7 @@ class ApiKeyResponse(BaseModel):
     id: StrictStr
     tenant_id: StrictStr
     key_prefix: StrictStr
-    name: StrictStr
+    name: Optional[StrictStr]
     scopes: List[StrictStr]
     created_at: StrictStr
     revoked_at: Optional[StrictStr] = None
@@ -75,7 +76,17 @@ class ApiKeyResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict['name'] = None
+
+        # set to None if revoked_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.revoked_at is None and "revoked_at" in self.model_fields_set:
+            _dict['revoked_at'] = None
+
+        return with_explicit_nulls(self, _dict, ('name', 'revoked_at'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -95,6 +106,6 @@ class ApiKeyResponse(BaseModel):
             "created_at": obj.get("created_at"),
             "revoked_at": obj.get("revoked_at")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

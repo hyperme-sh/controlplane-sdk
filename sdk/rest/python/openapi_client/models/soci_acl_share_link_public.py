@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
@@ -76,7 +77,17 @@ class SociACLShareLinkPublic(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if expires_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.expires_at is None and "expires_at" in self.model_fields_set:
+            _dict['expires_at'] = None
+
+        # set to None if uses_remaining (nullable) is None
+        # and model_fields_set contains the field
+        if self.uses_remaining is None and "uses_remaining" in self.model_fields_set:
+            _dict['uses_remaining'] = None
+
+        return with_explicit_nulls(self, _dict, ('expires_at', 'uses_remaining'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -95,6 +106,6 @@ class SociACLShareLinkPublic(BaseModel):
             "expires_at": obj.get("expires_at"),
             "uses_remaining": obj.get("uses_remaining")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

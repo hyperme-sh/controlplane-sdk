@@ -13,15 +13,15 @@ import AnyCodable
 public struct PolicyRowResponse: Codable, JSONEncodable, Hashable {
 
     public private(set) var id: Int
-    public private(set) var ptype: String
-    public private(set) var v0: String
-    public private(set) var v1: String
-    public private(set) var v2: String
-    public private(set) var v3: String
-    public private(set) var v4: String
-    public private(set) var v5: String
+    public private(set) var ptype: String?
+    public private(set) var v0: String?
+    public private(set) var v1: String?
+    public private(set) var v2: String?
+    public private(set) var v3: String?
+    public private(set) var v4: String?
+    public private(set) var v5: String?
 
-    public init(id: Int, ptype: String, v0: String, v1: String, v2: String, v3: String, v4: String, v5: String) {
+    public init(id: Int, ptype: String?, v0: String?, v1: String?, v2: String?, v3: String?, v4: String?, v5: String?) {
         self.id = id
         self.ptype = ptype
         self.v0 = v0

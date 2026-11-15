@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
@@ -70,7 +71,12 @@ class CreateNotificationBannerSettingDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if message (nullable) is None
+        # and model_fields_set contains the field
+        if self.message is None and "message" in self.model_fields_set:
+            _dict['message'] = None
+
+        return with_explicit_nulls(self, _dict, ('message',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -85,6 +91,6 @@ class CreateNotificationBannerSettingDto(BaseModel):
             "is_enabled": obj.get("is_enabled"),
             "message": obj.get("message")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

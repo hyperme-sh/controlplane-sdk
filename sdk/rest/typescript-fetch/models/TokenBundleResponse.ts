@@ -30,13 +30,13 @@ export interface TokenBundleResponse {
      * @type {string}
      * @memberof TokenBundleResponse
      */
-    refreshToken?: string;
+    refreshToken?: string | null;
     /**
      * 
      * @type {number}
      * @memberof TokenBundleResponse
      */
-    expiresIn?: number;
+    expiresIn?: number | null;
     /**
      * 
      * @type {string}

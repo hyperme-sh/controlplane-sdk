@@ -32,19 +32,19 @@ export interface UserUpdateBody {
      * @type {string}
      * @memberof UserUpdateBody
      */
-    firstName?: string;
+    firstName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserUpdateBody
      */
-    lastName?: string;
+    lastName?: string | null;
     /**
      * 
      * @type {SociACLAttributes}
      * @memberof UserUpdateBody
      */
-    sociaclAttributes?: SociACLAttributes;
+    sociaclAttributes?: SociACLAttributes | null;
 }
 
 /**

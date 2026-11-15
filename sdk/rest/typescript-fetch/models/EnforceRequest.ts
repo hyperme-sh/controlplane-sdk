@@ -48,7 +48,7 @@ export interface EnforceRequest {
      * @type {string}
      * @memberof EnforceRequest
      */
-    extra?: string;
+    extra?: string | null;
 }
 
 

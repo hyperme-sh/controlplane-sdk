@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
@@ -76,7 +77,12 @@ class CreateTenantDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if admin_password (nullable) is None
+        # and model_fields_set contains the field
+        if self.admin_password is None and "admin_password" in self.model_fields_set:
+            _dict['admin_password'] = None
+
+        return with_explicit_nulls(self, _dict, ('admin_password',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -96,6 +102,6 @@ class CreateTenantDto(BaseModel):
             "last_name": obj.get("last_name"),
             "gender": obj.get("gender")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

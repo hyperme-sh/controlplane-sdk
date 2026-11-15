@@ -41,7 +41,7 @@ data class GroupResponse (
     val name: kotlin.String,
 
     @get:JsonProperty("description")
-    val description: kotlin.String,
+    val description: kotlin.String?,
 
     @get:JsonProperty("role_id")
     val roleId: java.util.UUID

@@ -32,21 +32,6 @@ public struct CryptoBudgetCreateRequest: Codable, JSONEncodable, Hashable {
         case label
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -54,24 +39,6 @@ public struct CryptoBudgetCreateRequest: Codable, JSONEncodable, Hashable {
         try container.encode(ceilingLamports, forKey: .ceilingLamports)
         try container.encode(mintPubkey, forKey: .mintPubkey)
         try container.encodeIfPresent(label, forKey: .label)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        ceilingLamports = try container.decode(Int.self, forKey: .ceilingLamports)
-        mintPubkey = try container.decode(String.self, forKey: .mintPubkey)
-        label = try container.decodeIfPresent(String.self, forKey: .label)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("ceiling_lamports")
-        nonAdditionalPropertyKeys.insert("mint_pubkey")
-        nonAdditionalPropertyKeys.insert("label")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

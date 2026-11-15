@@ -24,7 +24,7 @@ export interface DownloadAuditRequestDto {
      * @type {string}
      * @memberof DownloadAuditRequestDto
      */
-    action?: DownloadAuditRequestDtoActionEnum;
+    action?: DownloadAuditRequestDtoActionEnum | null;
     /**
      * 
      * @type {number}

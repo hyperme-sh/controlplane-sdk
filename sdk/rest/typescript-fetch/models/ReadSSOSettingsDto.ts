@@ -42,19 +42,19 @@ export interface ReadSSOSettingsDto {
      * @type {string}
      * @memberof ReadSSOSettingsDto
      */
-    clientSecret?: string;
+    clientSecret?: string | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof ReadSSOSettingsDto
      */
-    scopes?: Array<string>;
+    scopes?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof ReadSSOSettingsDto
      */
-    redirectUris?: Array<string>;
+    redirectUris?: Array<string> | null;
     /**
      * 
      * @type {string}

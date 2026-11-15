@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
@@ -96,7 +97,37 @@ class TenantDto(BaseModel):
                 if _item_features:
                     _items.append(_item_features.to_dict())
             _dict['features'] = _items
-        return _dict
+        # set to None if id (nullable) is None
+        # and model_fields_set contains the field
+        if self.id is None and "id" in self.model_fields_set:
+            _dict['id'] = None
+
+        # set to None if subdomain (nullable) is None
+        # and model_fields_set contains the field
+        if self.subdomain is None and "subdomain" in self.model_fields_set:
+            _dict['subdomain'] = None
+
+        # set to None if custom_domain (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_domain is None and "custom_domain" in self.model_fields_set:
+            _dict['custom_domain'] = None
+
+        # set to None if subscription_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.subscription_id is None and "subscription_id" in self.model_fields_set:
+            _dict['subscription_id'] = None
+
+        # set to None if created_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_at is None and "created_at" in self.model_fields_set:
+            _dict['created_at'] = None
+
+        # set to None if updated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.updated_at is None and "updated_at" in self.model_fields_set:
+            _dict['updated_at'] = None
+
+        return with_explicit_nulls(self, _dict, ('id', 'subdomain', 'custom_domain', 'subscription_id', 'created_at', 'updated_at'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -119,6 +150,6 @@ class TenantDto(BaseModel):
             "created_at": obj.get("created_at"),
             "updated_at": obj.get("updated_at")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

@@ -30,7 +30,7 @@ export interface GroupCreateBody {
      * @type {string}
      * @memberof GroupCreateBody
      */
-    description?: string;
+    description?: string | null;
     /**
      * 
      * @type {string}

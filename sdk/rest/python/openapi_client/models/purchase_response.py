@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -32,7 +33,7 @@ class PurchaseResponse(BaseModel):
     buyer_id: StrictStr
     tenant_id: StrictStr
     status: StrictStr
-    license_key: StrictStr
+    license_key: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "listing_id", "buyer_id", "tenant_id", "status", "license_key"]
 
     model_config = ConfigDict(
@@ -74,7 +75,12 @@ class PurchaseResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if license_key (nullable) is None
+        # and model_fields_set contains the field
+        if self.license_key is None and "license_key" in self.model_fields_set:
+            _dict['license_key'] = None
+
+        return with_explicit_nulls(self, _dict, ('license_key',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -93,6 +99,6 @@ class PurchaseResponse(BaseModel):
             "status": obj.get("status"),
             "license_key": obj.get("license_key")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

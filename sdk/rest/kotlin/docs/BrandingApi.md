@@ -104,7 +104,7 @@ Upload Logo
 val apiClient = ApiClient()
 apiClient.setBearerToken("TOKEN")
 val webService = apiClient.createWebservice(BrandingApi::class.java)
-val file : kotlin.String = file_example // kotlin.String | 
+val file : java.io.File = BINARY_DATA_HERE // java.io.File | 
 
 launch(Dispatchers.IO) {
     val result : kotlin.Any = webService.uploadLogoApiV1BrandingsLogoPut(file)
@@ -114,7 +114,7 @@ launch(Dispatchers.IO) {
 ### Parameters
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file** | **kotlin.String**|  | |
+| **file** | **java.io.File**|  | |
 
 ### Return type
 

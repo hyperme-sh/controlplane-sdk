@@ -56,7 +56,7 @@ data class TenantDto (
     val customDomainStatus: TenantDto.CustomDomainStatus? = CustomDomainStatus.failed,
 
     @get:JsonProperty("features")
-    val features: kotlin.collections.List<FeatureDto>? = null,
+    val features: kotlin.collections.List<FeatureDto>? = arrayListOf(),
 
     @get:JsonProperty("subscription_id")
     val subscriptionId: kotlin.String? = null,

@@ -65,7 +65,7 @@ export interface RemoveUserRoleApiV1UsersUserIdRemoveRolePatchRequest {
 
 export interface UpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePutRequest {
     userId: string;
-    file: string;
+    file: Blob;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface UsersApiInterface {
      * Prefer the dedicated user-service: same paths under `/api/v1/users` (e.g. `docker compose` service `user-service`, host port 8002). This monolith route remains for backward compatibility and will be removed later.
      * @summary Update profile picture (deprecated)
      * @param {string} userId 
-     * @param {string} file 
+     * @param {Blob} file 
      * @param {*} [options] Override http request option.
      * @deprecated
      * @throws {RequiredError}
@@ -483,6 +483,8 @@ export class UsersApi extends runtime.BaseAPI implements UsersApiInterface {
 
         let formParams: { append(param: string, value: any): any };
         let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
         if (useForm) {
             formParams = new FormData();
         } else {

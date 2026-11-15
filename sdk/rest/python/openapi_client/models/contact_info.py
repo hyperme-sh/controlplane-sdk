@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
@@ -71,7 +72,22 @@ class ContactInfo(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if support_email (nullable) is None
+        # and model_fields_set contains the field
+        if self.support_email is None and "support_email" in self.model_fields_set:
+            _dict['support_email'] = None
+
+        # set to None if phone (nullable) is None
+        # and model_fields_set contains the field
+        if self.phone is None and "phone" in self.model_fields_set:
+            _dict['phone'] = None
+
+        # set to None if address (nullable) is None
+        # and model_fields_set contains the field
+        if self.address is None and "address" in self.model_fields_set:
+            _dict['address'] = None
+
+        return with_explicit_nulls(self, _dict, ('support_email', 'phone', 'address'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -87,6 +103,6 @@ class ContactInfo(BaseModel):
             "phone": obj.get("phone"),
             "address": obj.get("address")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

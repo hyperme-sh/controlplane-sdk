@@ -49,10 +49,10 @@ data class ReadSSOSettingsDto (
     val clientSecret: kotlin.String? = null,
 
     @get:JsonProperty("scopes")
-    val scopes: kotlin.collections.List<kotlin.String>? = null,
+    val scopes: kotlin.collections.List<kotlin.String>? = arrayListOf(),
 
     @get:JsonProperty("redirect_uris")
-    val redirectUris: kotlin.collections.List<kotlin.String>? = null
+    val redirectUris: kotlin.collections.List<kotlin.String>? = arrayListOf()
 
 ) {
 

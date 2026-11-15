@@ -66,7 +66,7 @@ export interface ListingResponse {
      * @type {number}
      * @memberof ListingResponse
      */
-    priceAmount: number;
+    priceAmount: number | null;
     /**
      * 
      * @type {{ [key: string]: any; }}

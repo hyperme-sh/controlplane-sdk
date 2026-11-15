@@ -18,15 +18,15 @@ public struct SubscriptionPlanDto: Codable, JSONEncodable, Hashable {
     /** Indicates if the subscription is a trial */
     public private(set) var isTrial: Bool
     /** The tenant who owns the subscription */
-    public private(set) var tenantId: String
+    public private(set) var tenantId: String?
     /** who it is applied to, If end_user, then user_id must be set */
     public private(set) var actor: String
     /** The end user who has this subscription, if applicable */
-    public private(set) var userId: String
+    public private(set) var userId: String?
     /** Corresponding processor plan reference */
     public private(set) var planId: String
 
-    public init(id: String, planLevel: [String: Int], isTrial: Bool, tenantId: String, actor: String, userId: String, planId: String) {
+    public init(id: String, planLevel: [String: Int], isTrial: Bool, tenantId: String?, actor: String, userId: String?, planId: String) {
         self.id = id
         self.planLevel = planLevel
         self.isTrial = isTrial

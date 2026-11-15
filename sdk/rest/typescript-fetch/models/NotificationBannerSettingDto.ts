@@ -30,31 +30,31 @@ export interface NotificationBannerSettingDto {
      * @type {string}
      * @memberof NotificationBannerSettingDto
      */
-    message?: string;
+    message?: string | null;
     /**
      * 
      * @type {string}
      * @memberof NotificationBannerSettingDto
      */
-    id?: string;
+    id?: string | null;
     /**
      * 
      * @type {string}
      * @memberof NotificationBannerSettingDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof NotificationBannerSettingDto
      */
-    createdAt?: string;
+    createdAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof NotificationBannerSettingDto
      */
-    updatedAt?: string;
+    updatedAt?: string | null;
 }
 
 /**

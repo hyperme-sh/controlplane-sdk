@@ -48,7 +48,7 @@ data class PurchaseResponse (
     val status: kotlin.String,
 
     @get:JsonProperty("license_key")
-    val licenseKey: kotlin.String
+    val licenseKey: kotlin.String?
 
 ) {
 

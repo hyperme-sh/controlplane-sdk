@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
@@ -93,7 +94,47 @@ class MeResponseDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of subscription
         if self.subscription:
             _dict['subscription'] = self.subscription.to_dict()
-        return _dict
+        # set to None if role_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_id is None and "role_id" in self.model_fields_set:
+            _dict['role_id'] = None
+
+        # set to None if activated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.activated_at is None and "activated_at" in self.model_fields_set:
+            _dict['activated_at'] = None
+
+        # set to None if image_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.image_url is None and "image_url" in self.model_fields_set:
+            _dict['image_url'] = None
+
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        # set to None if sso_provider_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.sso_provider_id is None and "sso_provider_id" in self.model_fields_set:
+            _dict['sso_provider_id'] = None
+
+        # set to None if keycloak_sub (nullable) is None
+        # and model_fields_set contains the field
+        if self.keycloak_sub is None and "keycloak_sub" in self.model_fields_set:
+            _dict['keycloak_sub'] = None
+
+        # set to None if role (nullable) is None
+        # and model_fields_set contains the field
+        if self.role is None and "role" in self.model_fields_set:
+            _dict['role'] = None
+
+        # set to None if subscription (nullable) is None
+        # and model_fields_set contains the field
+        if self.subscription is None and "subscription" in self.model_fields_set:
+            _dict['subscription'] = None
+
+        return with_explicit_nulls(self, _dict, ('role_id', 'activated_at', 'image_url', 'tenant_id', 'sso_provider_id', 'keycloak_sub', 'role', 'subscription'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -122,6 +163,6 @@ class MeResponseDto(BaseModel):
             "role": RoleDto.from_dict(obj["role"]) if obj.get("role") is not None else None,
             "subscription": SubscriptionPlanDto.from_dict(obj["subscription"]) if obj.get("subscription") is not None else None
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

@@ -97,6 +97,36 @@ class UpdateBrandingDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of theme_config
         if self.theme_config:
             _dict['theme_config'] = self.theme_config.to_dict()
+        # set to None if identity (nullable) is None
+        # and model_fields_set contains the field
+        if self.identity is None and "identity" in self.model_fields_set:
+            _dict['identity'] = None
+
+        # set to None if contact_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.contact_info is None and "contact_info" in self.model_fields_set:
+            _dict['contact_info'] = None
+
+        # set to None if theme_config (nullable) is None
+        # and model_fields_set contains the field
+        if self.theme_config is None and "theme_config" in self.model_fields_set:
+            _dict['theme_config'] = None
+
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        # set to None if logo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.logo_url is None and "logo_url" in self.model_fields_set:
+            _dict['logo_url'] = None
+
+        # set to None if logo_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.logo_type is None and "logo_type" in self.model_fields_set:
+            _dict['logo_type'] = None
+
         return with_explicit_nulls(self, _dict, ('identity', 'contact_info', 'theme_config', 'tenant_id', 'logo_url', 'logo_type'))
 
     @classmethod

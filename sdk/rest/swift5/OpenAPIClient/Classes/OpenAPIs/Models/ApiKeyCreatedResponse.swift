@@ -16,7 +16,7 @@ public struct ApiKeyCreatedResponse: Codable, JSONEncodable, Hashable {
     public private(set) var id: UUID
     public private(set) var tenantId: UUID
     public private(set) var keyPrefix: String
-    public private(set) var name: String
+    public private(set) var name: String?
     public private(set) var scopes: [String]
     public private(set) var createdAt: String
     public private(set) var revokedAt: String?
@@ -25,7 +25,7 @@ public struct ApiKeyCreatedResponse: Codable, JSONEncodable, Hashable {
     /** Alias for prefix.secret */
     public private(set) var apiKey: String
 
-    public init(id: UUID, tenantId: UUID, keyPrefix: String, name: String, scopes: [String], createdAt: String, revokedAt: String? = nil, secretPlaintext: String, apiKey: String) {
+    public init(id: UUID, tenantId: UUID, keyPrefix: String, name: String?, scopes: [String], createdAt: String, revokedAt: String? = nil, secretPlaintext: String, apiKey: String) {
         self.id = id
         self.tenantId = tenantId
         self.keyPrefix = keyPrefix

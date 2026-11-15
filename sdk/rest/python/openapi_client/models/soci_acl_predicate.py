@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -36,7 +37,6 @@ class SociACLPredicate(BaseModel):
     member_of_group_id: Optional[StrictStr] = None
     cross_network_handle_allowlist: Optional[List[StrictStr]] = Field(default=None, description="If set, requester handle must match one entry (exact).")
     cross_network_handle_blocklist: Optional[List[StrictStr]] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["min_verification_level", "min_vouch_count", "max_distance_km", "required_political_tolerance", "member_of_group_id", "cross_network_handle_allowlist", "cross_network_handle_blocklist"]
 
     model_config = ConfigDict(
@@ -69,10 +69,8 @@ class SociACLPredicate(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -80,12 +78,42 @@ class SociACLPredicate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if min_verification_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_verification_level is None and "min_verification_level" in self.model_fields_set:
+            _dict['min_verification_level'] = None
 
-        return _dict
+        # set to None if min_vouch_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_vouch_count is None and "min_vouch_count" in self.model_fields_set:
+            _dict['min_vouch_count'] = None
+
+        # set to None if max_distance_km (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_distance_km is None and "max_distance_km" in self.model_fields_set:
+            _dict['max_distance_km'] = None
+
+        # set to None if required_political_tolerance (nullable) is None
+        # and model_fields_set contains the field
+        if self.required_political_tolerance is None and "required_political_tolerance" in self.model_fields_set:
+            _dict['required_political_tolerance'] = None
+
+        # set to None if member_of_group_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.member_of_group_id is None and "member_of_group_id" in self.model_fields_set:
+            _dict['member_of_group_id'] = None
+
+        # set to None if cross_network_handle_allowlist (nullable) is None
+        # and model_fields_set contains the field
+        if self.cross_network_handle_allowlist is None and "cross_network_handle_allowlist" in self.model_fields_set:
+            _dict['cross_network_handle_allowlist'] = None
+
+        # set to None if cross_network_handle_blocklist (nullable) is None
+        # and model_fields_set contains the field
+        if self.cross_network_handle_blocklist is None and "cross_network_handle_blocklist" in self.model_fields_set:
+            _dict['cross_network_handle_blocklist'] = None
+
+        return with_explicit_nulls(self, _dict, ('min_verification_level', 'min_vouch_count', 'max_distance_km', 'required_political_tolerance', 'member_of_group_id', 'cross_network_handle_allowlist', 'cross_network_handle_blocklist'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -105,11 +133,6 @@ class SociACLPredicate(BaseModel):
             "cross_network_handle_allowlist": obj.get("cross_network_handle_allowlist"),
             "cross_network_handle_blocklist": obj.get("cross_network_handle_blocklist")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

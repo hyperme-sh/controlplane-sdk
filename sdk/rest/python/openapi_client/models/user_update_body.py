@@ -77,6 +77,21 @@ class UserUpdateBody(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sociacl_attributes
         if self.sociacl_attributes:
             _dict['sociacl_attributes'] = self.sociacl_attributes.to_dict()
+        # set to None if first_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.first_name is None and "first_name" in self.model_fields_set:
+            _dict['first_name'] = None
+
+        # set to None if last_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.last_name is None and "last_name" in self.model_fields_set:
+            _dict['last_name'] = None
+
+        # set to None if sociacl_attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.sociacl_attributes is None and "sociacl_attributes" in self.model_fields_set:
+            _dict['sociacl_attributes'] = None
+
         return with_explicit_nulls(self, _dict, ('first_name', 'last_name', 'sociacl_attributes'))
 
     @classmethod

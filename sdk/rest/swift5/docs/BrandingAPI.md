@@ -109,7 +109,7 @@ Void (empty response body)
 
 # **uploadLogoApiV1BrandingsLogoPut**
 ```swift
-    open class func uploadLogoApiV1BrandingsLogoPut(file: String, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
+    open class func uploadLogoApiV1BrandingsLogoPut(file: URL, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
 ```
 
 Upload Logo
@@ -119,7 +119,7 @@ Upload Logo
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let file = "file_example" // String | 
+let file = URL(string: "https://example.com")! // URL | 
 
 // Upload Logo
 BrandingAPI.uploadLogoApiV1BrandingsLogoPut(file: file) { (response, error) in
@@ -138,7 +138,7 @@ BrandingAPI.uploadLogoApiV1BrandingsLogoPut(file: file) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | **String** |  | 
+ **file** | **URL** |  | 
 
 ### Return type
 

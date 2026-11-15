@@ -76,7 +76,7 @@ export interface MeResponseDto {
      * @type {string}
      * @memberof MeResponseDto
      */
-    roleId?: string;
+    roleId?: string | null;
     /**
      * 
      * @type {boolean}
@@ -88,13 +88,13 @@ export interface MeResponseDto {
      * @type {string}
      * @memberof MeResponseDto
      */
-    activatedAt?: string;
+    activatedAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof MeResponseDto
      */
-    imageUrl?: string;
+    imageUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -112,31 +112,31 @@ export interface MeResponseDto {
      * @type {string}
      * @memberof MeResponseDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof MeResponseDto
      */
-    ssoProviderId?: string;
+    ssoProviderId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof MeResponseDto
      */
-    keycloakSub?: string;
+    keycloakSub?: string | null;
     /**
      * 
      * @type {RoleDto}
      * @memberof MeResponseDto
      */
-    role?: RoleDto;
+    role?: RoleDto | null;
     /**
      * 
      * @type {SubscriptionPlanDto}
      * @memberof MeResponseDto
      */
-    subscription?: SubscriptionPlanDto;
+    subscription?: SubscriptionPlanDto | null;
 }
 
 

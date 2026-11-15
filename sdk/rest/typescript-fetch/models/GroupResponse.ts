@@ -42,7 +42,7 @@ export interface GroupResponse {
      * @type {string}
      * @memberof GroupResponse
      */
-    description: string;
+    description: string | null;
     /**
      * 
      * @type {string}

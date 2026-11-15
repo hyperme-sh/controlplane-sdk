@@ -64,19 +64,19 @@ export interface AppConfigurationDto {
      * @type {boolean}
      * @memberof AppConfigurationDto
      */
-    isUserLoggedIn?: boolean;
+    isUserLoggedIn?: boolean | null;
     /**
      * 
      * @type {UserPreferenceDto}
      * @memberof AppConfigurationDto
      */
-    userPreferences?: UserPreferenceDto;
+    userPreferences?: UserPreferenceDto | null;
     /**
      * 
      * @type {TenantDto}
      * @memberof AppConfigurationDto
      */
-    currentTenant?: TenantDto;
+    currentTenant?: TenantDto | null;
     /**
      * 
      * @type {string}
@@ -88,13 +88,13 @@ export interface AppConfigurationDto {
      * @type {Array<string>}
      * @memberof AppConfigurationDto
      */
-    enabledSsoProviders?: Array<string>;
+    enabledSsoProviders?: Array<string> | null;
     /**
      * 
      * @type {BrandingDto}
      * @memberof AppConfigurationDto
      */
-    branding?: BrandingDto;
+    branding?: BrandingDto | null;
 }
 
 /**

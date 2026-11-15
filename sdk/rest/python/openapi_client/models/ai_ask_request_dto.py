@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
@@ -71,7 +72,17 @@ class AIAskRequestDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if model_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.model_name is None and "model_name" in self.model_fields_set:
+            _dict['model_name'] = None
+
+        # set to None if session_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.session_id is None and "session_id" in self.model_fields_set:
+            _dict['session_id'] = None
+
+        return with_explicit_nulls(self, _dict, ('model_name', 'session_id'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -87,6 +98,6 @@ class AIAskRequestDto(BaseModel):
             "model_name": obj.get("model_name"),
             "session_id": obj.get("session_id")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

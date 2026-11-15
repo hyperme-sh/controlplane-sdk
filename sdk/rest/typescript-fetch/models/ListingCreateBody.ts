@@ -48,7 +48,7 @@ export interface ListingCreateBody {
      * @type {number}
      * @memberof ListingCreateBody
      */
-    priceAmount?: number;
+    priceAmount?: number | null;
     /**
      * 
      * @type {{ [key: string]: any; }}

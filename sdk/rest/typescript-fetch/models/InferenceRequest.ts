@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface InferenceRequest
  */
 export interface InferenceRequest {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
@@ -37,7 +36,7 @@ export interface InferenceRequest {
      * @type {number}
      * @memberof InferenceRequest
      */
-    maxTokens?: number;
+    maxTokens?: number | null;
     /**
      * 
      * @type {string}
@@ -49,7 +48,7 @@ export interface InferenceRequest {
      * @type {string}
      * @memberof InferenceRequest
      */
-    budgetId?: string;
+    budgetId?: string | null;
 }
 
 
@@ -82,7 +81,6 @@ export function InferenceRequestFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-            ...json,
         'prompt': json['prompt'],
         'model': json['model'],
         'maxTokens': json['max_tokens'] == null ? undefined : json['max_tokens'],
@@ -102,7 +100,6 @@ export function InferenceRequestToJSONTyped(value?: InferenceRequest | null, ign
 
     return {
         
-            ...value,
         'prompt': value['prompt'],
         'model': value['model'],
         'max_tokens': value['maxTokens'],

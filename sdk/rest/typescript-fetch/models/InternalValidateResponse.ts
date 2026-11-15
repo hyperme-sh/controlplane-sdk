@@ -30,13 +30,13 @@ export interface InternalValidateResponse {
      * @type {string}
      * @memberof InternalValidateResponse
      */
-    keyId?: string;
+    keyId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof InternalValidateResponse
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {Array<string>}

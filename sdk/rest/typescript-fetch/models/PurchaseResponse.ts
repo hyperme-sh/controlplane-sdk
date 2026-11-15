@@ -54,7 +54,7 @@ export interface PurchaseResponse {
      * @type {string}
      * @memberof PurchaseResponse
      */
-    licenseKey: string;
+    licenseKey: string | null;
 }
 
 /**

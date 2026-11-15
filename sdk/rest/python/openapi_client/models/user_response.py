@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from datetime import datetime
@@ -78,7 +79,17 @@ class UserResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if deleted_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.deleted_at is None and "deleted_at" in self.model_fields_set:
+            _dict['deleted_at'] = None
+
+        # set to None if sociacl_attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.sociacl_attributes is None and "sociacl_attributes" in self.model_fields_set:
+            _dict['sociacl_attributes'] = None
+
+        return with_explicit_nulls(self, _dict, ('deleted_at', 'sociacl_attributes'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -100,6 +111,6 @@ class UserResponse(BaseModel):
             "deleted_at": obj.get("deleted_at"),
             "sociacl_attributes": obj.get("sociacl_attributes")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

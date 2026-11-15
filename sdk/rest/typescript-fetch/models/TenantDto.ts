@@ -32,7 +32,7 @@ export interface TenantDto {
      * @type {string}
      * @memberof TenantDto
      */
-    id?: string;
+    id?: string | null;
     /**
      * 
      * @type {string}
@@ -44,7 +44,7 @@ export interface TenantDto {
      * @type {string}
      * @memberof TenantDto
      */
-    subdomain?: string;
+    subdomain?: string | null;
     /**
      * 
      * @type {boolean}
@@ -56,7 +56,7 @@ export interface TenantDto {
      * @type {string}
      * @memberof TenantDto
      */
-    customDomain?: string;
+    customDomain?: string | null;
     /**
      * 
      * @type {string}
@@ -74,19 +74,19 @@ export interface TenantDto {
      * @type {string}
      * @memberof TenantDto
      */
-    subscriptionId?: string;
+    subscriptionId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof TenantDto
      */
-    createdAt?: string;
+    createdAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof TenantDto
      */
-    updatedAt?: string;
+    updatedAt?: string | null;
 }
 
 

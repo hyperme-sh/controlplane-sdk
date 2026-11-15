@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface CryptoBudgetCreateRequest
  */
 export interface CryptoBudgetCreateRequest {
-    [key: string]: any | any;
     /**
      * 
      * @type {number}
@@ -37,7 +36,7 @@ export interface CryptoBudgetCreateRequest {
      * @type {string}
      * @memberof CryptoBudgetCreateRequest
      */
-    label?: string;
+    label?: string | null;
 }
 
 /**
@@ -59,7 +58,6 @@ export function CryptoBudgetCreateRequestFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-            ...json,
         'ceilingLamports': json['ceiling_lamports'],
         'mintPubkey': json['mint_pubkey'],
         'label': json['label'] == null ? undefined : json['label'],
@@ -77,7 +75,6 @@ export function CryptoBudgetCreateRequestToJSONTyped(value?: CryptoBudgetCreateR
 
     return {
         
-            ...value,
         'ceiling_lamports': value['ceilingLamports'],
         'mint_pubkey': value['mintPubkey'],
         'label': value['label'],

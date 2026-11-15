@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
@@ -88,7 +89,42 @@ class AvailableStorageProviderDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if aws_access_key (nullable) is None
+        # and model_fields_set contains the field
+        if self.aws_access_key is None and "aws_access_key" in self.model_fields_set:
+            _dict['aws_access_key'] = None
+
+        # set to None if aws_secret_key (nullable) is None
+        # and model_fields_set contains the field
+        if self.aws_secret_key is None and "aws_secret_key" in self.model_fields_set:
+            _dict['aws_secret_key'] = None
+
+        # set to None if aws_bucket_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.aws_bucket_name is None and "aws_bucket_name" in self.model_fields_set:
+            _dict['aws_bucket_name'] = None
+
+        # set to None if azure_connection_string (nullable) is None
+        # and model_fields_set contains the field
+        if self.azure_connection_string is None and "azure_connection_string" in self.model_fields_set:
+            _dict['azure_connection_string'] = None
+
+        # set to None if azure_container_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.azure_container_name is None and "azure_container_name" in self.model_fields_set:
+            _dict['azure_container_name'] = None
+
+        # set to None if updated_by_user_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.updated_by_user_id is None and "updated_by_user_id" in self.model_fields_set:
+            _dict['updated_by_user_id'] = None
+
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        return with_explicit_nulls(self, _dict, ('aws_access_key', 'aws_secret_key', 'aws_bucket_name', 'azure_connection_string', 'azure_container_name', 'updated_by_user_id', 'tenant_id'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -114,6 +150,6 @@ class AvailableStorageProviderDto(BaseModel):
             "updated_at": obj.get("updated_at"),
             "tenant_id": obj.get("tenant_id")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

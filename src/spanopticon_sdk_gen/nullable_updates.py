@@ -31,7 +31,7 @@ def nullable(schema):
 def install_nullable_updates(root: Path, document: dict) -> list[str]:
     schemas = document.get('components', {}).get('schemas', {})
     required = {name: tuple(k for k, v in schema.get('properties', {}).items() if nullable(v))
-                for name, schema in schemas.items() if 'Update' in name or 'Patch' in name}
+                for name, schema in schemas.items()}
     required = {name: fields for name, fields in required.items() if fields}
     written, found = [], set()
     for path in sorted((root/'openapi_client/models').glob('*.py')):

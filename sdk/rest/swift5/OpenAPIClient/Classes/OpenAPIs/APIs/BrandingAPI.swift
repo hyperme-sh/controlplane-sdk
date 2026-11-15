@@ -100,7 +100,7 @@ open class BrandingAPI {
      - returns: AnyCodable
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func uploadLogoApiV1BrandingsLogoPut(file: String) async throws -> AnyCodable {
+    open class func uploadLogoApiV1BrandingsLogoPut(file: URL) async throws -> AnyCodable {
         return try await uploadLogoApiV1BrandingsLogoPutWithRequestBuilder(file: file).execute().body
     }
 
@@ -113,7 +113,7 @@ open class BrandingAPI {
      - parameter file: (form)  
      - returns: RequestBuilder<AnyCodable> 
      */
-    open class func uploadLogoApiV1BrandingsLogoPutWithRequestBuilder(file: String) -> RequestBuilder<AnyCodable> {
+    open class func uploadLogoApiV1BrandingsLogoPutWithRequestBuilder(file: URL) -> RequestBuilder<AnyCodable> {
         let localVariablePath = "/api/v1/brandings/logo"
         let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
         let localVariableFormParams: [String: Any?] = [

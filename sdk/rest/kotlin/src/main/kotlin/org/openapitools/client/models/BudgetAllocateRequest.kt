@@ -30,7 +30,7 @@ data class BudgetAllocateRequest (
     @get:JsonProperty("delta_lamports")
     val deltaLamports: kotlin.Int
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

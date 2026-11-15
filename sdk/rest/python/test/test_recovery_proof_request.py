@@ -36,9 +36,7 @@ class TestRecoveryProofRequest(unittest.TestCase):
         if include_optional:
             return RecoveryProofRequest(
                 proof_type = 'split_key_stub',
-                payload = {
-                    'key' : null
-                    }
+                payload = { }
             )
         else:
             return RecoveryProofRequest(

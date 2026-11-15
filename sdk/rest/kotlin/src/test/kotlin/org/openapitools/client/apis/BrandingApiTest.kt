@@ -45,7 +45,7 @@ class BrandingApiTest : ShouldSpec() {
         // to test uploadLogoApiV1BrandingsLogoPut
         should("test uploadLogoApiV1BrandingsLogoPut") {
             // uncomment below to test uploadLogoApiV1BrandingsLogoPut
-            //val file : kotlin.String = file_example // kotlin.String | 
+            //val file : java.io.File = BINARY_DATA_HERE // java.io.File | 
             //val result : kotlin.Any = apiInstance.uploadLogoApiV1BrandingsLogoPut(file)
             //result shouldBe ("TODO")
         }

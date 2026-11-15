@@ -30,7 +30,7 @@ export interface CreateNotificationBannerSettingDto {
      * @type {string}
      * @memberof CreateNotificationBannerSettingDto
      */
-    message?: string;
+    message?: string | null;
 }
 
 /**

@@ -30,19 +30,19 @@ export interface AuthMeResponse {
      * @type {string}
      * @memberof AuthMeResponse
      */
-    email?: string;
+    email?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AuthMeResponse
      */
-    preferredUsername?: string;
+    preferredUsername?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AuthMeResponse
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {Array<string>}

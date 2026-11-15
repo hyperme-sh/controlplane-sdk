@@ -38,7 +38,7 @@ data class CryptoBudgetCreateRequest (
     @get:JsonProperty("label")
     val label: kotlin.String? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

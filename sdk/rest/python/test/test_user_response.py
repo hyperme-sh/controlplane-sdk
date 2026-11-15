@@ -43,9 +43,7 @@ class TestUserResponse(unittest.TestCase):
                 gender = '',
                 is_active = True,
                 deleted_at = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f'),
-                sociacl_attributes = {
-                    'key' : null
-                    }
+                sociacl_attributes = { }
             )
         else:
             return UserResponse(

@@ -15,12 +15,12 @@ public struct ApiKeyResponse: Codable, JSONEncodable, Hashable {
     public private(set) var id: UUID
     public private(set) var tenantId: UUID
     public private(set) var keyPrefix: String
-    public private(set) var name: String
+    public private(set) var name: String?
     public private(set) var scopes: [String]
     public private(set) var createdAt: String
     public private(set) var revokedAt: String?
 
-    public init(id: UUID, tenantId: UUID, keyPrefix: String, name: String, scopes: [String], createdAt: String, revokedAt: String? = nil) {
+    public init(id: UUID, tenantId: UUID, keyPrefix: String, name: String?, scopes: [String], createdAt: String, revokedAt: String? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.keyPrefix = keyPrefix

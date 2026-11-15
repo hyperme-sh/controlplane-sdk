@@ -41,9 +41,7 @@ class TestAppConfigurationDto(unittest.TestCase):
                 is_user_logged_in = True,
                 user_preferences = openapi_client.models.user_preference_dto.UserPreferenceDto(
                     user_id = '', 
-                    preferences = {
-                        'key' : null
-                        }, ),
+                    preferences = { }, ),
                 current_tenant = openapi_client.models.tenant_dto.TenantDto(
                     id = '', 
                     name = '', 

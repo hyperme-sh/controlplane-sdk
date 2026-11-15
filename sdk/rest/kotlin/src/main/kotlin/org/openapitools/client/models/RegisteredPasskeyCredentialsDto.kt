@@ -46,7 +46,7 @@ data class RegisteredPasskeyCredentialsDto (
     val createdAt: java.time.OffsetDateTime,
 
     @get:JsonProperty("transports")
-    val transports: kotlin.collections.List<AuthenticatorTransport>? = null,
+    val transports: kotlin.collections.List<AuthenticatorTransport>? = arrayListOf(),
 
     @get:JsonProperty("last_used_at")
     val lastUsedAt: java.time.OffsetDateTime? = null

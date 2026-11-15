@@ -56,37 +56,37 @@ export interface CreateUserDto {
      * @type {string}
      * @memberof CreateUserDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateUserDto
      */
-    roleId?: string;
+    roleId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateUserDto
      */
-    ssoProviderId?: string;
+    ssoProviderId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateUserDto
      */
-    password?: string;
+    password?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateUserDto
      */
-    subDomain?: string;
+    subDomain?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateUserDto
      */
-    keycloakSub?: string;
+    keycloakSub?: string | null;
 }
 
 

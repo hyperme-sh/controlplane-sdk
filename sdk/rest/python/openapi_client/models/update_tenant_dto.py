@@ -83,6 +83,26 @@ class UpdateTenantDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if is_active (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_active is None and "is_active" in self.model_fields_set:
+            _dict['is_active'] = None
+
+        # set to None if custom_domain (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_domain is None and "custom_domain" in self.model_fields_set:
+            _dict['custom_domain'] = None
+
+        # set to None if subscription_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.subscription_id is None and "subscription_id" in self.model_fields_set:
+            _dict['subscription_id'] = None
+
+        # set to None if custom_domain_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.custom_domain_status is None and "custom_domain_status" in self.model_fields_set:
+            _dict['custom_domain_status'] = None
+
         return with_explicit_nulls(self, _dict, ('is_active', 'custom_domain', 'subscription_id', 'custom_domain_status'))
 
     @classmethod

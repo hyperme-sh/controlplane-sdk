@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -38,7 +39,6 @@ class SociACLRequestContext(BaseModel):
     cross_network_handle: Optional[Annotated[str, Field(strict=True, max_length=256)]] = None
     distance_km: Optional[Union[Annotated[float, Field(strict=True, ge=0.0)], Annotated[int, Field(strict=True, ge=0)]]] = None
     distance_source: Optional[SociACLDistanceSource] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["sub", "political_view", "verification_level", "vouch_count", "vouch_source", "cross_network_handle", "distance_km", "distance_source"]
 
     model_config = ConfigDict(
@@ -71,10 +71,8 @@ class SociACLRequestContext(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -82,12 +80,47 @@ class SociACLRequestContext(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if sub (nullable) is None
+        # and model_fields_set contains the field
+        if self.sub is None and "sub" in self.model_fields_set:
+            _dict['sub'] = None
 
-        return _dict
+        # set to None if political_view (nullable) is None
+        # and model_fields_set contains the field
+        if self.political_view is None and "political_view" in self.model_fields_set:
+            _dict['political_view'] = None
+
+        # set to None if verification_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.verification_level is None and "verification_level" in self.model_fields_set:
+            _dict['verification_level'] = None
+
+        # set to None if vouch_count (nullable) is None
+        # and model_fields_set contains the field
+        if self.vouch_count is None and "vouch_count" in self.model_fields_set:
+            _dict['vouch_count'] = None
+
+        # set to None if vouch_source (nullable) is None
+        # and model_fields_set contains the field
+        if self.vouch_source is None and "vouch_source" in self.model_fields_set:
+            _dict['vouch_source'] = None
+
+        # set to None if cross_network_handle (nullable) is None
+        # and model_fields_set contains the field
+        if self.cross_network_handle is None and "cross_network_handle" in self.model_fields_set:
+            _dict['cross_network_handle'] = None
+
+        # set to None if distance_km (nullable) is None
+        # and model_fields_set contains the field
+        if self.distance_km is None and "distance_km" in self.model_fields_set:
+            _dict['distance_km'] = None
+
+        # set to None if distance_source (nullable) is None
+        # and model_fields_set contains the field
+        if self.distance_source is None and "distance_source" in self.model_fields_set:
+            _dict['distance_source'] = None
+
+        return with_explicit_nulls(self, _dict, ('sub', 'political_view', 'verification_level', 'vouch_count', 'vouch_source', 'cross_network_handle', 'distance_km', 'distance_source'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -108,11 +141,6 @@ class SociACLRequestContext(BaseModel):
             "distance_km": obj.get("distance_km"),
             "distance_source": obj.get("distance_source")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

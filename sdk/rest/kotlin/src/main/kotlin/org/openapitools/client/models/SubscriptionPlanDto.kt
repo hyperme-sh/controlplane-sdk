@@ -46,7 +46,7 @@ data class SubscriptionPlanDto (
 
     /* The tenant who owns the subscription */
     @get:JsonProperty("tenant_id")
-    val tenantId: kotlin.String,
+    val tenantId: kotlin.String?,
 
     /* who it is applied to, If end_user, then user_id must be set */
     @get:JsonProperty("actor")
@@ -54,7 +54,7 @@ data class SubscriptionPlanDto (
 
     /* The end user who has this subscription, if applicable */
     @get:JsonProperty("user_id")
-    val userId: kotlin.String,
+    val userId: kotlin.String?,
 
     /* Corresponding processor plan reference */
     @get:JsonProperty("plan_id")

@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,7 +35,7 @@ class ListingResponse(BaseModel):
     description: StrictStr
     listing_type: StrictStr
     price_type: StrictStr
-    price_amount: StrictInt
+    price_amount: Optional[StrictInt]
     metadata: Dict[str, Any]
     is_public: StrictBool
     __properties: ClassVar[List[str]] = ["id", "tenant_id", "seller_id", "title", "description", "listing_type", "price_type", "price_amount", "metadata", "is_public"]
@@ -78,7 +79,12 @@ class ListingResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if price_amount (nullable) is None
+        # and model_fields_set contains the field
+        if self.price_amount is None and "price_amount" in self.model_fields_set:
+            _dict['price_amount'] = None
+
+        return with_explicit_nulls(self, _dict, ('price_amount',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -101,6 +107,6 @@ class ListingResponse(BaseModel):
             "metadata": obj.get("metadata"),
             "is_public": obj.get("is_public")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

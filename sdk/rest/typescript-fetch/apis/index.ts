@@ -36,5 +36,7 @@ export type { ListUsersApiV1UsersGetRequest as UsersGroupsApiListUsersApiV1Users
 export type { UpdateUserApiV1UsersUserIdPatchRequest } from './UsersGroupsApi';
 export type { UsersGroupsApiInterface } from './UsersGroupsApi';
 export { UsersGroupsApi } from './UsersGroupsApi';
+export * from './WalletAuthApi';
+export * from './WalletPaymentsApi';
 export { AIUsageApi as AiApi } from './AIUsageApi';
 export type { AIUsageApiInterface as AiApiInterface } from './AIUsageApi';

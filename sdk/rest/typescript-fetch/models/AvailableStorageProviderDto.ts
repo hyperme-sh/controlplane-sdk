@@ -42,37 +42,37 @@ export interface AvailableStorageProviderDto {
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    awsAccessKey?: string;
+    awsAccessKey?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    awsSecretKey?: string;
+    awsSecretKey?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    awsBucketName?: string;
+    awsBucketName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    azureConnectionString?: string;
+    azureConnectionString?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    azureContainerName?: string;
+    azureContainerName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    updatedByUserId?: string;
+    updatedByUserId?: string | null;
     /**
      * 
      * @type {string}
@@ -96,7 +96,7 @@ export interface AvailableStorageProviderDto {
      * @type {string}
      * @memberof AvailableStorageProviderDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
 }
 
 
