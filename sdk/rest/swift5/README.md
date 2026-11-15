@@ -130,6 +130,16 @@ Class | Method | HTTP request | Description
 *UsersGroupsAPI* | [**listOrganizationsApiV1OrganizationsGet**](docs/UsersGroupsAPI.md#listorganizationsapiv1organizationsget) | **GET** /api/v1/organizations | List Organizations
 *UsersGroupsAPI* | [**listUsersApiV1UsersGet**](docs/UsersGroupsAPI.md#listusersapiv1usersget) | **GET** /api/v1/users | List Users
 *UsersGroupsAPI* | [**updateUserApiV1UsersUserIdPatch**](docs/UsersGroupsAPI.md#updateuserapiv1usersuseridpatch) | **PATCH** /api/v1/users/{user_id} | Update User
+*WalletAuthAPI* | [**authSiweBindAuthSiweBindPost**](docs/WalletAuthAPI.md#authsiwebindauthsiwebindpost) | **POST** /auth/siwe/bind | Bind one SIWE wallet onto the identified Keycloak person
+*WalletAuthAPI* | [**authSiweMeAuthSiweMeGet**](docs/WalletAuthAPI.md#authsiwemeauthsiwemeget) | **GET** /auth/siwe/me | Wallet bound to the identified Keycloak person
+*WalletAuthAPI* | [**authSiweNonceAuthSiweNoncePost**](docs/WalletAuthAPI.md#authsiwenonceauthsiwenoncepost) | **POST** /auth/siwe/nonce | Issue an EIP-4361 nonce for the identified Keycloak person
+*WalletPaymentsAPI* | [**challengeApiV1PaymentsHostPayoutAddressChallengePost**](docs/WalletPaymentsAPI.md#challengeapiv1paymentshostpayoutaddresschallengepost) | **POST** /api/v1/payments/host-payout-address/challenge | Challenge
+*WalletPaymentsAPI* | [**createWalletCheckout**](docs/WalletPaymentsAPI.md#createwalletcheckout) | **POST** /api/v1/payments/wallet/lease-payments/{billing_record_id}/checkout | Open Stablecoin Checkout
+*WalletPaymentsAPI* | [**createWalletDeposit**](docs/WalletPaymentsAPI.md#createwalletdeposit) | **POST** /api/v1/payments/wallet/lease-payments/{billing_record_id}/deposit | Create Deposit
+*WalletPaymentsAPI* | [**createWalletLeasePayment**](docs/WalletPaymentsAPI.md#createwalletleasepayment) | **POST** /api/v1/payments/wallet/lease-payments | Create Usdc Lease Payment Route
+*WalletPaymentsAPI* | [**getWalletDeposit**](docs/WalletPaymentsAPI.md#getwalletdeposit) | **GET** /api/v1/payments/wallet/lease-payments/{billing_record_id}/deposit | Deposit Status
+*WalletPaymentsAPI* | [**getWalletPaymentCapabilities**](docs/WalletPaymentsAPI.md#getwalletpaymentcapabilities) | **GET** /api/v1/payments/wallet/capabilities | Wallet Capabilities
+*WalletPaymentsAPI* | [**submitApiV1PaymentsHostPayoutAddressPost**](docs/WalletPaymentsAPI.md#submitapiv1paymentshostpayoutaddresspost) | **POST** /api/v1/payments/host-payout-address | Submit
 
 
 ## Documentation For Models
@@ -148,6 +158,8 @@ Class | Method | HTTP request | Description
  - [AuthMeResponse](docs/AuthMeResponse.md)
  - [AuthenticatorTransport](docs/AuthenticatorTransport.md)
  - [AvailableStorageProviderDto](docs/AvailableStorageProviderDto.md)
+ - [BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut](docs/BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut.md)
+ - [BodyUploadLogoApiV1BrandingsLogoPut](docs/BodyUploadLogoApiV1BrandingsLogoPut.md)
  - [BrandingDto](docs/BrandingDto.md)
  - [BudgetAllocateRequest](docs/BudgetAllocateRequest.md)
  - [ChangeEmailConfirmRequestDto](docs/ChangeEmailConfirmRequestDto.md)
@@ -251,6 +263,23 @@ Class | Method | HTTP request | Description
  - [UserUpdateBody](docs/UserUpdateBody.md)
  - [ValidationError](docs/ValidationError.md)
  - [ValidationErrorLocInner](docs/ValidationErrorLocInner.md)
+ - [WalletAuthHTTPValidationError](docs/WalletAuthHTTPValidationError.md)
+ - [WalletAuthSiweBindRequest](docs/WalletAuthSiweBindRequest.md)
+ - [WalletAuthSiweNonceRequest](docs/WalletAuthSiweNonceRequest.md)
+ - [WalletAuthSiweNonceResponse](docs/WalletAuthSiweNonceResponse.md)
+ - [WalletAuthValidationError](docs/WalletAuthValidationError.md)
+ - [WalletAuthWalletBindingResponse](docs/WalletAuthWalletBindingResponse.md)
+ - [WalletPaymentChallengeRequest](docs/WalletPaymentChallengeRequest.md)
+ - [WalletPaymentHTTPValidationError](docs/WalletPaymentHTTPValidationError.md)
+ - [WalletPaymentPayoutChallenge](docs/WalletPaymentPayoutChallenge.md)
+ - [WalletPaymentRegisteredDestination](docs/WalletPaymentRegisteredDestination.md)
+ - [WalletPaymentSubmitRequest](docs/WalletPaymentSubmitRequest.md)
+ - [WalletPaymentUsdcLeasePaymentCreate](docs/WalletPaymentUsdcLeasePaymentCreate.md)
+ - [WalletPaymentValidationError](docs/WalletPaymentValidationError.md)
+ - [WalletPaymentWalletCapabilities](docs/WalletPaymentWalletCapabilities.md)
+ - [WalletPaymentWalletCheckoutResponse](docs/WalletPaymentWalletCheckoutResponse.md)
+ - [WalletPaymentWalletDepositStatus](docs/WalletPaymentWalletDepositStatus.md)
+ - [WalletPaymentWalletLeasePaymentResponse](docs/WalletPaymentWalletLeasePaymentResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

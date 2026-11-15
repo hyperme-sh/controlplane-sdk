@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "owners": [
+    {
+      "file": "auth-wallet.json",
+      "repository": "hyperme-sh/auth-service",
+      "source_revision": "8ca345eca8bfa311f1802a595f9b211f2d79b9e2",
+      "sha256": "9fec6cba97542e600cf18dc9dd6454a8e15a720af7cef94e6fc4d3dbb612a0d4",
+      "transform": "selected registered routes, owner-namespaced schema references, wallet-specific SDK tag"
+    },
+    {
+      "file": "payment-wallet.json",
+      "repository": "hyperme-sh/payment-service",
+      "source_revision": "5b63c3c03564478104bd93ce1c5f4212af0a0f6e",
+      "sha256": "e3bd5099d66fc5ab1959733f9e636caa180b6190a77e93d1ee3464a1ae822b99",
+      "transform": "selected registered routes, owner-namespaced schema references, wallet-specific SDK tag"
+    }
+  ]
+}

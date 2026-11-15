@@ -149,6 +149,16 @@ All URIs are relative to *http://localhost*
 | *UsersGroupsApi* | [**listOrganizationsApiV1OrganizationsGet**](docs/UsersGroupsApi.md#listorganizationsapiv1organizationsget) | **GET** api/v1/organizations | List Organizations |
 | *UsersGroupsApi* | [**listUsersApiV1UsersGet**](docs/UsersGroupsApi.md#listusersapiv1usersget) | **GET** api/v1/users | List Users |
 | *UsersGroupsApi* | [**updateUserApiV1UsersUserIdPatch**](docs/UsersGroupsApi.md#updateuserapiv1usersuseridpatch) | **PATCH** api/v1/users/{user_id} | Update User |
+| *WalletAuthApi* | [**authSiweBindAuthSiweBindPost**](docs/WalletAuthApi.md#authsiwebindauthsiwebindpost) | **POST** auth/siwe/bind | Bind one SIWE wallet onto the identified Keycloak person |
+| *WalletAuthApi* | [**authSiweMeAuthSiweMeGet**](docs/WalletAuthApi.md#authsiwemeauthsiwemeget) | **GET** auth/siwe/me | Wallet bound to the identified Keycloak person |
+| *WalletAuthApi* | [**authSiweNonceAuthSiweNoncePost**](docs/WalletAuthApi.md#authsiwenonceauthsiwenoncepost) | **POST** auth/siwe/nonce | Issue an EIP-4361 nonce for the identified Keycloak person |
+| *WalletPaymentsApi* | [**challengeApiV1PaymentsHostPayoutAddressChallengePost**](docs/WalletPaymentsApi.md#challengeapiv1paymentshostpayoutaddresschallengepost) | **POST** api/v1/payments/host-payout-address/challenge | Challenge |
+| *WalletPaymentsApi* | [**createWalletCheckout**](docs/WalletPaymentsApi.md#createwalletcheckout) | **POST** api/v1/payments/wallet/lease-payments/{billing_record_id}/checkout | Open Stablecoin Checkout |
+| *WalletPaymentsApi* | [**createWalletDeposit**](docs/WalletPaymentsApi.md#createwalletdeposit) | **POST** api/v1/payments/wallet/lease-payments/{billing_record_id}/deposit | Create Deposit |
+| *WalletPaymentsApi* | [**createWalletLeasePayment**](docs/WalletPaymentsApi.md#createwalletleasepayment) | **POST** api/v1/payments/wallet/lease-payments | Create Usdc Lease Payment Route |
+| *WalletPaymentsApi* | [**getWalletDeposit**](docs/WalletPaymentsApi.md#getwalletdeposit) | **GET** api/v1/payments/wallet/lease-payments/{billing_record_id}/deposit | Deposit Status |
+| *WalletPaymentsApi* | [**getWalletPaymentCapabilities**](docs/WalletPaymentsApi.md#getwalletpaymentcapabilities) | **GET** api/v1/payments/wallet/capabilities | Wallet Capabilities |
+| *WalletPaymentsApi* | [**submitApiV1PaymentsHostPayoutAddressPost**](docs/WalletPaymentsApi.md#submitapiv1paymentshostpayoutaddresspost) | **POST** api/v1/payments/host-payout-address | Submit |
 
 
 <a id="documentation-for-models"></a>
@@ -168,6 +178,8 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.AuthMeResponse](docs/AuthMeResponse.md)
  - [org.openapitools.client.models.AuthenticatorTransport](docs/AuthenticatorTransport.md)
  - [org.openapitools.client.models.AvailableStorageProviderDto](docs/AvailableStorageProviderDto.md)
+ - [org.openapitools.client.models.BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut](docs/BodyUpdateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut.md)
+ - [org.openapitools.client.models.BodyUploadLogoApiV1BrandingsLogoPut](docs/BodyUploadLogoApiV1BrandingsLogoPut.md)
  - [org.openapitools.client.models.BrandingDto](docs/BrandingDto.md)
  - [org.openapitools.client.models.BudgetAllocateRequest](docs/BudgetAllocateRequest.md)
  - [org.openapitools.client.models.ChangeEmailConfirmRequestDto](docs/ChangeEmailConfirmRequestDto.md)
@@ -271,6 +283,23 @@ All URIs are relative to *http://localhost*
  - [org.openapitools.client.models.UserUpdateBody](docs/UserUpdateBody.md)
  - [org.openapitools.client.models.ValidationError](docs/ValidationError.md)
  - [org.openapitools.client.models.ValidationErrorLocInner](docs/ValidationErrorLocInner.md)
+ - [org.openapitools.client.models.WalletAuthHTTPValidationError](docs/WalletAuthHTTPValidationError.md)
+ - [org.openapitools.client.models.WalletAuthSiweBindRequest](docs/WalletAuthSiweBindRequest.md)
+ - [org.openapitools.client.models.WalletAuthSiweNonceRequest](docs/WalletAuthSiweNonceRequest.md)
+ - [org.openapitools.client.models.WalletAuthSiweNonceResponse](docs/WalletAuthSiweNonceResponse.md)
+ - [org.openapitools.client.models.WalletAuthValidationError](docs/WalletAuthValidationError.md)
+ - [org.openapitools.client.models.WalletAuthWalletBindingResponse](docs/WalletAuthWalletBindingResponse.md)
+ - [org.openapitools.client.models.WalletPaymentChallengeRequest](docs/WalletPaymentChallengeRequest.md)
+ - [org.openapitools.client.models.WalletPaymentHTTPValidationError](docs/WalletPaymentHTTPValidationError.md)
+ - [org.openapitools.client.models.WalletPaymentPayoutChallenge](docs/WalletPaymentPayoutChallenge.md)
+ - [org.openapitools.client.models.WalletPaymentRegisteredDestination](docs/WalletPaymentRegisteredDestination.md)
+ - [org.openapitools.client.models.WalletPaymentSubmitRequest](docs/WalletPaymentSubmitRequest.md)
+ - [org.openapitools.client.models.WalletPaymentUsdcLeasePaymentCreate](docs/WalletPaymentUsdcLeasePaymentCreate.md)
+ - [org.openapitools.client.models.WalletPaymentValidationError](docs/WalletPaymentValidationError.md)
+ - [org.openapitools.client.models.WalletPaymentWalletCapabilities](docs/WalletPaymentWalletCapabilities.md)
+ - [org.openapitools.client.models.WalletPaymentWalletCheckoutResponse](docs/WalletPaymentWalletCheckoutResponse.md)
+ - [org.openapitools.client.models.WalletPaymentWalletDepositStatus](docs/WalletPaymentWalletDepositStatus.md)
+ - [org.openapitools.client.models.WalletPaymentWalletLeasePaymentResponse](docs/WalletPaymentWalletLeasePaymentResponse.md)
 
 
 <a id="documentation-for-authorization"></a>

@@ -23,6 +23,8 @@ from openapi_client.api.storage_settings_api import StorageSettingsApi
 from openapi_client.api.tenants_api import TenantsApi
 from openapi_client.api.users_api import UsersApi
 from openapi_client.api.users_groups_api import UsersGroupsApi
+from openapi_client.api.wallet_auth_api import WalletAuthApi
+from openapi_client.api.wallet_payments_api import WalletPaymentsApi
 from openapi_client.api.api_keys_api import ApiKeysApi
 from openapi_client.api.auth_api import AuthApi
 

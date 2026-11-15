@@ -1,0 +1,337 @@
+{
+  "components": {
+    "schemas": {
+      "WalletAuthHTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/WalletAuthValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "WalletAuthSiweBindRequest": {
+        "properties": {
+          "message": {
+            "description": "EIP-4361 SIWE message. Signature is verified, not stored.",
+            "maxLength": 16384,
+            "title": "Message",
+            "type": "string"
+          },
+          "signature": {
+            "description": "personal_sign of message. Never persisted.",
+            "maxLength": 32770,
+            "title": "Signature",
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "signature"
+        ],
+        "title": "SiweBindRequest",
+        "type": "object"
+      },
+      "WalletAuthSiweNonceRequest": {
+        "properties": {
+          "address": {
+            "description": "EIP-55 or hex wallet the identified person will sign.",
+            "title": "Address",
+            "type": "string"
+          },
+          "chain_id": {
+            "anyOf": [
+              {
+                "minimum": 1.0,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chain Id"
+          }
+        },
+        "required": [
+          "address"
+        ],
+        "title": "SiweNonceRequest",
+        "type": "object"
+      },
+      "WalletAuthSiweNonceResponse": {
+        "properties": {
+          "chain_id": {
+            "title": "Chain Id",
+            "type": "integer"
+          },
+          "domain": {
+            "title": "Domain",
+            "type": "string"
+          },
+          "issued_at": {
+            "title": "Issued At",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "nonce": {
+            "title": "Nonce",
+            "type": "string"
+          },
+          "statement": {
+            "title": "Statement",
+            "type": "string"
+          },
+          "uri": {
+            "title": "Uri",
+            "type": "string"
+          },
+          "version": {
+            "title": "Version",
+            "type": "string"
+          }
+        },
+        "required": [
+          "nonce",
+          "issued_at",
+          "domain",
+          "uri",
+          "statement",
+          "version",
+          "chain_id",
+          "message"
+        ],
+        "title": "SiweNonceResponse",
+        "type": "object"
+      },
+      "WalletAuthValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      },
+      "WalletAuthWalletBindingResponse": {
+        "properties": {
+          "bound": {
+            "default": true,
+            "title": "Bound",
+            "type": "boolean"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "keycloak_sub": {
+            "title": "Keycloak Sub",
+            "type": "string"
+          },
+          "wallet_address": {
+            "title": "Wallet Address",
+            "type": "string"
+          }
+        },
+        "required": [
+          "keycloak_sub",
+          "wallet_address"
+        ],
+        "title": "WalletBindingResponse",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "bearerFormat": "JWT",
+        "description": "Keycloak access token",
+        "scheme": "bearer",
+        "type": "http"
+      },
+      "HTTPBearer": {
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "title": "Wallet binding owner contract",
+    "version": "1"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/auth/siwe/bind": {
+      "post": {
+        "description": "Verifies EIP-4361 and stores the recovered address only. Not a second login. Signature is not stored or returned.",
+        "operationId": "auth_siwe_bind_auth_siwe_bind_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletAuthSiweBindRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletAuthWalletBindingResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletAuthHTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "BearerAuth": []
+          }
+        ],
+        "summary": "Bind one SIWE wallet onto the identified Keycloak person",
+        "tags": [
+          "WalletAuth"
+        ]
+      }
+    },
+    "/auth/siwe/me": {
+      "get": {
+        "operationId": "auth_siwe_me_auth_siwe_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletAuthWalletBindingResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "BearerAuth": []
+          }
+        ],
+        "summary": "Wallet bound to the identified Keycloak person",
+        "tags": [
+          "WalletAuth"
+        ]
+      }
+    },
+    "/auth/siwe/nonce": {
+      "post": {
+        "description": "Keycloak OIDC remains the login. This nonce is only for binding one wallet to that same person. Password grant stays off.",
+        "operationId": "auth_siwe_nonce_auth_siwe_nonce_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WalletAuthSiweNonceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletAuthSiweNonceResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WalletAuthHTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {
+            "BearerAuth": []
+          }
+        ],
+        "summary": "Issue an EIP-4361 nonce for the identified Keycloak person",
+        "tags": [
+          "WalletAuth"
+        ]
+      }
+    }
+  }
+}
