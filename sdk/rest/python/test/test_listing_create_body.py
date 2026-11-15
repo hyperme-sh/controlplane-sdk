@@ -40,9 +40,7 @@ class TestListingCreateBody(unittest.TestCase):
                 listing_type = '0',
                 price_type = '0',
                 price_amount = 0.0,
-                metadata = {
-                    'key' : null
-                    },
+                metadata = { },
                 is_public = True
             )
         else:

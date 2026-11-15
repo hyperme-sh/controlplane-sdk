@@ -46,7 +46,7 @@ data class SociACLAttributes (
     @get:JsonProperty("notes")
     val notes: kotlin.String? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

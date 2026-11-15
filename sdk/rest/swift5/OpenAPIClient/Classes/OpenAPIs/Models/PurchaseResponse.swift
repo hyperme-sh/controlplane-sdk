@@ -17,9 +17,9 @@ public struct PurchaseResponse: Codable, JSONEncodable, Hashable {
     public private(set) var buyerId: UUID
     public private(set) var tenantId: UUID
     public private(set) var status: String
-    public private(set) var licenseKey: String
+    public private(set) var licenseKey: String?
 
-    public init(id: UUID, listingId: UUID, buyerId: UUID, tenantId: UUID, status: String, licenseKey: String) {
+    public init(id: UUID, listingId: UUID, buyerId: UUID, tenantId: UUID, status: String, licenseKey: String?) {
         self.id = id
         self.listingId = listingId
         self.buyerId = buyerId

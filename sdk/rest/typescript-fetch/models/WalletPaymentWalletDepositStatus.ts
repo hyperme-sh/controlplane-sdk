@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface WalletPaymentWalletDepositStatus
  */
 export interface WalletPaymentWalletDepositStatus {
-    [key: string]: any | any;
     /**
      * 
      * @type {number}
@@ -49,7 +48,7 @@ export interface WalletPaymentWalletDepositStatus {
      * @type {string}
      * @memberof WalletPaymentWalletDepositStatus
      */
-    depositAddress: string;
+    depositAddress: string | null;
     /**
      * 
      * @type {string}
@@ -67,13 +66,13 @@ export interface WalletPaymentWalletDepositStatus {
      * @type {{ [key: string]: any; }}
      * @memberof WalletPaymentWalletDepositStatus
      */
-    payerMismatch?: { [key: string]: any; };
+    payerMismatch?: { [key: string]: any; } | null;
     /**
      * 
      * @type {string}
      * @memberof WalletPaymentWalletDepositStatus
      */
-    providerStatus: string;
+    providerStatus: string | null;
     /**
      * 
      * @type {boolean}
@@ -124,7 +123,6 @@ export function WalletPaymentWalletDepositStatusFromJSONTyped(json: any, ignoreD
     }
     return {
         
-            ...json,
         'amountCents': json['amount_cents'],
         'billingRecordId': json['billing_record_id'],
         'chainId': json['chain_id'] == null ? undefined : json['chain_id'],
@@ -152,7 +150,6 @@ export function WalletPaymentWalletDepositStatusToJSONTyped(value?: WalletPaymen
 
     return {
         
-            ...value,
         'amount_cents': value['amountCents'],
         'billing_record_id': value['billingRecordId'],
         'chain_id': value['chainId'],

@@ -42,37 +42,37 @@ export interface StorageSettingsDto {
      * @type {string}
      * @memberof StorageSettingsDto
      */
-    awsAccessKey?: string;
+    awsAccessKey?: string | null;
     /**
      * 
      * @type {string}
      * @memberof StorageSettingsDto
      */
-    awsSecretKey?: string;
+    awsSecretKey?: string | null;
     /**
      * 
      * @type {string}
      * @memberof StorageSettingsDto
      */
-    awsBucketName?: string;
+    awsBucketName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof StorageSettingsDto
      */
-    azureConnectionString?: string;
+    azureConnectionString?: string | null;
     /**
      * 
      * @type {string}
      * @memberof StorageSettingsDto
      */
-    azureContainerName?: string;
+    azureContainerName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof StorageSettingsDto
      */
-    updatedByUserId?: string;
+    updatedByUserId?: string | null;
 }
 
 

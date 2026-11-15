@@ -74,6 +74,9 @@ def sanitize_openapi_for_generator(doc: dict[str, Any]) -> dict[str, Any]:
         return obj
 
     result = rewrite(deepcopy(doc))
+    # The rewritten nullable form is OAS 3.0; retaining 3.1 makes the generator
+    # ignore nullable and misread closed object schemas as additional-property maps.
+    result["openapi"] = "3.0.3"
     # FastAPI uses OAS 3.1 contentMediaType for UploadFile. Generator 7.10
     # needs the OAS 3.0 binary format to put it in the multipart files map.
     # Inline a private copy so a shared JSON schema retains its semantics.

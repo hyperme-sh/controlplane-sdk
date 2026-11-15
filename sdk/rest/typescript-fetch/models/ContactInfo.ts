@@ -24,19 +24,19 @@ export interface ContactInfo {
      * @type {string}
      * @memberof ContactInfo
      */
-    supportEmail?: string;
+    supportEmail?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ContactInfo
      */
-    phone?: string;
+    phone?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ContactInfo
      */
-    address?: string;
+    address?: string | null;
 }
 
 /**

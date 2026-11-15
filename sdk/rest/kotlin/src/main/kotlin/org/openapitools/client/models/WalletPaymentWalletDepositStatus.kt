@@ -46,13 +46,13 @@ data class WalletPaymentWalletDepositStatus (
     val billingRecordId: java.util.UUID,
 
     @get:JsonProperty("deposit_address")
-    val depositAddress: kotlin.String,
+    val depositAddress: kotlin.String?,
 
     @get:JsonProperty("lease_id")
     val leaseId: java.util.UUID,
 
     @get:JsonProperty("provider_status")
-    val providerStatus: kotlin.String,
+    val providerStatus: kotlin.String?,
 
     @get:JsonProperty("settled")
     val settled: kotlin.Boolean,
@@ -78,7 +78,7 @@ data class WalletPaymentWalletDepositStatus (
     @get:JsonProperty("token_currency")
     val tokenCurrency: kotlin.String? = "usdc"
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
@@ -89,7 +90,32 @@ class AppConfigurationDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of branding
         if self.branding:
             _dict['branding'] = self.branding.to_dict()
-        return _dict
+        # set to None if is_user_logged_in (nullable) is None
+        # and model_fields_set contains the field
+        if self.is_user_logged_in is None and "is_user_logged_in" in self.model_fields_set:
+            _dict['is_user_logged_in'] = None
+
+        # set to None if user_preferences (nullable) is None
+        # and model_fields_set contains the field
+        if self.user_preferences is None and "user_preferences" in self.model_fields_set:
+            _dict['user_preferences'] = None
+
+        # set to None if current_tenant (nullable) is None
+        # and model_fields_set contains the field
+        if self.current_tenant is None and "current_tenant" in self.model_fields_set:
+            _dict['current_tenant'] = None
+
+        # set to None if enabled_sso_providers (nullable) is None
+        # and model_fields_set contains the field
+        if self.enabled_sso_providers is None and "enabled_sso_providers" in self.model_fields_set:
+            _dict['enabled_sso_providers'] = None
+
+        # set to None if branding (nullable) is None
+        # and model_fields_set contains the field
+        if self.branding is None and "branding" in self.model_fields_set:
+            _dict['branding'] = None
+
+        return with_explicit_nulls(self, _dict, ('is_user_logged_in', 'user_preferences', 'current_tenant', 'enabled_sso_providers', 'branding'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -111,6 +137,6 @@ class AppConfigurationDto(BaseModel):
             "enabled_sso_providers": obj.get("enabled_sso_providers"),
             "branding": BrandingDto.from_dict(obj["branding"]) if obj.get("branding") is not None else None
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

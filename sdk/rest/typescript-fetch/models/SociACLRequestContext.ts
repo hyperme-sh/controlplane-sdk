@@ -34,55 +34,54 @@ import {
  * @interface SociACLRequestContext
  */
 export interface SociACLRequestContext {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
      * @memberof SociACLRequestContext
      */
-    sub?: string;
+    sub?: string | null;
     /**
      * 
      * @type {PoliticalViewCategory}
      * @memberof SociACLRequestContext
      */
-    politicalView?: PoliticalViewCategory;
+    politicalView?: PoliticalViewCategory | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLRequestContext
      */
-    verificationLevel?: number;
+    verificationLevel?: number | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLRequestContext
      */
-    vouchCount?: number;
+    vouchCount?: number | null;
     /**
      * 
      * @type {string}
      * @memberof SociACLRequestContext
      */
-    vouchSource?: string;
+    vouchSource?: string | null;
     /**
      * 
      * @type {string}
      * @memberof SociACLRequestContext
      */
-    crossNetworkHandle?: string;
+    crossNetworkHandle?: string | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLRequestContext
      */
-    distanceKm?: number;
+    distanceKm?: number | null;
     /**
      * 
      * @type {SociACLDistanceSource}
      * @memberof SociACLRequestContext
      */
-    distanceSource?: SociACLDistanceSource;
+    distanceSource?: SociACLDistanceSource | null;
 }
 
 
@@ -104,7 +103,6 @@ export function SociACLRequestContextFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-            ...json,
         'sub': json['sub'] == null ? undefined : json['sub'],
         'politicalView': json['political_view'] == null ? undefined : PoliticalViewCategoryFromJSON(json['political_view']),
         'verificationLevel': json['verification_level'] == null ? undefined : json['verification_level'],
@@ -127,7 +125,6 @@ export function SociACLRequestContextToJSONTyped(value?: SociACLRequestContext |
 
     return {
         
-            ...value,
         'sub': value['sub'],
         'political_view': PoliticalViewCategoryToJSON(value['politicalView']),
         'verification_level': value['verificationLevel'],

@@ -36,21 +36,6 @@ public struct SociACLAttributes: Codable, JSONEncodable, Hashable {
         case notes
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -59,26 +44,6 @@ public struct SociACLAttributes: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(sexualOrientation, forKey: .sexualOrientation)
         try container.encodeIfPresent(verificationLevel, forKey: .verificationLevel)
         try container.encodeIfPresent(notes, forKey: .notes)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        politicalView = try container.decodeIfPresent(PoliticalViewCategory.self, forKey: .politicalView)
-        sexualOrientation = try container.decodeIfPresent(SexualOrientationCategory.self, forKey: .sexualOrientation)
-        verificationLevel = try container.decodeIfPresent(Int.self, forKey: .verificationLevel)
-        notes = try container.decodeIfPresent(String.self, forKey: .notes)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("political_view")
-        nonAdditionalPropertyKeys.insert("sexual_orientation")
-        nonAdditionalPropertyKeys.insert("verification_level")
-        nonAdditionalPropertyKeys.insert("notes")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

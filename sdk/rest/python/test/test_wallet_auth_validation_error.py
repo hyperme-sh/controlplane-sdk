@@ -35,13 +35,13 @@ class TestWalletAuthValidationError(unittest.TestCase):
         model = WalletAuthValidationError()
         if include_optional:
             return WalletAuthValidationError(
+                ctx = openapi_client.models.context.Context(),
+                input = None,
                 loc = [
                     null
                     ],
                 msg = '',
-                type = '',
-                input = None,
-                ctx = openapi_client.models.context.Context()
+                type = ''
             )
         else:
             return WalletAuthValidationError(

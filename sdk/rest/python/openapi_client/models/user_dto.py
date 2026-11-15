@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
@@ -83,7 +84,37 @@ class UserDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if role_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_id is None and "role_id" in self.model_fields_set:
+            _dict['role_id'] = None
+
+        # set to None if activated_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.activated_at is None and "activated_at" in self.model_fields_set:
+            _dict['activated_at'] = None
+
+        # set to None if image_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.image_url is None and "image_url" in self.model_fields_set:
+            _dict['image_url'] = None
+
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        # set to None if sso_provider_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.sso_provider_id is None and "sso_provider_id" in self.model_fields_set:
+            _dict['sso_provider_id'] = None
+
+        # set to None if keycloak_sub (nullable) is None
+        # and model_fields_set contains the field
+        if self.keycloak_sub is None and "keycloak_sub" in self.model_fields_set:
+            _dict['keycloak_sub'] = None
+
+        return with_explicit_nulls(self, _dict, ('role_id', 'activated_at', 'image_url', 'tenant_id', 'sso_provider_id', 'keycloak_sub'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -110,6 +141,6 @@ class UserDto(BaseModel):
             "sso_provider_id": obj.get("sso_provider_id"),
             "keycloak_sub": obj.get("keycloak_sub")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
@@ -72,7 +73,12 @@ class WalletAuthWalletBindingResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if email (nullable) is None
+        # and model_fields_set contains the field
+        if self.email is None and "email" in self.model_fields_set:
+            _dict['email'] = None
+
+        return with_explicit_nulls(self, _dict, ('email',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -89,6 +95,6 @@ class WalletAuthWalletBindingResponse(BaseModel):
             "keycloak_sub": obj.get("keycloak_sub"),
             "wallet_address": obj.get("wallet_address")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

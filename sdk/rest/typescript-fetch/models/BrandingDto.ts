@@ -45,13 +45,13 @@ export interface BrandingDto {
      * @type {string}
      * @memberof BrandingDto
      */
-    logoType?: BrandingDtoLogoTypeEnum;
+    logoType?: BrandingDtoLogoTypeEnum | null;
     /**
      * 
      * @type {ContactInfo}
      * @memberof BrandingDto
      */
-    contactInfo?: ContactInfo;
+    contactInfo?: ContactInfo | null;
     /**
      * 
      * @type {ThemeConfig}
@@ -87,13 +87,13 @@ export interface BrandingDto {
      * @type {string}
      * @memberof BrandingDto
      */
-    faviconUrl?: string;
+    faviconUrl?: string | null;
     /**
      * 
      * @type {string}
      * @memberof BrandingDto
      */
-    logoUrl?: string;
+    logoUrl?: string | null;
 }
 
 

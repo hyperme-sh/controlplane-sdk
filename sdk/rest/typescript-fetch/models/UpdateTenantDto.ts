@@ -24,25 +24,25 @@ export interface UpdateTenantDto {
      * @type {boolean}
      * @memberof UpdateTenantDto
      */
-    isActive?: boolean;
+    isActive?: boolean | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateTenantDto
      */
-    customDomain?: string;
+    customDomain?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateTenantDto
      */
-    subscriptionId?: string;
+    subscriptionId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateTenantDto
      */
-    customDomainStatus?: UpdateTenantDtoCustomDomainStatusEnum;
+    customDomainStatus?: UpdateTenantDtoCustomDomainStatusEnum | null;
 }
 
 

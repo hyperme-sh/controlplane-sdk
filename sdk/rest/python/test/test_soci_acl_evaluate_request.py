@@ -36,19 +36,33 @@ class TestSociACLEvaluateRequest(unittest.TestCase):
         if include_optional:
             return SociACLEvaluateRequest(
                 token = '01234567',
-                context = {
-                    'key' : null
-                    },
-                owner_attributes = {
-                    'key' : null
-                    }
+                context = openapi_client.models.soci_acl_request_context.SociACLRequestContext(
+                    sub = '', 
+                    political_view = null, 
+                    verification_level = 0.0, 
+                    vouch_count = 0.0, 
+                    vouch_source = '', 
+                    cross_network_handle = '', 
+                    distance_km = 0.0, 
+                    distance_source = null, ),
+                owner_attributes = openapi_client.models.soci_acl_attributes.SociACLAttributes(
+                    political_view = null, 
+                    sexual_orientation = null, 
+                    verification_level = 0.0, 
+                    notes = '', )
             )
         else:
             return SociACLEvaluateRequest(
                 token = '01234567',
-                context = {
-                    'key' : null
-                    },
+                context = openapi_client.models.soci_acl_request_context.SociACLRequestContext(
+                    sub = '', 
+                    political_view = null, 
+                    verification_level = 0.0, 
+                    vouch_count = 0.0, 
+                    vouch_source = '', 
+                    cross_network_handle = '', 
+                    distance_km = 0.0, 
+                    distance_source = null, ),
         )
         """
 

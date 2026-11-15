@@ -40,9 +40,7 @@ class TestAuditLogListDto(unittest.TestCase):
                     openapi_client.models.audit_log_dto.AuditLogDto(
                         entity = '', 
                         action = 'create', 
-                        changes = {
-                            'key' : null
-                            }, 
+                        changes = { }, 
                         user_id = '', 
                         timestamp = '2026-03-31T19:38:43.792086', 
                         tenant_id = '', )
@@ -59,9 +57,7 @@ class TestAuditLogListDto(unittest.TestCase):
                     openapi_client.models.audit_log_dto.AuditLogDto(
                         entity = '', 
                         action = 'create', 
-                        changes = {
-                            'key' : null
-                            }, 
+                        changes = { }, 
                         user_id = '', 
                         timestamp = '2026-03-31T19:38:43.792086', 
                         tenant_id = '', )

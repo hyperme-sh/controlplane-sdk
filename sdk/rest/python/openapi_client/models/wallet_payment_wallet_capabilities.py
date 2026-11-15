@@ -39,7 +39,6 @@ class WalletPaymentWalletCapabilities(BaseModel):
     refund_recovery: Optional[StrictStr] = 'owner_managed'
     settlement_authority: Optional[StrictStr] = 'verified_provider_confirmation'
     usdc_host_enrollment: StrictBool
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["accounting_effect", "checkout_creation", "contract_version", "deposit_creation", "deposit_observation", "enterprise_units_redeemable", "mode", "payout_address_proof", "production_payments", "refund_recovery", "settlement_authority", "usdc_host_enrollment"]
 
     model_config = ConfigDict(
@@ -72,10 +71,8 @@ class WalletPaymentWalletCapabilities(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -83,11 +80,6 @@ class WalletPaymentWalletCapabilities(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
-
         return _dict
 
     @classmethod
@@ -113,11 +105,6 @@ class WalletPaymentWalletCapabilities(BaseModel):
             "settlement_authority": obj.get("settlement_authority") if obj.get("settlement_authority") is not None else 'verified_provider_confirmation',
             "usdc_host_enrollment": obj.get("usdc_host_enrollment")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
         return _obj
 
 

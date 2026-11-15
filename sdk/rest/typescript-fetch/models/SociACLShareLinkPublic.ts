@@ -63,13 +63,13 @@ export interface SociACLShareLinkPublic {
      * @type {string}
      * @memberof SociACLShareLinkPublic
      */
-    expiresAt?: string;
+    expiresAt?: string | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLShareLinkPublic
      */
-    usesRemaining?: number;
+    usesRemaining?: number | null;
 }
 
 

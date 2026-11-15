@@ -44,7 +44,7 @@ export interface RoleDto {
      * @type {string}
      * @memberof RoleDto
      */
-    description: string;
+    description: string | null;
     /**
      * 
      * @type {Array<Permission>}
@@ -68,7 +68,7 @@ export interface RoleDto {
      * @type {string}
      * @memberof RoleDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
 }
 
 /**

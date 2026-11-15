@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.WalletPaymentValidationError
-import org.openapitools.client.models.ValidationErrorLocInner
+import org.openapitools.client.models.LocationInner
 
 class WalletPaymentValidationErrorTest : ShouldSpec() {
     init {
@@ -44,16 +44,16 @@ class WalletPaymentValidationErrorTest : ShouldSpec() {
             //modelInstance.type shouldBe ("TODO")
         }
 
-        // to test the property `input`
-        should("test input") {
-            // uncomment below to test the property
-            //modelInstance.input shouldBe ("TODO")
-        }
-
         // to test the property `ctx`
         should("test ctx") {
             // uncomment below to test the property
             //modelInstance.ctx shouldBe ("TODO")
+        }
+
+        // to test the property `input`
+        should("test input") {
+            // uncomment below to test the property
+            //modelInstance.input shouldBe ("TODO")
         }
 
     }

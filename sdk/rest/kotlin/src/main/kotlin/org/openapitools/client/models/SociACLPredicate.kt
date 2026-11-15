@@ -56,7 +56,7 @@ data class SociACLPredicate (
     @get:JsonProperty("cross_network_handle_blocklist")
     val crossNetworkHandleBlocklist: kotlin.collections.List<kotlin.String>? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

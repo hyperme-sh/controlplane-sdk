@@ -30,7 +30,7 @@ export interface WalletAuthSiweNonceRequest {
      * @type {number}
      * @memberof WalletAuthSiweNonceRequest
      */
-    chainId?: number;
+    chainId?: number | null;
 }
 
 /**

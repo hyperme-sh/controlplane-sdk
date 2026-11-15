@@ -42,7 +42,7 @@ export interface SubscriptionPlanDto {
      * @type {string}
      * @memberof SubscriptionPlanDto
      */
-    tenantId: string;
+    tenantId: string | null;
     /**
      * who it is applied to, If end_user, then user_id must be set
      * @type {string}
@@ -54,7 +54,7 @@ export interface SubscriptionPlanDto {
      * @type {string}
      * @memberof SubscriptionPlanDto
      */
-    userId: string;
+    userId: string | null;
     /**
      * Corresponding processor plan reference
      * @type {string}

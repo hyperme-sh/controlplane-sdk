@@ -42,21 +42,6 @@ public struct InferenceRequest: Codable, JSONEncodable, Hashable {
         case budgetId = "budget_id"
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -66,28 +51,6 @@ public struct InferenceRequest: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(maxTokens, forKey: .maxTokens)
         try container.encodeIfPresent(billingMode, forKey: .billingMode)
         try container.encodeIfPresent(budgetId, forKey: .budgetId)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        prompt = try container.decode(String.self, forKey: .prompt)
-        model = try container.decode(String.self, forKey: .model)
-        maxTokens = try container.decodeIfPresent(Int.self, forKey: .maxTokens)
-        billingMode = try container.decodeIfPresent(BillingMode.self, forKey: .billingMode)
-        budgetId = try container.decodeIfPresent(UUID.self, forKey: .budgetId)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("prompt")
-        nonAdditionalPropertyKeys.insert("model")
-        nonAdditionalPropertyKeys.insert("max_tokens")
-        nonAdditionalPropertyKeys.insert("billing_mode")
-        nonAdditionalPropertyKeys.insert("budget_id")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

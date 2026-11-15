@@ -42,7 +42,7 @@ export interface ApiKeyCreatedResponse {
      * @type {string}
      * @memberof ApiKeyCreatedResponse
      */
-    name: string;
+    name: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -60,7 +60,7 @@ export interface ApiKeyCreatedResponse {
      * @type {string}
      * @memberof ApiKeyCreatedResponse
      */
-    revokedAt?: string;
+    revokedAt?: string | null;
     /**
      * Full key prefix.secret — store securely; never shown again.
      * @type {string}

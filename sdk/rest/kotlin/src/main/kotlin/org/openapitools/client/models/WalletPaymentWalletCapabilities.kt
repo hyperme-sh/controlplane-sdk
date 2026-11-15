@@ -74,7 +74,7 @@ data class WalletPaymentWalletCapabilities (
     @get:JsonProperty("settlement_authority")
     val settlementAuthority: kotlin.String? = "verified_provider_confirmation"
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

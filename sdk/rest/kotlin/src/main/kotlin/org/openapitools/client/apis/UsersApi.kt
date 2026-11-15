@@ -14,6 +14,8 @@ import org.openapitools.client.models.UserListDto
 import org.openapitools.client.models.UserProfileImageUpdateDto
 import org.openapitools.client.models.UserRoleUpdateRequestDto
 
+import okhttp3.MultipartBody
+
 interface UsersApi {
     /**
      * Create user (deprecated)
@@ -102,6 +104,6 @@ interface UsersApi {
     @Deprecated("This api was deprecated")
     @Multipart
     @PUT("api/v1/users/{user_id}/update_profile_picture")
-    suspend fun updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(@Path("user_id") userId: kotlin.String, @Part("file") file: kotlin.String): Response<UserProfileImageUpdateDto>
+    suspend fun updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(@Path("user_id") userId: kotlin.String, @Part file: MultipartBody.Part): Response<UserProfileImageUpdateDto>
 
 }

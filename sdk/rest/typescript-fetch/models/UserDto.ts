@@ -62,7 +62,7 @@ export interface UserDto {
      * @type {string}
      * @memberof UserDto
      */
-    roleId?: string;
+    roleId?: string | null;
     /**
      * 
      * @type {boolean}
@@ -74,13 +74,13 @@ export interface UserDto {
      * @type {string}
      * @memberof UserDto
      */
-    activatedAt?: string;
+    activatedAt?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserDto
      */
-    imageUrl?: string;
+    imageUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -98,19 +98,19 @@ export interface UserDto {
      * @type {string}
      * @memberof UserDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserDto
      */
-    ssoProviderId?: string;
+    ssoProviderId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UserDto
      */
-    keycloakSub?: string;
+    keycloakSub?: string | null;
 }
 
 

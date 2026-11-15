@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
@@ -33,7 +34,6 @@ class CryptoBudgetResponse(BaseModel):
     ceiling_lamports: StrictInt
     allocated_lamports: StrictInt
     label: Optional[StrictStr] = None
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["id", "owner_pubkey", "mint_pubkey", "ceiling_lamports", "allocated_lamports", "label"]
 
     model_config = ConfigDict(
@@ -66,10 +66,8 @@ class CryptoBudgetResponse(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -77,12 +75,12 @@ class CryptoBudgetResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if label (nullable) is None
+        # and model_fields_set contains the field
+        if self.label is None and "label" in self.model_fields_set:
+            _dict['label'] = None
 
-        return _dict
+        return with_explicit_nulls(self, _dict, ('label',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -101,11 +99,6 @@ class CryptoBudgetResponse(BaseModel):
             "allocated_lamports": obj.get("allocated_lamports"),
             "label": obj.get("label")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -31,7 +32,6 @@ class WalletPaymentUsdcLeasePaymentCreate(BaseModel):
     amount_cents: Annotated[int, Field(le=1000000, strict=True, ge=50)] = Field(description="Total USD cents: $0.50–$10,000.00 inclusive")
     listing_id: Optional[StrictStr] = Field(default=None, description="Marketplace listing this payment buys. The server writes it to billing extra_metadata.listing_id, which marketplace purchase checks. A listing_id key in metadata is ignored.")
     metadata: Optional[Dict[str, StrictStr]] = Field(default=None, description="Optional string map copied onto billing extra_metadata. Platform keys tenant_id and payment_rail win. lease_id and listing_id from a browser client are ignored. Do not send secrets.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["amount_cents", "listing_id", "metadata"]
 
     model_config = ConfigDict(
@@ -64,10 +64,8 @@ class WalletPaymentUsdcLeasePaymentCreate(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -75,12 +73,17 @@ class WalletPaymentUsdcLeasePaymentCreate(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if listing_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.listing_id is None and "listing_id" in self.model_fields_set:
+            _dict['listing_id'] = None
 
-        return _dict
+        # set to None if metadata (nullable) is None
+        # and model_fields_set contains the field
+        if self.metadata is None and "metadata" in self.model_fields_set:
+            _dict['metadata'] = None
+
+        return with_explicit_nulls(self, _dict, ('listing_id', 'metadata'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -96,11 +99,6 @@ class WalletPaymentUsdcLeasePaymentCreate(BaseModel):
             "listing_id": obj.get("listing_id"),
             "metadata": obj.get("metadata")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

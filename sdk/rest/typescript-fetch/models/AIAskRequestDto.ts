@@ -30,13 +30,13 @@ export interface AIAskRequestDto {
      * @type {string}
      * @memberof AIAskRequestDto
      */
-    modelName?: string;
+    modelName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AIAskRequestDto
      */
-    sessionId?: string;
+    sessionId?: string | null;
 }
 
 /**

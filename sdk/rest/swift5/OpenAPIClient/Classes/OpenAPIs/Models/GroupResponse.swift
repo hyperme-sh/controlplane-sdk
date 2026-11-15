@@ -15,10 +15,10 @@ public struct GroupResponse: Codable, JSONEncodable, Hashable {
     public private(set) var id: UUID
     public private(set) var tenantId: UUID
     public private(set) var name: String
-    public private(set) var description: String
+    public private(set) var description: String?
     public private(set) var roleId: UUID
 
-    public init(id: UUID, tenantId: UUID, name: String, description: String, roleId: UUID) {
+    public init(id: UUID, tenantId: UUID, name: String, description: String?, roleId: UUID) {
         self.id = id
         self.tenantId = tenantId
         self.name = name

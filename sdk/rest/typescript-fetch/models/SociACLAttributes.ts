@@ -34,31 +34,30 @@ import {
  * @interface SociACLAttributes
  */
 export interface SociACLAttributes {
-    [key: string]: any | any;
     /**
      * 
      * @type {PoliticalViewCategory}
      * @memberof SociACLAttributes
      */
-    politicalView?: PoliticalViewCategory;
+    politicalView?: PoliticalViewCategory | null;
     /**
      * 
      * @type {SexualOrientationCategory}
      * @memberof SociACLAttributes
      */
-    sexualOrientation?: SexualOrientationCategory;
+    sexualOrientation?: SexualOrientationCategory | null;
     /**
      * 0=none .. 4=strong identity assurance
      * @type {number}
      * @memberof SociACLAttributes
      */
-    verificationLevel?: number;
+    verificationLevel?: number | null;
     /**
      * Internal policy notes; avoid PII.
      * @type {string}
      * @memberof SociACLAttributes
      */
-    notes?: string;
+    notes?: string | null;
 }
 
 
@@ -80,7 +79,6 @@ export function SociACLAttributesFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-            ...json,
         'politicalView': json['political_view'] == null ? undefined : PoliticalViewCategoryFromJSON(json['political_view']),
         'sexualOrientation': json['sexual_orientation'] == null ? undefined : SexualOrientationCategoryFromJSON(json['sexual_orientation']),
         'verificationLevel': json['verification_level'] == null ? undefined : json['verification_level'],
@@ -99,7 +97,6 @@ export function SociACLAttributesToJSONTyped(value?: SociACLAttributes | null, i
 
     return {
         
-            ...value,
         'political_view': PoliticalViewCategoryToJSON(value['politicalView']),
         'sexual_orientation': SexualOrientationCategoryToJSON(value['sexualOrientation']),
         'verification_level': value['verificationLevel'],

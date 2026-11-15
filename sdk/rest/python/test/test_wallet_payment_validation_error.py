@@ -35,13 +35,13 @@ class TestWalletPaymentValidationError(unittest.TestCase):
         model = WalletPaymentValidationError()
         if include_optional:
             return WalletPaymentValidationError(
+                ctx = openapi_client.models.context.Context(),
+                input = None,
                 loc = [
                     null
                     ],
                 msg = '',
-                type = '',
-                input = None,
-                ctx = openapi_client.models.context.Context()
+                type = ''
             )
         else:
             return WalletPaymentValidationError(

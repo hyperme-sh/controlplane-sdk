@@ -3,11 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**loc** | [ValidationErrorLocInner] |  | 
+**ctx** | **AnyCodable** |  | [optional] 
+**input** | **AnyCodable** |  | [optional] 
+**loc** | [LocationInner] |  | 
 **msg** | **String** |  | 
 **type** | **String** |  | 
-**input** | **AnyCodable** |  | [optional] 
-**ctx** | **AnyCodable** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

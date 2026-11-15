@@ -37,9 +37,7 @@ class TestAuditLogDto(unittest.TestCase):
             return AuditLogDto(
                 entity = '',
                 action = 'create',
-                changes = {
-                    'key' : null
-                    },
+                changes = { },
                 user_id = '',
                 timestamp = '2026-03-31T19:38:43.792086',
                 tenant_id = ''

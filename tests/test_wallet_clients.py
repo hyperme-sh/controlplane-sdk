@@ -86,3 +86,27 @@ def test_wallet_binding_preserves_server_message_and_signature(wire):
         api.auth_siwe_bind_auth_siwe_bind_post(WalletAuthSiweBindRequest(message='owner-issued message',signature='0x1234'))
     assert calls[0][:2]==('POST','/auth/siwe/bind')
     assert json.loads(calls[0][3])=={'message':'owner-issued message','signature':'0x1234'}
+
+
+def test_nullable_deposit_observation_remains_usable(wire):
+    from openapi_client.api.wallet_payments_api import WalletPaymentsApi
+    url,calls,replies=wire
+    replies.append((200,dict(billing_record_id='22222222-2222-4222-8222-222222222222',
+        lease_id='33333333-3333-4333-8333-333333333333',status='pending',provider_status=None,
+        settled=False,deposit_address=None,amount_cents=50)))
+    with client(url) as transport:
+        value=WalletPaymentsApi(transport).get_wallet_deposit('22222222-2222-4222-8222-222222222222','11111111-1111-4111-8111-111111111111')
+    assert value.deposit_address is None and value.provider_status is None
+    assert value.settled is False
+
+
+def test_generator_uses_matching_dialect_for_nullable_closed_objects():
+    from spanopticon_sdk_gen.rest_codegen import sanitize_openapi_for_generator
+    original={'openapi':'3.1.0','components':{'schemas':{'Closed':{'type':'object','additionalProperties':False,
+        'properties':{'maybe':{'anyOf':[{'type':'string'},{'type':'null'}]}}}}}}
+    converted=sanitize_openapi_for_generator(original)
+    assert original['openapi']=='3.1.0'
+    assert converted['openapi']=='3.0.3'
+    schema=converted['components']['schemas']['Closed']
+    assert schema['additionalProperties'] is False
+    assert schema['properties']['maybe']=={'type':'string','nullable':True}

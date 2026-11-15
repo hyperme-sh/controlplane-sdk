@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 # **updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut**
 ```swift
-    open class func updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId: String, file: String, completion: @escaping (_ data: UserProfileImageUpdateDto?, _ error: Error?) -> Void)
+    open class func updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId: String, file: URL, completion: @escaping (_ data: UserProfileImageUpdateDto?, _ error: Error?) -> Void)
 ```
 
 Update profile picture (deprecated)
@@ -283,7 +283,7 @@ Prefer the dedicated user-service: same paths under `/api/v1/users` (e.g. `docke
 import OpenAPIClient
 
 let userId = "userId_example" // String | 
-let file = "file_example" // String | 
+let file = URL(string: "https://example.com")! // URL | 
 
 // Update profile picture (deprecated)
 UsersAPI.updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId: userId, file: file) { (response, error) in
@@ -303,7 +303,7 @@ UsersAPI.updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId: use
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | **String** |  | 
- **file** | **String** |  | 
+ **file** | **URL** |  | 
 
 ### Return type
 

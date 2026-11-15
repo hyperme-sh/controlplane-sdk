@@ -14,13 +14,13 @@ public struct RoleDto: Codable, JSONEncodable, Hashable {
 
     public private(set) var id: String
     public private(set) var name: String
-    public private(set) var description: String
+    public private(set) var description: String?
     public private(set) var permissions: [Permission]?
     public private(set) var createdAt: String
     public private(set) var updatedAt: String
     public private(set) var tenantId: String?
 
-    public init(id: String, name: String, description: String, permissions: [Permission]? = nil, createdAt: String, updatedAt: String, tenantId: String? = nil) {
+    public init(id: String, name: String, description: String?, permissions: [Permission]? = nil, createdAt: String, updatedAt: String, tenantId: String? = nil) {
         self.id = id
         self.name = name
         self.description = description

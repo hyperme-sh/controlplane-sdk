@@ -66,13 +66,13 @@ export interface UserResponse {
      * @type {Date}
      * @memberof UserResponse
      */
-    deletedAt?: Date;
+    deletedAt?: Date | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
      * @memberof UserResponse
      */
-    sociaclAttributes?: { [key: string]: any; };
+    sociaclAttributes?: { [key: string]: any; } | null;
 }
 
 /**
@@ -129,7 +129,7 @@ export function UserResponseToJSONTyped(value?: UserResponse | null, ignoreDiscr
         'last_name': value['lastName'],
         'gender': value['gender'],
         'is_active': value['isActive'],
-        'deleted_at': value['deletedAt'] == null ? undefined : ((value['deletedAt']).toISOString()),
+        'deleted_at': value['deletedAt'] == null ? undefined : ((value['deletedAt'] as any).toISOString()),
         'sociacl_attributes': value['sociaclAttributes'],
     };
 }

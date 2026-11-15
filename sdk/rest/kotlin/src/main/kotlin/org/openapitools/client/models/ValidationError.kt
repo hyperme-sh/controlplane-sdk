@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.ValidationErrorLocInner
+import org.openapitools.client.models.LocationInner
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class ValidationError (
 
     @get:JsonProperty("loc")
-    val loc: kotlin.collections.List<ValidationErrorLocInner>,
+    val loc: kotlin.collections.List<LocationInner>,
 
     @get:JsonProperty("msg")
     val msg: kotlin.String,

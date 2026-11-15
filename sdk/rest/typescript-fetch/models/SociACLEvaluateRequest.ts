@@ -51,7 +51,7 @@ export interface SociACLEvaluateRequest {
      * @type {SociACLAttributes}
      * @memberof SociACLEvaluateRequest
      */
-    ownerAttributes?: SociACLAttributes;
+    ownerAttributes?: SociACLAttributes | null;
 }
 
 /**

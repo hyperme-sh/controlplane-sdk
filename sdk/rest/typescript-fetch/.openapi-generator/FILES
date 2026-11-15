@@ -84,6 +84,7 @@ models/InternalValidateResponse.ts
 models/ListingCreateBody.ts
 models/ListingResponse.ts
 models/ListingUpdateBody.ts
+models/LocationInner.ts
 models/LoginStartRequest.ts
 models/LoginStartResponse.ts
 models/MeResponseDto.ts
@@ -146,7 +147,6 @@ models/UserResponse.ts
 models/UserRoleUpdateRequestDto.ts
 models/UserUpdateBody.ts
 models/ValidationError.ts
-models/ValidationErrorLocInner.ts
 models/WalletAuthHTTPValidationError.ts
 models/WalletAuthSiweBindRequest.ts
 models/WalletAuthSiweNonceRequest.ts

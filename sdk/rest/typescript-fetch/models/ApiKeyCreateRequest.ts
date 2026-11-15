@@ -24,7 +24,7 @@ export interface ApiKeyCreateRequest {
      * @type {string}
      * @memberof ApiKeyCreateRequest
      */
-    name?: string;
+    name?: string | null;
     /**
      * 
      * @type {Array<string>}

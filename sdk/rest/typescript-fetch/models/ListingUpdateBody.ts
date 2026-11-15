@@ -24,25 +24,25 @@ export interface ListingUpdateBody {
      * @type {string}
      * @memberof ListingUpdateBody
      */
-    title?: string;
+    title?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ListingUpdateBody
      */
-    description?: string;
+    description?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
      * @memberof ListingUpdateBody
      */
-    metadata?: { [key: string]: any; };
+    metadata?: { [key: string]: any; } | null;
     /**
      * 
      * @type {boolean}
      * @memberof ListingUpdateBody
      */
-    isPublic?: boolean;
+    isPublic?: boolean | null;
 }
 
 /**

@@ -37,9 +37,11 @@ class TestUserUpdateBody(unittest.TestCase):
             return UserUpdateBody(
                 first_name = '0',
                 last_name = '0',
-                sociacl_attributes = {
-                    'key' : null
-                    }
+                sociacl_attributes = openapi_client.models.soci_acl_attributes.SociACLAttributes(
+                    political_view = null, 
+                    sexual_orientation = null, 
+                    verification_level = 0.0, 
+                    notes = '', )
             )
         else:
             return UserUpdateBody(

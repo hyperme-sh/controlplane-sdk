@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,9 +31,9 @@ class SubscriptionPlanDto(BaseModel):
     id: StrictStr
     plan_level: Dict[str, StrictInt] = Field(description="e.g., {'basic': 0, 'pro': 1, 'enterprise': 2}")
     is_trial: StrictBool = Field(description="Indicates if the subscription is a trial")
-    tenant_id: StrictStr = Field(description="The tenant who owns the subscription")
+    tenant_id: Optional[StrictStr] = Field(description="The tenant who owns the subscription")
     actor: StrictStr = Field(description="who it is applied to, If end_user, then user_id must be set")
-    user_id: StrictStr = Field(description="The end user who has this subscription, if applicable")
+    user_id: Optional[StrictStr] = Field(description="The end user who has this subscription, if applicable")
     plan_id: StrictStr = Field(description="Corresponding processor plan reference")
     __properties: ClassVar[List[str]] = ["id", "plan_level", "is_trial", "tenant_id", "actor", "user_id", "plan_id"]
 
@@ -75,7 +76,17 @@ class SubscriptionPlanDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        # set to None if user_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.user_id is None and "user_id" in self.model_fields_set:
+            _dict['user_id'] = None
+
+        return with_explicit_nulls(self, _dict, ('tenant_id', 'user_id'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -95,6 +106,6 @@ class SubscriptionPlanDto(BaseModel):
             "user_id": obj.get("user_id"),
             "plan_id": obj.get("plan_id")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface WalletPaymentSubmitRequest
  */
 export interface WalletPaymentSubmitRequest {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
@@ -60,7 +59,6 @@ export function WalletPaymentSubmitRequestFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-            ...json,
         'message': json['message'],
         'nonce': json['nonce'],
         'signature': json['signature'],
@@ -78,7 +76,6 @@ export function WalletPaymentSubmitRequestToJSONTyped(value?: WalletPaymentSubmi
 
     return {
         
-            ...value,
         'message': value['message'],
         'nonce': value['nonce'],
         'signature': value['signature'],

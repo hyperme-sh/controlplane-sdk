@@ -43,7 +43,7 @@ export interface CreateApiKeyApiV1ApiKeysPostRequest {
 
 export interface InternalValidateApiV1InternalValidatePostRequest {
     internalValidateRequest: InternalValidateRequest;
-    xInternalToken?: string;
+    xInternalToken?: string | null;
 }
 
 export interface RevokeApiKeyApiV1ApiKeysKeyIdDeleteRequest {

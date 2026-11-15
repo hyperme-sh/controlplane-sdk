@@ -30,13 +30,13 @@ export interface CreateRoleDto {
      * @type {string}
      * @memberof CreateRoleDto
      */
-    description?: string;
+    description?: string | null;
     /**
      * 
      * @type {string}
      * @memberof CreateRoleDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
 }
 
 /**

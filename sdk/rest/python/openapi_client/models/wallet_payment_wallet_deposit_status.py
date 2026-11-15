@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
@@ -31,16 +32,15 @@ class WalletPaymentWalletDepositStatus(BaseModel):
     billing_record_id: StrictStr
     chain_id: Optional[StrictInt] = 84532
     currency: Optional[StrictStr] = 'usd'
-    deposit_address: StrictStr
+    deposit_address: Optional[StrictStr]
     lease_id: StrictStr
     network: Optional[StrictStr] = 'base'
     payer_mismatch: Optional[Dict[str, Any]] = None
-    provider_status: StrictStr
+    provider_status: Optional[StrictStr]
     settled: StrictBool
     status: StrictStr
     token_contract_address: Optional[StrictStr] = '0x036cbd53842c5426634e7929541ec2318f3dcf7e'
     token_currency: Optional[StrictStr] = 'usdc'
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["amount_cents", "billing_record_id", "chain_id", "currency", "deposit_address", "lease_id", "network", "payer_mismatch", "provider_status", "settled", "status", "token_contract_address", "token_currency"]
 
     model_config = ConfigDict(
@@ -73,10 +73,8 @@ class WalletPaymentWalletDepositStatus(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -84,12 +82,22 @@ class WalletPaymentWalletDepositStatus(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if deposit_address (nullable) is None
+        # and model_fields_set contains the field
+        if self.deposit_address is None and "deposit_address" in self.model_fields_set:
+            _dict['deposit_address'] = None
 
-        return _dict
+        # set to None if payer_mismatch (nullable) is None
+        # and model_fields_set contains the field
+        if self.payer_mismatch is None and "payer_mismatch" in self.model_fields_set:
+            _dict['payer_mismatch'] = None
+
+        # set to None if provider_status (nullable) is None
+        # and model_fields_set contains the field
+        if self.provider_status is None and "provider_status" in self.model_fields_set:
+            _dict['provider_status'] = None
+
+        return with_explicit_nulls(self, _dict, ('deposit_address', 'payer_mismatch', 'provider_status'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -115,11 +123,6 @@ class WalletPaymentWalletDepositStatus(BaseModel):
             "token_contract_address": obj.get("token_contract_address") if obj.get("token_contract_address") is not None else '0x036cbd53842c5426634e7929541ec2318f3dcf7e',
             "token_currency": obj.get("token_currency") if obj.get("token_currency") is not None else 'usdc'
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

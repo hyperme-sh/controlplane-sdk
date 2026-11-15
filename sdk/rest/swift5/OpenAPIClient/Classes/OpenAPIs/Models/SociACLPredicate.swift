@@ -45,21 +45,6 @@ public struct SociACLPredicate: Codable, JSONEncodable, Hashable {
         case crossNetworkHandleBlocklist = "cross_network_handle_blocklist"
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -71,32 +56,6 @@ public struct SociACLPredicate: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(memberOfGroupId, forKey: .memberOfGroupId)
         try container.encodeIfPresent(crossNetworkHandleAllowlist, forKey: .crossNetworkHandleAllowlist)
         try container.encodeIfPresent(crossNetworkHandleBlocklist, forKey: .crossNetworkHandleBlocklist)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        minVerificationLevel = try container.decodeIfPresent(Int.self, forKey: .minVerificationLevel)
-        minVouchCount = try container.decodeIfPresent(Int.self, forKey: .minVouchCount)
-        maxDistanceKm = try container.decodeIfPresent(Double.self, forKey: .maxDistanceKm)
-        requiredPoliticalTolerance = try container.decodeIfPresent(PoliticalViewCategory.self, forKey: .requiredPoliticalTolerance)
-        memberOfGroupId = try container.decodeIfPresent(UUID.self, forKey: .memberOfGroupId)
-        crossNetworkHandleAllowlist = try container.decodeIfPresent([String].self, forKey: .crossNetworkHandleAllowlist)
-        crossNetworkHandleBlocklist = try container.decodeIfPresent([String].self, forKey: .crossNetworkHandleBlocklist)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("min_verification_level")
-        nonAdditionalPropertyKeys.insert("min_vouch_count")
-        nonAdditionalPropertyKeys.insert("max_distance_km")
-        nonAdditionalPropertyKeys.insert("required_political_tolerance")
-        nonAdditionalPropertyKeys.insert("member_of_group_id")
-        nonAdditionalPropertyKeys.insert("cross_network_handle_allowlist")
-        nonAdditionalPropertyKeys.insert("cross_network_handle_blocklist")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

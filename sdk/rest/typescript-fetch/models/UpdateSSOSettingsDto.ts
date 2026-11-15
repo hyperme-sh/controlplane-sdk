@@ -24,31 +24,31 @@ export interface UpdateSSOSettingsDto {
      * @type {boolean}
      * @memberof UpdateSSOSettingsDto
      */
-    enabled?: boolean;
+    enabled?: boolean | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateSSOSettingsDto
      */
-    provider?: UpdateSSOSettingsDtoProviderEnum;
+    provider?: UpdateSSOSettingsDtoProviderEnum | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateSSOSettingsDto
      */
-    clientId?: string;
+    clientId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateSSOSettingsDto
      */
-    clientSecret?: string;
+    clientSecret?: string | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof UpdateSSOSettingsDto
      */
-    scopes?: Array<string>;
+    scopes?: Array<string> | null;
 }
 
 

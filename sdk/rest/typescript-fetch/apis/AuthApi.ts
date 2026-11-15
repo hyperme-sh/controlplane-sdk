@@ -39,7 +39,7 @@ import {
 
 export interface AuthCallbackAuthCallbackGetRequest {
     code: string;
-    state?: string;
+    state?: string | null;
 }
 
 export interface AuthLoginAuthLoginPostRequest {

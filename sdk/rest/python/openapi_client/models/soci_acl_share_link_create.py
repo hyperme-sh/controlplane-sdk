@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -83,7 +84,27 @@ class SociACLShareLinkCreate(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of predicate
         if self.predicate:
             _dict['predicate'] = self.predicate.to_dict()
-        return _dict
+        # set to None if owner_user_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner_user_id is None and "owner_user_id" in self.model_fields_set:
+            _dict['owner_user_id'] = None
+
+        # set to None if group_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.group_id is None and "group_id" in self.model_fields_set:
+            _dict['group_id'] = None
+
+        # set to None if expires_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.expires_at is None and "expires_at" in self.model_fields_set:
+            _dict['expires_at'] = None
+
+        # set to None if max_uses (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_uses is None and "max_uses" in self.model_fields_set:
+            _dict['max_uses'] = None
+
+        return with_explicit_nulls(self, _dict, ('owner_user_id', 'group_id', 'expires_at', 'max_uses'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -104,6 +125,6 @@ class SociACLShareLinkCreate(BaseModel):
             "expires_at": obj.get("expires_at"),
             "max_uses": obj.get("max_uses")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

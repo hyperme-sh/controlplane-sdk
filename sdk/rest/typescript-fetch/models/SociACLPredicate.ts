@@ -27,49 +27,48 @@ import {
  * @interface SociACLPredicate
  */
 export interface SociACLPredicate {
-    [key: string]: any | any;
     /**
      * 
      * @type {number}
      * @memberof SociACLPredicate
      */
-    minVerificationLevel?: number;
+    minVerificationLevel?: number | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLPredicate
      */
-    minVouchCount?: number;
+    minVouchCount?: number | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLPredicate
      */
-    maxDistanceKm?: number;
+    maxDistanceKm?: number | null;
     /**
      * 
      * @type {PoliticalViewCategory}
      * @memberof SociACLPredicate
      */
-    requiredPoliticalTolerance?: PoliticalViewCategory;
+    requiredPoliticalTolerance?: PoliticalViewCategory | null;
     /**
      * 
      * @type {string}
      * @memberof SociACLPredicate
      */
-    memberOfGroupId?: string;
+    memberOfGroupId?: string | null;
     /**
      * If set, requester handle must match one entry (exact).
      * @type {Array<string>}
      * @memberof SociACLPredicate
      */
-    crossNetworkHandleAllowlist?: Array<string>;
+    crossNetworkHandleAllowlist?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof SociACLPredicate
      */
-    crossNetworkHandleBlocklist?: Array<string>;
+    crossNetworkHandleBlocklist?: Array<string> | null;
 }
 
 
@@ -91,7 +90,6 @@ export function SociACLPredicateFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-            ...json,
         'minVerificationLevel': json['min_verification_level'] == null ? undefined : json['min_verification_level'],
         'minVouchCount': json['min_vouch_count'] == null ? undefined : json['min_vouch_count'],
         'maxDistanceKm': json['max_distance_km'] == null ? undefined : json['max_distance_km'],
@@ -113,7 +111,6 @@ export function SociACLPredicateToJSONTyped(value?: SociACLPredicate | null, ign
 
     return {
         
-            ...value,
         'min_verification_level': value['minVerificationLevel'],
         'min_vouch_count': value['minVouchCount'],
         'max_distance_km': value['maxDistanceKm'],

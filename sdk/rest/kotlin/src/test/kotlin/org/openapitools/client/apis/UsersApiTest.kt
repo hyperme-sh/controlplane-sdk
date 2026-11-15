@@ -79,7 +79,7 @@ class UsersApiTest : ShouldSpec() {
         should("test updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut") {
             // uncomment below to test updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut
             //val userId : kotlin.String = userId_example // kotlin.String | 
-            //val file : kotlin.String = file_example // kotlin.String | 
+            //val file : java.io.File = BINARY_DATA_HERE // java.io.File | 
             //val result : UserProfileImageUpdateDto = apiInstance.updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId, file)
             //result shouldBe ("TODO")
         }

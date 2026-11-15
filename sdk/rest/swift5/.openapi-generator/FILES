@@ -94,6 +94,7 @@ OpenAPIClient/Classes/OpenAPIs/Models/InternalValidateResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListingCreateBody.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListingResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ListingUpdateBody.swift
+OpenAPIClient/Classes/OpenAPIs/Models/LocationInner.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginStartRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/LoginStartResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/MeResponseDto.swift
@@ -156,7 +157,6 @@ OpenAPIClient/Classes/OpenAPIs/Models/UserResponse.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserRoleUpdateRequestDto.swift
 OpenAPIClient/Classes/OpenAPIs/Models/UserUpdateBody.swift
 OpenAPIClient/Classes/OpenAPIs/Models/ValidationError.swift
-OpenAPIClient/Classes/OpenAPIs/Models/ValidationErrorLocInner.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WalletAuthHTTPValidationError.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WalletAuthSiweBindRequest.swift
 OpenAPIClient/Classes/OpenAPIs/Models/WalletAuthSiweNonceRequest.swift
@@ -248,6 +248,7 @@ docs/InternalValidateResponse.md
 docs/ListingCreateBody.md
 docs/ListingResponse.md
 docs/ListingUpdateBody.md
+docs/LocationInner.md
 docs/LoginStartRequest.md
 docs/LoginStartResponse.md
 docs/ManageSecurityAPI.md
@@ -322,7 +323,6 @@ docs/UserUpdateBody.md
 docs/UsersAPI.md
 docs/UsersGroupsAPI.md
 docs/ValidationError.md
-docs/ValidationErrorLocInner.md
 docs/WalletAuthAPI.md
 docs/WalletAuthHTTPValidationError.md
 docs/WalletAuthSiweBindRequest.md

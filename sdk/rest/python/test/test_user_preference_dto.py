@@ -36,16 +36,12 @@ class TestUserPreferenceDto(unittest.TestCase):
         if include_optional:
             return UserPreferenceDto(
                 user_id = '',
-                preferences = {
-                    'key' : null
-                    }
+                preferences = { }
             )
         else:
             return UserPreferenceDto(
                 user_id = '',
-                preferences = {
-                    'key' : null
-                    },
+                preferences = { },
         )
         """
 

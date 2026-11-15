@@ -41,7 +41,7 @@ data class WalletPaymentUsdcLeasePaymentCreate (
     @get:JsonProperty("metadata")
     val metadata: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

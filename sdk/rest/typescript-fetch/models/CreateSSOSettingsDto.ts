@@ -42,25 +42,25 @@ export interface CreateSSOSettingsDto {
      * @type {string}
      * @memberof CreateSSOSettingsDto
      */
-    clientSecret?: string;
+    clientSecret?: string | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof CreateSSOSettingsDto
      */
-    scopes?: Array<string>;
+    scopes?: Array<string> | null;
     /**
      * 
      * @type {Array<string>}
      * @memberof CreateSSOSettingsDto
      */
-    redirectUris?: Array<string>;
+    redirectUris?: Array<string> | null;
     /**
      * 
      * @type {string}
      * @memberof CreateSSOSettingsDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
 }
 
 

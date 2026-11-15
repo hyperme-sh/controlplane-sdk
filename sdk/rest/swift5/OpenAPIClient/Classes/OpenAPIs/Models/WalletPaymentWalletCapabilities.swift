@@ -55,21 +55,6 @@ public struct WalletPaymentWalletCapabilities: Codable, JSONEncodable, Hashable 
         case usdcHostEnrollment = "usdc_host_enrollment"
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -86,42 +71,6 @@ public struct WalletPaymentWalletCapabilities: Codable, JSONEncodable, Hashable 
         try container.encodeIfPresent(refundRecovery, forKey: .refundRecovery)
         try container.encodeIfPresent(settlementAuthority, forKey: .settlementAuthority)
         try container.encode(usdcHostEnrollment, forKey: .usdcHostEnrollment)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        accountingEffect = try container.decodeIfPresent(String.self, forKey: .accountingEffect)
-        checkoutCreation = try container.decode(Bool.self, forKey: .checkoutCreation)
-        contractVersion = try container.decodeIfPresent(String.self, forKey: .contractVersion)
-        depositCreation = try container.decode(Bool.self, forKey: .depositCreation)
-        depositObservation = try container.decodeIfPresent(Bool.self, forKey: .depositObservation)
-        enterpriseUnitsRedeemable = try container.decodeIfPresent(Bool.self, forKey: .enterpriseUnitsRedeemable)
-        mode = try container.decodeIfPresent(String.self, forKey: .mode)
-        payoutAddressProof = try container.decode(Bool.self, forKey: .payoutAddressProof)
-        productionPayments = try container.decodeIfPresent(Bool.self, forKey: .productionPayments)
-        refundRecovery = try container.decodeIfPresent(String.self, forKey: .refundRecovery)
-        settlementAuthority = try container.decodeIfPresent(String.self, forKey: .settlementAuthority)
-        usdcHostEnrollment = try container.decode(Bool.self, forKey: .usdcHostEnrollment)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("accounting_effect")
-        nonAdditionalPropertyKeys.insert("checkout_creation")
-        nonAdditionalPropertyKeys.insert("contract_version")
-        nonAdditionalPropertyKeys.insert("deposit_creation")
-        nonAdditionalPropertyKeys.insert("deposit_observation")
-        nonAdditionalPropertyKeys.insert("enterprise_units_redeemable")
-        nonAdditionalPropertyKeys.insert("mode")
-        nonAdditionalPropertyKeys.insert("payout_address_proof")
-        nonAdditionalPropertyKeys.insert("production_payments")
-        nonAdditionalPropertyKeys.insert("refund_recovery")
-        nonAdditionalPropertyKeys.insert("settlement_authority")
-        nonAdditionalPropertyKeys.insert("usdc_host_enrollment")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

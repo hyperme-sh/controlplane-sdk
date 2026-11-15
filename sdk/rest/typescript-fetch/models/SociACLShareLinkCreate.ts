@@ -52,13 +52,13 @@ export interface SociACLShareLinkCreate {
      * @type {string}
      * @memberof SociACLShareLinkCreate
      */
-    ownerUserId?: string;
+    ownerUserId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof SociACLShareLinkCreate
      */
-    groupId?: string;
+    groupId?: string | null;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -82,13 +82,13 @@ export interface SociACLShareLinkCreate {
      * @type {string}
      * @memberof SociACLShareLinkCreate
      */
-    expiresAt?: string;
+    expiresAt?: string | null;
     /**
      * 
      * @type {number}
      * @memberof SociACLShareLinkCreate
      */
-    maxUses?: number;
+    maxUses?: number | null;
 }
 
 

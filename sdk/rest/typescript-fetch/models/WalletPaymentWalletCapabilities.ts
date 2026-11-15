@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface WalletPaymentWalletCapabilities
  */
 export interface WalletPaymentWalletCapabilities {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
@@ -115,7 +114,6 @@ export function WalletPaymentWalletCapabilitiesFromJSONTyped(json: any, ignoreDi
     }
     return {
         
-            ...json,
         'accountingEffect': json['accounting_effect'] == null ? undefined : json['accounting_effect'],
         'checkoutCreation': json['checkout_creation'],
         'contractVersion': json['contract_version'] == null ? undefined : json['contract_version'],
@@ -142,7 +140,6 @@ export function WalletPaymentWalletCapabilitiesToJSONTyped(value?: WalletPayment
 
     return {
         
-            ...value,
         'accounting_effect': value['accountingEffect'],
         'checkout_creation': value['checkoutCreation'],
         'contract_version': value['contractVersion'],

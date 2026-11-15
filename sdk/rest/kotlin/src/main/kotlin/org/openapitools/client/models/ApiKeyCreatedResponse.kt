@@ -45,7 +45,7 @@ data class ApiKeyCreatedResponse (
     val keyPrefix: kotlin.String,
 
     @get:JsonProperty("name")
-    val name: kotlin.String,
+    val name: kotlin.String?,
 
     @get:JsonProperty("scopes")
     val scopes: kotlin.collections.List<kotlin.String>,

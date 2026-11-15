@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -80,7 +81,12 @@ class SociACLEvaluateRequest(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of owner_attributes
         if self.owner_attributes:
             _dict['owner_attributes'] = self.owner_attributes.to_dict()
-        return _dict
+        # set to None if owner_attributes (nullable) is None
+        # and model_fields_set contains the field
+        if self.owner_attributes is None and "owner_attributes" in self.model_fields_set:
+            _dict['owner_attributes'] = None
+
+        return with_explicit_nulls(self, _dict, ('owner_attributes',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -96,6 +102,6 @@ class SociACLEvaluateRequest(BaseModel):
             "context": SociACLRequestContext.from_dict(obj["context"]) if obj.get("context") is not None else None,
             "owner_attributes": SociACLAttributes.from_dict(obj["owner_attributes"]) if obj.get("owner_attributes") is not None else None
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

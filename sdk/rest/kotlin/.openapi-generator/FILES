@@ -69,6 +69,7 @@ docs/InternalValidateResponse.md
 docs/ListingCreateBody.md
 docs/ListingResponse.md
 docs/ListingUpdateBody.md
+docs/LocationInner.md
 docs/LoginStartRequest.md
 docs/LoginStartResponse.md
 docs/ManageSecurityApi.md
@@ -143,7 +144,6 @@ docs/UserUpdateBody.md
 docs/UsersApi.md
 docs/UsersGroupsApi.md
 docs/ValidationError.md
-docs/ValidationErrorLocInner.md
 docs/WalletAuthApi.md
 docs/WalletAuthHTTPValidationError.md
 docs/WalletAuthSiweBindRequest.md
@@ -256,6 +256,7 @@ src/main/kotlin/org/openapitools/client/models/InternalValidateResponse.kt
 src/main/kotlin/org/openapitools/client/models/ListingCreateBody.kt
 src/main/kotlin/org/openapitools/client/models/ListingResponse.kt
 src/main/kotlin/org/openapitools/client/models/ListingUpdateBody.kt
+src/main/kotlin/org/openapitools/client/models/LocationInner.kt
 src/main/kotlin/org/openapitools/client/models/LoginStartRequest.kt
 src/main/kotlin/org/openapitools/client/models/LoginStartResponse.kt
 src/main/kotlin/org/openapitools/client/models/MeResponseDto.kt
@@ -318,7 +319,6 @@ src/main/kotlin/org/openapitools/client/models/UserResponse.kt
 src/main/kotlin/org/openapitools/client/models/UserRoleUpdateRequestDto.kt
 src/main/kotlin/org/openapitools/client/models/UserUpdateBody.kt
 src/main/kotlin/org/openapitools/client/models/ValidationError.kt
-src/main/kotlin/org/openapitools/client/models/ValidationErrorLocInner.kt
 src/main/kotlin/org/openapitools/client/models/WalletAuthHTTPValidationError.kt
 src/main/kotlin/org/openapitools/client/models/WalletAuthSiweBindRequest.kt
 src/main/kotlin/org/openapitools/client/models/WalletAuthSiweNonceRequest.kt
@@ -418,6 +418,7 @@ src/test/kotlin/org/openapitools/client/models/InternalValidateResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/ListingCreateBodyTest.kt
 src/test/kotlin/org/openapitools/client/models/ListingResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/ListingUpdateBodyTest.kt
+src/test/kotlin/org/openapitools/client/models/LocationInnerTest.kt
 src/test/kotlin/org/openapitools/client/models/LoginStartRequestTest.kt
 src/test/kotlin/org/openapitools/client/models/LoginStartResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/MeResponseDtoTest.kt
@@ -479,7 +480,6 @@ src/test/kotlin/org/openapitools/client/models/UserProfileImageUpdateDtoTest.kt
 src/test/kotlin/org/openapitools/client/models/UserResponseTest.kt
 src/test/kotlin/org/openapitools/client/models/UserRoleUpdateRequestDtoTest.kt
 src/test/kotlin/org/openapitools/client/models/UserUpdateBodyTest.kt
-src/test/kotlin/org/openapitools/client/models/ValidationErrorLocInnerTest.kt
 src/test/kotlin/org/openapitools/client/models/ValidationErrorTest.kt
 src/test/kotlin/org/openapitools/client/models/WalletAuthHTTPValidationErrorTest.kt
 src/test/kotlin/org/openapitools/client/models/WalletAuthSiweBindRequestTest.kt

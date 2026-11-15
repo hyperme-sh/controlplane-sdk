@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
@@ -96,7 +97,27 @@ class BrandingDto(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of theme_config
         if self.theme_config:
             _dict['theme_config'] = self.theme_config.to_dict()
-        return _dict
+        # set to None if logo_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.logo_type is None and "logo_type" in self.model_fields_set:
+            _dict['logo_type'] = None
+
+        # set to None if contact_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.contact_info is None and "contact_info" in self.model_fields_set:
+            _dict['contact_info'] = None
+
+        # set to None if favicon_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.favicon_url is None and "favicon_url" in self.model_fields_set:
+            _dict['favicon_url'] = None
+
+        # set to None if logo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.logo_url is None and "logo_url" in self.model_fields_set:
+            _dict['logo_url'] = None
+
+        return with_explicit_nulls(self, _dict, ('logo_type', 'contact_info', 'favicon_url', 'logo_url'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -119,6 +140,6 @@ class BrandingDto(BaseModel):
             "favicon_url": obj.get("favicon_url"),
             "logo_url": obj.get("logo_url")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

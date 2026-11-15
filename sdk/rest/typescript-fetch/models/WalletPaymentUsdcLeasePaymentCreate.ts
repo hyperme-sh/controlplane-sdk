@@ -22,7 +22,6 @@ import { mapValues } from '../runtime';
  * @interface WalletPaymentUsdcLeasePaymentCreate
  */
 export interface WalletPaymentUsdcLeasePaymentCreate {
-    [key: string]: any | any;
     /**
      * Total USD cents: $0.50–$10,000.00 inclusive
      * @type {number}
@@ -34,13 +33,13 @@ export interface WalletPaymentUsdcLeasePaymentCreate {
      * @type {string}
      * @memberof WalletPaymentUsdcLeasePaymentCreate
      */
-    listingId?: string;
+    listingId?: string | null;
     /**
      * Optional string map copied onto billing extra_metadata. Platform keys tenant_id and payment_rail win. lease_id and listing_id from a browser client are ignored. Do not send secrets.
      * @type {{ [key: string]: string; }}
      * @memberof WalletPaymentUsdcLeasePaymentCreate
      */
-    metadata?: { [key: string]: string; };
+    metadata?: { [key: string]: string; } | null;
 }
 
 /**
@@ -61,7 +60,6 @@ export function WalletPaymentUsdcLeasePaymentCreateFromJSONTyped(json: any, igno
     }
     return {
         
-            ...json,
         'amountCents': json['amount_cents'],
         'listingId': json['listing_id'] == null ? undefined : json['listing_id'],
         'metadata': json['metadata'] == null ? undefined : json['metadata'],
@@ -79,7 +77,6 @@ export function WalletPaymentUsdcLeasePaymentCreateToJSONTyped(value?: WalletPay
 
     return {
         
-            ...value,
         'amount_cents': value['amountCents'],
         'listing_id': value['listingId'],
         'metadata': value['metadata'],

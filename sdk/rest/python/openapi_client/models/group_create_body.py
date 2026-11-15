@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
@@ -72,7 +73,12 @@ class GroupCreateBody(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict['description'] = None
+
+        return with_explicit_nulls(self, _dict, ('description',))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -88,6 +94,6 @@ class GroupCreateBody(BaseModel):
             "description": obj.get("description"),
             "role_id": obj.get("role_id")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

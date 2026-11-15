@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface WalletPaymentChallengeRequest
  */
 export interface WalletPaymentChallengeRequest {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
@@ -53,7 +52,6 @@ export function WalletPaymentChallengeRequestFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-            ...json,
         'address': json['address'],
         'chainId': json['chain_id'],
     };
@@ -70,7 +68,6 @@ export function WalletPaymentChallengeRequestToJSONTyped(value?: WalletPaymentCh
 
     return {
         
-            ...value,
         'address': value['address'],
         'chain_id': value['chainId'],
     };

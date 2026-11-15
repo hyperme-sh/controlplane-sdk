@@ -46,37 +46,37 @@ export interface UpdateBrandingDto {
      * @type {IdentityDto}
      * @memberof UpdateBrandingDto
      */
-    identity?: IdentityDto;
+    identity?: IdentityDto | null;
     /**
      * 
      * @type {ContactInfo}
      * @memberof UpdateBrandingDto
      */
-    contactInfo?: ContactInfo;
+    contactInfo?: ContactInfo | null;
     /**
      * 
      * @type {ThemeConfig}
      * @memberof UpdateBrandingDto
      */
-    themeConfig?: ThemeConfig;
+    themeConfig?: ThemeConfig | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateBrandingDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateBrandingDto
      */
-    logoUrl?: string;
+    logoUrl?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateBrandingDto
      */
-    logoType?: UpdateBrandingDtoLogoTypeEnum;
+    logoType?: UpdateBrandingDtoLogoTypeEnum | null;
 }
 
 

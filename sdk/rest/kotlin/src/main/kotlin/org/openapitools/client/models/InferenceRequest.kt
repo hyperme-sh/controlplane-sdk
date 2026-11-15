@@ -47,7 +47,7 @@ data class InferenceRequest (
     @get:JsonProperty("budget_id")
     val budgetId: java.util.UUID? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
     /**
      * 

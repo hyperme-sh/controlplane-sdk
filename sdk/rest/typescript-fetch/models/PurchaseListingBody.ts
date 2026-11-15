@@ -24,7 +24,7 @@ export interface PurchaseListingBody {
      * @type {string}
      * @memberof PurchaseListingBody
      */
-    billingRecordId?: string;
+    billingRecordId?: string | null;
 }
 
 /**

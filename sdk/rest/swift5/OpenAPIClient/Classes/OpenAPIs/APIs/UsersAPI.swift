@@ -245,7 +245,7 @@ open class UsersAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId: String, file: String) async throws -> UserProfileImageUpdateDto {
+    open class func updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId: String, file: URL) async throws -> UserProfileImageUpdateDto {
         return try await updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePutWithRequestBuilder(userId: userId, file: file).execute().body
     }
 
@@ -261,7 +261,7 @@ open class UsersAPI {
      - returns: RequestBuilder<UserProfileImageUpdateDto> 
      */
     @available(*, deprecated, message: "This operation is deprecated.")
-    open class func updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePutWithRequestBuilder(userId: String, file: String) -> RequestBuilder<UserProfileImageUpdateDto> {
+    open class func updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePutWithRequestBuilder(userId: String, file: URL) -> RequestBuilder<UserProfileImageUpdateDto> {
         var localVariablePath = "/api/v1/users/{user_id}/update_profile_picture"
         let userIdPreEscape = "\(APIHelper.mapValueToPathItem(userId))"
         let userIdPostEscape = userIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""

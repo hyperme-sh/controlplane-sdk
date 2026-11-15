@@ -50,7 +50,7 @@ export interface CreateTenantDto {
      * @type {string}
      * @memberof CreateTenantDto
      */
-    adminPassword?: string;
+    adminPassword?: string | null;
     /**
      * 
      * @type {string}

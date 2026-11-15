@@ -62,7 +62,7 @@ export interface RegisteredPasskeyCredentialsDto {
      * @type {Date}
      * @memberof RegisteredPasskeyCredentialsDto
      */
-    lastUsedAt?: Date;
+    lastUsedAt?: Date | null;
 }
 
 /**
@@ -111,7 +111,7 @@ export function RegisteredPasskeyCredentialsDtoToJSONTyped(value?: RegisteredPas
         'sigin_count': value['siginCount'],
         'transports': value['transports'] == null ? undefined : ((value['transports'] as Array<any>).map(AuthenticatorTransportToJSON)),
         'created_at': ((value['createdAt']).toISOString()),
-        'last_used_at': value['lastUsedAt'] == null ? undefined : ((value['lastUsedAt']).toISOString()),
+        'last_used_at': value['lastUsedAt'] == null ? undefined : ((value['lastUsedAt'] as any).toISOString()),
     };
 }
 

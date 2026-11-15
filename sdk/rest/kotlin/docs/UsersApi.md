@@ -244,7 +244,7 @@ val apiClient = ApiClient()
 apiClient.setBearerToken("TOKEN")
 val webService = apiClient.createWebservice(UsersApi::class.java)
 val userId : kotlin.String = userId_example // kotlin.String | 
-val file : kotlin.String = file_example // kotlin.String | 
+val file : java.io.File = BINARY_DATA_HERE // java.io.File | 
 
 launch(Dispatchers.IO) {
     val result : UserProfileImageUpdateDto = webService.updateProfilePictureApiV1UsersUserIdUpdateProfilePicturePut(userId, file)
@@ -255,7 +255,7 @@ launch(Dispatchers.IO) {
 | **userId** | **kotlin.String**|  | |
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **file** | **kotlin.String**|  | |
+| **file** | **java.io.File**|  | |
 
 ### Return type
 

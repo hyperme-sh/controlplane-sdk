@@ -17,17 +17,17 @@ public struct WalletPaymentWalletDepositStatus: Codable, JSONEncodable, Hashable
     public private(set) var billingRecordId: UUID
     public private(set) var chainId: Int? = 84532
     public private(set) var currency: String? = "usd"
-    public private(set) var depositAddress: String
+    public private(set) var depositAddress: String?
     public private(set) var leaseId: UUID
     public private(set) var network: String? = "base"
     public private(set) var payerMismatch: [String: AnyCodable]?
-    public private(set) var providerStatus: String
+    public private(set) var providerStatus: String?
     public private(set) var settled: Bool
     public private(set) var status: String
     public private(set) var tokenContractAddress: String? = "0x036cbd53842c5426634e7929541ec2318f3dcf7e"
     public private(set) var tokenCurrency: String? = "usdc"
 
-    public init(amountCents: Int, billingRecordId: UUID, chainId: Int? = 84532, currency: String? = "usd", depositAddress: String, leaseId: UUID, network: String? = "base", payerMismatch: [String: AnyCodable]? = nil, providerStatus: String, settled: Bool, status: String, tokenContractAddress: String? = "0x036cbd53842c5426634e7929541ec2318f3dcf7e", tokenCurrency: String? = "usdc") {
+    public init(amountCents: Int, billingRecordId: UUID, chainId: Int? = 84532, currency: String? = "usd", depositAddress: String?, leaseId: UUID, network: String? = "base", payerMismatch: [String: AnyCodable]? = nil, providerStatus: String?, settled: Bool, status: String, tokenContractAddress: String? = "0x036cbd53842c5426634e7929541ec2318f3dcf7e", tokenCurrency: String? = "usdc") {
         self.amountCents = amountCents
         self.billingRecordId = billingRecordId
         self.chainId = chainId
@@ -59,21 +59,6 @@ public struct WalletPaymentWalletDepositStatus: Codable, JSONEncodable, Hashable
         case tokenCurrency = "token_currency"
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -91,44 +76,6 @@ public struct WalletPaymentWalletDepositStatus: Codable, JSONEncodable, Hashable
         try container.encode(status, forKey: .status)
         try container.encodeIfPresent(tokenContractAddress, forKey: .tokenContractAddress)
         try container.encodeIfPresent(tokenCurrency, forKey: .tokenCurrency)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        amountCents = try container.decode(Int.self, forKey: .amountCents)
-        billingRecordId = try container.decode(UUID.self, forKey: .billingRecordId)
-        chainId = try container.decodeIfPresent(Int.self, forKey: .chainId)
-        currency = try container.decodeIfPresent(String.self, forKey: .currency)
-        depositAddress = try container.decode(String.self, forKey: .depositAddress)
-        leaseId = try container.decode(UUID.self, forKey: .leaseId)
-        network = try container.decodeIfPresent(String.self, forKey: .network)
-        payerMismatch = try container.decodeIfPresent([String: AnyCodable].self, forKey: .payerMismatch)
-        providerStatus = try container.decode(String.self, forKey: .providerStatus)
-        settled = try container.decode(Bool.self, forKey: .settled)
-        status = try container.decode(String.self, forKey: .status)
-        tokenContractAddress = try container.decodeIfPresent(String.self, forKey: .tokenContractAddress)
-        tokenCurrency = try container.decodeIfPresent(String.self, forKey: .tokenCurrency)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("amount_cents")
-        nonAdditionalPropertyKeys.insert("billing_record_id")
-        nonAdditionalPropertyKeys.insert("chain_id")
-        nonAdditionalPropertyKeys.insert("currency")
-        nonAdditionalPropertyKeys.insert("deposit_address")
-        nonAdditionalPropertyKeys.insert("lease_id")
-        nonAdditionalPropertyKeys.insert("network")
-        nonAdditionalPropertyKeys.insert("payer_mismatch")
-        nonAdditionalPropertyKeys.insert("provider_status")
-        nonAdditionalPropertyKeys.insert("settled")
-        nonAdditionalPropertyKeys.insert("status")
-        nonAdditionalPropertyKeys.insert("token_contract_address")
-        nonAdditionalPropertyKeys.insert("token_currency")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

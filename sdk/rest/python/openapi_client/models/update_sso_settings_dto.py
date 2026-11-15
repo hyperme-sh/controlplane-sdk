@@ -84,6 +84,31 @@ class UpdateSSOSettingsDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if enabled (nullable) is None
+        # and model_fields_set contains the field
+        if self.enabled is None and "enabled" in self.model_fields_set:
+            _dict['enabled'] = None
+
+        # set to None if provider (nullable) is None
+        # and model_fields_set contains the field
+        if self.provider is None and "provider" in self.model_fields_set:
+            _dict['provider'] = None
+
+        # set to None if client_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_id is None and "client_id" in self.model_fields_set:
+            _dict['client_id'] = None
+
+        # set to None if client_secret (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_secret is None and "client_secret" in self.model_fields_set:
+            _dict['client_secret'] = None
+
+        # set to None if scopes (nullable) is None
+        # and model_fields_set contains the field
+        if self.scopes is None and "scopes" in self.model_fields_set:
+            _dict['scopes'] = None
+
         return with_explicit_nulls(self, _dict, ('enabled', 'provider', 'client_id', 'client_secret', 'scopes'))
 
     @classmethod

@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface InferenceResponse
  */
 export interface InferenceResponse {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
@@ -81,7 +80,6 @@ export function InferenceResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-            ...json,
         'text': json['text'],
         'model': json['model'],
         'inputTokens': json['input_tokens'],
@@ -102,7 +100,6 @@ export function InferenceResponseToJSONTyped(value?: InferenceResponse | null, i
 
     return {
         
-            ...value,
         'text': value['text'],
         'model': value['model'],
         'input_tokens': value['inputTokens'],

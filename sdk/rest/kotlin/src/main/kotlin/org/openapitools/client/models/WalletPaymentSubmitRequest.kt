@@ -38,7 +38,7 @@ data class WalletPaymentSubmitRequest (
     @get:JsonProperty("signature")
     val signature: kotlin.String
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

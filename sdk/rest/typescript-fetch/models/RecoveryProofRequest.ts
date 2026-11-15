@@ -30,7 +30,7 @@ export interface RecoveryProofRequest {
      * @type {{ [key: string]: any; }}
      * @memberof RecoveryProofRequest
      */
-    payload?: { [key: string]: any; };
+    payload?: { [key: string]: any; } | null;
 }
 
 

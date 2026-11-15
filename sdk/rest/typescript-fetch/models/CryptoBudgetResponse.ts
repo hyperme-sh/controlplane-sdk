@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface CryptoBudgetResponse
  */
 export interface CryptoBudgetResponse {
-    [key: string]: any | any;
     /**
      * 
      * @type {string}
@@ -55,7 +54,7 @@ export interface CryptoBudgetResponse {
      * @type {string}
      * @memberof CryptoBudgetResponse
      */
-    label?: string;
+    label?: string | null;
 }
 
 /**
@@ -80,7 +79,6 @@ export function CryptoBudgetResponseFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-            ...json,
         'id': json['id'],
         'ownerPubkey': json['owner_pubkey'],
         'mintPubkey': json['mint_pubkey'],
@@ -101,7 +99,6 @@ export function CryptoBudgetResponseToJSONTyped(value?: CryptoBudgetResponse | n
 
     return {
         
-            ...value,
         'id': value['id'],
         'owner_pubkey': value['ownerPubkey'],
         'mint_pubkey': value['mintPubkey'],

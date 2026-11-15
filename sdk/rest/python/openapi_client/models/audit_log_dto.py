@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
@@ -81,7 +82,17 @@ class AuditLogDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if user_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.user_id is None and "user_id" in self.model_fields_set:
+            _dict['user_id'] = None
+
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        return with_explicit_nulls(self, _dict, ('user_id', 'tenant_id'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -100,6 +111,6 @@ class AuditLogDto(BaseModel):
             "timestamp": obj.get("timestamp") if obj.get("timestamp") is not None else '2026-03-31T19:38:43.792086',
             "tenant_id": obj.get("tenant_id")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

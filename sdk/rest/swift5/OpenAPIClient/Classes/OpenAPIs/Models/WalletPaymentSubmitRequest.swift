@@ -31,21 +31,6 @@ public struct WalletPaymentSubmitRequest: Codable, JSONEncodable, Hashable {
         case signature
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -53,24 +38,6 @@ public struct WalletPaymentSubmitRequest: Codable, JSONEncodable, Hashable {
         try container.encode(message, forKey: .message)
         try container.encode(nonce, forKey: .nonce)
         try container.encode(signature, forKey: .signature)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        message = try container.decode(String.self, forKey: .message)
-        nonce = try container.decode(String.self, forKey: .nonce)
-        signature = try container.decode(String.self, forKey: .signature)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("message")
-        nonAdditionalPropertyKeys.insert("nonce")
-        nonAdditionalPropertyKeys.insert("signature")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

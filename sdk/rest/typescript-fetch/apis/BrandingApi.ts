@@ -35,7 +35,7 @@ export interface UpdateBrandingApiV1BrandingsPostRequest {
 }
 
 export interface UploadLogoApiV1BrandingsLogoPutRequest {
-    file: string;
+    file: Blob;
 }
 
 /**
@@ -79,7 +79,7 @@ export interface BrandingApiInterface {
     /**
      * 
      * @summary Upload Logo
-     * @param {string} file 
+     * @param {Blob} file 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof BrandingApiInterface
@@ -222,6 +222,8 @@ export class BrandingApi extends runtime.BaseAPI implements BrandingApiInterface
 
         let formParams: { append(param: string, value: any): any };
         let useForm = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        useForm = canConsumeForm;
         if (useForm) {
             formParams = new FormData();
         } else {

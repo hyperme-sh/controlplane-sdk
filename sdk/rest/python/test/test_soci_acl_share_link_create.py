@@ -38,12 +38,19 @@ class TestSociACLShareLinkCreate(unittest.TestCase):
                 resource_kind = 'user',
                 owner_user_id = '',
                 group_id = '',
-                resource_descriptor = {
-                    'key' : null
-                    },
-                predicate = {
-                    'key' : null
-                    },
+                resource_descriptor = { },
+                predicate = openapi_client.models.soci_acl_predicate.SociACLPredicate(
+                    min_verification_level = 0.0, 
+                    min_vouch_count = 0.0, 
+                    max_distance_km = 0.0, 
+                    required_political_tolerance = null, 
+                    member_of_group_id = '', 
+                    cross_network_handle_allowlist = [
+                        ''
+                        ], 
+                    cross_network_handle_blocklist = [
+                        ''
+                        ], ),
                 mode = 'notify_only',
                 expires_at = '',
                 max_uses = 1.0
@@ -51,9 +58,18 @@ class TestSociACLShareLinkCreate(unittest.TestCase):
         else:
             return SociACLShareLinkCreate(
                 resource_kind = 'user',
-                predicate = {
-                    'key' : null
-                    },
+                predicate = openapi_client.models.soci_acl_predicate.SociACLPredicate(
+                    min_verification_level = 0.0, 
+                    min_vouch_count = 0.0, 
+                    max_distance_km = 0.0, 
+                    required_political_tolerance = null, 
+                    member_of_group_id = '', 
+                    cross_network_handle_allowlist = [
+                        ''
+                        ], 
+                    cross_network_handle_blocklist = [
+                        ''
+                        ], ),
                 mode = 'notify_only',
         )
         """

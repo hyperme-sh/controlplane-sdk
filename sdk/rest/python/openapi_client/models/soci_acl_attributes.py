@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -34,7 +35,6 @@ class SociACLAttributes(BaseModel):
     sexual_orientation: Optional[SexualOrientationCategory] = None
     verification_level: Optional[Annotated[int, Field(le=4, strict=True, ge=0)]] = Field(default=None, description="0=none .. 4=strong identity assurance")
     notes: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(default=None, description="Internal policy notes; avoid PII.")
-    additional_properties: Dict[str, Any] = {}
     __properties: ClassVar[List[str]] = ["political_view", "sexual_orientation", "verification_level", "notes"]
 
     model_config = ConfigDict(
@@ -67,10 +67,8 @@ class SociACLAttributes(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
-        * Fields in `self.additional_properties` are added to the output dict.
         """
         excluded_fields: Set[str] = set([
-            "additional_properties",
         ])
 
         _dict = self.model_dump(
@@ -78,12 +76,27 @@ class SociACLAttributes(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # puts key-value pairs in additional_properties in the top level
-        if self.additional_properties is not None:
-            for _key, _value in self.additional_properties.items():
-                _dict[_key] = _value
+        # set to None if political_view (nullable) is None
+        # and model_fields_set contains the field
+        if self.political_view is None and "political_view" in self.model_fields_set:
+            _dict['political_view'] = None
 
-        return _dict
+        # set to None if sexual_orientation (nullable) is None
+        # and model_fields_set contains the field
+        if self.sexual_orientation is None and "sexual_orientation" in self.model_fields_set:
+            _dict['sexual_orientation'] = None
+
+        # set to None if verification_level (nullable) is None
+        # and model_fields_set contains the field
+        if self.verification_level is None and "verification_level" in self.model_fields_set:
+            _dict['verification_level'] = None
+
+        # set to None if notes (nullable) is None
+        # and model_fields_set contains the field
+        if self.notes is None and "notes" in self.model_fields_set:
+            _dict['notes'] = None
+
+        return with_explicit_nulls(self, _dict, ('political_view', 'sexual_orientation', 'verification_level', 'notes'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -100,11 +113,6 @@ class SociACLAttributes(BaseModel):
             "verification_level": obj.get("verification_level"),
             "notes": obj.get("notes")
         })
-        # store additional fields in additional_properties
-        for _key in obj.keys():
-            if _key not in cls.__properties:
-                _obj.additional_properties[_key] = obj.get(_key)
-
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

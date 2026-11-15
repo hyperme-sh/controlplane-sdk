@@ -50,21 +50,6 @@ public struct SociACLRequestContext: Codable, JSONEncodable, Hashable {
         case distanceSource = "distance_source"
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -77,34 +62,6 @@ public struct SociACLRequestContext: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(crossNetworkHandle, forKey: .crossNetworkHandle)
         try container.encodeIfPresent(distanceKm, forKey: .distanceKm)
         try container.encodeIfPresent(distanceSource, forKey: .distanceSource)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        sub = try container.decodeIfPresent(String.self, forKey: .sub)
-        politicalView = try container.decodeIfPresent(PoliticalViewCategory.self, forKey: .politicalView)
-        verificationLevel = try container.decodeIfPresent(Int.self, forKey: .verificationLevel)
-        vouchCount = try container.decodeIfPresent(Int.self, forKey: .vouchCount)
-        vouchSource = try container.decodeIfPresent(String.self, forKey: .vouchSource)
-        crossNetworkHandle = try container.decodeIfPresent(String.self, forKey: .crossNetworkHandle)
-        distanceKm = try container.decodeIfPresent(Double.self, forKey: .distanceKm)
-        distanceSource = try container.decodeIfPresent(SociACLDistanceSource.self, forKey: .distanceSource)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("sub")
-        nonAdditionalPropertyKeys.insert("political_view")
-        nonAdditionalPropertyKeys.insert("verification_level")
-        nonAdditionalPropertyKeys.insert("vouch_count")
-        nonAdditionalPropertyKeys.insert("vouch_source")
-        nonAdditionalPropertyKeys.insert("cross_network_handle")
-        nonAdditionalPropertyKeys.insert("distance_km")
-        nonAdditionalPropertyKeys.insert("distance_source")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

@@ -56,7 +56,7 @@ export interface AISessionByUserIdDto {
      * @type {string}
      * @memberof AISessionByUserIdDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {string}

@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
@@ -79,7 +80,37 @@ class CreateUserDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        # set to None if role_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.role_id is None and "role_id" in self.model_fields_set:
+            _dict['role_id'] = None
+
+        # set to None if sso_provider_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.sso_provider_id is None and "sso_provider_id" in self.model_fields_set:
+            _dict['sso_provider_id'] = None
+
+        # set to None if password (nullable) is None
+        # and model_fields_set contains the field
+        if self.password is None and "password" in self.model_fields_set:
+            _dict['password'] = None
+
+        # set to None if sub_domain (nullable) is None
+        # and model_fields_set contains the field
+        if self.sub_domain is None and "sub_domain" in self.model_fields_set:
+            _dict['sub_domain'] = None
+
+        # set to None if keycloak_sub (nullable) is None
+        # and model_fields_set contains the field
+        if self.keycloak_sub is None and "keycloak_sub" in self.model_fields_set:
+            _dict['keycloak_sub'] = None
+
+        return with_explicit_nulls(self, _dict, ('tenant_id', 'role_id', 'sso_provider_id', 'password', 'sub_domain', 'keycloak_sub'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -102,6 +133,6 @@ class CreateUserDto(BaseModel):
             "sub_domain": obj.get("sub_domain"),
             "keycloak_sub": obj.get("keycloak_sub")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

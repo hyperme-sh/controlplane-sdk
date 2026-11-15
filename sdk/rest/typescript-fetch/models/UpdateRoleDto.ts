@@ -38,13 +38,13 @@ export interface UpdateRoleDto {
      * @type {string}
      * @memberof UpdateRoleDto
      */
-    description?: string;
+    description?: string | null;
     /**
      * 
      * @type {string}
      * @memberof UpdateRoleDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
     /**
      * 
      * @type {Array<Permission>}

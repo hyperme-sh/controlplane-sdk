@@ -30,7 +30,7 @@ export interface RecoverySessionCreate {
      * @type {{ [key: string]: any; }}
      * @memberof RecoverySessionCreate
      */
-    metadata?: { [key: string]: any; };
+    metadata?: { [key: string]: any; } | null;
 }
 
 /**

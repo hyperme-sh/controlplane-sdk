@@ -12,37 +12,37 @@ import AnyCodable
 
 public struct WalletAuthValidationError: Codable, JSONEncodable, Hashable {
 
-    public private(set) var loc: [ValidationErrorLocInner]
+    public private(set) var ctx: AnyCodable?
+    public private(set) var input: AnyCodable?
+    public private(set) var loc: [LocationInner]
     public private(set) var msg: String
     public private(set) var type: String
-    public private(set) var input: AnyCodable?
-    public private(set) var ctx: AnyCodable?
 
-    public init(loc: [ValidationErrorLocInner], msg: String, type: String, input: AnyCodable? = nil, ctx: AnyCodable? = nil) {
+    public init(ctx: AnyCodable? = nil, input: AnyCodable? = nil, loc: [LocationInner], msg: String, type: String) {
+        self.ctx = ctx
+        self.input = input
         self.loc = loc
         self.msg = msg
         self.type = type
-        self.input = input
-        self.ctx = ctx
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case ctx
+        case input
         case loc
         case msg
         case type
-        case input
-        case ctx
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(ctx, forKey: .ctx)
+        try container.encodeIfPresent(input, forKey: .input)
         try container.encode(loc, forKey: .loc)
         try container.encode(msg, forKey: .msg)
         try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(input, forKey: .input)
-        try container.encodeIfPresent(ctx, forKey: .ctx)
     }
 }
 

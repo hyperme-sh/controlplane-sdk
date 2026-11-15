@@ -42,7 +42,7 @@ export interface ApiKeyResponse {
      * @type {string}
      * @memberof ApiKeyResponse
      */
-    name: string;
+    name: string | null;
     /**
      * 
      * @type {Array<string>}
@@ -60,7 +60,7 @@ export interface ApiKeyResponse {
      * @type {string}
      * @memberof ApiKeyResponse
      */
-    revokedAt?: string;
+    revokedAt?: string | null;
 }
 
 /**

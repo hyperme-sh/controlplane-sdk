@@ -19,7 +19,6 @@ import { mapValues } from '../runtime';
  * @interface BudgetAllocateRequest
  */
 export interface BudgetAllocateRequest {
-    [key: string]: any | any;
     /**
      * 
      * @type {number}
@@ -46,7 +45,6 @@ export function BudgetAllocateRequestFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-            ...json,
         'deltaLamports': json['delta_lamports'],
     };
 }
@@ -62,7 +60,6 @@ export function BudgetAllocateRequestToJSONTyped(value?: BudgetAllocateRequest |
 
     return {
         
-            ...value,
         'delta_lamports': value['deltaLamports'],
     };
 }

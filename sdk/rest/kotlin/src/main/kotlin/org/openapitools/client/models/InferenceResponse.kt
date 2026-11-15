@@ -50,7 +50,7 @@ data class InferenceResponse (
     @get:JsonProperty("inference_id")
     val inferenceId: java.util.UUID
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

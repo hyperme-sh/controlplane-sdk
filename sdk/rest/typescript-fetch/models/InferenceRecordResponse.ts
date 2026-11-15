@@ -72,7 +72,7 @@ export interface InferenceRecordResponse {
      * @type {string}
      * @memberof InferenceRecordResponse
      */
-    budgetId?: string;
+    budgetId?: string | null;
 }
 
 /**

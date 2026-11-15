@@ -33,21 +33,6 @@ public struct WalletPaymentUsdcLeasePaymentCreate: Codable, JSONEncodable, Hasha
         case metadata
     }
 
-    public private(set) var additionalProperties: [String: AnyCodable] = [:]
-
-    public subscript(key: String) -> AnyCodable? {
-        get {
-            if let value = additionalProperties[key] {
-                return value
-            }
-            return nil
-        }
-
-        set {
-            additionalProperties[key] = newValue
-        }
-    }
-
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
@@ -55,24 +40,6 @@ public struct WalletPaymentUsdcLeasePaymentCreate: Codable, JSONEncodable, Hasha
         try container.encode(amountCents, forKey: .amountCents)
         try container.encodeIfPresent(listingId, forKey: .listingId)
         try container.encodeIfPresent(metadata, forKey: .metadata)
-        var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
-        try additionalPropertiesContainer.encodeMap(additionalProperties)
-    }
-
-    // Decodable protocol methods
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        amountCents = try container.decode(Int.self, forKey: .amountCents)
-        listingId = try container.decodeIfPresent(UUID.self, forKey: .listingId)
-        metadata = try container.decodeIfPresent([String: String].self, forKey: .metadata)
-        var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("amount_cents")
-        nonAdditionalPropertyKeys.insert("listing_id")
-        nonAdditionalPropertyKeys.insert("metadata")
-        let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 

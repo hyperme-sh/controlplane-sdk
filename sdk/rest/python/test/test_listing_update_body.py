@@ -37,9 +37,7 @@ class TestListingUpdateBody(unittest.TestCase):
             return ListingUpdateBody(
                 title = '0',
                 description = '',
-                metadata = {
-                    'key' : null
-                    },
+                metadata = { },
                 is_public = True
             )
         else:

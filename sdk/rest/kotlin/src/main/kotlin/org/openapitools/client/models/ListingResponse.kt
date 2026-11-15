@@ -58,7 +58,7 @@ data class ListingResponse (
     val priceType: kotlin.String,
 
     @get:JsonProperty("price_amount")
-    val priceAmount: kotlin.Int,
+    val priceAmount: kotlin.Int?,
 
     @get:JsonProperty("metadata")
     val metadata: kotlin.collections.Map<kotlin.String, kotlin.Any>,

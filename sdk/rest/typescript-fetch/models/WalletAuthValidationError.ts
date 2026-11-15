@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ValidationErrorLocInner } from './ValidationErrorLocInner';
+import type { LocationInner } from './LocationInner';
 import {
-    ValidationErrorLocInnerFromJSON,
-    ValidationErrorLocInnerFromJSONTyped,
-    ValidationErrorLocInnerToJSON,
-    ValidationErrorLocInnerToJSONTyped,
-} from './ValidationErrorLocInner';
+    LocationInnerFromJSON,
+    LocationInnerFromJSONTyped,
+    LocationInnerToJSON,
+    LocationInnerToJSONTyped,
+} from './LocationInner';
 
 /**
  * 
@@ -29,10 +29,22 @@ import {
 export interface WalletAuthValidationError {
     /**
      * 
-     * @type {Array<ValidationErrorLocInner>}
+     * @type {object}
      * @memberof WalletAuthValidationError
      */
-    loc: Array<ValidationErrorLocInner>;
+    ctx?: object;
+    /**
+     * 
+     * @type {any}
+     * @memberof WalletAuthValidationError
+     */
+    input?: any | null;
+    /**
+     * 
+     * @type {Array<LocationInner>}
+     * @memberof WalletAuthValidationError
+     */
+    loc: Array<LocationInner>;
     /**
      * 
      * @type {string}
@@ -45,18 +57,6 @@ export interface WalletAuthValidationError {
      * @memberof WalletAuthValidationError
      */
     type: string;
-    /**
-     * 
-     * @type {any}
-     * @memberof WalletAuthValidationError
-     */
-    input?: any | null;
-    /**
-     * 
-     * @type {object}
-     * @memberof WalletAuthValidationError
-     */
-    ctx?: object;
 }
 
 /**
@@ -79,11 +79,11 @@ export function WalletAuthValidationErrorFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'loc': ((json['loc'] as Array<any>).map(ValidationErrorLocInnerFromJSON)),
+        'ctx': json['ctx'] == null ? undefined : json['ctx'],
+        'input': json['input'] == null ? undefined : json['input'],
+        'loc': ((json['loc'] as Array<any>).map(LocationInnerFromJSON)),
         'msg': json['msg'],
         'type': json['type'],
-        'input': json['input'] == null ? undefined : json['input'],
-        'ctx': json['ctx'] == null ? undefined : json['ctx'],
     };
 }
 
@@ -98,11 +98,11 @@ export function WalletAuthValidationErrorToJSONTyped(value?: WalletAuthValidatio
 
     return {
         
-        'loc': ((value['loc'] as Array<any>).map(ValidationErrorLocInnerToJSON)),
+        'ctx': value['ctx'],
+        'input': value['input'],
+        'loc': ((value['loc'] as Array<any>).map(LocationInnerToJSON)),
         'msg': value['msg'],
         'type': value['type'],
-        'input': value['input'],
-        'ctx': value['ctx'],
     };
 }
 

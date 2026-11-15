@@ -43,9 +43,7 @@ class TestListingResponse(unittest.TestCase):
                 listing_type = '',
                 price_type = '',
                 price_amount = 56,
-                metadata = {
-                    'key' : null
-                    },
+                metadata = { },
                 is_public = True
             )
         else:
@@ -58,9 +56,7 @@ class TestListingResponse(unittest.TestCase):
                 listing_type = '',
                 price_type = '',
                 price_amount = 56,
-                metadata = {
-                    'key' : null
-                    },
+                metadata = { },
                 is_public = True,
         )
         """

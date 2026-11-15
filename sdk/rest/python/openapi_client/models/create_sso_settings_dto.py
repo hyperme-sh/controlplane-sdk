@@ -16,6 +16,7 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr, field_validator
@@ -82,7 +83,27 @@ class CreateSSOSettingsDto(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if client_secret (nullable) is None
+        # and model_fields_set contains the field
+        if self.client_secret is None and "client_secret" in self.model_fields_set:
+            _dict['client_secret'] = None
+
+        # set to None if scopes (nullable) is None
+        # and model_fields_set contains the field
+        if self.scopes is None and "scopes" in self.model_fields_set:
+            _dict['scopes'] = None
+
+        # set to None if redirect_uris (nullable) is None
+        # and model_fields_set contains the field
+        if self.redirect_uris is None and "redirect_uris" in self.model_fields_set:
+            _dict['redirect_uris'] = None
+
+        # set to None if tenant_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.tenant_id is None and "tenant_id" in self.model_fields_set:
+            _dict['tenant_id'] = None
+
+        return with_explicit_nulls(self, _dict, ('client_secret', 'scopes', 'redirect_uris', 'tenant_id'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -102,6 +123,6 @@ class CreateSSOSettingsDto(BaseModel):
             "redirect_uris": obj.get("redirect_uris"),
             "tenant_id": obj.get("tenant_id")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

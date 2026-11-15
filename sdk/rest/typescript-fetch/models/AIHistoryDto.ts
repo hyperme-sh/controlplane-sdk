@@ -48,7 +48,7 @@ export interface AIHistoryDto {
      * @type {string}
      * @memberof AIHistoryDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
 }
 
 /**

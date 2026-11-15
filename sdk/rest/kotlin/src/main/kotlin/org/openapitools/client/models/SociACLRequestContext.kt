@@ -60,7 +60,7 @@ data class SociACLRequestContext (
     @get:JsonProperty("distance_source")
     val distanceSource: SociACLDistanceSource? = null
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

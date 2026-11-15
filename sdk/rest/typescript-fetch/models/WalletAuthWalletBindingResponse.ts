@@ -30,7 +30,7 @@ export interface WalletAuthWalletBindingResponse {
      * @type {string}
      * @memberof WalletAuthWalletBindingResponse
      */
-    email?: string;
+    email?: string | null;
     /**
      * 
      * @type {string}

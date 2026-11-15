@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import org.openapitools.client.models.HTTPValidationError
 import org.openapitools.client.models.UpdateBrandingDto
 
+import okhttp3.MultipartBody
+
 interface BrandingApi {
     /**
      * Partial Update Branding
@@ -49,6 +51,6 @@ interface BrandingApi {
      */
     @Multipart
     @PUT("api/v1/brandings/logo")
-    suspend fun uploadLogoApiV1BrandingsLogoPut(@Part("file") file: kotlin.String): Response<kotlin.Any>
+    suspend fun uploadLogoApiV1BrandingsLogoPut(@Part file: MultipartBody.Part): Response<kotlin.Any>
 
 }

@@ -37,13 +37,13 @@ class TestWalletAuthHTTPValidationError(unittest.TestCase):
             return WalletAuthHTTPValidationError(
                 detail = [
                     openapi_client.models.validation_error.ValidationError(
+                        ctx = openapi_client.models.context.Context(), 
+                        input = null, 
                         loc = [
                             null
                             ], 
                         msg = '', 
-                        type = '', 
-                        input = null, 
-                        ctx = openapi_client.models.context.Context(), )
+                        type = '', )
                     ]
             )
         else:

@@ -24,7 +24,7 @@ export interface LoginStartRequest {
      * @type {string}
      * @memberof LoginStartRequest
      */
-    identityProviderHint?: string;
+    identityProviderHint?: string | null;
 }
 
 /**

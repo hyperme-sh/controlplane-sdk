@@ -42,7 +42,7 @@ export interface AuditLogDto {
      * @type {string}
      * @memberof AuditLogDto
      */
-    userId?: string;
+    userId?: string | null;
     /**
      * 
      * @type {string}
@@ -54,7 +54,7 @@ export interface AuditLogDto {
      * @type {string}
      * @memberof AuditLogDto
      */
-    tenantId?: string;
+    tenantId?: string | null;
 }
 
 

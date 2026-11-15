@@ -42,9 +42,7 @@ class TestWalletPaymentWalletDepositStatus(unittest.TestCase):
                 deposit_address = '',
                 lease_id = '',
                 network = 'base',
-                payer_mismatch = {
-                    'key' : null
-                    },
+                payer_mismatch = { },
                 provider_status = '',
                 settled = True,
                 status = '',

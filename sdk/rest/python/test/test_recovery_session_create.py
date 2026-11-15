@@ -36,9 +36,7 @@ class TestRecoverySessionCreate(unittest.TestCase):
         if include_optional:
             return RecoverySessionCreate(
                 idempotency_key = '01234567',
-                metadata = {
-                    'key' : null
-                    }
+                metadata = { }
             )
         else:
             return RecoverySessionCreate(

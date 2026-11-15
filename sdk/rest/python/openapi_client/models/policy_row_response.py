@@ -16,10 +16,11 @@ from __future__ import annotations
 import pprint
 import re  # noqa: F401
 import json
+from openapi_client._nullable_updates import with_explicit_nulls, restore_fields_set
 from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,13 +29,13 @@ class PolicyRowResponse(BaseModel):
     PolicyRowResponse
     """ # noqa: E501
     id: StrictInt
-    ptype: StrictStr
-    v0: StrictStr
-    v1: StrictStr
-    v2: StrictStr
-    v3: StrictStr
-    v4: StrictStr
-    v5: StrictStr
+    ptype: Optional[StrictStr]
+    v0: Optional[StrictStr]
+    v1: Optional[StrictStr]
+    v2: Optional[StrictStr]
+    v3: Optional[StrictStr]
+    v4: Optional[StrictStr]
+    v5: Optional[StrictStr]
     __properties: ClassVar[List[str]] = ["id", "ptype", "v0", "v1", "v2", "v3", "v4", "v5"]
 
     model_config = ConfigDict(
@@ -76,7 +77,42 @@ class PolicyRowResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        return _dict
+        # set to None if ptype (nullable) is None
+        # and model_fields_set contains the field
+        if self.ptype is None and "ptype" in self.model_fields_set:
+            _dict['ptype'] = None
+
+        # set to None if v0 (nullable) is None
+        # and model_fields_set contains the field
+        if self.v0 is None and "v0" in self.model_fields_set:
+            _dict['v0'] = None
+
+        # set to None if v1 (nullable) is None
+        # and model_fields_set contains the field
+        if self.v1 is None and "v1" in self.model_fields_set:
+            _dict['v1'] = None
+
+        # set to None if v2 (nullable) is None
+        # and model_fields_set contains the field
+        if self.v2 is None and "v2" in self.model_fields_set:
+            _dict['v2'] = None
+
+        # set to None if v3 (nullable) is None
+        # and model_fields_set contains the field
+        if self.v3 is None and "v3" in self.model_fields_set:
+            _dict['v3'] = None
+
+        # set to None if v4 (nullable) is None
+        # and model_fields_set contains the field
+        if self.v4 is None and "v4" in self.model_fields_set:
+            _dict['v4'] = None
+
+        # set to None if v5 (nullable) is None
+        # and model_fields_set contains the field
+        if self.v5 is None and "v5" in self.model_fields_set:
+            _dict['v5'] = None
+
+        return with_explicit_nulls(self, _dict, ('ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'))
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
@@ -97,6 +133,6 @@ class PolicyRowResponse(BaseModel):
             "v4": obj.get("v4"),
             "v5": obj.get("v5")
         })
-        return _obj
+        return restore_fields_set(_obj, obj)
 
 

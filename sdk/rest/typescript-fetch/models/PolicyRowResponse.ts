@@ -30,43 +30,43 @@ export interface PolicyRowResponse {
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    ptype: string;
+    ptype: string | null;
     /**
      * 
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    v0: string;
+    v0: string | null;
     /**
      * 
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    v1: string;
+    v1: string | null;
     /**
      * 
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    v2: string;
+    v2: string | null;
     /**
      * 
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    v3: string;
+    v3: string | null;
     /**
      * 
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    v4: string;
+    v4: string | null;
     /**
      * 
      * @type {string}
      * @memberof PolicyRowResponse
      */
-    v5: string;
+    v5: string | null;
 }
 
 /**

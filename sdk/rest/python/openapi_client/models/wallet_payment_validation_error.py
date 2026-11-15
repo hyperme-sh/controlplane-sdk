@@ -20,7 +20,7 @@ from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from openapi_client.models.validation_error_loc_inner import ValidationErrorLocInner
+from openapi_client.models.location_inner import LocationInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,12 +28,12 @@ class WalletPaymentValidationError(BaseModel):
     """
     WalletPaymentValidationError
     """ # noqa: E501
-    loc: List[ValidationErrorLocInner]
+    ctx: Optional[Dict[str, Any]] = None
+    input: Optional[Any] = None
+    loc: List[LocationInner]
     msg: StrictStr
     type: StrictStr
-    input: Optional[Any] = None
-    ctx: Optional[Dict[str, Any]] = None
-    __properties: ClassVar[List[str]] = ["loc", "msg", "type", "input", "ctx"]
+    __properties: ClassVar[List[str]] = ["ctx", "input", "loc", "msg", "type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -98,11 +98,11 @@ class WalletPaymentValidationError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "loc": [ValidationErrorLocInner.from_dict(_item) for _item in obj["loc"]] if obj.get("loc") is not None else None,
-            "msg": obj.get("msg"),
-            "type": obj.get("type"),
+            "ctx": obj.get("ctx"),
             "input": obj.get("input"),
-            "ctx": obj.get("ctx")
+            "loc": [LocationInner.from_dict(_item) for _item in obj["loc"]] if obj.get("loc") is not None else None,
+            "msg": obj.get("msg"),
+            "type": obj.get("type")
         })
         return _obj
 

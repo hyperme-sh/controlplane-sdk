@@ -41,7 +41,7 @@ data class RoleDto (
     val name: kotlin.String,
 
     @get:JsonProperty("description")
-    val description: kotlin.String,
+    val description: kotlin.String?,
 
     @get:JsonProperty("created_at")
     val createdAt: kotlin.String,
@@ -50,7 +50,7 @@ data class RoleDto (
     val updatedAt: kotlin.String,
 
     @get:JsonProperty("permissions")
-    val permissions: kotlin.collections.List<Permission>? = null,
+    val permissions: kotlin.collections.List<Permission>? = arrayListOf(),
 
     @get:JsonProperty("tenant_id")
     val tenantId: kotlin.String? = null

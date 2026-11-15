@@ -34,7 +34,7 @@ data class WalletPaymentChallengeRequest (
     @get:JsonProperty("chain_id")
     val chainId: kotlin.Int
 
-) : kotlin.collections.HashMap<String, kotlin.Any>() {
+) {
 
 
 }

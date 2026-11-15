@@ -38,25 +38,25 @@ data class PolicyRowResponse (
     val id: kotlin.Int,
 
     @get:JsonProperty("ptype")
-    val ptype: kotlin.String,
+    val ptype: kotlin.String?,
 
     @get:JsonProperty("v0")
-    val v0: kotlin.String,
+    val v0: kotlin.String?,
 
     @get:JsonProperty("v1")
-    val v1: kotlin.String,
+    val v1: kotlin.String?,
 
     @get:JsonProperty("v2")
-    val v2: kotlin.String,
+    val v2: kotlin.String?,
 
     @get:JsonProperty("v3")
-    val v3: kotlin.String,
+    val v3: kotlin.String?,
 
     @get:JsonProperty("v4")
-    val v4: kotlin.String,
+    val v4: kotlin.String?,
 
     @get:JsonProperty("v5")
-    val v5: kotlin.String
+    val v5: kotlin.String?
 
 ) {
 
