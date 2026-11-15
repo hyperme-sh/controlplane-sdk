@@ -1,0 +1,16 @@
+{
+  "name": "sea-device-link",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "Browser SEA identity transfer protocol and adapter contracts",
+  "exports": {".": {"types": "./dist/index.d.ts", "import": "./dist/index.js"}},
+  "files": ["dist", "README.md", "PROTOCOL.md", "vectors", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "node --test test/*.test.mjs",
+    "check:package": "node test/packed.mjs"
+  },
+  "devDependencies": {"typescript": "5.9.3"}
+}
