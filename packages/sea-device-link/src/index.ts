@@ -24,6 +24,10 @@ abstract class Session {
   protected busy = false;
   protected readonly abort = new AbortController();
   protected readonly now: () => number;
+  readonly #plaintext = new Set<Uint8Array<ArrayBuffer>>();
+  protected track(bytes: Uint8Array<ArrayBuffer>): Uint8Array<ArrayBuffer> { this.#plaintext.add(bytes); return bytes; }
+  protected release(bytes: Uint8Array<ArrayBuffer>): void { bytes.fill(0); this.#plaintext.delete(bytes); }
+  protected wipe(): void { for (const bytes of this.#plaintext) bytes.fill(0); this.#plaintext.clear(); }
   protected constructor(options: Options) { this.now = options.now ?? Date.now; }
   get state(): State { return this.stateValue; }
   protected abstract clear(): void;
@@ -41,10 +45,10 @@ abstract class Session {
     finally { this.busy = false; }
   }
 }
-async function validate(authority: IdentityAdapter, payload: Uint8Array<ArrayBuffer>, id: Identity): Promise<void> {
-  const copy = payload.slice();
+async function validate(authority: IdentityAdapter, payload: Uint8Array<ArrayBuffer>, id: Identity, track: (b: Uint8Array<ArrayBuffer>) => Uint8Array<ArrayBuffer> = b => b, release: (b: Uint8Array<ArrayBuffer>) => void = b => { b.fill(0); }): Promise<void> {
+  const copy = track(payload.slice());
   try { await adapter('identity', () => authority.validateKeyring(copy, structuredClone(id))); }
-  finally { copy.fill(0); }
+  finally { release(copy); }
 }
 async function current(authority: IdentityAdapter, b: Binding, now: () => number): Promise<Checkpoint> {
   const c = await adapter('authority', () => authority.current(structuredClone(b)));
@@ -64,8 +68,9 @@ export class Sender extends Session {
   #payload: Uint8Array<ArrayBuffer> | undefined;
   #envelope: Envelope | undefined;
   #authority: IdentityAdapter;
+  #completionKey: CryptoKey | undefined;
   private constructor(o: Offer, b: Binding, k: SessionKeys, payload: Uint8Array<ArrayBuffer>, authority: IdentityAdapter, options: Options) {
-    super(options); this.#offer = o; this.#binding = b; this.#keys = k; this.#payload = payload; this.#authority = authority; this.stateValue = 'bound';
+    super(options); this.#offer = o; this.#binding = b; this.#keys = k; this.#completionKey = k.authentication; this.#payload = payload; this.#authority = authority; this.stateValue = 'bound';
   }
   static async create(input: { request: Request; expectedScope: Scope; identity: Identity; keyring: Uint8Array; authority: IdentityAdapter }, options: Options = {}): Promise<Sender> {
     const r = request(input.request), id = identity(input.identity);
@@ -88,29 +93,41 @@ export class Sender extends Session {
   get offer(): Offer { return structuredClone(this.#offer); }
   get comparison(): string { return comparison(this.#binding.transcript); }
   get binding(): Binding { return structuredClone(this.#binding); }
-  protected clear(): void { this.#payload?.fill(0); this.#payload = undefined; this.#keys = undefined; this.#envelope = undefined; }
+  protected clear(): void { this.#payload?.fill(0); this.#payload = undefined; this.#keys = undefined; this.#completionKey = undefined; this.#envelope = undefined; }
   /** Pass the exact full comparison read from the receiving device over a
    * trusted independent channel. Never obtain it from the transport. */
   confirm(peerComparison: string): void {
-    this.live(this.#binding.expiresAt);
     if (this.stateValue !== 'bound' || this.busy) return fail('state');
+    this.live(this.#binding.expiresAt);
     if (peerComparison !== this.comparison) { this.cancel(); return fail('comparison'); }
     this.stateValue = 'confirmed';
   }
+  private canSend(): void {
+    if (this.stateValue !== 'sent') { this.live(this.#binding.expiresAt); return; }
+    if (this.abort.signal.aborted) return fail('state');
+    try { alive(this.#binding.expiresAt, this.now()); }
+    catch {
+      // Import deadline ends uploads, not authentication of a durable completion.
+      this.#keys = undefined; this.#envelope = undefined;
+      return fail('expired');
+    }
+  }
   async send(transport: Transport): Promise<void> {
     return this.exclusive(async () => {
-      this.live(this.#binding.expiresAt);
       if (this.stateValue !== 'confirmed' && this.stateValue !== 'sent') return fail('state');
+      this.canSend();
       await current(this.#authority, this.#binding, this.now);
-      this.live(this.#binding.expiresAt);
+      this.canSend();
       if (!this.#envelope) {
         const sealed = await seal(this.#keys!.encryption, this.#offer, this.#binding.transcript, this.#payload!);
-        this.live(this.#binding.expiresAt);
+        this.canSend();
         this.#envelope = sealed; this.#payload?.fill(0); this.#payload = undefined;
       }
-      await adapter('transport', () => transport.send(this.#binding.session, structuredClone(this.#envelope!)));
-      this.live(this.#binding.expiresAt);
+      // Enter the completion-waiting state BEFORE handing off to an untrusted
+      // transport: a rejected response does not prove that upload failed.
       this.stateValue = 'sent';
+      await adapter('transport', () => transport.send(this.#binding.session, structuredClone(this.#envelope!)));
+      if (this.abort.signal.aborted) return fail('state');
     });
   }
   async finish(transport: Transport): Promise<void> {
@@ -118,8 +135,8 @@ export class Sender extends Session {
       if (this.stateValue !== 'sent') return fail('state');
       const value = await adapter('transport', () => transport.completed(this.#binding.session));
       if (this.abort.signal.aborted) return fail('state');
-      if (!value) { this.live(this.#binding.expiresAt); return fail('pending'); }
-      await checkCompletion(this.#keys!.authentication, this.#binding.transcript, done(value));
+      if (!value) return fail('pending');
+      await checkCompletion(this.#completionKey!, this.#binding.transcript, done(value));
       if (this.abort.signal.aborted) return fail('state');
       this.stateValue = 'committed'; this.clear();
     });
@@ -145,7 +162,7 @@ export class Receiver extends Session {
   get request(): Request { return structuredClone(this.#request); }
   get comparison(): string { if (!this.#binding) return fail('state'); return comparison(this.#binding.transcript); }
   get binding(): Binding { if (!this.#binding) return fail('state'); return structuredClone(this.#binding); }
-  protected clear(): void { this.#privateKey = undefined; this.#keys = undefined; }
+  protected clear(): void { this.#privateKey = undefined; this.#keys = undefined; this.wipe(); }
   async bind(value: Offer): Promise<void> {
     return this.exclusive(async () => {
       this.live(this.#request.expiresAt);
@@ -184,18 +201,18 @@ export class Receiver extends Session {
       if (!raw) return fail('pending');
       const e = envelope(raw);
       if (e.transcript !== b.transcript) return fail('crypto');
-      const payload = await open(k.encryption, this.#offer!, e);
+      const payload = this.track(await open(k.encryption, this.#offer!, e));
       try {
         this.live(b.expiresAt);
         if (await hash(payload) !== this.#offer!.payloadHash) return fail('crypto');
         this.live(b.expiresAt);
-        await validate(authority, payload, b.identity);
+        await validate(authority, payload, b.identity, bytes => this.track(bytes), bytes => this.release(bytes));
         this.live(b.expiresAt);
         const initial = await current(authority, b, this.now);
         this.live(b.expiresAt);
         const d = await completion(k.authentication, b.transcript);
         this.live(b.expiresAt);
-        const copy = payload.slice();
+        const copy = this.track(payload.slice());
         let guarded = false;
         try {
           await adapter('storage', () => storage.commit({ binding: structuredClone(b), keyring: copy, completion: structuredClone(d), signal: this.abort.signal,
@@ -207,7 +224,7 @@ export class Receiver extends Session {
               guarded = true;
               return fresh;
             } }));
-        } finally { copy.fill(0); }
+        } finally { this.release(copy); }
         // Correctness of atomic persistence and callback timing belongs to the
         // trusted storage adapter. Refuse to report success if it skipped guard.
         if (!guarded) return fail('storage');
@@ -219,7 +236,7 @@ export class Receiver extends Session {
         await adapter('transport', () => transport.complete(b.session, structuredClone(d)));
         this.live(b.expiresAt);
         this.stateValue = 'committed'; this.clear();
-      } finally { payload.fill(0); }
+      } finally { this.release(payload); }
     });
   }
 }

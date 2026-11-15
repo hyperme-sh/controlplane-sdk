@@ -68,7 +68,12 @@ adapter makes it a statement about durable import. A relay cannot forge it.
 
 Receiver: created -> bound -> confirmed -> committed.
 Sender: bound -> confirmed -> sent -> committed.
-Cancellation and expiry are terminal. Conflicting concurrent operations refuse
+Cancellation is terminal. Import expiry is terminal on the receiver and on a
+sender that has not attempted upload. An attempted upload enters `sent` before
+the transport call; an uncertain response can therefore recover completion.
+After expiry, `send` refuses further uploads but preserves the authentication key,
+and `finish` can stay pending until completion arrives or the user cancels.
+Conflicting concurrent operations refuse
 with `state`. Repeated sends are immutable retries. Failed receives retry from
 confirmed and first query durable storage. No duplicate import after committed.
 A lost completion is recovered from stored public binding/completion after reload,

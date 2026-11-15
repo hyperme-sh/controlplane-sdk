@@ -46,9 +46,12 @@ The full comparison is intentionally long: a short human code needs a separate
 protocol with commitments/attempt controls. The camera-free fallback is the same
 full public request text, not a password or an offline encryption secret.
 
-Call `cancel()` when abandoning a screen, navigating away or on the UI's expiry
-timer. Expiry is checked on operations and after asynchronous work, not by an
-internal timer. Cancellation aborts pending storage via its signal; adapters must
+Call `cancel()` when abandoning a screen or navigating away. Expiry is checked
+on operations and after asynchronous work, not by an internal timer. A sender
+that attempted upload remains in `sent`, even if the upload response is lost.
+After the import deadline it can still authenticate a delayed completion; the UI
+should stop upload attempts but keep completion polling available until the user
+explicitly cancels. Cancellation deliberately abandons that recovery ability. Cancellation aborts pending storage via its signal; adapters must
 honor it at commit. A transaction already committed cannot be undone by cancel.
 
 ## Owner adapters

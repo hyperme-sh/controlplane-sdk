@@ -158,3 +158,41 @@ test('plaintext borrowed by validation/storage is cleared after failure and comm
   assert(validationBytes.every(byte => byte === 0)); assert(storageBytes.every(byte => byte === 0));
   assert.deepEqual(f.imported, f.bytes);
 });
+test('uncertain upload can finish a successful import after expiry without resending', async () => {
+  const f = await fixture(); f.confirm();
+  await assert.rejects(f.sender.send({...f.transport, async send(...args) { await f.transport.send(...args); throw Error('lost response'); }}), refuses('transport'));
+  assert.equal(f.sender.state, 'sent');
+  await f.receiver.receive(f.transport, f.authority, f.storage);
+  f.advance(120000);
+  await assert.rejects(f.sender.send(f.transport), refuses('expired'));
+  await f.sender.finish(f.transport); assert.equal(f.sender.state, 'committed'); assert.equal(f.commits, 1);
+});
+test('polling after expiry preserves authentication of a subsequently reconciled completion', async () => {
+  const f = await fixture(); f.confirm(); await f.sender.send(f.transport);
+  await assert.rejects(f.receiver.receive({...f.transport, async complete() { throw Error('delayed'); }}, f.authority, f.storage), refuses('transport'));
+  f.advance(120000);
+  await assert.rejects(f.sender.finish(f.transport), refuses('pending'));
+  await assert.rejects(f.sender.finish(f.transport), refuses('pending'));
+  assert.equal(f.sender.state, 'sent');
+  await reconcile(f.sender.binding, f.storage, f.transport);
+  await f.sender.finish(f.transport); assert.equal(f.sender.state, 'committed');
+});
+test('cancel immediately wipes library-owned plaintext borrowed by stalled validators', async () => {
+  const f = await fixture(); f.confirm(); await f.sender.send(f.transport);
+  let entered, resume, borrowed;
+  const started = new Promise(r => entered = r), gate = new Promise(r => resume = r);
+  const pending = f.receiver.receive(f.transport, {...f.authority, async validateKeyring(bytes) { borrowed = bytes; entered(); await gate; }}, f.storage);
+  const rejected = assert.rejects(pending);
+  await started; assert(borrowed.some(byte => byte !== 0)); f.receiver.cancel();
+  assert(borrowed.every(byte => byte === 0)); assert.equal(f.receiver.state, 'cancelled');
+  resume(); await rejected; assert.equal(f.commits, 0);
+});
+test('cancel immediately wipes library-owned plaintext borrowed by stalled storage', async () => {
+  const f = await fixture(); f.confirm(); await f.sender.send(f.transport);
+  let entered, resume, borrowed;
+  const started = new Promise(r => entered = r), gate = new Promise(r => resume = r);
+  const pending = f.receiver.receive(f.transport, f.authority, {...f.storage, async commit(input) { borrowed = input.keyring; entered(); await gate; return f.storage.commit(input); }});
+  const rejected = assert.rejects(pending, refuses('storage'));
+  await started; assert(borrowed.some(byte => byte !== 0)); f.receiver.cancel();
+  assert(borrowed.every(byte => byte === 0)); resume(); await rejected; assert.equal(f.commits, 0);
+});
