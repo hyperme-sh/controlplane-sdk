@@ -129,11 +129,40 @@ Hypermesh leases run through this control-plane HTTP API. The callers are host a
 
 - A host, or an operator acting for a host, creates and updates a marketplace listing with `MarketplaceApi` at `/api/v1/marketplace/listings`. The body is `ListingCreateBody`: `title`, `listing_type`, `price_type`, optional `price_amount`, `metadata`, and `is_public`. The call sends a tenant-session bearer token.
 - A renter lists public listings with `public_only=true` and buys one with `POST /api/v1/marketplace/listings/{listing_id}/purchase`.
-- The renter, or a worker that holds a renter key, opens the lease payment with `PaymentsApi` at `POST /api/v1/payments/usdc/lease-payments`. The route accepts a tenant-session JWT after switch-tenant, or a gateway exchange JWT from a `purpose=service` key or a renter key minted by the org-admin API. No card is charged. The renter pays the amount in USDC on Base. Where the deployment is Base Sepolia with Stripe test mode and `PAYMENTS_USDC_TEST_CREDIT_ENABLED`, `POST /api/v1/payments/usdc/lease-payments/{billing_record_id}/test-credit` settles that pending payment from test-network credit.
-- Gateway callers that still hold an API key send `X-Api-Key` and `X-Tenant-ID` from the auth helpers. The lease-payment route itself is bearer-token traffic after that exchange.
+- `PaymentsApi` currently exposes public-key crypto budget operations under `/api/v1/budgets`. Budget allocation is not a wallet transfer, a confirmed payment, or an enterprise quota grant.
+- Wallet-funded USDC payments remain planned and partially implemented in the owning services. They are unfinished, not obsolete because fiat checkout exists. This generated snapshot does not expose `/api/v1/payments/usdc/lease-payments` or its historical test-credit method; do not call those through the current SDK. Hosted payment clients follow an explicit supported owner contract.
+- SIWE wallet ownership proofs remain required for crypto consumers. They establish address control, not permission to spend, register another owner's payout destination, or settle a payment. Public wallet client work is tracked in [#47](https://github.com/hyperme-sh/controlplane-sdk/issues/47).
+- Gateway callers use the documented auth helpers and the credentials required by each supported endpoint. A gateway credential does not create a missing payment API or confer wallet spending authority.
 - The same snapshot also carries tenant, user, ACL, and AI inference/usage calls that the control plane edge fronts for those same sessions.
 
-`ContractEcho` (`spanopticon.v1`) is the protobuf snapshot of listing, token-usage, and user messages. Each RPC returns the request unchanged. Lease payment traffic stays on the REST client above.
+`ContractEcho` (`spanopticon.v1`) is the protobuf snapshot of listing, token-usage, and user messages. Each RPC returns the request unchanged. Hosted payment operations are separate from this echo contract and are exposed only when the owning service and generated snapshot support them.
+
+## Wallets, hosted payments and enterprise accounting
+
+These are separate contracts:
+
+- Public crypto clients and settlement adapters use wallet/public-key identifiers,
+  explicit asset/network quantities and signed intents. Keep these interfaces
+  usable without Stripe credentials or private hosted payment code. The
+  [operator protocol](docs/operator-protocol.md#submit-a-signed-settlement-intent)
+  describes the separate settlement adapter; an example adapter does not mean a
+  hosted production payment rail is enabled.
+- Hosted Stripe and future USDC payments own provider confirmation, refunds,
+  fees, currency conversion and payouts. Existing wallet and sandbox components
+  are building blocks; complete wallet-funded USDC delivery is unfinished.
+  Retirement of an older custody implementation does not remove this planned
+  capability or SIWE support.
+- Enterprise accounting uses integer quota units such as tokens and time.
+  Those units are not crypto assets, money balances or implicitly redeemable
+  claims. A capacity release does not execute a payment refund.
+
+The neutral accounting library has been extracted and has internal/none/HTTP
+backends, but independent public consumption still needs source and dependency
+preparation. This README does not promise that package is already publicly
+installable. The service-container distribution policy and the public library
+boundary are distinct. See [#47](https://github.com/hyperme-sh/controlplane-sdk/issues/47)
+for consumer dependencies and completion criteria. Existing public crypto
+budget and settlement interfaces are retained while those gaps are completed.
 
 ## Develop and test
 
