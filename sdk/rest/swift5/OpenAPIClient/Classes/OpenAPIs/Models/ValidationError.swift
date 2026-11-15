@@ -12,13 +12,13 @@ import AnyCodable
 
 public struct ValidationError: Codable, JSONEncodable, Hashable {
 
-    public private(set) var loc: [LocationInner]
+    public private(set) var loc: [ValidationErrorLocInner]
     public private(set) var msg: String
     public private(set) var type: String
     public private(set) var input: AnyCodable?
     public private(set) var ctx: AnyCodable?
 
-    public init(loc: [LocationInner], msg: String, type: String, input: AnyCodable? = nil, ctx: AnyCodable? = nil) {
+    public init(loc: [ValidationErrorLocInner], msg: String, type: String, input: AnyCodable? = nil, ctx: AnyCodable? = nil) {
         self.loc = loc
         self.msg = msg
         self.type = type

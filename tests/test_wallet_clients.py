@@ -110,3 +110,8 @@ def test_generator_uses_matching_dialect_for_nullable_closed_objects():
     schema=converted['components']['schemas']['Closed']
     assert schema['additionalProperties'] is False
     assert schema['properties']['maybe']=={'type':'string','nullable':True}
+
+
+def test_existing_validation_model_import_remains_available():
+    from openapi_client.models.validation_error_loc_inner import ValidationErrorLocInner
+    assert ValidationErrorLocInner.__name__ == 'ValidationErrorLocInner'

@@ -14,11 +14,11 @@ public struct WalletAuthValidationError: Codable, JSONEncodable, Hashable {
 
     public private(set) var ctx: AnyCodable?
     public private(set) var input: AnyCodable?
-    public private(set) var loc: [LocationInner]
+    public private(set) var loc: [ValidationErrorLocInner]
     public private(set) var msg: String
     public private(set) var type: String
 
-    public init(ctx: AnyCodable? = nil, input: AnyCodable? = nil, loc: [LocationInner], msg: String, type: String) {
+    public init(ctx: AnyCodable? = nil, input: AnyCodable? = nil, loc: [ValidationErrorLocInner], msg: String, type: String) {
         self.ctx = ctx
         self.input = input
         self.loc = loc

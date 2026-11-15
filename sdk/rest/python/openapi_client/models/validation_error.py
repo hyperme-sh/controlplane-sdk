@@ -20,7 +20,7 @@ from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from openapi_client.models.location_inner import LocationInner
+from openapi_client.models.validation_error_loc_inner import ValidationErrorLocInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -28,7 +28,7 @@ class ValidationError(BaseModel):
     """
     ValidationError
     """ # noqa: E501
-    loc: List[LocationInner]
+    loc: List[ValidationErrorLocInner]
     msg: StrictStr
     type: StrictStr
     input: Optional[Any] = None
@@ -98,7 +98,7 @@ class ValidationError(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "loc": [LocationInner.from_dict(_item) for _item in obj["loc"]] if obj.get("loc") is not None else None,
+            "loc": [ValidationErrorLocInner.from_dict(_item) for _item in obj["loc"]] if obj.get("loc") is not None else None,
             "msg": obj.get("msg"),
             "type": obj.get("type"),
             "input": obj.get("input"),

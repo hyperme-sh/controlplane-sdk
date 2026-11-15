@@ -72,7 +72,6 @@ docs/InternalValidateResponse.md
 docs/ListingCreateBody.md
 docs/ListingResponse.md
 docs/ListingUpdateBody.md
-docs/LocationInner.md
 docs/LoginStartRequest.md
 docs/LoginStartResponse.md
 docs/ManageSecurityApi.md
@@ -147,6 +146,7 @@ docs/UserUpdateBody.md
 docs/UsersApi.md
 docs/UsersGroupsApi.md
 docs/ValidationError.md
+docs/ValidationErrorLocInner.md
 docs/WalletAuthApi.md
 docs/WalletAuthHTTPValidationError.md
 docs/WalletAuthSiweBindRequest.md
@@ -259,7 +259,6 @@ openapi_client/models/internal_validate_response.py
 openapi_client/models/listing_create_body.py
 openapi_client/models/listing_response.py
 openapi_client/models/listing_update_body.py
-openapi_client/models/location_inner.py
 openapi_client/models/login_start_request.py
 openapi_client/models/login_start_response.py
 openapi_client/models/me_response_dto.py
@@ -322,6 +321,7 @@ openapi_client/models/user_response.py
 openapi_client/models/user_role_update_request_dto.py
 openapi_client/models/user_update_body.py
 openapi_client/models/validation_error.py
+openapi_client/models/validation_error_loc_inner.py
 openapi_client/models/wallet_auth_http_validation_error.py
 openapi_client/models/wallet_auth_siwe_bind_request.py
 openapi_client/models/wallet_auth_siwe_nonce_request.py
@@ -415,7 +415,6 @@ test/test_internal_validate_response.py
 test/test_listing_create_body.py
 test/test_listing_response.py
 test/test_listing_update_body.py
-test/test_location_inner.py
 test/test_login_start_request.py
 test/test_login_start_response.py
 test/test_manage_security_api.py
@@ -490,6 +489,7 @@ test/test_user_update_body.py
 test/test_users_api.py
 test/test_users_groups_api.py
 test/test_validation_error.py
+test/test_validation_error_loc_inner.py
 test/test_wallet_auth_api.py
 test/test_wallet_auth_http_validation_error.py
 test/test_wallet_auth_siwe_bind_request.py

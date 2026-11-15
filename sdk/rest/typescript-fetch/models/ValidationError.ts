@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { LocationInner } from './LocationInner';
+import type { ValidationErrorLocInner } from './ValidationErrorLocInner';
 import {
-    LocationInnerFromJSON,
-    LocationInnerFromJSONTyped,
-    LocationInnerToJSON,
-    LocationInnerToJSONTyped,
-} from './LocationInner';
+    ValidationErrorLocInnerFromJSON,
+    ValidationErrorLocInnerFromJSONTyped,
+    ValidationErrorLocInnerToJSON,
+    ValidationErrorLocInnerToJSONTyped,
+} from './ValidationErrorLocInner';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface ValidationError {
     /**
      * 
-     * @type {Array<LocationInner>}
+     * @type {Array<ValidationErrorLocInner>}
      * @memberof ValidationError
      */
-    loc: Array<LocationInner>;
+    loc: Array<ValidationErrorLocInner>;
     /**
      * 
      * @type {string}
@@ -79,7 +79,7 @@ export function ValidationErrorFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'loc': ((json['loc'] as Array<any>).map(LocationInnerFromJSON)),
+        'loc': ((json['loc'] as Array<any>).map(ValidationErrorLocInnerFromJSON)),
         'msg': json['msg'],
         'type': json['type'],
         'input': json['input'] == null ? undefined : json['input'],
@@ -98,7 +98,7 @@ export function ValidationErrorToJSONTyped(value?: ValidationError | null, ignor
 
     return {
         
-        'loc': ((value['loc'] as Array<any>).map(LocationInnerToJSON)),
+        'loc': ((value['loc'] as Array<any>).map(ValidationErrorLocInnerToJSON)),
         'msg': value['msg'],
         'type': value['type'],
         'input': value['input'],

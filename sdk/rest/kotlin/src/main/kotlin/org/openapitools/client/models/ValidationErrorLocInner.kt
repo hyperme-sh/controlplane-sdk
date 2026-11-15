@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
  */
 
 
-class LocationInner (
+class ValidationErrorLocInner (
 
 ) {
 

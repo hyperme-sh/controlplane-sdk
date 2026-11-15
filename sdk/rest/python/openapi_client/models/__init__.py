@@ -70,7 +70,6 @@ from openapi_client.models.internal_validate_response import InternalValidateRes
 from openapi_client.models.listing_create_body import ListingCreateBody
 from openapi_client.models.listing_response import ListingResponse
 from openapi_client.models.listing_update_body import ListingUpdateBody
-from openapi_client.models.location_inner import LocationInner
 from openapi_client.models.login_start_request import LoginStartRequest
 from openapi_client.models.login_start_response import LoginStartResponse
 from openapi_client.models.me_response_dto import MeResponseDto
@@ -133,6 +132,7 @@ from openapi_client.models.user_response import UserResponse
 from openapi_client.models.user_role_update_request_dto import UserRoleUpdateRequestDto
 from openapi_client.models.user_update_body import UserUpdateBody
 from openapi_client.models.validation_error import ValidationError
+from openapi_client.models.validation_error_loc_inner import ValidationErrorLocInner
 from openapi_client.models.wallet_auth_http_validation_error import WalletAuthHTTPValidationError
 from openapi_client.models.wallet_auth_siwe_bind_request import WalletAuthSiweBindRequest
 from openapi_client.models.wallet_auth_siwe_nonce_request import WalletAuthSiweNonceRequest

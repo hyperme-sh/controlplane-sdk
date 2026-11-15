@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.WalletPaymentValidationError
-import org.openapitools.client.models.LocationInner
+import org.openapitools.client.models.ValidationErrorLocInner
 
 class WalletPaymentValidationErrorTest : ShouldSpec() {
     init {

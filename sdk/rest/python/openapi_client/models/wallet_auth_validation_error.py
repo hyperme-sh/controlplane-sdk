@@ -20,7 +20,7 @@ from openapi_client._json_dates import model_json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from openapi_client.models.location_inner import LocationInner
+from openapi_client.models.validation_error_loc_inner import ValidationErrorLocInner
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,7 +30,7 @@ class WalletAuthValidationError(BaseModel):
     """ # noqa: E501
     ctx: Optional[Dict[str, Any]] = None
     input: Optional[Any] = None
-    loc: List[LocationInner]
+    loc: List[ValidationErrorLocInner]
     msg: StrictStr
     type: StrictStr
     __properties: ClassVar[List[str]] = ["ctx", "input", "loc", "msg", "type"]
@@ -100,7 +100,7 @@ class WalletAuthValidationError(BaseModel):
         _obj = cls.model_validate({
             "ctx": obj.get("ctx"),
             "input": obj.get("input"),
-            "loc": [LocationInner.from_dict(_item) for _item in obj["loc"]] if obj.get("loc") is not None else None,
+            "loc": [ValidationErrorLocInner.from_dict(_item) for _item in obj["loc"]] if obj.get("loc") is not None else None,
             "msg": obj.get("msg"),
             "type": obj.get("type")
         })

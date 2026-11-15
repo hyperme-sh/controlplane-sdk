@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**loc** | [LocationInner] |  | 
+**loc** | [ValidationErrorLocInner] |  | 
 **msg** | **String** |  | 
 **type** | **String** |  | 
 **input** | **AnyCodable** |  | [optional] 

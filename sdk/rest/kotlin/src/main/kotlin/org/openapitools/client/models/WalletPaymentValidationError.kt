@@ -15,7 +15,7 @@
 
 package org.openapitools.client.models
 
-import org.openapitools.client.models.LocationInner
+import org.openapitools.client.models.ValidationErrorLocInner
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 data class WalletPaymentValidationError (
 
     @get:JsonProperty("loc")
-    val loc: kotlin.collections.List<LocationInner>,
+    val loc: kotlin.collections.List<ValidationErrorLocInner>,
 
     @get:JsonProperty("msg")
     val msg: kotlin.String,

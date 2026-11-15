@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ctx** | **AnyCodable** |  | [optional] 
 **input** | **AnyCodable** |  | [optional] 
-**loc** | [LocationInner] |  | 
+**loc** | [ValidationErrorLocInner] |  | 
 **msg** | **String** |  | 
 **type** | **String** |  | 
 

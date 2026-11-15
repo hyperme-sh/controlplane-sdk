@@ -19,7 +19,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.models.ValidationError
-import org.openapitools.client.models.LocationInner
+import org.openapitools.client.models.ValidationErrorLocInner
 
 class ValidationErrorTest : ShouldSpec() {
     init {

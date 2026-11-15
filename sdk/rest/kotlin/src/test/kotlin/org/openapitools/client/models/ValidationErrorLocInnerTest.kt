@@ -18,12 +18,12 @@ package org.openapitools.client.models
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
-import org.openapitools.client.models.LocationInner
+import org.openapitools.client.models.ValidationErrorLocInner
 
-class LocationInnerTest : ShouldSpec() {
+class ValidationErrorLocInnerTest : ShouldSpec() {
     init {
-        // uncomment below to create an instance of LocationInner
-        //val modelInstance = LocationInner()
+        // uncomment below to create an instance of ValidationErrorLocInner
+        //val modelInstance = ValidationErrorLocInner()
 
     }
 }

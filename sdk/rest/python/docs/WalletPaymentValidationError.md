@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ctx** | **object** |  | [optional] 
 **input** | **object** |  | [optional] 
-**loc** | [**List[LocationInner]**](LocationInner.md) |  | 
+**loc** | [**List[ValidationErrorLocInner]**](ValidationErrorLocInner.md) |  | 
 **msg** | **str** |  | 
 **type** | **str** |  | 
 
