@@ -10,6 +10,7 @@ let package = Package(
     targets: [
         .testTarget(name: "WalletWireTests", dependencies: [
             .product(name: "OpenAPIClient", package: "OpenAPIClient"),
+            .product(name: "AnyCodable", package: "AnyCodable"),
         ]),
     ]
 )
