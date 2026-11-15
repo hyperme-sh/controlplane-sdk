@@ -175,3 +175,12 @@ or a `(filename, bytes)` tuple. Paths are read as binary files; named uploads
 infer the part's media type from the filename, and raw bytes use
 `application/octet-stream`. The generator normalizes multipart binary schemas
 without altering the published OpenAPI snapshot.
+
+## Browser identity transfer
+
+[packages/sea-device-link](packages/sea-device-link/README.md) is a separate,
+private browser ESM/TypeScript package for encrypted existing-identity transfer.
+It defines explicit transport, authority and destination-storage adapters and
+ships unit/contract vectors. It is not included in the Python wheel or generated
+REST clients. Production adapter dependencies and protocol boundaries are listed
+in the package README.
