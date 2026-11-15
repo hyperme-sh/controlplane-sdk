@@ -188,6 +188,7 @@ export class Receiver extends Session {
       try {
         this.live(b.expiresAt);
         if (await hash(payload) !== this.#offer!.payloadHash) return fail('crypto');
+        this.live(b.expiresAt);
         await validate(authority, payload, b.identity);
         this.live(b.expiresAt);
         const initial = await current(authority, b, this.now);

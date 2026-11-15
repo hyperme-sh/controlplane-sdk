@@ -20,3 +20,10 @@ test('v1 ECDH/HKDF/AES-GCM/HMAC match independent vector', async () => {
   assert.deepEqual(await completion(k.authentication, v.transcript), v.completion);
   await checkCompletion(k.authentication, v.transcript, v.completion);
 });
+for (const vector of v.rejections) test(`shared refusal vector: ${vector.name}`, () => {
+  const input = structuredClone(v.offer);
+  let parent = input;
+  for (const key of vector.path.slice(0, -1)) parent = parent[key];
+  parent[vector.path.at(-1)] = vector.value;
+  assert.throws(() => canonical(input), e => e.code === vector.error && e.message === vector.error);
+});

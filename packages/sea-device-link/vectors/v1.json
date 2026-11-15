@@ -37,5 +37,88 @@
   "completion": {
     "transcript": "Yq8lvg5QWtenltMABIja2_z0Sl3I6RpCQD2n2Ou0Tyc",
     "mac": "7Ce-hILYYwxhFm9crAAkOpXcy7tYxrmA440TFJZr3jU"
-  }
+  },
+  "rejections": [
+    {
+      "name": "unsupported-request-version",
+      "path": [
+        "request",
+        "v"
+      ],
+      "value": 2,
+      "error": "invalid"
+    },
+    {
+      "name": "extra-request-field",
+      "path": [
+        "request",
+        "untrusted"
+      ],
+      "value": true,
+      "error": "invalid"
+    },
+    {
+      "name": "wrong-point-size",
+      "path": [
+        "senderKey"
+      ],
+      "value": "AQ.AQ",
+      "error": "invalid"
+    },
+    {
+      "name": "padded-session",
+      "path": [
+        "request",
+        "session"
+      ],
+      "value": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8=",
+      "error": "invalid"
+    },
+    {
+      "name": "insecure-origin",
+      "path": [
+        "request",
+        "scope",
+        "destinationOrigin"
+      ],
+      "value": "http://destination.example",
+      "error": "invalid"
+    },
+    {
+      "name": "origin-with-path",
+      "path": [
+        "request",
+        "scope",
+        "sourceOrigin"
+      ],
+      "value": "https://source.example/path",
+      "error": "invalid"
+    },
+    {
+      "name": "fractional-expiry",
+      "path": [
+        "request",
+        "expiresAt"
+      ],
+      "value": 1.5,
+      "error": "invalid"
+    },
+    {
+      "name": "excessive-rotation",
+      "path": [
+        "identity",
+        "rotationSeq"
+      ],
+      "value": 1025,
+      "error": "invalid"
+    },
+    {
+      "name": "truncated-payload-hash",
+      "path": [
+        "payloadHash"
+      ],
+      "value": "AQ",
+      "error": "invalid"
+    }
+  ]
 }

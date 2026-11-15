@@ -131,3 +131,30 @@ test('missing relay data is pending and adapter private diagnostics are not leak
   await assert.rejects(f.receiver.receive(f.transport, f.authority, f.storage), refuses('pending'));
   await assert.rejects(f.sender.send({...f.transport, async send() { throw Error('secret diagnostic'); }}), refuses('transport'));
 });
+test('expired or overlong authority decisions refuse import', async () => {
+  for (const validUntil of [0, 9999999999999]) {
+    const f = await fixture(); f.confirm(); await f.sender.send(f.transport);
+    await assert.rejects(f.receiver.receive(f.transport, {...f.authority, async current() { return {revision: 'bad', validUntil}; }}, f.storage), refuses('authority'));
+    assert.equal(f.commits, 0);
+  }
+});
+test('cancellation during relay read never reaches keyring validation', async () => {
+  const f = await fixture(); f.confirm(); await f.sender.send(f.transport);
+  let validations = 0;
+  await assert.rejects(f.receiver.receive({...f.transport, async receive(session) { f.receiver.cancel(); return f.transport.receive(session); }},
+    {...f.authority, async validateKeyring() { validations++; }}, f.storage), refuses('state'));
+  assert.equal(validations, 0); assert.equal(f.commits, 0);
+});
+test('source cancellation while authority is pending never uploads ciphertext', async () => {
+  const f = await fixture(); f.confirm(); const current = f.authority.current;
+  f.authority.current = async binding => { f.sender.cancel(); return current(binding); };
+  await assert.rejects(f.sender.send(f.transport), refuses('state')); assert.equal(f.transfer.size, 0);
+});
+test('plaintext borrowed by validation/storage is cleared after failure and commit', async () => {
+  const f = await fixture(); f.confirm(); await f.sender.send(f.transport);
+  let validationBytes, storageBytes;
+  await f.receiver.receive(f.transport, {...f.authority, async validateKeyring(bytes, id) { validationBytes = bytes; await f.authority.validateKeyring(bytes, id); }},
+    {...f.storage, async commit(input) { storageBytes = input.keyring; await f.storage.commit(input); }});
+  assert(validationBytes.every(byte => byte === 0)); assert(storageBytes.every(byte => byte === 0));
+  assert.deepEqual(f.imported, f.bytes);
+});
