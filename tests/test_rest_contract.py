@@ -103,6 +103,7 @@ def test_successful_generation_removes_only_obsolete_managed_files(
     from spanopticon_sdk_gen import rest_codegen
 
     (tmp_path / "spec.json").write_text(json.dumps({"paths": {}}))
+    (tmp_path / "LICENSE").write_text("unit license")
     output = tmp_path / "output"
     (output / ".openapi-generator").mkdir(parents=True)
     (output / ".openapi-generator/FILES").write_text("obsolete.py\n")

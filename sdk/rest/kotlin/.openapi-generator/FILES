@@ -1,4 +1,5 @@
 .openapi-generator-ignore
+LICENSE
 README.md
 build.gradle
 docs/ACLApi.md

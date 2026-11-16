@@ -13,6 +13,7 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from spanopticon_sdk_gen.package_metadata import install_package_metadata
 from spanopticon_sdk_gen.swift_portability import install_swift_portability
 from spanopticon_sdk_gen.kotlin_auth import install_kotlin_auth
 from spanopticon_sdk_gen.json_dates import install_json_dates
@@ -250,6 +251,7 @@ def generate_rest_language(
         if language_key == "python":
             aliases += install_json_dates(stage)
             aliases += install_nullable_updates(stage, document)
+        aliases += install_package_metadata(stage, repo_root / "LICENSE")
         manifest = stage / ".openapi-generator/FILES"
         generated = (
             set(manifest.read_text().splitlines())

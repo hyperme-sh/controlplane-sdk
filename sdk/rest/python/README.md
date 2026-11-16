@@ -1,3 +1,7 @@
+> Generated source tree; not a separately published package. Recorded template
+> names and versions are retained. See the repository root for supported consumers
+> and the `controlplane-sdk` Python distribution. This directory grants no release authority.
+
 # openapi-client
 Canonical merge for frontend SDK (gateway + microservices).
 
@@ -18,9 +22,9 @@ Python 3.8+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
+pip install git+https://github.com/hyperme-sh/controlplane-sdk.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/hyperme-sh/controlplane-sdk.git`)
 
 Then import the package:
 ```python

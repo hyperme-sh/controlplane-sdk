@@ -2,6 +2,7 @@
 .openapi-generator-ignore
 .swiftformat
 Cartfile
+LICENSE
 OpenAPIClient.podspec
 OpenAPIClient/Classes/OpenAPIs/APIHelper.swift
 OpenAPIClient/Classes/OpenAPIs/APIs.swift

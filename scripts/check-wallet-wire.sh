@@ -7,3 +7,6 @@ packages/sea-device-link/node_modules/.bin/tsc --target ES2020 --module commonjs
  sdk/rest/typescript-fetch/index.ts
 node tests/wallet-typescript.cjs "$scratch"
 bash sdk/rest/kotlin/gradlew --no-daemon -p tests/wallet-kotlin test
+
+packages/sea-device-link/node_modules/.bin/tsc --target ES2020 --module commonjs --lib ES2020,DOM --outDir "$scratch/auth" sdk/auth/typescript/keycloakAuth.ts
+node tests/auth-typescript.cjs "$scratch/auth"

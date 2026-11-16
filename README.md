@@ -27,7 +27,7 @@ Auth examples are hand-written under [`sdk/auth`](sdk/auth): PKCE, the device au
 
 Install `controlplane-sdk` in an environment where `openapi_client` comes from this distribution. Another distribution that publishes the same top-level package name occupies the same import.
 
-Generated language trees still carry upstream placeholder metadata (including `GIT_USER_ID` install lines and a placeholder `openapi_client` version of `1.0.0`). Use the root `controlplane-sdk` **0.2.0** build.
+Generated template names and versions (including `openapi_client` 1.0.0) remain recorded template metadata, not separate releases. Repository URLs and Apache-2.0 licensing are applied during generation. Use the root `controlplane-sdk` **0.2.0** Python build. See [consumer qualification and distribution scope](docs/sdk-consumer-qualification.md).
 
 ## Practical use
 

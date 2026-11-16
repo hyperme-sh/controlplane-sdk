@@ -1,8 +1,5 @@
-# C / nanopb (embedded)
+# C / nanopb (source-only option)
 
-Generate static C code from the same protos as Python:
-
-- Protobuf sources: ``sdk/proto/spanopticon/v1/*.proto``
-- Follow the repository root ``docs/grpc-nanopb.md`` for ``protoc`` + nanopb plugin and options files.
-
-OpenAPI-based C clients are not generated here; protobuf is preferred for constrained devices.
+The shared protocol source is `sdk/proto/spanopticon/v1/contractecho.proto`.
+No generated C client, nanopb toolchain or embedded-target qualification is
+supplied by this SDK. See [scope and prerequisites](../../docs/grpc-nanopb.md).

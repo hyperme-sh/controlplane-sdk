@@ -1,4 +1,6 @@
 .openapi-generator-ignore
+LICENSE
+README.md
 apis/ACLApi.ts
 apis/AIApi.ts
 apis/AIUsageApi.ts
