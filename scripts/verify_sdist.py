@@ -6,7 +6,9 @@ import tarfile
 
 root = Path(__file__).resolve().parents[1]
 paths = ['LICENSE','sdk','src','scripts','tests','docs','tools/grpc',
-         'pyproject.toml','uv.lock','README.md']
+         'pyproject.toml','uv.lock','README.md','.gitignore',
+         'packages/sea-device-link/src','packages/sea-device-link/README.md',
+         'packages/sea-device-link/LICENSE']
 names = subprocess.check_output(['git','ls-files','-z','--',*paths],cwd=root).decode().split('\0')
 expected = {name:(root/name).read_bytes() for name in names if name}
 archive_path, = Path(sys.argv[1]).glob('*.tar.gz')

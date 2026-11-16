@@ -16,6 +16,11 @@ The templates are not separately published packages or a new release line.
 | Python and TypeScript auth examples | RFC 7636 S256 vector, grant form encoding, API-key tenant headers and failure handling with mocked transports | Source tree and sdist; not complete login applications |
 | Embedded C / nanopb | Protocol source only; target and bounds unselected | No generated C package |
 
+The existing SEA device-link component keeps its separate package CI. The root
+sdist also retains its source files, README and license; it does not turn that
+component into a Python wheel module. The source archive checker inventories
+these existing files explicitly.
+
 ## Protocol source and generator
 
 The snapshot is byte-identical to `hyperme-sh/controlplane-proto` revision
