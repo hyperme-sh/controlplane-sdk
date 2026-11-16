@@ -81,3 +81,8 @@ fetching mutable owner source or moving installed-owner scenarios into PR checks
 Template changes must be reviewed explicitly; Swift/Kotlin fixes are repeatable
 and reject unrecognized templates. SDK #53 retains gRPC and remaining metadata
 and consumer work. This check does not publish packages or advance versions.
+
+The reproducibility baseline removes leftover Gateway client files for
+`/export-health`, an internal offline-export stub explicitly excluded by the
+exporter, plus empty legacy AI/Gateway test stubs. No canonical operation is
+removed. The existing AI usage compatibility aliases remain generated and tested.
