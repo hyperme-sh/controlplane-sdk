@@ -1,0 +1,25 @@
+name: Reproducible REST generation
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  regenerate:
+    runs-on: ${{ github.event.repository.private && fromJSON('["self-hosted", "linux", "x64", "debrunner"]') || 'ubuntu-24.04' }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - run: python3 scripts/sdk-gen/check_reproducibility.py
+      - name: Retain generator output and differences
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: rest-regeneration
+          path: .cache/reproducibility
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7

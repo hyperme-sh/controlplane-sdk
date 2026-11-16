@@ -66,3 +66,18 @@ builds the generated package and runs consumer tests for proof keys, pending
 nullable deposits, and rejection of incomplete observations. Test harnesses live
 outside generated directories. These checks do not claim mobile application,
 gRPC, or complete SDK consumer qualification; those remain SDK #3.
+
+## Reproducible REST generation
+
+`Reproducible REST generation` runs the pinned generator twice from the committed
+canonical OpenAPI snapshot. It compares every generated file and the complete
+tracked client inventory, including support files and compatibility transforms.
+Missing, added or changed files fail the check; canonical owner snapshots must
+remain unchanged. Diagnostic output is retained as a short-lived CI artifact.
+
+The existing Python and native-language jobs compile and test those same committed
+bytes. A green comparison therefore qualifies the regenerated output without
+fetching mutable owner source or moving installed-owner scenarios into PR checks.
+Template changes must be reviewed explicitly; Swift/Kotlin fixes are repeatable
+and reject unrecognized templates. SDK #53 retains gRPC and remaining metadata
+and consumer work. This check does not publish packages or advance versions.
