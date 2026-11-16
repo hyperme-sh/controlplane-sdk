@@ -2,7 +2,7 @@
 
 REST generation reads [`sdk/openapi/v1/openapi.json`](../../sdk/openapi/v1/openapi.json) through `generate_rest_sdks.py`. The script expects the OpenAPI Generator Docker image to be present locally. `check_breaking.py` compares paths and schema names with an explicit `--baseline-file`. The comparison is structural: paths and schema names.
 
-Exporting a fresh OpenAPI document from the control plane, regenerating gRPC stubs, and compiling Kotlin or Swift are separate from this script. Offline export uses the `controlplane-edge` package and its configuration. A complete consumer contract is the exported control plane document plus these generated clients.
+Exporting a fresh OpenAPI document from the control plane, regenerating gRPC stubs, and compiling Kotlin or Swift are separate from this script and now have dedicated CI checks. Offline export uses the `controlplane-edge` package and its configuration. A complete consumer contract is the exported control plane document plus these generated clients.
 
 A missing baseline fails the check. `--allow-missing-baseline` is the bootstrap opt-in for a first snapshot. An omitted `--baseline-file` fails. A structural removal check is one input to a patch release. A Spanopticon release also carries the exported protocol and library contracts and the control plane consumer tests. See [Releasing](../../docs/releasing.md).
 
@@ -17,7 +17,7 @@ uv run --frozen python scripts/sdk-gen/generate_rest_sdks.py
 bash scripts/check-package.sh
 ```
 
-The package check covers operation coverage, every Python import, the compatibility aliases, and loopback HTTP from the source tree, the wheel, and the rebuilt sdist. The loopback server is a local contract fixture. Kotlin and Swift native builds, a refresh of `sdk/openapi/v1/openapi.json` from a live control plane, and a deployed consumer are covered with a release. The generator writes the REST trees under `sdk/rest` and leaves release tags and the package registry unchanged.
+The package check covers operation coverage, every Python import, the compatibility aliases, and loopback HTTP from the source tree, the wheel, and the rebuilt sdist. The loopback server is a local contract fixture. Kotlin and Swift native builds have PR unit/contract CI. Refreshing owner inputs and installed-owner composition remain separate; no prior release is required. The generator writes the REST trees under `sdk/rest` and leaves release tags and the package registry unchanged.
 
 
 ## JSON dates
@@ -29,3 +29,10 @@ explicit null handling and omitted fields retain their previous behavior.
 Unsupported objects still raise TypeError. The helper is included in the
 managed generator manifest and installed wheel. This does not change the
 separate nullable-update behavior tracked in issue #6.
+
+## Protocol and auth consumers
+
+See [consumer qualification](../../docs/sdk-consumer-qualification.md) for the
+isolated pinned gRPC generator, immutable protocol-owner provenance, auth example
+contracts and the exact wheel/source distribution boundary. The gRPC check reads
+`sdk/proto`, not an absent monorepo `proto` directory.

@@ -11,6 +11,7 @@ trap 'rm -rf "$scratch"' EXIT
 uv run --frozen pytest "${sdk_test_selection[@]}" --junitxml="$scratch/source.xml"
 uv run --frozen pytest -q tests_tools
 uv build --out-dir "$scratch/dist"
+python3 scripts/verify_sdist.py "$scratch/dist"
 uv run --frozen python scripts/verify_wheel.py "$scratch/dist"
 uv run --frozen python scripts/export_release_contract.py "$scratch"/dist/*.whl --output "$scratch/contract"
 # A historical qualified wheel is a baseline, not the bytes of every new build.
@@ -26,7 +27,7 @@ uv pip sync --python "$scratch/venv/bin/python" "$scratch/requirements.txt"
 uv pip install --python "$scratch/venv/bin/python" --constraint "$scratch/requirements.txt" "$scratch"/dist/*.whl
 cp -R tests "$scratch/"
 mkdir -p "$scratch/sdk" "$scratch/scripts/sdk-gen"
-cp -R sdk/openapi sdk/rest "$scratch/sdk/"
+cp -R sdk/openapi sdk/rest sdk/auth "$scratch/sdk/"
 cp scripts/sdk-gen/check_breaking.py scripts/sdk-gen/allowed-removals.json "$scratch/scripts/sdk-gen/"
 (cd "$scratch" && "$scratch/venv/bin/python" -I -m pytest -c /dev/null -o asyncio_mode=auto -o asyncio_default_fixture_loop_scope=function tests "${sdk_test_selection[@]}" --junitxml="$scratch/wheel.xml")
 # Rebuild from the sdist; a checkout must not supply omitted package files.

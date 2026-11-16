@@ -3,9 +3,9 @@ name = "openapi_client"
 version = "1.0.0"
 description = "spanopticon Control Plane API"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
-license = "NoLicense"
+license = "Apache-2.0"
 readme = "README.md"
-repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
+repository = "https://github.com/hyperme-sh/controlplane-sdk"
 keywords = ["OpenAPI", "OpenAPI-Generator", "spanopticon Control Plane API"]
 include = ["openapi_client/py.typed"]
 

@@ -18,7 +18,7 @@ dev = ["pytest>=8", "pytest-asyncio>=1", "respx>=0.22", "controlplane-edge @ git
 packages = ["sdk/rest/python/openapi_client", "src/spanopticon_sdk_gen"]
 
 [tool.hatch.build.targets.sdist]
-include = ["LICENSE", "sdk", "src", "scripts", "tests", "docs", "pyproject.toml", "uv.lock", "README.md"]
+include = ["LICENSE", "sdk", "src", "scripts", "tests", "docs", "tools/grpc", "pyproject.toml", "uv.lock", "README.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

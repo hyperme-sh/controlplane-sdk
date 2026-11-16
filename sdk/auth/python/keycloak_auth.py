@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-import json
+import base64
+import hashlib
 import secrets
 import urllib.parse
 from typing import Any
@@ -21,6 +22,10 @@ async def fetch_well_known(keycloak_base: str, realm: str) -> dict[str, Any]:
 
 def pkce_verifier() -> str:
     return secrets.token_urlsafe(64)
+
+
+def pkce_challenge_s256(verifier: str) -> str:
+    return base64.urlsafe_b64encode(hashlib.sha256(verifier.encode("ascii")).digest()).decode("ascii").rstrip("=")
 
 
 def build_authorize_url(
@@ -128,6 +133,7 @@ async def poll_device_token(
             data=data,
             headers={"Content-Type": "application/x-www-form-urlencoded"},
         )
+        r.raise_for_status()
         return r.json()
 
 
