@@ -5,6 +5,16 @@ import org.junit.jupiter.api.Test
 import org.openapitools.client.models.*
 
 class WalletWireTest {
+    @Test fun allPublishedBearerSchemesRemainConstructible() {
+        for (name in listOf("HTTPBearer", "BearerKeycloak", "BearerAuth")) {
+            assertNotNull(org.openapitools.client.infrastructure.ApiClient(
+                baseUrl = "https://example.invalid/", authName = name, bearerToken = "unit-test-token"))
+        }
+        assertThrows(RuntimeException::class.java) {
+            org.openapitools.client.infrastructure.ApiClient(
+                baseUrl = "https://example.invalid/", authName = "unknown", bearerToken = "unit-test-token")
+        }
+    }
     private val mapper = jacksonObjectMapper()
     @Test fun proofIsAnObject() {
         val result = mapper.readTree(mapper.writeValueAsString(WalletPaymentSubmitRequest("message", "nonce", "0x1234")))

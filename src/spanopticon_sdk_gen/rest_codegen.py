@@ -13,6 +13,8 @@ from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
+from spanopticon_sdk_gen.swift_portability import install_swift_portability
+from spanopticon_sdk_gen.kotlin_auth import install_kotlin_auth
 from spanopticon_sdk_gen.json_dates import install_json_dates
 from spanopticon_sdk_gen.nullable_updates import install_nullable_updates
 from spanopticon_sdk_gen.rest_contract import (
@@ -241,6 +243,10 @@ def generate_rest_language(
         )
         validate_generated_operations(stage, language_key, document)
         aliases = install_usage_compatibility(stage, language_key)
+        if language_key == "kotlin":
+            aliases += install_kotlin_auth(stage)
+        if language_key == "swift5":
+            aliases += install_swift_portability(stage)
         if language_key == "python":
             aliases += install_json_dates(stage)
             aliases += install_nullable_updates(stage, document)
