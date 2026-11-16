@@ -11,6 +11,7 @@ trap 'rm -rf "$scratch"' EXIT
 uv run --frozen pytest "${sdk_test_selection[@]}" --junitxml="$scratch/source.xml"
 uv run --frozen pytest -q tests_tools
 uv build --out-dir "$scratch/dist"
+python3 scripts/verify_sdist.py "$scratch/dist"
 uv run --frozen python scripts/verify_wheel.py "$scratch/dist"
 uv run --frozen python scripts/export_release_contract.py "$scratch"/dist/*.whl --output "$scratch/contract"
 # A historical qualified wheel is a baseline, not the bytes of every new build.
