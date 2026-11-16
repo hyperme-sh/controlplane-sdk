@@ -1,0 +1,14 @@
+{
+  "pins": [
+    {
+      "identity": "anycodable",
+      "kind": "remoteSourceControl",
+      "location": "https://github.com/Flight-School/AnyCodable",
+      "state": {
+        "revision": "69261f239f0fffaf51495dadc4f8483fbfe97025",
+        "version": "0.6.1"
+      }
+    }
+  ],
+  "version": 2
+}

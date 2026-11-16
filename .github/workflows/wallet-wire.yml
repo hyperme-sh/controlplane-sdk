@@ -25,10 +25,10 @@ jobs:
       - run: bash scripts/check-wallet-wire.sh
   swift-wallet-wire:
     runs-on: ${{ github.event.repository.private && fromJSON('["self-hosted", "linux", "x64", "debrunner"]') || 'ubuntu-24.04' }}
-    container: swift:6.0.3-jammy
+    container: swift:6.0.3-jammy@sha256:9ad653a046d5063fff8dec9ae362e25f945bc1965e7dc8773409da71f784c708
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - run: swift test --package-path tests/wallet-swift --jobs 2
+      - run: swift test --package-path tests/wallet-swift --force-resolved-versions --jobs 2
