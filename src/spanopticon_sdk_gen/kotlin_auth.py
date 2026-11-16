@@ -7,6 +7,10 @@ def install_kotlin_auth(root: Path) -> list[str]:
     name = 'src/main/kotlin/org/openapitools/client/infrastructure/ApiClient.kt'
     path = root / name
     text = path.read_text()
+    for marker in ('class ApiClient(', 'authNames: Array<String>',
+                   'fun setBearerToken(', 'import org.openapitools.client.auth.HttpBearerAuth'):
+        if marker not in text:
+            raise ValueError('Unexpected Kotlin bearer template; review auth transform')
     seen: set[str] = set()
 
     def once(match: re.Match[str]) -> str:
@@ -21,5 +25,7 @@ def install_kotlin_auth(root: Path) -> list[str]:
     # constructor's dispatch table remain intact.
     text = re.sub(r'^    (?:constructor\(|fun setBearerToken\()[\s\S]*?^    }\n',
                   once, text, flags=re.MULTILINE)
+    if text.count('    fun setBearerToken(') != 1:
+        raise ValueError('Non-identical Kotlin bearer setters require review')
     path.write_text(text)
     return [name]
