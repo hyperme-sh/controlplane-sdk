@@ -182,11 +182,22 @@ Regenerate the REST trees with the pinned OpenAPI Generator image, then rerun th
 PR and main package checks exclude this case and retain the unit and contract
 suite. The nightly adapter exercises offline OpenAPI export through the installed `controlplane-edge` package. The test process has no upstream base URLs, and an unexpected HTTP call fails the test. That covers offline export of the committed snapshot.
 
-[`.github/workflows/package.yml`](.github/workflows/package.yml) runs on pushes to `main` and on manual dispatch, on `ubuntu-24.04`, with read-only `contents` permission. It uploads the tested distribution as the `tested-dist` artifact and the JUnit files as `test-results` (90-day retention).
+[`.github/workflows/package.yml`](.github/workflows/package.yml) validates main, while
+[isolated consumer CI](.github/workflows/consumer-qualification.yml) validates pull
+requests. Public jobs use `ubuntu-24.04`; private jobs use debrunners. Both keep
+read-only `contents` permission. Package checks compare the executed test inventories
+across source, wheel and rebuilt sdist and report the result in the job log.
+Their temporary build archives and JUnit files are not uploaded as Actions artifacts
+or wrapped in source-bundle containers.
 
 ## Release and versioning
 
-The Python package in this checkout is `controlplane-sdk` **0.2.0** (`pyproject.toml`). The OpenAPI document version is **1.0.0**. `release-policy.json` and the tag publisher declare release line **0.2**. Main package CI stores the tested wheel as an Actions artifact. Stable tags, `test-<commit>` snapshots, and the recorded `v0.24.0` GitHub release are described in [Releasing](docs/releasing.md).
+The Python package in this checkout is `controlplane-sdk` **0.2.0** (`pyproject.toml`).
+The OpenAPI document version is **1.0.0**, and `release-policy.json` declares release
+line **0.2**. The package release publisher is retired; tag-time admission does not
+publish. This library has no standalone runtime image or TEST channel. Consuming
+services publish their own GHCR containers and follow moving TEST channels.
+Historical tags and releases remain unchanged. See [Releasing](docs/releasing.md).
 
 ## License
 
